@@ -9,7 +9,7 @@ The project website is
 | Name  | EID | GitLab Username |
 | ------------- | ------------- | ------------- |
 | Miles Chandler | mac9325 | mchandle |
-| Joseph Engelhart | xxx1234 | jengelhart |
+| Joseph Engelhart | jae3362 | jengelhart |
 | Ella Robertson | ear3294 | ellarobertson |
 | Billy Vo | xxx1234 | billyvo |
 | Levi Villarreal | lrv432  | leviv1 |
