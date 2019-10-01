@@ -6,36 +6,34 @@ class TeamMember extends React.Component {
         this.state = {
             name: this.props.member.name,
             commits: this.props.member.commits,
-            issues: 0
+            issues: this.props.issues,
+            issuesClosed: 0
         }
     }
-    componentDidMount(){
+
+    componentDidMount() {
         this.countIssues()
     }
+    
     countIssues(){
-        issuesClosed = 0
-        for (issue in this.props.issues) {
-            console.log(issue.closed_by)
-        }
+        var closedIssues = 0
+        this.state.issues.forEach(issue => {
+            if (issue.closed_by) {
+                if (issue.closed_by.name === this.state.name){
+                    closedIssues++
+                }
+            }
+        });
+        this.setState({
+            issuesClosed: closedIssues
+        })
     }
     render() {
         return (
-        // Use React.Fragment because there are multiple HTML top-level elements
         <React.Fragment>
-            <h2>this.state.name</h2>
-
-            <ul>
-            {this.state.team.map(function(member, index){
-                
-                // Return a single team member object
-                return (
-                <li>
-                    <h3>{member.name}</h3>
-                    <p>Commits: {member.commits}</p>
-                </li>
-                );
-            })}
-            </ul>
+            <h3>{this.state.name}</h3>
+            <p>Commits: {this.state.commits}</p>
+            <p>Issues: {this.state.issuesClosed}</p>
         </React.Fragment>
         );
     }

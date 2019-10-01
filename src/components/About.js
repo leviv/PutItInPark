@@ -6,19 +6,23 @@ class About extends React.Component {
     team: [],
     issues: []
   }
-  componentDidMount() {
-    fetch('https://gitlab.com/api/v4/projects/14563233/repository/contributors')
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({team:data})
-    })
-    fetch('https://gitlab.com/api/v4/projects/14563233/issues')
+  async componentDidMount() {
+    
+    await fetch('https://gitlab.com/api/v4/projects/14563233/issues')
     .then(res => res.json())
     .then((data) => {
       this.setState({issues:data})
     })
+    
+    await fetch('https://gitlab.com/api/v4/projects/14563233/repository/contributors')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({team:data})
+    })
+    
   }
   render() {
+    var issueStats = this.state.issues
     return (
       // Use React.Fragment because there are multiple HTML top-level elements
       <React.Fragment>
@@ -26,16 +30,11 @@ class About extends React.Component {
 
         <ul>
           {this.state.team.map(function(member, index){
-            
-            // Return a single team member object
+            // Return a single team member component
             return (
-              <TeamMember member={member} issues={this.state.issues}/>
-              /*
               <li>
-                <h3>{member.name}</h3>
-                <p>Commits: {member.commits}</p>
+                <TeamMember member={member} issues={issueStats}/>
               </li>
-              */
             );
           })}
         </ul>
