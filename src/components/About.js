@@ -1,35 +1,23 @@
 import React from 'react';
-
-// Team member data
-const team = [
-  {
-    firstName: "Miles",
-    lastName: "Chandler",
-    bio: "Miles Chandler Bio"
-  },
-  {
-    firstName: "Joseph",
-    lastName: "Engelhart",
-    bio: "Joseph Engelhart Bio"
-  },
-  {
-    firstName: "Ella",
-    lastName: "Robertson",
-    bio: "Ella Robertson Bio"
-  },
-  {
-    firstName: "Billy",
-    lastName: "Vo",
-    bio: "Billy Vo Bio"
-  },
-  {
-    firstName: "Levi",
-    lastName: "Villarreal",
-    bio: "Levi Villarral Bio"
-  },
-];
+import TeamMember from './TeamMember'
 
 class About extends React.Component {
+  state = {
+    team: [],
+    issues: []
+  }
+  componentDidMount() {
+    fetch('https://gitlab.com/api/v4/projects/14563233/repository/contributors')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({team:data})
+    })
+    fetch('https://gitlab.com/api/v4/projects/14563233/issues')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({issues:data})
+    })
+  }
   render() {
     return (
       // Use React.Fragment because there are multiple HTML top-level elements
@@ -37,14 +25,17 @@ class About extends React.Component {
         <h2>About</h2>
 
         <ul>
-          {team.map(function(member, index){
+          {this.state.team.map(function(member, index){
             
             // Return a single team member object
             return (
+              <TeamMember member={member} issues={this.state.issues}/>
+              /*
               <li>
-                <h3>{member.firstName} {member.lastName}</h3>
-                <p>{member.bio}</p>
+                <h3>{member.name}</h3>
+                <p>Commits: {member.commits}</p>
               </li>
+              */
             );
           })}
         </ul>
