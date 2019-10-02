@@ -10,7 +10,7 @@ The project website is
 | ------------- | ------------- | ------------- |
 | Miles Chandler | mac9325 | mchandle |
 | Joseph Engelhart | xxx1234 | jengelhart |
-| Ella Robertson | ear3294 | ellarobertson |
+| Ella Robertson | ear3294 | ella.robertson |
 | Billy Vo | xxx1234 | billyvo |
 | Levi Villarreal | lrv432  | leviv1 |
 
@@ -29,7 +29,7 @@ The GitLab pipelies of the project can be found [here](https://gitlab.com/leviv1
 ## Completion Times (per member)
 | Phase | Estimated Completion Time | Actual Completion Time |
 | ------------- | ------------- | ------------- |
-| I | x hours | x hours |
+| I | 15 hours | x hours |
 | II | x hours | x hours |
 | III | x hours | x hours |
 | IV | x hours | x hours |
