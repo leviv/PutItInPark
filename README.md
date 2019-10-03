@@ -11,7 +11,7 @@ The project website is
 | Miles Chandler | mac9325 | mchandle |
 | Joseph Engelhart | jae3362 | jengelhart |
 | Ella Robertson | ear3294 | ellarobertson |
-| Billy Vo | xxx1234 | billyvo |
+| Billy Vo | bv5433 | billyvo |
 | Levi Villarreal | lrv432  | leviv1 |
 
 ## Git SHA
