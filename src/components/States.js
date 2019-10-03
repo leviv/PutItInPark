@@ -3,7 +3,9 @@ import React from 'react';
 class States extends React.Component {
   render() {
     return (
-      <h2>Locations</h2>
+      <div className="container">
+        <h2>Locations</h2>
+      </div>
     );
   }
 }

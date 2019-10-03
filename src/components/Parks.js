@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Parks extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
         <h2>National Parks</h2>
         <table class="table">
           <thead>
@@ -32,7 +32,7 @@ class Parks extends React.Component {
             </tr>
           </tbody>
         </table>
-      </React.Fragment>
+      </div>
     );
   }
 }

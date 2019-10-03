@@ -39,12 +39,12 @@ class TeamMember extends React.Component {
     render() {
         var alt = 'https://cdn.imgbin.com/5/19/23/imgbin-monterey-bay-aquarium-gary-park-ranger-forest-ranger-s-vhPH4MdLUQsTuFtSvF9QiFkmy.jpg'
         return (
-        <React.Fragment>
+        <div className="container">
             <h3>{this.state.name}</h3>
             <img src={this.state.imgURL} alt={alt}></img>
             <p>Commits: {this.state.commits}</p>
             <p>Issues: {this.state.issuesClosed}</p>
-        </React.Fragment>
+        </div>
         );
     }
     }

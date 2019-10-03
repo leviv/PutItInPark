@@ -20,19 +20,17 @@ function App() {
 
       <Header></Header>
 
-      <div className="container">
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about/" component={About} />
-          <Route path="/parks/" component={Parks} />
-          <Route path="/recreation/" component={Recreation} />
-          <Route path="/states/" component={States} />
-          <Route path="/yellowstone/" component={Yellowstone} />
-          <Route path="/grandcanyon/" component={GrandCanyon} />
-          <Route path="/yosemite/" component={Yosemite} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/about/" component={About} />
+        <Route path="/parks/" component={Parks} />
+        <Route path="/recreation/" component={Recreation} />
+        <Route path="/states/" component={States} />
+        <Route path="/yellowstone/" component={Yellowstone} />
+        <Route path="/grandcanyon/" component={GrandCanyon} />
+        <Route path="/yosemite/" component={Yosemite} />
+        <Route path="*" component={NotFound} />
+      </Switch>
     </Router>
   );
 }

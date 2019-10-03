@@ -55,13 +55,13 @@ class About extends React.Component {
     })
   }
   async componentDidMount() {
-    await fetch('https://gitlab.com/api/v4/projects/14563233/members', 
+    await fetch('https://gitlab.com/api/v4/projects/14563233/members',
     {headers:{'PRIVATE-TOKEN': 'wbRqCM6kGxhr5x98_dHj'}})
     .then(res => res.json())
     .then((data) => {
       this.removeCustomers(data)
     })
-    
+
     await fetch('https://gitlab.com/api/v4/projects/14563233/repository/commits')
     .then(res => res.json())
     .then((data) => {
@@ -82,7 +82,7 @@ class About extends React.Component {
     var issueStats = this.state.issues
     return (
       // Use React.Fragment because there are multiple HTML top-level elements
-      <React.Fragment>
+      <div className="container">
         <h2>About</h2>
         {this.state.load &&(<ul>
           {this.state.team.map(function(member){
@@ -94,8 +94,7 @@ class About extends React.Component {
             );
           })}
         </ul>)}
-        
-      </React.Fragment>
+      </div>
     );
   }
 }
