@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import picture from '../../assets/img/yellowstone.jpg'
 
 
@@ -33,10 +34,10 @@ class Yellowstone extends React.Component {
         <h3>Activities</h3>
         <ul>
           <li>
-            <p><a href="hiking">Hiking</a></p>
+            <p><Link to="/rafting/">Rafting</Link></p>
           </li>
           <li>
-            <p><a href="camping">Camping</a></p>
+            <p><Link to="/climbing/">Climbing</Link></p>
           </li>
         </ul>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import picture from '../../assets/img/splash.jpg'
 
 class Yosemite extends React.Component {
@@ -37,10 +38,10 @@ class Yosemite extends React.Component {
         <h3>Activities</h3>
         <ul>
           <li>
-            <p><a href="climbing">Climbing</a></p>
+            <p><Link to="/climbing/">Climbing</Link></p>
           </li>
           <li>
-            <p><a href="camping">Camping</a></p>
+            <p><Link to="/camping/">Camping</Link></p>
           </li>
         </ul>
       </div>

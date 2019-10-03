@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import picture from '../../assets/img/grandcanyon.jpg'
 
 class GrandCanyon extends React.Component {
@@ -32,10 +33,10 @@ class GrandCanyon extends React.Component {
         <h3>Activities</h3>
         <ul>
           <li>
-            <p><a href="rafting">Rafting</a></p>
+            <p><Link to="/rafting/">Rafting</Link></p>
           </li>
           <li>
-            <p><a href="climbing">Camping</a></p>
+            <p><Link to="/camping/">Camping</Link></p>
           </li>
         </ul>
       </div>

@@ -14,6 +14,10 @@ import Yellowstone from './components/parks/Yellowstone';
 import GrandCanyon from './components/parks/GrandCanyon';
 import Yosemite from './components/parks/Yosemite';
 
+import Climbing from './components/activities/Climbing';
+import Camping from './components/activities/Camping';
+import Rafting from './components/activities/Rafting';
+
 function App() {
   return (
     <Router>
@@ -26,9 +30,14 @@ function App() {
         <Route path="/parks/" component={Parks} />
         <Route path="/recreation/" component={Recreation} />
         <Route path="/states/" component={States} />
+
         <Route path="/yellowstone/" component={Yellowstone} />
         <Route path="/grandcanyon/" component={GrandCanyon} />
         <Route path="/yosemite/" component={Yosemite} />
+
+        <Route path="/climbing/" component={Climbing} />
+        <Route path="/camping/" component={Camping} />
+        <Route path="/rafting/" component={Rafting} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
