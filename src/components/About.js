@@ -6,6 +6,33 @@ class About extends React.Component {
     team: [],
     issues: []
   }
+
+  aggregateDuplicates(data) {
+    // if we have duplicate names just combine their total commits
+    var dict = {}
+    var aggedData = []
+    //console.log('data', data[0].name)
+    let i;
+    for (i = 0; i < data.length; i++) {
+      var member = data[i]
+      if (dict[member.name]){
+        dict[member.name] += member.commits
+      } else {
+        dict[member.name] = member.commits
+      }
+    }
+    aggedData = []
+    for (var key in dict) {
+      var teamMember = {
+        name: key,
+        commits: dict[key]
+      }
+      aggedData.push(teamMember)
+    }
+    this.setState({
+      team: aggedData
+    })
+  }
   async componentDidMount() {
     
     await fetch('https://gitlab.com/api/v4/projects/14563233/issues')
@@ -17,7 +44,7 @@ class About extends React.Component {
     await fetch('https://gitlab.com/api/v4/projects/14563233/repository/contributors')
     .then(res => res.json())
     .then((data) => {
-      this.setState({team:data})
+      this.aggregateDuplicates(data)
     })
     
   }
