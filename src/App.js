@@ -10,6 +10,9 @@ import Parks from './components/Parks';
 import Recreation from './components/Recreation';
 import States from './components/States';
 import NotFound from './components/NotFound';
+import Yellowstone from './components/parks/Yellowstone';
+import GrandCanyon from './components/parks/GrandCanyon';
+import Yosemite from './components/parks/Yosemite';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path="/parks/" component={Parks} />
           <Route path="/recreation/" component={Recreation} />
           <Route path="/states/" component={States} />
+          <Route path="/yellowstone/" component={Yellowstone} />
+          <Route path="/grandcanyon/" component={GrandCanyon} />
+          <Route path="/yosemite/" component={Yosemite} />
           <Route path="*" component={NotFound} />
         </Switch>
       </div>
