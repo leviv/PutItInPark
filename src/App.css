@@ -1,3 +1,7 @@
+/* =================
+  General Styles
+  ================= */
+
 body, html, #root {
   height: 100%;
 }
@@ -8,6 +12,14 @@ body {
   font-family: "Dosis", sans-serif;
   padding-top: 56px
 }
+
+h2 {
+  margin: 20px 0;
+}
+
+/* =================
+  Splash Page styles
+   ================= */
 
 .splash {
   width: 100%;
@@ -32,4 +44,25 @@ body {
   border-radius: 8px;
   padding: 15px;
   margin: 30px
+}
+
+/* =================
+  Team Member Styles
+  ================= */
+.team-member {
+  background: #eee;
+  border-radius: 8px;
+  max-width: 200px;
+  margin: 10px;
+}
+
+.team-member .team-desc {
+  padding: 10px;
+}
+
+/* =================
+  Model instance page styles
+  ================= */
+.instance img {
+  max-width: 100%;
 }

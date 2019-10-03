@@ -84,16 +84,16 @@ class About extends React.Component {
       // Use React.Fragment because there are multiple HTML top-level elements
       <div className="container">
         <h2>About</h2>
-        {this.state.load &&(<ul>
+        {this.state.load &&(<div className="row">
           {this.state.team.map(function(member){
             // Return a single team member component
             return (
-              <li>
+              <div className="col-md">
                 <TeamMember member={member} issues={issueStats}/>
-              </li>
+              </div>
             );
           })}
-        </ul>)}
+        </div>)}
       </div>
     );
   }

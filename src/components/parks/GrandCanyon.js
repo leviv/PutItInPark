@@ -3,7 +3,7 @@ import React from 'react';
 class GrandCanyon extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
         <h2>Grand Canyon</h2>
         <p>Arizona</p>
         <p>9024 Southside Dr, Yosemite National Park</p>
@@ -15,7 +15,7 @@ class GrandCanyon extends React.Component {
           led to the conservation of our national treasures 'for the benefit and enjoyment
           of the people.'
         </p>
-      </React.Fragment>
+      </div>
     );
   }
 }

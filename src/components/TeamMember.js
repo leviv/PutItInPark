@@ -40,10 +40,15 @@ class TeamMember extends React.Component {
         var alt = 'https://cdn.imgbin.com/5/19/23/imgbin-monterey-bay-aquarium-gary-park-ranger-forest-ranger-s-vhPH4MdLUQsTuFtSvF9QiFkmy.jpg'
         return (
         <div className="container">
-            <h3>{this.state.name}</h3>
-            <img src={this.state.imgURL} alt={alt}></img>
-            <p>Commits: {this.state.commits}</p>
-            <p>Issues: {this.state.issuesClosed}</p>
+            <div className="team-member">
+              <img src={this.state.imgURL} alt={alt}></img>
+              <div className="team-desc">
+                <h3>{this.state.name}</h3>
+                <p>Commits: {this.state.commits}</p>
+                <p>Issues: {this.state.issuesClosed}</p>
+                <p>Tests: 1</p>
+              </div>
+            </div>
         </div>
         );
     }
