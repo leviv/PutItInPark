@@ -63,6 +63,13 @@ h2 {
 /* =================
   Model instance page styles
   ================= */
+
+.instance .picture {
+  max-height: 250px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
 .instance img {
   max-width: 100%;
+  max-height: 100%;
 }
