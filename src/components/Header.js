@@ -24,7 +24,7 @@ class Header extends React.Component {
                 <Link className="nav-link" to="/recreation/">Recreation</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/states/">Locations</Link>
+                <Link className="nav-link" to="/states/">States</Link>
               </li>
             </ul>
           </div>
