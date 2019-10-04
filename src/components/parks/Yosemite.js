@@ -13,7 +13,7 @@ class Yosemite extends React.Component {
         </div>
 
         <h3>State</h3>
-        <p><a href="california">California</a></p>
+        <p><Link to="/california/">California</Link></p>
 
         <h3>Addresss</h3>
         <p>9024 Southside Dr, Yosemite National Park</p>

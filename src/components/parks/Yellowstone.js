@@ -14,7 +14,7 @@ class Yellowstone extends React.Component {
         </div>
 
         <h3>State</h3>
-        <p><a href="wyoming">Wyoming</a></p>
+        <p><Link to="/wyoming/">Wyoming</Link></p>
 
         <h3>Addresss</h3>
         <p>2 Officers Row, Yellowstone National Park</p>

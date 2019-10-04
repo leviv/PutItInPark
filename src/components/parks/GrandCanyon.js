@@ -13,7 +13,7 @@ class GrandCanyon extends React.Component {
         </div>
 
         <h3>State</h3>
-        <p><a href="arizona">Arizona</a></p>
+        <p><Link to="/arizona/">Arizona</Link></p>
 
         <h3>Addresss</h3>
         <p>20 S Entrance Rd, Grand Canyon Village</p>
