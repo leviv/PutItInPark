@@ -81,7 +81,6 @@ class About extends React.Component {
   render() {
     var issueStats = this.state.issues
     return (
-      // Use React.Fragment because there are multiple HTML top-level elements
       <div className="container">
         <h2>About</h2>
         {this.state.load &&(<div className="row">
