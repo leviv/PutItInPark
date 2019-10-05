@@ -93,6 +93,9 @@ class About extends React.Component {
             );
           })}
         </div>)}
+
+        <h3>Postman Documentation</h3>
+        <p><a href="https://documenter.getpostman.com/view/9011044/SVtR19mz?version=latest">Link to postman documentation</a></p>
       </div>
     );
   }

@@ -9,7 +9,7 @@ class California extends React.Component {
         <h2>California</h2>
 
         <div className="picture">
-          <img src={picture}/>
+          <img src={picture} alt="California"/>
         </div>
 
         <h3>Top Park</h3>

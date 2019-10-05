@@ -9,7 +9,7 @@ class Arizona extends React.Component {
         <h2>Arizona</h2>
 
         <div className="picture">
-          <img src={picture}/>
+          <img src={picture} alt="Arizona"/>
         </div>
 
         <h3>Top Park</h3>

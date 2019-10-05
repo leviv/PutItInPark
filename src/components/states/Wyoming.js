@@ -9,7 +9,7 @@ class Wyoming extends React.Component {
         <h2>Wyoming</h2>
 
         <div className="picture">
-          <img src={picture}/>
+          <img src={picture} alt="Wyoming"/>
         </div>
 
         <h3>Top Park</h3>
