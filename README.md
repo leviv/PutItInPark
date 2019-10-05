@@ -17,7 +17,7 @@ The project website is putitinpark.xyz (or putitinpark.me)
 ## Git SHA
 | Phase | Git SHA |
 | ------------- | ------------- |
-| Phase I | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| Phase I | 78d4ab8333b4fde557779021f0f55ce1bfc782b1 |
 | Phase II | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
 | Phase III | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
 | Phase IV | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
