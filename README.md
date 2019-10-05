@@ -3,7 +3,7 @@
 Provides information about national parks in the United States.
 
 ### Website
-The project website is
+The project website is putitinpark.xyz (or putitinpark.me)
 
 ## Group Members
 | Name  | EID | GitLab Username |
@@ -29,7 +29,7 @@ The GitLab pipelies of the project can be found [here](https://gitlab.com/leviv1
 ## Completion Times (per member)
 | Phase | Estimated Completion Time | Actual Completion Time |
 | ------------- | ------------- | ------------- |
-| I | 15 hours | x hours |
+| I | 15 hours | 18 hours |
 | II | x hours | x hours |
 | III | x hours | x hours |
 | IV | x hours | x hours |
