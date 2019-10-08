@@ -10,7 +10,7 @@ The project website is putitinpark.xyz (or putitinpark.me)
 | ------------- | ------------- | ------------- |
 | Miles Chandler | mac9325 | mchandle |
 | Joseph Engelhart | jae3362 | jengelhart |
-| Ella Robertson | ear3294 | ellarobertson |
+| Ella Robertson | ear3294 | ella.robertson |
 | Billy Vo | bv5433 | billyvo |
 | Levi Villarreal | lrv432  | leviv1 |
 
