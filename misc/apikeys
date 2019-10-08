@@ -1,0 +1,14 @@
+National Park Service (NPS) API:
+	Key:		api_key
+	Value:		VdrRc2ukbqSLclLVGyaWszz55PZAXd73LB5SK0Yj
+	Passed by:	query
+
+	Alternate -
+	Key:		x-api-key
+	Value:		VdrRc2ukbqSLclLVGyaWszz55PZAXd73LB5SK0Yj
+	Passed by:	header
+
+Recreation Information DataBase (RIDB) API:
+	Key:		apikey
+	Value:		233a1540-c404-419b-b60c-ab4a096cc7d2
+	Passed by:	header/query
