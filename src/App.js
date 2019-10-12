@@ -10,17 +10,9 @@ import Parks from './components/Parks';
 import Recreation from './components/Recreation';
 import States from './components/States';
 import NotFound from './components/NotFound';
-import Yellowstone from './components/parks/Yellowstone';
-import GrandCanyon from './components/parks/GrandCanyon';
-import Yosemite from './components/parks/Yosemite';
-
-import Climbing from './components/activities/Climbing';
-import Camping from './components/activities/Camping';
-import Rafting from './components/activities/Rafting';
-
-import Arizona from './components/states/Arizona';
-import California from './components/states/California';
-import Wyoming from './components/states/Wyoming';
+import Park from './components/Park';
+import Activity from './components/Activity';
+import State from './components/State';
 
 function App() {
   return (
@@ -34,18 +26,10 @@ function App() {
         <Route path="/parks/" component={Parks} />
         <Route path="/recreation/" component={Recreation} />
         <Route path="/states/" component={States} />
+        <Route path="/park/:parkName" component={Park} />
+        <Route path="/activity/:activityName" component={Activity} />
+        <Route path="/state/:stateName" component={State} />
 
-        <Route path="/yellowstone/" component={Yellowstone} />
-        <Route path="/grandcanyon/" component={GrandCanyon} />
-        <Route path="/yosemite/" component={Yosemite} />
-
-        <Route path="/climbing/" component={Climbing} />
-        <Route path="/camping/" component={Camping} />
-        <Route path="/rafting/" component={Rafting} />
-
-        <Route path="/arizona/" component={Arizona} />
-        <Route path="/california/" component={California} />
-        <Route path="/wyoming/" component={Wyoming} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
