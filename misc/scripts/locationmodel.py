@@ -1,6 +1,6 @@
 import urllib.request, json
 
-fipscode = {'01': 'Alabama', '02': 'Alaska', '04': 'Arizona',
+fips_to_name = {'01': 'Alabama', '02': 'Alaska', '04': 'Arizona',
 '05': 'Arkansas', '06': 'California', '08': 'Colorado', '09': 'Connecticut',
 '10': 'Delaware', '12': 'Florida', '13': 'Georgia', '15': 'Hawaii',
 '16': 'Idaho', '17': 'Illinois', '18': 'Indiana', '19': 'Iowa',
@@ -14,10 +14,13 @@ fipscode = {'01': 'Alabama', '02': 'Alaska', '04': 'Arizona',
 '49': 'Utah', '50': 'Vermont', '51': 'Virginia', '53': 'Washington', 
 '54': 'West Virginia', '55': 'Wisconsin', '56': 'Wyoming'}
 
+# TODO: add map for state mailing code (ex: TX) to fips code (ex: 48) so we can use national parks
+# and recreational APIS.
+
 class state:
     def __init__(self, fips, name, population):
         self.fips = str(fips)
-        self.name = str(fipscode.get(fips))
+        self.name = str(fips_to_name.get(fips))
         self.population = int(population)
         self.numParks = 0
         self.numRec = 0
@@ -34,17 +37,20 @@ class state:
 
 states = []
 apikey = 'e9a1b4d7b339d41c3fc92ce5560af35d06859342'
+
+#Get FIPS, State name, and population data
 with urllib.request.urlopen("https://api.census.gov/data/2018/pep/population?get=POP&for=state:*&key=" + apikey) as url:
     data = json.loads(url.read().decode())
     for s in data:
         if(s[0] != 'POP'):
             pop = s[0]
             fips = s[1]
-            name = fipscode.get(pop)
-            if(fips in fipscode): #Only include states, not minor outlying islands
+            name = fips_to_name.get(fips)
+            if(fips in fips_to_name): #Only include states, not minor outlying islands
                 new_state = state(fips, name, pop)
                 states.append(new_state)
 
+#For testing
 for s in states:
     print(str(s))
 
