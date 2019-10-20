@@ -30,7 +30,7 @@ The GitLab pipelies of the project can be found [here](https://gitlab.com/leviv1
 | Phase | Estimated Completion Time | Actual Completion Time |
 | ------------- | ------------- | ------------- |
 | I | 15 hours | 18 hours |
-| II | x hours | x hours |
+| II | 22 hours | x hours |
 | III | x hours | x hours |
 | IV | x hours | x hours |
 
