@@ -2,8 +2,8 @@ import urllib.request, json
 
 fips_to_name = {'01': 'Alabama', '02': 'Alaska', '04': 'Arizona',
 '05': 'Arkansas', '06': 'California', '08': 'Colorado', '09': 'Connecticut',
-'10': 'Delaware', '12': 'Florida', '13': 'Georgia', '15': 'Hawaii',
-'16': 'Idaho', '17': 'Illinois', '18': 'Indiana', '19': 'Iowa',
+'10': 'Delaware', '11': 'Washington D.C', '12': 'Florida', '13': 'Georgia', 
+'15': 'Hawaii', '16': 'Idaho', '17': 'Illinois', '18': 'Indiana', '19': 'Iowa',
 '20': 'Kansas', '21': 'Kentucky', '22': 'Louisiana', '23': 'Maine',
 '24': 'Maryland', '25': 'Massachusetts', '26': 'Michigan', '27': 'Minnesota',
 '28': 'Mississippi', '29': 'Missouri', '30': 'Montana', '31': 'Nebraska',
@@ -16,7 +16,7 @@ fips_to_name = {'01': 'Alabama', '02': 'Alaska', '04': 'Arizona',
 
 
 mail_code_to_fips = {'AL': '01', 'AK': '02', 'AZ': '04',
-'AR': '05', 'CA': '06', 'CO': '08', 'CT': '09', 'DE': '10',
+'AR': '05', 'CA': '06', 'CO': '08', 'CT': '09', 'DE': '10', 'DC': '11',
 'FL': '12', 'GA': '15', 'HI': '15', 'ID': '16', 'IL': '17',
 'IN': '18', 'IA': '19', 'KS': '20', 'KY': '21', 'LA': '22',
 'ME': '23', 'MD': '24', 'MA': '25', 'MI': '26', 'MN': '27',
@@ -36,21 +36,21 @@ class state:
         self.numParks = 0
         self.numRec = 0
     
-    def add_parks(self):
-        self.numParks = self.numParks + 1
+    def add_parks(self, num):
+        self.numParks = self.numParks + int(num)
     
     def add_rec(self):
         self.numRec = self.numRec + 1
     
     def __str__(self):
-        string = 'Name: ' + self.name + ' FIPS: ' + self.fips + ' Population: ' + str(self.population)
+        string = 'Name: ' + self.name + ' FIPS: ' + self.fips + ' Population: ' + str(self.population) + ' National Parks: ' + str(self.numParks)
         return string
 
-states = []
-apikey = 'e9a1b4d7b339d41c3fc92ce5560af35d06859342'
+states = {}
 
 #Get FIPS, State name, and population data
-with urllib.request.urlopen("https://api.census.gov/data/2018/pep/population?get=POP&for=state:*&key=" + apikey) as url:
+apikeycensus = 'e9a1b4d7b339d41c3fc92ce5560af35d06859342'
+with urllib.request.urlopen("https://api.census.gov/data/2018/pep/population?get=POP&for=state:*&key=" + apikeycensus) as url:
     data = json.loads(url.read().decode())
     for s in data:
         if(s[0] != 'POP'):
@@ -59,10 +59,17 @@ with urllib.request.urlopen("https://api.census.gov/data/2018/pep/population?get
             name = fips_to_name.get(fips)
             if(fips in fips_to_name): #Only include states, not minor outlying islands
                 new_state = state(fips, name, pop)
-                states.append(new_state)
+                states[fips] = new_state
 
-#For testing
-for s in states:
-    print(str(s))
+#Get number of national parks by state
+apikeyparks = 'VdrRc2ukbqSLclLVGyaWszz55PZAXd73LB5SK0Yj'
+for mail_code in mail_code_to_fips.keys():
+    with urllib.request.urlopen('https://developer.nps.gov/api/v1/parks?stateCode=' + mail_code + '&api_key=' + apikeyparks) as url:
+        num_nat_parks = json.loads(url.read().decode()).get('total')
+        fips_code = mail_code_to_fips.get(mail_code)
+        st = states.get(fips_code)
+        st.add_parks(num_nat_parks)
 
-
+# For testing
+for value in states.values():
+    print(str(value))
