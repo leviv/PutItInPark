@@ -5,7 +5,7 @@ import NotFound from './NotFound';
 const parks = {
   "yosemite" : {
     name: "yosemite",
-    imageUrl: "../assets/img/splash.jpg",
+    imageUrl: "https://www.nps.gov/common/uploads/grid_builder/yose/crop16_9/2A84C724-1DD8-B71B-0B0F4361A736E640.jpg?width=950&quality=90&mode=crop",
     state: "california",
     address: "9024 Southside Dr, Yosemite National Park",
     fees: "$20 per day",
@@ -15,7 +15,7 @@ const parks = {
   },
   "grand-canyon" : {
     name: "the grand canyon",
-    imageUrl: "../assets/img/grandcanyon.jpg",
+    imageUrl: "https://www.nps.gov/npgallery/GetAsset/F77E8BB4-155D-451F-670C6F80B88A153E/proxy/hires?",
     state: "new-mexico",
     address: "20 S Entrance Rd, Grand Canyon Village",
     fees: "$20 per day",
@@ -25,7 +25,7 @@ const parks = {
   },
   "yellowstone" : {
     name: "yellowstone",
-    imageUrl: "../assets/img/yellowstone.jpg",
+    imageUrl: "https://www.nps.gov/npgallery/GetAsset/0005A3F1-1DD8-B71B-0B38A6233082EC97/proxy/hires?",
     state: "wyoming",
     address: "2 Officers Row, Yellowstone National Park",
     fees: "$20 per day",
