@@ -46,8 +46,6 @@ h2 {
   }
 }
 
-
-
 /* =================
   Team Member Styles
   ================= */
@@ -69,12 +67,44 @@ h2 {
 .instance {
   .picture {
     max-height: 250px;
+    width: 100%;
     overflow: hidden;
     margin-bottom: 10px;
+
+    img {
+      width: 100%;
+    }
   }
 
   img {
     max-width: 100%;
     max-height: 100%;
+  }
+}
+
+/* =================
+  Grid Card Styles
+  ================= */
+.instance-container {
+  width: 100%;
+
+  .instance-card {
+    background-position: cover;
+    display: inline-block;
+    height: 250px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+
+    .details {
+      text-transform: capitalize;
+      color: #fff;
+      text-align: center;
+    }
+
+    .hidden-details {
+      display: none;
+    }
   }
 }
