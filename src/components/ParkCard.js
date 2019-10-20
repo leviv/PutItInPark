@@ -3,17 +3,22 @@ import { Link } from 'react-router-dom';
 
 class ParkCard extends React.Component {
   render() {
+    const slug = '/park/' + this.props.name.replace(/\s+/g, '-').toLowerCase();
+
+
     return (
-      <Link to="/states/">
+      <Link to={slug}>
         <div className="instance-card"
              style={{ backgroundImage: `url(${this.props.imageUrl})`}}
              >
-          <div class="hidden-details">
-            <p>State: {this.props.state}</p>
-            <p>Status: {this.props.status}</p>
-          </div>
-          <div className="details">
-            <p>{this.props.name}</p>
+          <div className="instance-overlay">
+            <div class="hidden-details">
+              <p>State: {this.props.state}</p>
+              <p>Status: {this.props.status}</p>
+            </div>
+            <div className="details">
+              <h4>{this.props.name}</h4>
+            </div>
           </div>
         </div>
       </Link>

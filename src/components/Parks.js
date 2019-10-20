@@ -113,28 +113,33 @@ class Parks extends React.Component {
     }).filter(x => x != null);
 
     return (
-      <div className="container">
-        <h2>National Parks</h2>
+      <React.Fragment>
+        <div className="model-intro">
+          <h2>National Parks</h2>
+        </div>
 
-        {row.map((result, index) => {
-          return (
-            <div className="row">
-              {result.map(item => {
-                return (
-                  <div className="col-sm-3 instance-container">
-                    <ParkCard
-                      name={parks[item].name}
-                      imageUrl={parks[item].imageUrl}
-                      state={parks[item].state}
-                      status={parks[item].datesOpen}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          );
-       })}
-      </div>
+        <div className="container">
+
+          {row.map((result, index) => {
+            return (
+              <div className="row">
+                {result.map(item => {
+                  return (
+                    <div className="col-md-3 instance-container">
+                      <ParkCard
+                        name={parks[item].name}
+                        imageUrl={parks[item].imageUrl}
+                        state={parks[item].state}
+                        status={parks[item].datesOpen}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            );
+         })}
+        </div>
+      </React.Fragment>
     );
   }
 }

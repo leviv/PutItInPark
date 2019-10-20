@@ -13,7 +13,7 @@ const parks = {
     description: "Visit Yellowstone and experience the world's first national park. Marvel at a volcano's hidden power rising up in colorful hot springs, mudpots, and geysers. Explore mountains, forests, and lakes to watch wildlife and witness the drama of the natural world unfold. Discover the history that led to the conservation of our national treasures 'for the benefit and enjoyment of the people.'",
     activities: ["climbing", "camping"],
   },
-  "grand-canyon" : {
+  "the-grand-canyon" : {
     name: "the grand canyon",
     imageUrl: "https://www.nps.gov/npgallery/GetAsset/F77E8BB4-155D-451F-670C6F80B88A153E/proxy/hires?",
     state: "new-mexico",
