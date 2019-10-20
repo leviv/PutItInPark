@@ -15,3 +15,10 @@ Recreation Information DataBase (RIDB) API:
 	Value:		233a1540-c404-419b-b60c-ab4a096cc7d2
 	Passed by:	header/query
 	Base URL:	https://ridb.recreation.gov/api/v1/
+
+
+Census Data API:
+	Key: key
+	Value: e9a1b4d7b339d41c3fc92ce5560af35d06859342
+	Passed by: query
+	Base URL: https://api.census.gov/data/2018/pep/population

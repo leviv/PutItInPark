@@ -33,8 +33,8 @@ class state:
         return string
 
 states = []
-
-with urllib.request.urlopen("https://api.census.gov/data/2018/pep/population?get=POP&for=state:*") as url:
+apikey = 'e9a1b4d7b339d41c3fc92ce5560af35d06859342'
+with urllib.request.urlopen("https://api.census.gov/data/2018/pep/population?get=POP&for=state:*&key=" + apikey) as url:
     data = json.loads(url.read().decode())
     for s in data:
         if(s[0] != 'POP'):
