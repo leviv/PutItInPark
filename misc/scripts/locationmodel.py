@@ -39,11 +39,11 @@ class state:
     def add_parks(self, num):
         self.numParks = self.numParks + int(num)
     
-    def add_rec(self):
-        self.numRec = self.numRec + 1
+    def add_rec(self, num):
+        self.numRec = self.numRec + int(num)
     
     def __str__(self):
-        string = 'Name: ' + self.name + ' FIPS: ' + self.fips + ' Population: ' + str(self.population) + ' National Parks: ' + str(self.numParks)
+        string =  self.fips + ' ' + self.name + ' ' + str(self.numParks) + ' ' + str(self.numRec) + ' ' + str(self.population)
         return string
 
 states = {}
@@ -69,6 +69,18 @@ for mail_code in mail_code_to_fips.keys():
         fips_code = mail_code_to_fips.get(mail_code)
         st = states.get(fips_code)
         st.add_parks(num_nat_parks)
+
+
+#Get number of recreational activities by state
+apikeyrec = "233a1540-c404-419b-b60c-ab4a096cc7d2"
+for mail_code in mail_code_to_fips.keys():
+    with urllib.request.urlopen('https://ridb.recreation.gov/api/v1/recareaaddresses?query=' + mail_code + '&limit=50&offset=0&apikey=' + apikeyrec) as url:
+        data = json.loads(url.read().decode()).get('METADATA')
+        num_rec = data.get('RESULTS').get('TOTAL_COUNT')
+        fips_code = mail_code_to_fips.get(mail_code)
+        st = states.get(fips_code)
+        st.add_rec(num_rec)
+
 
 # For testing
 for value in states.values():
