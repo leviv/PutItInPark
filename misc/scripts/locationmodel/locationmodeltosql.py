@@ -1,6 +1,9 @@
 # Messy code, but I'm keeping it for reference
 file = open("locationmodelresults.txt", "r")
+#create table
+print ('CREATE TABLE location (fips TINYINT(61), name VARCHAR(255), numnatparks TINYINT(61), numrecactivities MEDIUMINT(100), population INT(255));')
 
+#insert values
 for line in file:
     values = line.split(" ")
     

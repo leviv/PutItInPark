@@ -17,7 +17,7 @@ fips_to_name = {'01': 'Alabama', '02': 'Alaska', '04': 'Arizona',
 
 mail_code_to_fips = {'AL': '01', 'AK': '02', 'AZ': '04',
 'AR': '05', 'CA': '06', 'CO': '08', 'CT': '09', 'DE': '10', 'DC': '11',
-'FL': '12', 'GA': '14', 'HI': '15', 'ID': '16', 'IL': '17',
+'FL': '12', 'GA': '13', 'HI': '15', 'ID': '16', 'IL': '17',
 'IN': '18', 'IA': '19', 'KS': '20', 'KY': '21', 'LA': '22',
 'ME': '23', 'MD': '24', 'MA': '25', 'MI': '26', 'MN': '27',
 'MS': '28', 'MO': '29', 'MT': '30', 'NE': '31', 'NV': '32',
@@ -37,10 +37,10 @@ class state:
         self.numRec = 0
     
     def add_parks(self, num):
-        self.numParks = self.numParks + int(num)
+        self.numParks = int(num)
     
     def add_rec(self, num):
-        self.numRec = self.numRec + int(num)
+        self.numRec = int(num)
     
     def __str__(self):
         string =  self.fips + ' ' + self.name + ' ' + str(self.numParks) + ' ' + str(self.numRec) + ' ' + str(self.population)
@@ -64,8 +64,12 @@ with urllib.request.urlopen("https://api.census.gov/data/2018/pep/population?get
 #Get number of national parks by state
 apikeyparks = 'VdrRc2ukbqSLclLVGyaWszz55PZAXd73LB5SK0Yj'
 for mail_code in mail_code_to_fips.keys():
-    with urllib.request.urlopen('https://developer.nps.gov/api/v1/parks?stateCode=' + mail_code + '&api_key=' + apikeyparks) as url:
-        num_nat_parks = json.loads(url.read().decode()).get('total')
+    with urllib.request.urlopen('https://developer.nps.gov/api/v1/parks?stateCode=' + mail_code + '&fields=designation&api_key=' + apikeyparks) as url:
+        data = json.loads(url.read().decode()).get('data')
+        num_nat_parks = 0
+        for park in data:
+            if park.get('designation') == 'National Park':
+                num_nat_parks = num_nat_parks + 1
         fips_code = mail_code_to_fips.get(mail_code)
         st = states.get(fips_code)
         st.add_parks(num_nat_parks)
