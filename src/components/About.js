@@ -1,5 +1,10 @@
 import React from 'react';
 import TeamMember from './TeamMember'
+import BillyPhoto from '../assets/img/Billy.png'
+import EllaPhoto from '../assets/img/Ella.png'
+import JosephPhoto from '../assets/img/Joseph.png'
+import LeviPhoto from '../assets/img/Levi.png'
+import MilesPhoto from '../assets/img/Miles.png'
 
 // Gitlab issues/commit retrieval inspired by shub95/foodmeonce
 class About extends React.Component {
@@ -122,7 +127,7 @@ class About extends React.Component {
           <div className="col-sm-4">
             <TeamMember
               name="Miles Chandler"
-              imageUrl="https://gitlab.com/uploads/-/system/user/avatar/4575643/avatar.png?width=400"
+              imageUrl={MilesPhoto}
               commits={Miles[0]}
               issuesClosed={Miles[1]}
               tests={Miles[2]}
@@ -131,7 +136,7 @@ class About extends React.Component {
           <div className="col-sm-4">
             <TeamMember
               name="Joseph Engelhart"
-              imageUrl="https://gitlab.com/uploads/-/system/user/avatar/4629720/avatar.png?width=400"
+              imageUrl={JosephPhoto}
               commits={Joseph[0]}
               issuesClosed={Joseph[1]}
               tests={Joseph[2]}
@@ -140,7 +145,7 @@ class About extends React.Component {
           <div className="col-sm-4">
             <TeamMember
               name="Ella Robertson"
-              imageUrl="https://gitlab.com/uploads/-/system/user/avatar/4532084/avatar.png?width=400"
+              imageUrl={EllaPhoto}
               commits={Ella[0]}
               issuesClosed={Ella[1]}
               tests={Ella[2]}
@@ -153,7 +158,7 @@ class About extends React.Component {
           <div className="col-sm-4">
             <TeamMember
               name="Levi Villarreal"
-              imageUrl="https://gitlab.com/uploads/-/system/user/avatar/4584789/avatar.png?width=400"
+              imageUrl={LeviPhoto}
               commits={Levi[0]}
               issuesClosed={Levi[1]}
               tests={Levi[2]}
@@ -162,7 +167,7 @@ class About extends React.Component {
           <div className="col-sm-4">
             <TeamMember
               name="Billy Vo"
-              imageUrl="https://gitlab.com/uploads/-/system/user/avatar/4597292/avatar.png?width=400"
+              imageUrl={BillyPhoto}
               commits={Billy[0]}
               issuesClosed={Billy[1]}
               tests={Billy[2]}
