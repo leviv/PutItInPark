@@ -1,55 +1,19 @@
 import React from 'react';
 
 class TeamMember extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: this.props.member.name,
-            commits: this.props.member.commits,
-            issues: this.props.issues,
-            issuesClosed: 0,
-            imgURL: this.props.member.avatar_url
-        }
-    }
-
-    componentDidMount() {
-        this.countIssues()
-        this.setState({
-            name:this.props.member.name,
-            commits: this.props.member.commits,
-            issues: this.props.issues,
-            imgURL:this.props.member.avatar_url
-        })
-    }
-
-
-    countIssues(){
-        var closedIssues = 0
-        this.state.issues.forEach(issue => {
-            if (issue.closed_by) {
-                if (issue.closed_by.name === this.state.name){
-                    closedIssues++
-                }
-            }
-        });
-        this.setState({
-            issuesClosed: closedIssues
-        })
-    }
     render() {
-        var alt = 'https://cdn.imgbin.com/5/19/23/imgbin-monterey-bay-aquarium-gary-park-ranger-forest-ranger-s-vhPH4MdLUQsTuFtSvF9QiFkmy.jpg'
         return (
-        <div className="container">
-            <div className="team-member">
-              <img src={this.state.imgURL} alt={alt}></img>
-              <div className="team-desc">
-                <h3>{this.state.name}</h3>
-                <p>Commits: {this.state.commits}</p>
-                <p>Issues: {this.state.issuesClosed}</p>
-                <p>Tests: 1</p>
+          <div className="container">
+              <div className="team-member">
+                <img src={this.props.imageUrl} alt="Team member headshot"></img>
+                <div className="team-desc">
+                  <h3>{this.props.name}</h3>
+                  <p>Commits: {this.props.commits}</p>
+                  <p>Issues: {this.props.issuesClosed}</p>
+                  <p>Tests: {this.props.tests}</p>
+                </div>
               </div>
-            </div>
-        </div>
+          </div>
         );
     }
 }
