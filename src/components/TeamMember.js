@@ -3,7 +3,7 @@ import React from 'react';
 class TeamMember extends React.Component {
     render() {
         return (
-          <div className="container">
+          <div className="col-lg-4 col-md-5">
               <div className="team-member">
                 <img src={this.props.imageUrl} alt="Team member headshot"></img>
                 <div className="team-desc">

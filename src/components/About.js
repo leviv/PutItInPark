@@ -121,10 +121,28 @@ class About extends React.Component {
     } = this.state
 
     return (
-      <div className="container">
-        <h2>About</h2>
-        <div className="row">
-          <div className="col-sm-4">
+      <React.Fragment>
+        <div className="model-intro">
+          <h2>About</h2>
+        </div>
+
+        <div className="container">
+
+          <p class="about-lead">Purpose: This website is meant to encourage Americans/tourists to go outdoors by highlighting National Parks and recreational activities in their area.</p>
+
+          <div className="about-buttons text-center">
+            <a href="https://gitlab.com/leviv1/putitinpark/" target="_blank"><button className="button button-primary">Gitlab Repo</button></a>
+            <a href="https://documenter.getpostman.com/view/9011044/SVtR19mz?version=latest" target="_blank"><button className="button button-secondary">API Docs</button></a>
+          </div>
+
+          <br/>
+
+          <h1 className="text-center"><span>Total Stats</span></h1>
+
+          <h3 className="text-center">Total Commits: {totalCommits}</h3>
+          <h3 className="text-center">Closed issues: {closedIssues}</h3>
+
+          <div className="row">
             <TeamMember
               name="Miles Chandler"
               imageUrl={MilesPhoto}
@@ -132,8 +150,6 @@ class About extends React.Component {
               issuesClosed={Miles[1]}
               tests={Miles[2]}
             />
-          </div>
-          <div className="col-sm-4">
             <TeamMember
               name="Joseph Engelhart"
               imageUrl={JosephPhoto}
@@ -141,8 +157,6 @@ class About extends React.Component {
               issuesClosed={Joseph[1]}
               tests={Joseph[2]}
             />
-          </div>
-          <div className="col-sm-4">
             <TeamMember
               name="Ella Robertson"
               imageUrl={EllaPhoto}
@@ -151,11 +165,8 @@ class About extends React.Component {
               tests={Ella[2]}
             />
           </div>
-        </div>
-
-        <div className="row">
-          <div className="col-sm-2"></div>
-          <div className="col-sm-4">
+          <div className="row">
+            <div className="col-sm-2"></div>
             <TeamMember
               name="Levi Villarreal"
               imageUrl={LeviPhoto}
@@ -163,8 +174,6 @@ class About extends React.Component {
               issuesClosed={Levi[1]}
               tests={Levi[2]}
             />
-          </div>
-          <div className="col-sm-4">
             <TeamMember
               name="Billy Vo"
               imageUrl={BillyPhoto}
@@ -172,15 +181,10 @@ class About extends React.Component {
               issuesClosed={Billy[1]}
               tests={Billy[2]}
             />
+            <div className="col-sm-2"></div>
           </div>
         </div>
-
-        <p>Total Commits: {totalCommits}</p>
-        <p>Closed issues: {closedIssues}</p>
-
-        <h3>Postman Documentation</h3>
-        <p><a href="https://documenter.getpostman.com/view/9011044/SVtR19mz?version=latest">Link to postman documentation</a></p>
-      </div>
+      </React.Fragment>
     );
   }
 }
