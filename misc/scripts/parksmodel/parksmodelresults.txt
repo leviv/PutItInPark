@@ -1,0 +1,49 @@
+Acadia,acad,Maine,30.0000,3537575
+Arches,arch,Utah,30.0000,1663557
+Badlands,badl,South Dakota,25.0000,1008942
+Big Bend,bibe,Texas,30.0000,440091
+Biscayne,bisc,Florida,0.0000,469253
+Black Canyon Of The Gunnison,blca,Colorado,20.0000,308962
+Bryce Canyon,brca,Utah,35.0000,2679478
+Canyonlands,cany,Utah,30.0000,739449
+Capitol Reef,care,Utah,20.0000,1227627
+Carlsbad Caverns,cave,New Mexico,12.0000,465912
+Channel Islands,chis,California,0.0000,366250
+Congaree,cong,South Carolina,0.0000,145929
+Crater Lake,crla,Oregon,15.0000,720659
+Cuyahoga Valley,cuva,Ohio,0.0000,2096053
+Death Valley,deva,California Nevada,30.0000,1678660
+Dry Tortugas,drto,Florida,10.0000,56810
+Everglades,ever,Florida,25.0000,597124
+Gateway Arch,jeff,Missouri,3.0000,2016180
+Glacier,glac,Montana,35.0000,2965309
+Grand Canyon,grca,Arizona,35.0000,6380495
+Grand Teton,grte,Wyoming,35.0000,3491151
+Great Basin,grba,Nevada,0.0000,153094
+Great Smoky Mountains,grsm,North Carolina Tennessee,0.0000,11421200
+Guadalupe Mountains,gumo,Texas,7.0000,172347
+Haleakalā,hale,Hawaii,25.0000,1044084
+Hawai'i Volcanoes,havo,Hawaii,25.0000,1116891
+Hot Springs,hosp,Arkansas,0.0000,1506887
+Indiana Dunes,indu,Indiana,6.0000,1756079
+Isle Royale,isro,Michigan,7.0000,25798
+Joshua Tree,jotr,California,30.0000,2942382
+Kenai Fjords,kefj,Alaska,0.0000,321596
+Kobuk Valley,kova,Alaska,0.0000,14937
+Lassen Volcanic,lavo,California,10.0000,499435
+Mammoth Cave,maca,Kentucky,0.0000,553206
+Mesa Verde,meve,Colorado,25.0000,563420
+Mount Rainier,mora,Washington,30.0000,1518491
+North Cascades,noca,Washington,0.0000,30085
+Olympic,olym,Washington,30.0000,3104455
+Petrified Forest,pefo,Arizona,20.0000,644922
+Pinnacles,pinn,California,30.0000,222152
+Rocky Mountain,romo,Colorado,25.0000,4590493
+Saguaro,sagu,Arizona,20.0000,957405
+Shenandoah,shen,Virginia,30.0000,1264880
+Theodore Roosevelt,thro,North Dakota,30.0000,749389
+Voyageurs,voya,Minnesota,0.0000,239656
+Wind Cave,wica,South Dakota,0.0000,656379
+Yellowstone,yell,Idaho Montana Wyoming,35.0000,4115000
+Yosemite,yose,California,35.0000,4009236
+Zion,zion,Utah,35.0000,4320033

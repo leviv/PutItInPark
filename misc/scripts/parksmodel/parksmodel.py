@@ -31,33 +31,43 @@ mail_code_to_fips = {'AL': '01', 'AK': '02', 'AZ': '04',
 #name, location, fees,  yearlyvisitors, dateopen
 
 class natpark:
-    def __init__(self, name, location, fees):
+    def __init__(self, name, parkcode, location, fees):
         self.name = name
+        self.pk = parkcode
         self.location = location
         self.fees = fees
     
     def __str__(self):
-        string =  "Name: " + str(self.name) + " Location: " + str(self.location) + " Fees: " + str(self.fees)
+        string =  str(self.name) + "," + str(self.pk) +"," + str(self.location) + "," + str(self.fees)
         return string
 
 parks = {}
 
 #Get basic national parks data
 apikeyparks = 'VdrRc2ukbqSLclLVGyaWszz55PZAXd73LB5SK0Yj'
-with urllib.request.urlopen('https://developer.nps.gov/api/v1/parks?limit=200&fields=entranceFees&api_key=' + apikeyparks) as url:
+#can only go up to 200/300 limit without crashing
+#in order to get all the data, need to alter "start" value (0 - whatever)
+with urllib.request.urlopen('https://developer.nps.gov/api/v1/parks?limit=200&start=400&fields=entranceFees%2Cdesignation&api_key=' + apikeyparks) as url:
     nat_parks = json.loads(url.read().decode()).get('data')
 
     for park in nat_parks:
-        name = park.get('fullName')
-        fee = park.get('entranceFees')[1].get('cost')
-        state_abbr = park.get('states').split(",")
-        states = ''
-        for s in state_abbr:
-            fips_code = mail_code_to_fips.get(s)
-            state_name = fips_to_name.get(fips_code)
-            states += str(state_name) + ' '
-        new_park = natpark(name, states, fee)
-        parks[name] = new_park
+        if park.get('designation') == 'National Park': #Only capture national parks
+            name = park.get('name')
+            code = park.get('parkCode')
+            if(name == 'Carlsbad Caverns'):
+                fee = 12
+            elif(park.get('entranceFees') != None):
+                fee = park.get('entranceFees')[0].get('cost')
+            else:
+                fee = 0
+            state_abbr = park.get('states').split(",")
+            states = ''
+            for s in state_abbr:
+                fips_code = mail_code_to_fips.get(s)
+                state_name = fips_to_name.get(fips_code)
+                states += str(state_name) + ' '
+            new_park = natpark(name, code, states, fee)
+            parks[name] = new_park
 
 
 # For testing
