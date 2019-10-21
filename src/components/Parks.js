@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ParkCard from './ParkCard';
 
 const parks = {
@@ -84,16 +83,6 @@ const parks = {
     activities: ["rafting", "camping"],
   },
   "yellowstone3" : {
-    name: "yellowstone",
-    imageUrl: "https://www.nps.gov/npgallery/GetAsset/0005A3F1-1DD8-B71B-0B38A6233082EC97/proxy/hires?",
-    state: "wyoming",
-    address: "2 Officers Row, Yellowstone National Park",
-    fees: "$20 per day",
-    datesOpen: "year round",
-    description: "On March 1, 1872, Yellowstone became the first national park for all to enjoy the unique hydrothermal wonders. From the dazzling eruptions of geysers, to the prismatic colors of thermophilic communities, to the natural sounds whispering or thundering through the landscape, Yellowstone is a feast for the senses.",
-    activities: ["climbing", "rafting"],
-  },
-  "yellowstone4" : {
     name: "yellowstone",
     imageUrl: "https://www.nps.gov/npgallery/GetAsset/0005A3F1-1DD8-B71B-0B38A6233082EC97/proxy/hires?",
     state: "wyoming",

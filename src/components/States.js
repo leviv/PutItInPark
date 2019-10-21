@@ -1,46 +1,106 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ParkCard from './StateCard';
+
+const states = {
+  "arizona" : {
+    name: "arizona",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arizona.svg/800px-Flag_of_Arizona.svg.png",
+    recreationAreas: 653,
+    population: 7172000,
+    parks: ["grand-canyon"],
+  },
+  "california" : {
+    name: "california",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/900px-Flag_of_California.svg.png",
+    recreationAreas: 1094,
+    population: 39560000,
+    parks: ["yosemity"],
+  },
+  "wyoming" : {
+    name: "wyoming",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/1000px-Flag_of_Wyoming.svg.png",
+    recreationAreas: 272,
+    population: 577737,
+    parks: ["yellowstone"],
+  },
+  "arizona1" : {
+    name: "arizona",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arizona.svg/800px-Flag_of_Arizona.svg.png",
+    recreationAreas: 653,
+    population: 7172000,
+    parks: ["grand-canyon"],
+  },
+  "california1" : {
+    name: "california",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/900px-Flag_of_California.svg.png",
+    recreationAreas: 1094,
+    population: 39560000,
+    parks: ["yosemity"],
+  },
+  "wyoming1" : {
+    name: "wyoming",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/1000px-Flag_of_Wyoming.svg.png",
+    recreationAreas: 272,
+    population: 577737,
+    parks: ["yellowstone"],
+  },
+  "arizona2" : {
+    name: "arizona",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arizona.svg/800px-Flag_of_Arizona.svg.png",
+    recreationAreas: 653,
+    population: 7172000,
+    parks: ["grand-canyon"],
+  },
+  "california2" : {
+    name: "california",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/900px-Flag_of_California.svg.png",
+    recreationAreas: 1094,
+    population: 39560000,
+    parks: ["yosemity"],
+  },
+  "wyoming2" : {
+    name: "wyoming",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/1000px-Flag_of_Wyoming.svg.png",
+    recreationAreas: 272,
+    population: 577737,
+    parks: ["yellowstone"],
+  },
+}
 
 class States extends React.Component {
   render() {
+    const row = Object.keys(states).map((x,i) => {
+      return i % 4 === 0 ? Object.keys(states).slice(i, i+4) : null;
+    }).filter(x => x != null);
+
     return (
-      <div className="container">
-        <h2>Sates</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">State</th>
-              <th scope="col">Top Park</th>
-              <th scope="col"># of Parks</th>
-              <th scope="col"># of Recreational Areas</th>
-              <th scope="col">Population</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><Link to="/wyoming/">Wyoming</Link></td>
-              <td>Yellowstone</td>
-              <td>2</td>
-              <td>272</td>
-              <td>577,737</td>
-            </tr>
-            <tr>
-              <td><Link to="/arizona/">Arizona</Link></td>
-              <td>Grand Canyon</td>
-              <td>3</td>
-              <td>653</td>
-              <td>7,172,000</td>
-            </tr>
-            <tr>
-              <td><Link to="/california/">California</Link></td>
-              <td>Yosemite</td>
-              <td>9</td>
-              <td>1,094</td>
-              <td>39,560,000</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <React.Fragment>
+        <div className="model-intro">
+          <h2>States</h2>
+        </div>
+
+        <div className="container">
+
+          {row.map((result, index) => {
+            return (
+              <div className="row">
+                {result.map(item => {
+                  return (
+                    <div className="col-md-3 instance-container">
+                      <ParkCard
+                        name={states[item].name}
+                        imageUrl={states[item].imageUrl}
+                        recreationAreas={states[item].recreationAreas}
+                        population={states[item].population}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            );
+         })}
+        </div>
+      </React.Fragment>
     );
   }
 }

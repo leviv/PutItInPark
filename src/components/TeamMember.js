@@ -9,7 +9,7 @@ class TeamMember extends React.Component {
                 <div className="team-desc">
                   <h3>{this.props.name}</h3>
                   <p>Commits: {this.props.commits}</p>
-                  <p>Issues: {this.props.issuesClosed}</p>
+                  <p>Issues Closed: {this.props.issuesClosed}</p>
                   <p>Tests: {this.props.tests}</p>
                 </div>
               </div>

@@ -5,21 +5,21 @@ import NotFound from './NotFound';
 const states = {
   "arizona" : {
     name: "arizona",
-    imageUrl: "../assets/img/arizona.jpg",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arizona.svg/800px-Flag_of_Arizona.svg.png",
     recreationAreas: 653,
     population: 7172000,
     parks: ["grand-canyon"],
   },
   "california" : {
     name: "california",
-    imageUrl: "../assets/img/california.jpg",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/900px-Flag_of_California.svg.png",
     recreationAreas: 1094,
     population: 39560000,
     parks: ["yosemity"],
   },
   "wyoming" : {
     name: "wyoming",
-    imageUrl: "../assets/img/wyoming.jpg",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/1000px-Flag_of_Wyoming.svg.png",
     recreationAreas: 272,
     population: 577737,
     parks: ["yellowstone"],
