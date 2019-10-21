@@ -128,7 +128,7 @@ class About extends React.Component {
 
         <div className="container">
 
-          <p class="about-lead">Purpose: This website is meant to encourage Americans/tourists to go outdoors by highlighting National Parks and recreational activities in their area.</p>
+          <p class="about-lead">Purpose: This website is meant to encourage Americans/tourists to go outdoors by highlighting National Parks and recreational activities in their area. Real beauty is found outside and we think more people should spend their time enjoying it.</p>
 
           <div className="about-buttons text-center">
             <a href="https://gitlab.com/leviv1/putitinpark/" target="_blank"><button className="button button-primary">Gitlab Repo</button></a>
@@ -184,6 +184,7 @@ class About extends React.Component {
             <div className="col-sm-2"></div>
           </div>
         </div>
+        <p className="about-lead">About this site: This site is supported by Google Cloud serving a Flask backend and React frontend.</p>
       </React.Fragment>
     );
   }
