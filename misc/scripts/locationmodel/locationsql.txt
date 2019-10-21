@@ -1,0 +1,102 @@
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (01, 'Alabama', 12, 946, 4887871
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (02, 'Alaska', 19, 375, 737438
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (04, 'Arizona', 25, 176, 7171646
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (05, 'Arkansas', 8, 923, 3013825
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (06, 'California', 33, 710, 39557045
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (08, 'Colorado', 16, 649, 5695564
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (09, 'Connecticut', 6, 251, 3572665
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (10, 'Delaware', 4, 463, 967171
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (11, 'Washington D.C', 35, 56, 702455
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (12, 'Florida', 11, 109, 21299325
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (13, 'Georgia', 0, 0, 10519475
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (15, 'Hawaii', 24, 781, 1420491
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (16, 'Idaho', 10, 459, 1754208
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (17, 'Illinois', 5, 638, 12741080
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (18, 'Indiana', 4, 927, 6691878
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (19, 'Iowa', 4, 202, 3156145
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (20, 'Kansas', 10, 189, 2911505
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (21, 'Kentucky', 8, 44, 4468402
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (22, 'Louisiana', 8, 866, 4659978
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (23, 'Maine', 6, 489, 1338404
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (24, 'Maryland', 30, 46, 6042718
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (25, 'Massachusetts', 21, 663, 6902149
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (26, 'Michigan', 7, 249, 9995915
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (27, 'Minnesota', 6, 57, 5611179
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (28, 'Mississippi', 11, 53, 2986530
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (29, 'Missouri', 12, 430, 6126452
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (30, 'Montana', 10, 88, 1062305
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (31, 'Nebraska', 10, 628, 1929268
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (32, 'Nevada', 7, 117, 3034392
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (33, 'New Hampshire', 2, 21, 1356458
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (34, 'New Jersey', 12, 19, 8908520
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (35, 'New Mexico', 18, 284, 2095428
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (36, 'New York', 37, 101, 19542209
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (37, 'North Carolina', 14, 247, 10383620
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (38, 'North Dakota', 5, 672, 760077
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (39, 'Ohio', 13, 93, 11689442
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (40, 'Oklahoma', 6, 100, 3943079
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (41, 'Oregon', 10, 1073, 4190713
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (42, 'Pennsylvania', 31, 496, 12807060
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (44, 'Rhode Island', 5, 1068, 1057315
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (45, 'South Carolina', 10, 120, 5084127
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (46, 'South Dakota', 7, 47, 882235
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (47, 'Tennessee', 16, 62, 6770010
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (48, 'Texas', 16, 86, 28701845
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (49, 'Utah', 17, 728, 3161105
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (50, 'Vermont', 4, 11, 626299
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (51, 'Virginia', 36, 284, 8517685
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (53, 'Washington', 17, 689, 7535591
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (54, 'West Virginia', 12, 40, 1805832
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (55, 'Wisconsin', 4, 190, 5813568
+);
+INSERT INTO location (fips, name, numnatparks, numrecactivities, population) values (56, 'Wyoming', 10, 270, 577737
+);
