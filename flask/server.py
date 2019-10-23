@@ -4,7 +4,7 @@ import flask_restless
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://root@/models?unix_socket=/cloudsql/potent-retina-254722:putitinpark' #need to test
+app.config['SQLALCHEMY_DATABASE_URI'] = mysql+pymysql://root:@localhost:3306/models.db #'mysql+mysqldb://root@/models?unix_socket=/cloudsql/potent-retina-254722:putitinpark' #need to test
 db = flask_sqlalchemy.SQLAlchemy(app)
 
 class Location(db.Model):
