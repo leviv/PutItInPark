@@ -13,7 +13,7 @@ class About extends React.Component {
     var Billy = [0,0,0]
     var Ella = [0,0,0]
     var Joseph = [0,0,0]
-    var Levi = [0,0,1]
+    var Levi = [0,0,14]
     var Miles = [0,0,0]
     var totalCommits = 0
     var closedIssues = 0
@@ -183,8 +183,8 @@ class About extends React.Component {
             />
             <div className="col-sm-2"></div>
           </div>
+          <p className="about-lead">About this site: This site is supported by Google Cloud serving a Flask backend and React frontend.</p>
         </div>
-        <p className="about-lead">About this site: This site is supported by Google Cloud serving a Flask backend and React frontend.</p>
       </React.Fragment>
     );
   }
