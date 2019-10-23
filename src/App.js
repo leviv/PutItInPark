@@ -7,7 +7,7 @@ import Home from './components/Home';
 import Header from './components/Header';
 import About from './components/About';
 import Parks from './components/Parks';
-import Recreation from './components/Recreation';
+import Activities from './components/Activities';
 import States from './components/States';
 import NotFound from './components/NotFound';
 import Park from './components/Park';
@@ -24,7 +24,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/about/" component={About} />
         <Route path="/parks/" component={Parks} />
-        <Route path="/recreation/" component={Recreation} />
+        <Route path="/recreation/" component={Activities} />
         <Route path="/states/" component={States} />
         <Route path="/park/:parkName" component={Park} />
         <Route path="/activity/:activityName" component={Activity} />
