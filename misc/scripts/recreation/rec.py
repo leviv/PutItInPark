@@ -1,5 +1,7 @@
 import urllib.request, json
 
+#retrieve basic recreational area information
+
 class recreation_area:
     #later add activities, num activities, imglink
     def __init__(self, rec_id, rec_name, location, natpark, reservable, lat, lon, description, parent_org_id, staylimit):
