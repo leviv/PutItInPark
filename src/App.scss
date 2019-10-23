@@ -242,9 +242,9 @@ h2 {
   }
 
   .instance-card {
+    background-color: $primary-color;
     background-position: center center;
     background-size: cover;
-
     border-radius: 5px;
     bottom: 0;
     display: inline-block;
@@ -254,6 +254,10 @@ h2 {
     transition: all .2s;
     -webkit-transition: all .2s;
     width: 100%;
+
+    &.small-card {
+      height: 150px;
+    }
 
     .details {
       bottom: 10px;

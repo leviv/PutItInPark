@@ -14,7 +14,7 @@ import Home from './components/Home';
 import Park from './components/Park';
 import ParkCard from './components/ParkCard';
 import Parks from './components/Parks';
-import Recreation from './components/Recreation';
+import Activities from './components/Activities';
 import State from './components/State';
 import StateCard from './components/StateCard';
 import States from './components/States';
@@ -95,7 +95,7 @@ describe('State instance page', function() {
 });
 
 describe('Recreation page', function() {
-  const rec = shallow(<Recreation />);
+  const rec = shallow(<Activities />);
 
   it('renders successfully', () => {
     expect(rec).toMatchSnapshot();

@@ -1,6 +1,15 @@
 file = open("allparkdata.txt", "r")
 #create table
-print ('CREATE TABLE nationalparks (park_code TINYINT(4), park_name VARCHAR(40), location VARCHAR(30), num_rec TINYINT(50), rec_ids VARCHAR(1000), desc VARCHAR(5000), lat DECIMAL(14,10), lon DECIMAL(14,10), fee DECIMAL(3,2), visitors INT(32), imglink VARCHAR(1000), park_id VARCHAR(256));') 
+print ('CREATE TABLE nationalparks (park_code VARCHAR(5), park_name VARCHAR(50), location VARCHAR(30), num_rec TINYINT(50), rec_ids VARCHAR(1000), description VARCHAR(5000), lat VARCHAR(20), lon VARCHAR(20), fee VARCHAR(10), visitors INT(32), imglink VARCHAR(1000), park_id VARCHAR(256));') 
+
+def alter_text(text):
+    res = ''
+    for c in text :
+        if c == '\'':
+            res += '\'\''
+        else:
+            res += c 
+    return res
 
 #insert values
 for line in file:
@@ -15,12 +24,12 @@ for line in file:
     fees = values[6]
     visitors = values[7]
     imglink = values[8]
-    desc = values[9]
-    weather = values[10]
+    desc = alter_text(values[9]).strip()
+    weather = alter_text(values[10]).strip()
     num_rec = values[11]
     rec_ids = values[12].strip()
 
-    command = 'INSERT INTO nationalparks (park_code, park_name, location, num_rec, rec_ids, desc, lat, lon, fee, visitors, imglink, park_id) values ('
+    command = 'INSERT INTO nationalparks (park_code, park_name, location, num_rec, rec_ids, description, lat, lon, fee, visitors, imglink, park_id) values ('
     values = "\'" + str(code) + "\',\'" + str(name) + "\',\'" + str(location) + "\', " + str(num_rec) + ',\'' + str(rec_ids) + "\',\'" + str(desc) + '\', ' + str(lat) + ', ' + str(lon) + ', ' + str(fees) + ', ' + str(visitors) + ', \'' + str(imglink) + '\',\'' + str(park_id) + '\');'
     print(command + values)
 
