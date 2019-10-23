@@ -20,6 +20,8 @@ import StateCard from './components/StateCard';
 import States from './components/States';
 import TeamMember from './components/TeamMember';
 
+const cardsPerPage = 9;
+
 describe('App', function() {
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -59,8 +61,8 @@ describe('Parks page', function() {
     expect(parks).toMatchSnapshot();
   });
 
-  it('cointains 9 ParkCards', () => {
-    expect(parks.find('ParkCard').length).toEqual(9);
+  it('cointains correct number of ParkCards', () => {
+    expect(parks.find('ParkCard').length).toEqual(cardsPerPage);
   });
 });
 
@@ -80,8 +82,8 @@ describe('States page', function() {
     expect(states).toMatchSnapshot();
   });
 
-  it('cointains 9 StateCards', () => {
-    expect(states.find('StateCard').length).toEqual(9);
+  it('cointains correct number of StateCards', () => {
+    expect(states.find('StateCard').length).toEqual(cardsPerPage);
   });
 });
 
@@ -99,6 +101,10 @@ describe('Recreation page', function() {
 
   it('renders successfully', () => {
     expect(rec).toMatchSnapshot();
+  });
+
+  it('cointains correct number of StateCards', () => {
+    expect(rec.find('ActivityCard').length).toEqual(cardsPerPage);
   });
 });
 

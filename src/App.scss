@@ -14,7 +14,7 @@ $third-color: #264653;
 
 h1, h2, h3, h4, h5, h6 {
   color: $third-color;
-  font-family: 'Unica One', cursive;
+  font-family: 'Unica One', serif;
   text-transform: uppercase;
 }
 
@@ -23,7 +23,7 @@ h1 {
   span {
     background-color: $third-color;
     color: $secondary-color;
-    font-family: 'Unica One', cursive;
+    font-family: 'Unica One', serif;
     padding: 3px 8px;
   }
 }
@@ -31,7 +31,7 @@ h1 {
 button.button {
   border-radius: 20px;
   bottom: 0px;
-  font-family: 'Unica One', cursive;
+  font-family: 'Unica One', serif;
   font-size: 20px;
   height: 40px;
   margin: 3px 10px;

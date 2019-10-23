@@ -13,7 +13,7 @@ class About extends React.Component {
     var Billy = [0,0,0]
     var Ella = [0,0,0]
     var Joseph = [0,0,0]
-    var Levi = [0,0,14]
+    var Levi = [0,0,24]
     var Miles = [0,0,0]
     var totalCommits = 0
     var closedIssues = 0
