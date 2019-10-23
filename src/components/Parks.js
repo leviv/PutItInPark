@@ -111,10 +111,10 @@ class Parks extends React.Component {
 
           {row.map((result, index) => {
             return (
-              <div className="row">
-                {result.map(item => {
+              <div className="row" key={index}>
+                {result.map((item, innerIndex) => {
                   return (
-                    <div className="col-md-3 instance-container">
+                    <div className="col-md-3 instance-container" key={innerIndex}>
                       <ParkCard
                         name={parks[item].name}
                         imageUrl={parks[item].imageUrl}

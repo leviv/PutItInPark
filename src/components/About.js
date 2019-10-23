@@ -131,8 +131,8 @@ class About extends React.Component {
           <p class="about-lead">Purpose: This website is meant to encourage Americans/tourists to go outdoors by highlighting National Parks and recreational activities in their area.</p>
 
           <div className="about-buttons text-center">
-            <a href="https://gitlab.com/leviv1/putitinpark/" target="_blank"><button className="button button-primary">Gitlab Repo</button></a>
-            <a href="https://documenter.getpostman.com/view/9011044/SVtR19mz?version=latest" target="_blank"><button className="button button-secondary">API Docs</button></a>
+            <a href="https://gitlab.com/leviv1/putitinpark/" target="_blank" rel="noopener noreferrer"><button className="button button-primary">Gitlab Repo</button></a>
+            <a href="https://documenter.getpostman.com/view/9011044/SVtR19mz?version=latest" target="_blank" rel="noopener noreferrer"><button className="button button-secondary">API Docs</button></a>
           </div>
 
           <br/>
