@@ -68,10 +68,21 @@ class park:
         pt4 = '|' + str(self.desc).strip() + '|' + str(self.weather).strip()
         return pt1 + pt2 + pt3 + pt4
 
+#parses latitude and longitude values
 def format_lat_long(latLong):
     result = latLong.split(', ')
     result[0] = result[0].strip('lat:')
     result[1] = result[1].strip('long:')
+    return result
+
+#changes a space to a - for storage in db.
+def format_string(orig_string):
+    result = ''
+    for c in orig_string:
+        if(c == ' '):
+            result += '-'
+        else:
+            result += c
     return result
 
 nat_park_codes = open("parkcodesandvisitors.txt", "r")
@@ -88,7 +99,7 @@ for p in nat_park_codes:
     visitors = str(values[1]).strip()
     with urllib.request.urlopen('https://developer.nps.gov/api/v1/parks?parkCode=' + park_code + '&fields=entranceFees%2Cimages' + '&api_key=' + apikeyparks) as url:
         nat_park = json.loads(url.read().decode()).get('data')[0]
-        name = nat_park.get('name')
+        name = format_string(nat_park.get('name'))
         park_id = nat_park.get('id')
         location = nat_park.get('states')
         latLong = format_lat_long(nat_park.get('latLong'))
