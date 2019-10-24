@@ -1,0 +1,89 @@
+@startuml
+
+' hide the spot
+hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "Location" as l {
+  *fips : text, fips code
+  --
+  *name : text, state name
+  __
+  *num_parks : number, # of NationalParks (if any)
+  __
+  *park_names : text, names of NationalParks (if any)
+  __
+  *num_rec : number, # of Recreation (areas) (if any)
+  __
+  *rec_ids : text, associated recreational area rec_ids
+  __
+  *pop  : num, population of state
+  __
+  *mail_code : text, two character mail code
+  __
+  *imglink : image link for state flag
+}
+
+entity "NationalParks" as n {
+  *park_code : text, four character park code
+  --
+  *park_name : text, name of national park
+  __
+  *location : text, names of associated U.S States
+  __
+  *num_rec : num, number of associated recreational areas
+  __
+  *rec_ids : text, associated recreational area ids
+  __
+  *description : text, description of park
+  __
+  *lat  : text, latitude of location
+  __
+  *lon : text, longitude of location
+  __
+  *fees  : number, fee to enter park
+  __
+  *visitors : number, annual visitors
+  __
+  *imglink : image link for park
+  __
+  *park_id : text, park id
+  __
+  *weather : text, information about weather
+}
+
+entity "Recreation" as r {
+  *rec_id : num, recreational area id
+  --
+  *rec_name : text, name of recreational area
+  __
+  *location : text, names of associated U.S State
+  __
+  *natpark : text, name of related national park (if any)
+  __
+  *reservable : text, True or False if area is reservable or not
+  __
+  *lat : text, latitude of rec area
+  __
+  *lon  : text, longitude of rec area
+  __
+  *activities : text, list of activites at park
+  __
+  *imglink : text, link to image to represent rec area
+  __
+  *num_activities : number, number of activities present in rec area
+  __
+  *description : description of recreational area
+  __
+  *par_org_id: num, id of parent org overseeing rec area
+  __
+  *stay_limit : text, True or False if area has stay limit or not
+}
+
+l }o--|| r
+r ||--|{ n
+l }o--|{ n
+
+@enduml
