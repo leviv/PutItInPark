@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import ActivityCard from './ActivityCard';
 import NotFound from './NotFound';
 
 const parks = {
@@ -42,39 +44,72 @@ class Park extends React.Component {
 
     // Valid park
     if (park !== undefined){
-      return (
-        <div className="container instance">
-          <h2>{park.name}</h2>
 
-          <div className="picture">
-            <img src={park.imageUrl} alt="Cliff at Yosemite park"/>
+      const row = park.activities.map((x,i) => {
+        return i % 4 === 0 ? park.activities.slice(i, i+4) : null;
+      }).filter(x => x != null);
+
+      return (
+        <React.Fragment>
+          <div className="instance-intro"
+               style={{ backgroundImage: `url(${park.imageUrl})`}}>
+            <h1><span>{park.name}</span></h1>
           </div>
 
-          <h3>State</h3>
-          <p><Link to="/{park.state}">{park.state}</Link></p>
+          <div className="container instance">
+            <h3>Description</h3>
+            <p>{park.description}</p>
 
-          <h3>Addresss</h3>
-          <p>{park.address}</p>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d403240.0035873217!2d-119.8312959809544!3d37.85297716348046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8096f09df58aecc5%3A0x2d249c2ced8003fe!2sYosemite%20National%20Park!5e0!3m2!1sen!2sus!4v1570143802000!5m2!1sen!2sus" width="100%" height="250" frameborder="0" allowfullscreen="" title="map"></iframe>
+            <div className="row">
+              <div className="col-md-4 state">
+                <h3>State</h3>
+                <p><Link to={getSlug('state', park.state)}>{park.state}</Link></p>
+              </div>
+              <div className="col-md-4 fees">
+                <h3>Fees</h3>
+                <p>{park.fees}</p>
+              </div>
+              <div className="col-md-4 dates-open">
+                <h3>Dates Open</h3>
+                <p>{park.datesOpen}</p>
+              </div>
+            </div>
 
-          <h3>Fees</h3>
-          <p>{park.fees}</p>
-
-          <h3>Dates Open</h3>
-          <p>{park.datesOpen}</p>
-
-          <h3>Description</h3>
-          <p>{park.description}</p>
-
-          <h3>Activities</h3>
-          <ul>
-            {park.activities.map(function(activity){
+            <h3>Activities</h3>
+            {row.map((result, index) => {
               return (
-                <li><p>{activity}</p></li>
+                <div className="row" key={index}>
+                  {result.map((item, innerIndex) => {
+                    return (
+                      <div className="col-md-3 instance-container" key={innerIndex}>
+                        <ActivityCard
+                          name={item}
+                          imageUrl=""
+                          fees=""
+                          datesOpen=""
+                          locations=""
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               );
-            })}
-          </ul>
-        </div>
+           })}
+
+            <h3>Addresss</h3>
+            <p>{park.address}</p>
+            <div className="map-container">
+              <Map
+                google={this.props.google}
+                zoom={8}
+                style={{width: '100%', height: '100%', position: 'relative'}}
+                initialCenter={{ lat: 47.444, lng: -122.176}}
+              >
+                <Marker position={{ lat: 47.444, lng: -122.176}} />
+              </Map>
+            </div>
+          </div>
+        </React.Fragment>
       );
     }
 
@@ -85,4 +120,10 @@ class Park extends React.Component {
   }
 }
 
-export default Park;
+function getSlug(pre, str) {
+  return "/" + pre + "/" + str.replace(/\s+/g, '-').toLowerCase();
+}
+
+export default GoogleApiWrapper({
+ apiKey: ('AIzaSyD4KTXfspSV4uzzkjwDEzzWBfQguQ9tyqA')
+})(Park);
