@@ -4,10 +4,11 @@ import flask_restless
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost:3306/models.db' #'mysql+mysqldb://root@/models?unix_socket=/cloudsql/potent-retina-254722:putitinpark' #need to test
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:SWE10PutItInPark@/models?unix_socket=/cloudsql/potent-retina-254722:us-central1:putitinpark'
 db = flask_sqlalchemy.SQLAlchemy(app)
+db.Model.metadata.reflect(db.engine)
 
-class Location(db.Model):
+class Location(db):
     __table__ = db.Model.metadata.tables['location']
 
 class Nationalparks(db.Model):
@@ -15,6 +16,8 @@ class Nationalparks(db.Model):
 
 class Recreation(db.Model):
     __table__ = db.Model.metadata.tables['recreation']
+
+db.create_all()
 
 manager = flask_restless.APIManager(app, flask_sqlalchemy_db=db)
 manager.create_api(Location, methods=['GET'])
