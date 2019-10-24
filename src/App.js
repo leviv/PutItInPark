@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
 // Import components
 import Home from './components/Home';
@@ -24,9 +24,12 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about/" component={About} />
-        <Route path="/parks/" component={Parks} />
-        <Route path="/recreation/" component={Activities} />
-        <Route path="/states/" component={States} />
+        <Route path="/parks/:page" component={Parks} />
+        <Route path="/recreation/:page" component={Activities} />
+        <Route path="/states/:page" component={States} />
+        <Redirect from='/parks/' to='/parks/1' />
+        <Redirect from='/recreation/' to='/recreation/1' />
+        <Redirect from='/states/' to='/states/1' />
         <Route path="/park/:parkName" component={Park} />
         <Route path="/activity/:activityName" component={Activity} />
         <Route path="/state/:stateName" component={State} />
