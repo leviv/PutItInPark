@@ -104,7 +104,6 @@ class Park extends React.Component {
            })}
 
            <h3>Addresss</h3>
-           <p>{park.address}</p>
            <div className="map-container">
              <Map
                google={this.props.google}
