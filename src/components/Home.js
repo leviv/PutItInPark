@@ -32,19 +32,19 @@ class Home extends React.Component {
               <div className="col-md-4 model-splash">
                 <img src={Yosemite} alt="National park landscape"/>
                 <h3>National Parks</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt veniam ipsum aliquam, illo dignissimos. Quaerat adipisci culpa, odit, provident non inventore nesciunt deleniti at earum qui placeat dolorem labore similique.</p>
+                <p>Look through all of the national parks that the United States has to offer! View information about each park such as what recreational activities the park has, some basic history, and the location so that you can one day visit yourself.</p>
                 <Link to="/parks/"><button className="button button-secondary">Explore Parks</button></Link>
               </div>
               <div className="col-md-4 model-splash">
                 <img src={Climbing} alt="A man climbing outdoors"/>
                 <h3>Recreational Activities</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione ab iste, non quo. Et rerum cum placeat reiciendis corrupti necessitatibus perferendis eaque dolore cumque, maxime non, dignissimos libero debitis repellat?</p>
+                <p>From climbing to whitewater rafting, there are a host of recreational activities that one can experience at national parks. Find your favorite activity, and view where in the world you can go to experience it for yourself.</p>
                 <Link to="/recreation/"><button className="button button-secondary">Explore Activities</button></Link>
               </div>
               <div className="col-md-4 model-splash">
                 <img src={Texas} alt="Texas state flag"/>
                 <h3>States</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum odio, quo aliquid asperiores optio quia debitis facere nemo officiis possimus, enim voluptates numquam autem accusamus quibusdam iste, placeat vitae delectus.</p>
+                <p>View information on each of the 50 United States such as thier population, the recreational activities that they have, as well as the different national parks that each state has to offer.</p>
                 <Link to="/states/"><button className="button button-secondary">Explore States</button></Link>
               </div>
             </div>
