@@ -3,68 +3,113 @@ import { Link } from 'react-router-dom';
 import ActivityCard from './ActivityCard';
 
 const activities = {
-  "climbing" : {
-    name: "climbing",
-    imageUrl: "../assets/img/climbing.jpg",
-    fees: "$100 per day",
-    datesOpen: "year round",
-    locations: ["yellowstone", "yosemite"],
+  "recreation-area" : {
+    name: "recreation-area",
+    reservable: "true",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.4737",
+    longitude: "37.8083",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "Big Basin",
+    locations: ["texas", "california"],
   },
-  "rafting" : {
-    name: "climbing",
-    imageUrl: "../assets/img/climbing.jpg",
-    fees: "$150 per day",
-    datesOpen: "year round",
-    locations: ["yellowstone", "yosemite"],
+  "recreation-area2" : {
+    name: "recreation-area2",
+    reservable: "false",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.473747",
+    longitude: "37.80837439",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "Big Bend",
+    locations: ["wyoming", "louisiana"],
   },
-  "camping" : {
-    name: "camping",
-    imageUrl: "../assets/img/camping.jpg",
-    fees: "$250 per day",
-    datesOpen: "year round",
-    locations: ["yosemite", "grand-canyon"],
+  "black-ridge-canyons-wilderness" : {
+    name: "black-ridge-canyons-wilderness",
+    reservable: "true",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.473747",
+    longitude: "37.80837439",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "N/A",
+    locations: ["hawaii", "alaska"],
   },
-  "climbing1" : {
-    name: "climbing",
-    imageUrl: "../assets/img/climbing.jpg",
-    fees: "$100 per day",
-    datesOpen: "year round",
-    locations: ["yellowstone", "yosemite"],
+  "recreation-area1" : {
+    name: "recreation-area",
+    reservable: "true",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.4737",
+    longitude: "37.8083",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "Big Basin",
+    locations: ["texas", "california"],
   },
-  "rafting1" : {
-    name: "climbing",
-    imageUrl: "../assets/img/climbing.jpg",
-    fees: "$150 per day",
-    datesOpen: "year round",
-    locations: ["yellowstone", "yosemite"],
+  "recreation-area21" : {
+    name: "recreation-area2",
+    reservable: "false",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.473747",
+    longitude: "37.80837439",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "Big Bend",
+    locations: ["wyoming", "louisiana"],
   },
-  "camping1" : {
-    name: "camping",
-    imageUrl: "../assets/img/camping.jpg",
-    fees: "$250 per day",
-    datesOpen: "year round",
-    locations: ["yosemite", "grand-canyon"],
+  "black-ridge-canyons-wilderness1" : {
+    name: "black-ridge-canyons-wilderness",
+    reservable: "true",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.473747",
+    longitude: "37.80837439",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "N/A",
+    locations: ["hawaii", "alaska"],
   },
-  "climbing2" : {
-    name: "climbing",
-    imageUrl: "../assets/img/climbing.jpg",
-    fees: "$100 per day",
-    datesOpen: "year round",
-    locations: ["yellowstone", "yosemite"],
+  "recreation-area3" : {
+    name: "recreation-area",
+    reservable: "true",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.4737",
+    longitude: "37.8083",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "Big Basin",
+    locations: ["texas", "california"],
   },
-  "rafting2" : {
-    name: "climbing",
-    imageUrl: "../assets/img/climbing.jpg",
-    fees: "$150 per day",
-    datesOpen: "year round",
-    locations: ["yellowstone", "yosemite"],
+  "recreation-area22" : {
+    name: "recreation-area2",
+    reservable: "false",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.473747",
+    longitude: "37.80837439",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "Big Bend",
+    locations: ["wyoming", "louisiana"],
   },
-  "camping2" : {
-    name: "camping",
-    imageUrl: "../assets/img/camping.jpg",
-    fees: "$250 per day",
-    datesOpen: "year round",
-    locations: ["yosemite", "grand-canyon"],
+  "black-ridge-canyons-wilderness2" : {
+    name: "black-ridge-canyons-wilderness",
+    reservable: "true",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
+    latitude: "-122.473747",
+    longitude: "37.80837439",
+    activities: ["BIKING","WILDERNESS"],
+    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
+    stayLimit: "true",
+    park: "N/A",
+    locations: ["hawaii", "alaska"],
   },
 }
 
@@ -91,9 +136,9 @@ class Activities extends React.Component {
                       <ActivityCard
                         name={activities[item].name}
                         imageUrl={activities[item].imageUrl}
-                        fees={activities[item].fees}
-                        datesOpen={activities[item].datesOpen}
-                        locations={activities[item].locations}
+                        activities={activities[item].activities.length}
+                        reservable={activities[item].reservable}
+                        stayLimit={activities[item].stayLimit}
                       />
                     </div>
                   );

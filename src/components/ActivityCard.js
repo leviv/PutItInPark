@@ -7,13 +7,14 @@ class ActivityCard extends React.Component {
 
     return (
       <Link to={slug}>
-        <div className="instance-card small-card"
+        <div className="instance-card"
              style={{ backgroundImage: `url(${this.props.imageUrl})`}}
              >
           <div className="instance-overlay">
             <div class="hidden-details">
-              <p>Fees: {this.props.fees}</p>
-              <p>Dates Open: {this.props.datesOpen}</p>
+              <p>Number of Activities: {this.props.activities}</p>
+              <p>Reservable: {this.props.reservable}</p>
+              <p>Stay Limit: {this.props.stayLimit}</p>
             </div>
             <div className="details">
               <h4>{this.props.name}</h4>
