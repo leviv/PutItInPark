@@ -1,28 +1,26 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import NotFound from './NotFound';
+import StateCard from './StateCard';
 
 const activities = {
   "climbing" : {
     name: "climbing",
-    imageUrl: "../assets/img/climbing.jpg",
-    fees: "$100 per day",
-    datesOpen: "year round",
-    locations: ["yellowstone", "yosemite"],
+    reservable: "true",
+    park: "Big Basin",
+    locations: ["texas", "california"],
   },
   "rafting" : {
     name: "climbing",
-    imageUrl: "../assets/img/climbing.jpg",
-    fees: "$150 per day",
-    datesOpen: "year round",
-    locations: ["yellowstone", "yosemite"],
+    reservable: "false",
+    park: "Big Bend",
+    locations: ["wyoming", "louisiana"],
   },
   "camping" : {
     name: "camping",
-    imageUrl: "../assets/img/camping.jpg",
-    fees: "$250 per day",
-    datesOpen: "year round",
-    locations: ["yosemite", "grand-canyon"],
+    reservable: "true",
+    park: "N/A",
+    locations: ["hawaii", "alaska"],
   },
 }
 
@@ -33,29 +31,49 @@ class Activity extends React.Component {
 
     // Valid park
     if (activity !== undefined){
-      return (
-        <div className="container instance">
-          <h2>{activity.name}</h2>
+      const row = activity.locations.map((x,i) => {
+        return i % 4 === 0 ? activity.locations.slice(i, i+4) : null;
+      }).filter(x => x != null);
 
-          <div className="picture">
-            <img src={activity.imageUrl} alt="Cliff at Yosemite park"/>
+      return (
+        <React.Fragment>
+          <div className="instance-intro">
+            <h1><span>{activity.name}</span></h1>
           </div>
 
-          <h3>Fees</h3>
-          <p>{activity.fees}</p>
+          <div className="container instance">
+            <div className="row">
+              <div className="col-md-6 state">
+                <h3>Related Natinoal park</h3>
+                <p><Link to={getSlug('park', activity.park)}>{activity.park}</Link></p>
+              </div>
+              <div className="col-md-6 reservable">
+                <h3>Reservable</h3>
+                <p>{activity.reservable}</p>
+              </div>
+            </div>
 
-          <h3>Dates Open</h3>
-          <p>{activity.datesOpen}</p>
-
-          <h3>Parks with these activities</h3>
-          <ul>
-            {activity.locations.map(function(location){
+            <h3>States With These Activities</h3>
+            {row.map((result, index) => {
               return (
-                <li><p>{location}</p></li>
+                <div className="row" key={index}>
+                  {result.map((item, innerIndex) => {
+                    return (
+                      <div className="col-md-3 instance-container" key={innerIndex}>
+                        <StateCard
+                          name={item}
+                          imageUrl=""
+                          recreationAreas=""
+                          population=""
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               );
-            })}
-          </ul>
-        </div>
+           })}
+          </div>
+        </React.Fragment>
       );
     }
 
@@ -64,6 +82,10 @@ class Activity extends React.Component {
       <Route component={NotFound} />
     );
   }
+}
+
+function getSlug(pre, str) {
+  return "/" + pre + "/" + str.replace(/\s+/g, '-').toLowerCase();
 }
 
 export default Activity;

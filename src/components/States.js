@@ -1,5 +1,5 @@
 import React from 'react';
-import ParkCard from './StateCard';
+import StateCard from './StateCard';
 
 const states = {
   "arizona" : {
@@ -87,7 +87,7 @@ class States extends React.Component {
                 {result.map((item, innerIndex) => {
                   return (
                     <div className="col-md-3 instance-container" key={innerIndex}>
-                      <ParkCard
+                      <StateCard
                         name={states[item].name}
                         imageUrl={states[item].imageUrl}
                         recreationAreas={states[item].recreationAreas}
