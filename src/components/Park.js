@@ -9,9 +9,11 @@ const parks = {
     name: "yosemite",
     imageUrl: "https://www.nps.gov/common/uploads/grid_builder/yose/crop16_9/2A84C724-1DD8-B71B-0B0F4361A736E640.jpg?width=950&quality=90&mode=crop",
     state: "california",
-    address: "9024 Southside Dr, Yosemite National Park",
-    fees: "$20 per day",
-    datesOpen: "year round",
+    latitude: "37.84883288",
+    longitude: "-119.5571873",
+    fees: 30.000,
+    visitors: 4161087,
+    weather: "Yosemite receives 95% of its rainfall...",
     description: "Visit Yellowstone and experience the world's first national park. Marvel at a volcano's hidden power rising up in colorful hot springs, mudpots, and geysers. Explore mountains, forests, and lakes to watch wildlife and witness the drama of the natural world unfold. Discover the history that led to the conservation of our national treasures 'for the benefit and enjoyment of the people.'",
     activities: ["climbing", "camping"],
   },
@@ -19,9 +21,11 @@ const parks = {
     name: "the grand canyon",
     imageUrl: "https://www.nps.gov/npgallery/GetAsset/F77E8BB4-155D-451F-670C6F80B88A153E/proxy/hires?",
     state: "new-mexico",
-    address: "20 S Entrance Rd, Grand Canyon Village",
-    fees: "$20 per day",
-    datesOpen: "year round",
+    latitude: "37.84883288",
+    longitude: "-119.5571873",
+    fees: 30.000,
+    visitors: 4161087,
+    weather: "Yosemite receives 95% of its rainfall...",
     description: "Unique combinations of geologic color and erosional forms decorate a canyon that is 277 river miles (446km) long, up to 18 miles (29km) wide, and a mile (1.6km) deep. Grand Canyon overwhelms our senses through its immense size.",
     activities: ["rafting", "camping"],
   },
@@ -29,12 +33,14 @@ const parks = {
     name: "yellowstone",
     imageUrl: "https://www.nps.gov/npgallery/GetAsset/0005A3F1-1DD8-B71B-0B38A6233082EC97/proxy/hires?",
     state: "wyoming",
-    address: "2 Officers Row, Yellowstone National Park",
-    fees: "$20 per day",
-    datesOpen: "year round",
+    latitude: "37.84883288",
+    longitude: "-119.5571873",
+    fees: 30.000,
+    visitors: 4161087,
+    weather: "Yosemite receives 95% of its rainfall...",
     description: "On March 1, 1872, Yellowstone became the first national park for all to enjoy the unique hydrothermal wonders. From the dazzling eruptions of geysers, to the prismatic colors of thermophilic communities, to the natural sounds whispering or thundering through the landscape, Yellowstone is a feast for the senses.",
     activities: ["climbing", "rafting"],
-  }
+  },
 }
 
 class Park extends React.Component {
@@ -59,6 +65,7 @@ class Park extends React.Component {
           <div className="container instance">
             <h3>Description</h3>
             <p>{park.description}</p>
+            <p>{park.weather}</p>
 
             <div className="row">
               <div className="col-md-4 state">
@@ -66,12 +73,12 @@ class Park extends React.Component {
                 <p><Link to={getSlug('state', park.state)}>{park.state}</Link></p>
               </div>
               <div className="col-md-4 fees">
-                <h3>Fees</h3>
-                <p>{park.fees}</p>
+                <h3>Park Fees</h3>
+                <p>${park.fees} admission</p>
               </div>
-              <div className="col-md-4 dates-open">
-                <h3>Dates Open</h3>
-                <p>{park.datesOpen}</p>
+              <div className="col-md-4 visitors">
+                <h3>Annual Visitors</h3>
+                <p>{park.visitors}</p>
               </div>
             </div>
 
@@ -96,18 +103,18 @@ class Park extends React.Component {
               );
            })}
 
-            <h3>Addresss</h3>
-            <p>{park.address}</p>
-            <div className="map-container">
-              <Map
-                google={this.props.google}
-                zoom={8}
-                style={{width: '100%', height: '100%', position: 'relative'}}
-                initialCenter={{ lat: 47.444, lng: -122.176}}
-              >
-                <Marker position={{ lat: 47.444, lng: -122.176}} />
-              </Map>
-            </div>
+           <h3>Addresss</h3>
+           <p>{park.address}</p>
+           <div className="map-container">
+             <Map
+               google={this.props.google}
+               zoom={8}
+               style={{width: '100%', height: '100%', position: 'relative'}}
+               initialCenter={{ lat: park.latitude, lng: park.longitude}}
+             >
+               <Marker position={{ lat: park.latitude, lng: park.longitude}} />
+             </Map>
+           </div>
           </div>
         </React.Fragment>
       );

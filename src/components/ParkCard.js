@@ -14,7 +14,8 @@ class ParkCard extends React.Component {
           <div className="instance-overlay">
             <div class="hidden-details">
               <p>State: {this.props.state}</p>
-              <p>Status: {this.props.status}</p>
+              <p>Number of activities: {this.props.numActivities}</p>
+              <p>Fees: ${this.props.fees}</p>
             </div>
             <div className="details">
               <h4>{this.props.name}</h4>
