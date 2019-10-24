@@ -1,0 +1,2 @@
+./cloud_sql_proxy -instances=potent-retina-254722:us-central1:putitinpark=tcp:3306 &
+
