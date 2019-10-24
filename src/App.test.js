@@ -55,7 +55,8 @@ describe('Splash page', function() {
 });
 
 describe('Parks page', function() {
-  const parks = shallow(<Parks />);
+  const match = {params: {stateName: "1"}};
+  const parks = shallow(<Parks match={match}/>);
 
   it('renders successfully', () => {
     expect(parks).toMatchSnapshot();
@@ -76,7 +77,8 @@ describe('Park instance page', function() {
 });
 
 describe('States page', function() {
-  const states = shallow(<States />);
+  const match = {params: {stateName: "1"}};
+  const states = shallow(<States match={match}/>);
 
   it('renders successfully', () => {
     expect(states).toMatchSnapshot();
@@ -97,7 +99,8 @@ describe('State instance page', function() {
 });
 
 describe('Recreation page', function() {
-  const rec = shallow(<Activities />);
+  const match = {params: {stateName: "1"}};
+  const rec = shallow(<Activities match={match}/>);
 
   it('renders successfully', () => {
     expect(rec).toMatchSnapshot();
