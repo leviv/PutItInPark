@@ -1,5 +1,6 @@
 import React from 'react';
 import ParkCard from './ParkCard';
+import ReactPaginate from 'react-paginate';
 
 const parks = {
   "yosemite" : {
@@ -113,7 +114,14 @@ const parks = {
 }
 
 class Parks extends React.Component {
+  handlePageClick = data => {
+    let selected = data.selected;
+    this.props.history.push('/parks/' + selected);
+  };
+
   render() {
+    const { match } = this.props;
+    const pageNum = match.params.page
 
     const row = Object.keys(parks).map((x,i) => {
       return i % 4 === 0 ? Object.keys(parks).slice(i, i+4) : null;
@@ -146,10 +154,26 @@ class Parks extends React.Component {
               </div>
             );
          })}
+
+         <div className="text-center">
+           <ReactPaginate
+             previousLabel={'previous'}
+             nextLabel={'Next'}
+             breakLabel={'...'}
+             breakClassName={'break-me'}
+             pageCount={5}
+             initialPage={pageNum}
+             marginPagesDisplayed={2}
+             pageRangeDisplayed={5}
+             onPageChange={this.handlePageClick}
+             containerClassName={'pagination'}
+             subContainerClassName={'pages pagination'}
+             activeClassName={'active'}
+           />
+         </div>
         </div>
       </React.Fragment>
     );
   }
 }
-
 export default Parks;

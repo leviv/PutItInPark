@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ActivityCard from './ActivityCard';
+import ReactPaginate from 'react-paginate';
 
 const activities = {
   "recreation-area" : {
@@ -114,7 +115,15 @@ const activities = {
 }
 
 class Activities extends React.Component {
+  handlePageClick = data => {
+    let selected = data.selected;
+    this.props.history.push('/recreation/' + selected);
+  };
+
   render() {
+    const { match } = this.props;
+    const pageNum = match.params.page
+
     const row = Object.keys(activities).map((x,i) => {
       return i % 4 === 0 ? Object.keys(activities).slice(i, i+4) : null;
     }).filter(x => x != null);
@@ -146,6 +155,23 @@ class Activities extends React.Component {
               </div>
             );
          })}
+
+         <div className="text-center">
+           <ReactPaginate
+             previousLabel={'previous'}
+             nextLabel={'Next'}
+             breakLabel={'...'}
+             breakClassName={'break-me'}
+             pageCount={5}
+             initialPage={pageNum}
+             marginPagesDisplayed={2}
+             pageRangeDisplayed={5}
+             onPageChange={this.handlePageClick}
+             containerClassName={'pagination'}
+             subContainerClassName={'pages pagination'}
+             activeClassName={'active'}
+           />
+         </div>
         </div>
       </React.Fragment>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import StateCard from './StateCard';
+import ReactPaginate from 'react-paginate';
 
 const states = {
   "arizona" : {
@@ -68,7 +69,15 @@ const states = {
 }
 
 class States extends React.Component {
+  handlePageClick = data => {
+    let selected = data.selected
+    this.props.history.push('/states/' + selected);
+  };
+
   render() {
+    const { match } = this.props;
+    const pageNum = match.params.page
+
     const row = Object.keys(states).map((x,i) => {
       return i % 4 === 0 ? Object.keys(states).slice(i, i+4) : null;
     }).filter(x => x != null);
@@ -99,6 +108,23 @@ class States extends React.Component {
               </div>
             );
          })}
+
+         <div className="text-center">
+           <ReactPaginate
+             previousLabel={'previous'}
+             nextLabel={'Next'}
+             breakLabel={'...'}
+             breakClassName={'break-me'}
+             pageCount={5}
+             initialPage={pageNum}
+             marginPagesDisplayed={2}
+             pageRangeDisplayed={5}
+             onPageChange={this.handlePageClick}
+             containerClassName={'pagination'}
+             subContainerClassName={'pages pagination'}
+             activeClassName={'active'}
+           />
+         </div>
         </div>
       </React.Fragment>
     );
