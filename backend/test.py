@@ -2,10 +2,22 @@ from unittest import main, TestCase
 import json
 import requests
 
-url = "http://127.0.0.1:5000/api"
-loc_json = requests.get(url + "/location").json()
-rec_json = requests.get(url + "/recreation").json()
-park_json = requests.get(url + "/nationalparks").json()
+# url = "http://127.0.0.1:5000/api"
+# loc_json = requests.get(url + "/location").json()
+# rec_json = requests.get(url + "/recreation").json()
+# park_json = requests.get(url + "/nationalparks").json()
+
+with open("loc1.json", "r") as myfile1:
+    data = myfile1.read()
+loc_json = json.loads(data)
+
+with open("rec1.json", "r") as myfile2:
+    data = myfile2.read()
+rec_json = json.loads(data)
+
+with open("natparks1.json", "r") as myfile3:
+    data = myfile3.read()
+park_json = json.loads(data)
 
 
 class BackendTests(TestCase):
