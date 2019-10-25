@@ -22,4 +22,5 @@ testing_testing:
 
 backend_testing:
   script:
+    - pip3 install requests
     - python3 backend/test.py
