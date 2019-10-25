@@ -8,6 +8,7 @@ app.config[
     "SQLALCHEMY_DATABASE_URI"
 ] = (
     "mysql+pymysql://root:SWE10PutItInPark@127.0.0.1/models"
+    #"mysql+pymysql://root:SWE10PutItInPark@/models?unix_socket=/cloudsql/potent-retina-254722:us-central1:putitinpark"
 )  #'mysql+pymysql://root:SWE10PutItInPark@127.0.0.1/models'
 db = flask_sqlalchemy.SQLAlchemy(app)
 db.Model.metadata.reflect(db.engine)
