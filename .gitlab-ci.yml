@@ -12,6 +12,7 @@ install_dependencies:
   stage: build
   script:
     - npm install
+    - apt update
     - apt install python3-pip
     - pip3 install requests
   artifacts:
