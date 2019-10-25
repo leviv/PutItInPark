@@ -16,7 +16,7 @@ class BackendTests (TestCase) :
         self.assertEqual(loc_json['objects'][0]['name'], 'Alabama')
 
     def test3 (self) :
-        self.assertEqual(loc_json['objects'][1]['name'], 'Alabama')
+        self.assertEqual(loc_json['objects'][1]['name'], 'Alaska')
 
     def test4 (self) :
         self.assertEqual(rec_json['num_results'], 210)
@@ -25,7 +25,7 @@ class BackendTests (TestCase) :
         self.assertEqual(rec_json['objects'][0]['location'], 'New-Mexico')
 
     def test6 (self) :
-        self.assertEqual(rec_json['objects'][1]['location'], 'Alaska')
+        self.assertEqual(rec_json['objects'][1]['location'], 'Wyoming')
     
     def test7 (self) :
         self.assertEqual(park_json['num_results'], 49)

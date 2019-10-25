@@ -22,4 +22,4 @@ testing_testing:
 
 backend_testing:
   script:
-    - python3 /backend/test.py
+    - python3 test.py
