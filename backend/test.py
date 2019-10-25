@@ -1,7 +1,11 @@
 
 from unittest import main, TestCase
+import json
+import requests
 
-const url = "127.0.0.1:5000/api"
+url = "127.0.0.1:5000/api"
+resp = requests.get(url + "/location")
+print(resp)
 
 class MyUnitTests (TestCase) :
     def test1 (self) :

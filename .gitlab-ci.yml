@@ -19,3 +19,7 @@ install_dependencies:
 testing_testing:
   stage: test
   script: npm test
+
+backend_testing:
+  script:
+    - python3 /backend/test.py
