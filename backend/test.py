@@ -8,7 +8,6 @@ loc_json = requests.get(url + "/location").json()
 rec_json = requests.get(url + "/recreation").json()
 park_json = requests.get(url + "/nationalparks").json()
 
-
 class BackendTests (TestCase) :
     def test1 (self) :
         self.assertEqual(resp_json['num_results'], 51)
