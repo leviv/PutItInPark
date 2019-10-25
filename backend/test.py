@@ -3,13 +3,15 @@ from unittest import main, TestCase
 import json
 import requests
 
-url = "127.0.0.1:5000/api"
-resp = requests.get(url + "/location")
-print(resp)
+url = "http://127.0.0.1:5000/api"
+loc_json = requests.get(url + "/location").json()
+rec_json = requests.get(url + "/recreation").json()
+park_json = requests.get(url + "/nationalparks").json()
 
-class MyUnitTests (TestCase) :
+
+class BackendTests (TestCase) :
     def test1 (self) :
-        self.assertEqual(1, 1)
+        self.assertEqual(resp_json['num_results'], 51)
 
     def test2 (self) :
         self.assertEqual(6, 6)
