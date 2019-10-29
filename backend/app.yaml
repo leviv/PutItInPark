@@ -1,0 +1,10 @@
+runtime: python37
+service: flask-backend
+entrypoint: ./cloud_sql_proxy -instances=potent-retina-254722:us-central1:putitinpark=tcp:3306 -credential_file=credentials.json & python3 __init__.py
+
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
