@@ -2,7 +2,14 @@ from db_client import db
 
 class Location(db.Model):
     fips = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(24), unique=True, nullable=False)
+    num_parks = db.Column(db.Integer)
+    park_names = db.Column(db.String(240))
+    num_rec = db.Column(db.Integer)
+    rec_ids = db.Column(db.String(240))
+    pop = db.Column(db.Integer)
+    mail_code = db.Column(db.String(2))
+    imglink = db.Column(db.String(240))
 
     def __repr__(self):
         return "<Location %r>" % self.name
