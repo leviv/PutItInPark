@@ -28,6 +28,11 @@ class Header extends React.Component {
                 <Link className="nav-link states-link" to="/states/"><h5>States</h5></Link>
               </li>
             </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+              <button class="button button-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
           </div>
         </div>
       </nav>
