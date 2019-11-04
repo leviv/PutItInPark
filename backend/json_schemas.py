@@ -7,9 +7,9 @@ class LocationSchema(ma.ModelSchema):
 	class Meta:
 		model = Location
 
-class NationalparkSchema(ma.ModelSchema):
+class NationalparksSchema(ma.ModelSchema):
 	class Meta:
-		model = Nationalpark
+		model = Nationalparks
 
 class RecreationSchema(ma.ModelSchema):
 	class Meta:

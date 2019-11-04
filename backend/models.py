@@ -5,7 +5,7 @@ class Location(db.Model):
     name = db.Column(db.String(24), unique=True, nullable=False)
     num_parks = db.Column(db.Integer)
     park_names = db.Column(db.String(240))
-    num_rec = db.Column(db.Integer)
+    #num_rec = db.Column(db.Integer)
     rec_ids = db.Column(db.String(240))
     pop = db.Column(db.Integer)
     mail_code = db.Column(db.String(2))
@@ -14,7 +14,7 @@ class Location(db.Model):
     def __repr__(self):
         return "<Location %r>" % self.name
 
-class Nationalpark(db.Model):
+class Nationalparks(db.Model):
     park_code = db.Column(db.String(24), primary_key=True, unique=True)
     park_name = db.Column(db.String(24))
     location = db.Column(db.String(24))
@@ -30,7 +30,7 @@ class Nationalpark(db.Model):
     weather = db.Column(db.String(240))
 
     def __repr__(self):
-        return "<Nationalpark %r>" % self.park_name
+        return "<Nationalparks %r>" % self.park_name
 
 class Recreation(db.Model):
     rec_id = db.Column(db.Integer, primary_key=True, unique=True)

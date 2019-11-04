@@ -20,8 +20,8 @@ def locations():
 @routes.route("/nationalparks", methods=["GET"])
 def nationalparks():
     try:
-        nationalparks = Nationalpark.query.paginate(page=1, per_page=15, error_out=False).items
-        nationalpark_schema = NationalparkSchema(many=True)
+        nationalparks = Nationalparks.query.paginate(page=1, per_page=15, error_out=False).items
+        nationalpark_schema = NationalparksSchema(many=True)
         return jsonify(nationalpark_schema.dump(nationalparks)), 200
     except Exception as e:
         return "An Error Occured:" + str(e), 500
