@@ -39,6 +39,7 @@ for line in states:
         for area in rec_areas:
             rec_id = area.get('RecAreaID')
             allareas += rec_id + ","
-        allareas.strip(",")
+        end = len(allareas) - 1
+        allareas[:end]
         print(state + " " + str(meta), end = " ")
         print(allareas)
