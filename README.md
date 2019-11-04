@@ -31,7 +31,7 @@ The GitLab pipelies of the project can be found [here](https://gitlab.com/leviv1
 | ------------- | ------------- | ------------- |
 | I | 15 hours | 18 hours |
 | II | 22 hours | 52 hours |
-| III | x hours | x hours |
+| III | 40 hours | x hours |
 | IV | x hours | x hours |
 
 ## Notes
