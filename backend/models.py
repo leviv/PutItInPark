@@ -23,7 +23,7 @@ class Nationalparks(db.Model):
     description = db.Column(db.String(480))
     lat = db.Column(db.Float)
     lon = db.Column(db.Float)
-    fees = db.Column(db.Float)
+    #fees = db.Column(db.Float)
     visitors = db.Column(db.Integer)
     imglink = db.Column(db.String(240))
     park_id = db.Column(db.String(240))
