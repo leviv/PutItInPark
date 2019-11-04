@@ -3,6 +3,14 @@ from models import *
 
 ma = Marshmallow()
 
-class LocationsSchema(ma.ModelSchema):
+class LocationSchema(ma.ModelSchema):
 	class Meta:
 		model = Location
+
+class NationalparkSchema(ma.ModelSchema):
+	class Meta:
+		model = Nationalpark
+
+class RecreationSchema(ma.ModelSchema):
+	class Meta:
+		model = Recreation
