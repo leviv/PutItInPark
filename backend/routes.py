@@ -22,7 +22,7 @@ def hello():
 @routes.route("/locations", methods=["GET"])
 def locations():
     try:
-        locations = Location.query.paginate(page=1, per_page=15, error_out=False).items
+        locations = Location.query.paginate(page=1, per_page=51, error_out=False).items
         location_schema = LocationSchema(many=True)
         return jsonify(location_schema.dump(locations)), 200
     except Exception as e:
@@ -51,7 +51,7 @@ def location(location_name):
 @routes.route("/nationalparks", methods=["GET"])
 def nationalparks():
     try:
-        nationalparks = Nationalparks.query.paginate(page=1, per_page=15, error_out=False).items
+        nationalparks = Nationalparks.query.paginate(page=1, per_page=49, error_out=False).items
         nationalpark_schema = NationalparksSchema(many=True)
         return jsonify(nationalpark_schema.dump(nationalparks)), 200
     except Exception as e:
@@ -81,7 +81,7 @@ def nationalpark(park_name):
 @routes.route("/recreations", methods=["GET"])
 def recreations():
     try:
-        recreations = Recreation.query.paginate(page=1, per_page=15, error_out=False).items
+        recreations = Recreation.query.paginate(page=1, per_page=210, error_out=False).items
         recreation_schema = RecreationSchema(many=True)
         return jsonify(recreation_schema.dump(recreations)), 200
     except Exception as e:

@@ -1,4 +1,3 @@
-image: node:latest
 
 stages:
   - build
@@ -8,7 +7,8 @@ cache:
   paths:
     - node_modules/
 
-install_dependencies:
+react-build:
+  image: node:latest
   stage: build
   script:
     - npm install
@@ -16,6 +16,19 @@ install_dependencies:
     paths:
       - node_modules/
 
-testing_testing:
+react-test:
+  image: node:latest
   stage: test
   script: npm test
+
+python-build:
+  image: gpdowning/python
+  stage: build
+  script: pip install -r backend/requirements.txt
+  
+python-test:
+  image: gpdowning/python
+  stage: test
+  script: python backend/test.py
+
+

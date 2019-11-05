@@ -12,8 +12,9 @@ pymysql.install_as_MySQLdb()
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
-
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:SWE10PutItInPark@/models?unix_socket=/cloudsql/potent-retina-254722:us-central1:putitinpark"
+prod_uri = 'mysql+pymysql://root:SWE10PutItInPark@/models?unix_socket=/cloudsql/potent-retina-254722:us-central1:putitinpark'
+dev_uri = 'mysql+pymysql://root:SWE10PutItInPark@127.0.0.1/models'
+app.config["SQLALCHEMY_DATABASE_URI"] = prod_uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 db.init_app(app)
