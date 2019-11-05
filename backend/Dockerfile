@@ -1,25 +1,16 @@
-# start from base
-FROM ubuntu:18.04
+FROM debian:stable-slim
+RUN apt-get update && apt-get install \
+  -y --no-install-recommends python3 python3-virtualenv
 
-# install system-wide deps for python and node
-RUN apt-get -yqq update
-RUN apt-get -yqq install python3
-RUN apt-get -yqq install python3-pip python3-dev curl gnupg
+WORKDIR /backend
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-COPY . ./
+# Install dependencies:
+COPY . .
+RUN pip install -r requirements.txt
 
-COPY ./requirements.txt ./
-RUN pip3 install --upgrade pip
-RUN pip3 install -r ./requirements.txt
-
-RUN black ./make.py
-
-# ENV MODULE_NAME=main
-# ENV VARIABLE_NAME=api
-
-EXPOSE 5000
-
-CMD ["python3", "./make.py"]
+# Run the application:
+#CMD ["python", "main.py"]
