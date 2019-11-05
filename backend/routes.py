@@ -1,6 +1,7 @@
 from flask import request, jsonify, Blueprint, redirect, url_for
 from models import *
 from json_schemas import *
+from sqlalchemy import desc, asc
 
 routes = Blueprint('routes', __name__, template_folder='templates')
 
@@ -22,7 +23,18 @@ def hello():
 @routes.route("/locations", methods=["GET"])
 def locations():
     try:
-        locations = Location.query.paginate(page=1, per_page=51, error_out=False).items
+        if request.data:
+            data = request.get_json()
+            col = data['col']
+            direction = data['direction']
+            order = ()
+            if (direction == 'asc'):
+                order = asc
+            else:
+                order = desc
+            locations = Location.query.order_by(order(col)).paginate(page=1, per_page=15, error_out=False).items
+        else:
+            locations = Location.query.paginate(page=1, per_page=51, error_out=False).items
         location_schema = LocationSchema(many=True)
         return jsonify(location_schema.dump(locations)), 200
     except Exception as e:
@@ -51,7 +63,18 @@ def location(location_name):
 @routes.route("/nationalparks", methods=["GET"])
 def nationalparks():
     try:
-        nationalparks = Nationalparks.query.paginate(page=1, per_page=49, error_out=False).items
+        if request.data:
+            data = request.get_json()
+            col = data['col']
+            direction = data['direction']
+            order = ()
+            if (direction == 'asc'):
+                order = asc
+            else:
+                order = desc
+            nationalparks = Nationalparks.query.order_by(order(col)).paginate(page=1, per_page=15, error_out=False).items
+        else:
+            nationalparks = Nationalparks.query.paginate(page=1, per_page=49, error_out=False).items
         nationalpark_schema = NationalparksSchema(many=True)
         return jsonify(nationalpark_schema.dump(nationalparks)), 200
     except Exception as e:
@@ -81,7 +104,18 @@ def nationalpark(park_name):
 @routes.route("/recreations", methods=["GET"])
 def recreations():
     try:
-        recreations = Recreation.query.paginate(page=1, per_page=210, error_out=False).items
+        if request.data:
+            data = request.get_json()
+            col = data['col']
+            direction = data['direction']
+            order = ()
+            if (direction == 'asc'):
+                order = asc
+            else:
+                order = desc
+            recreations = Recreation.query.order_by(order(col)).paginate(page=1, per_page=15, error_out=False).items
+        else:
+            recreations = Recreation.query.paginate(page=1, per_page=210, error_out=False).items
         recreation_schema = RecreationSchema(many=True)
         return jsonify(recreation_schema.dump(recreations)), 200
     except Exception as e:
