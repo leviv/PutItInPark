@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ActivityCard from './ActivityCard';
 import ReactPaginate from 'react-paginate';
 
