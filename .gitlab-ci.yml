@@ -3,10 +3,6 @@ stages:
   - build
   - test
 
-cache:
-  paths:
-    - node_modules/
-
 react-build:
   image: node:latest
   stage: build
@@ -15,6 +11,9 @@ react-build:
   artifacts:
     paths:
       - node_modules/
+  cache:
+    paths:
+    - node_modules/
 
 react-test:
   image: node:latest
@@ -25,10 +24,10 @@ python-build:
   image: gpdowning/python
   stage: build
   script: pip install -r backend/requirements.txt
-  
+
 python-test:
   image: gpdowning/python
   stage: test
-  script: python backend/test.py
+  script: pip install -r backend/requirements.txt & python backend/test.py
 
 
