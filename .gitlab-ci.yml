@@ -28,6 +28,6 @@ python-build:
 python-test:
   image: gpdowning/python
   stage: test
-  script: pip install -r backend/requirements.txt & python backend/test.py
+  script: pip install -r backend/requirements.txt ; python backend/test.py
 
 
