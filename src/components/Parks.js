@@ -37,10 +37,11 @@ class Parks extends React.Component {
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
-          // Process data
-          data.forEach((park) => {
-            this.state.parks.push(park);
-          });
+        // Process data
+        data.forEach((park) => {
+          park.rec_ids = park.rec_ids.split(",");
+          this.state.parks.push(park);
+        });
       }).then(() => {
         this.setState({loaded: true});
       });
@@ -76,7 +77,7 @@ class Parks extends React.Component {
                         name={item.park_name}
                         imageUrl={item.imglink}
                         state={item.location}
-                        numActivities={item.rec_ids}
+                        numActivities={item.rec_ids.length}
                         fees={item.fee}
                       />
                     </div>

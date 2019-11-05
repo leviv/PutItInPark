@@ -11,7 +11,7 @@ class ActivityCard extends React.Component {
              style={{ backgroundImage: `url(${this.props.imageUrl})`}}
              >
           <div className="instance-overlay">
-            <div class="hidden-details">
+            <div className="hidden-details">
               <p>Number of Activities: {this.props.activities}</p>
               <p>Reservable: {this.props.reservable}</p>
               <p>Stay Limit: {this.props.stayLimit}</p>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 class ParkCard extends React.Component {
   render() {
     const slug = '/park/' + this.props.name.replace(/\s+/g, '-').toLowerCase();
+    const displayName = this.props.name.replace(/\-+/g, ' ')
 
     return (
       <Link to={slug}>
@@ -17,7 +18,7 @@ class ParkCard extends React.Component {
               <p>Fees: ${this.props.fees}</p>
             </div>
             <div className="details">
-              <h4>{this.props.name}</h4>
+              <h4>{displayName}</h4>
             </div>
           </div>
         </div>

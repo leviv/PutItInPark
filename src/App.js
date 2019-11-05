@@ -27,9 +27,9 @@ function App() {
         <Route path="/parks/:page" component={Parks} />
         <Route path="/recreation/:page" component={Activities} />
         <Route path="/states/:page" component={States} />
-        <Redirect from='/parks/' to='/parks/0' />
-        <Redirect from='/recreation/' to='/recreation/0' />
-        <Redirect from='/states/' to='/states/0' />
+        <Redirect from='/parks/' to='/parks/1' />
+        <Redirect from='/recreation/' to='/recreation/1' />
+        <Redirect from='/states/' to='/states/1' />
         <Route path="/park/:parkName" component={Park} />
         <Route path="/activity/:activityName" component={Activity} />
         <Route path="/state/:stateName" component={State} />
