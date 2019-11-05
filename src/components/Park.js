@@ -78,7 +78,7 @@ class Park extends React.Component {
               </div>
             </div>
 
-            <h3>Activities</h3>
+            <h3>Recreational Areas</h3>
             {row.map((result, index) => {
               return (
                 <div className="row" key={index}>
