@@ -7,13 +7,9 @@ def alter_text(text):
             res += c 
     return res
 
-file = open("newrecinfo.txt", "r")
-
-cnt = 0
+file = open("allnewrecinfo.txt", "r")
 
 for line in file:
-    cnt = cnt + 1
-    print(cnt)
     v = line.split("|")
     rec_id =v[0]
     rec_name = alter_text(v[1]).strip('-')
