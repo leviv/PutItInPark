@@ -1,6 +1,6 @@
 #retrieve rec activities, num of rec activities, and images
 import urllib.request, json
-file = open("initialrecinfo.txt", "r")
+file = open("newrecinfo.txt", "r")
 
 for line in file:
     prev_info = str(line)

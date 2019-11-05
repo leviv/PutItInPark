@@ -22,7 +22,7 @@ class recreation_area:
         pt3 = str(self.description) + '|' + str(self.parent_org) + '|' + str(self.staylimit).strip()
         return pt1 + pt2 + pt3
 
-model_relations = open("statesparksrecids.txt", "r")
+model_relations = open("staterecareas2.txt", "r")
 
 #rec id is key, rec_areas class is val
 recs = {}
@@ -31,8 +31,7 @@ apikeyrec = '233a1540-c404-419b-b60c-ab4a096cc7d2'
 
 for p in model_relations:
     values = p.split(' ')
-    natpark = values[0]
-    loc = values[1]
+    loc = values[0]
     rec_ids = values[2].split(',')
 
     for rec in rec_ids:
@@ -50,8 +49,7 @@ for p in model_relations:
             if(rec_area.get("StayLimit") == ""):
                 staylimit = False
             reservable = rec_area.get('Reservable')
-            recs[rec_id] = recreation_area(rec_id, name, loc, natpark, reservable, lat, lon, description, parent_id, staylimit)
+            recs[rec_id] = recreation_area(rec_id, name, loc, 'N/A', reservable, lat, lon, description, parent_id, staylimit)
 
 for value in recs.values():
     print(str(value))
-    

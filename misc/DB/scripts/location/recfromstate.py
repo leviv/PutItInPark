@@ -33,12 +33,16 @@ for line in states:
     state = line.strip()
     with urllib.request.urlopen('https://ridb.recreation.gov/api/v1/recareas?limit=50&offset=0&state=' + state + '&apikey=' + apikeyrec) as url:
         rec = json.loads(url.read().decode())
-        meta = rec.get('METADATA').get('RESULTS').get('CURRENT_COUNT')
+        meta = 0
         rec_areas = rec.get("RECDATA")
         allareas = ""
         for area in rec_areas:
             rec_id = area.get('RecAreaID')
-            allareas += rec_id + ","
+            lon = area.get('RecAreaLongitude')
+            lat = area.get('RecAreaLatitude')
+            if(lon != 0 and lat != 0):
+                meta = meta + 1
+                allareas += rec_id + ","
         end = len(allareas) - 1
         allareas[:end]
         print(state + " " + str(meta), end = " ")
