@@ -2,84 +2,61 @@ import React from 'react';
 import StateCard from './StateCard';
 import ReactPaginate from 'react-paginate';
 
-const states = {
-  "arizona" : {
-    name: "arizona",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arizona.svg/800px-Flag_of_Arizona.svg.png",
-    recreationAreas: 653,
-    population: 7172000,
-    parks: ["grand-canyon"],
-  },
-  "california" : {
-    name: "california",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/900px-Flag_of_California.svg.png",
-    recreationAreas: 1094,
-    population: 39560000,
-    parks: ["yosemity"],
-  },
-  "wyoming" : {
-    name: "wyoming",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/1000px-Flag_of_Wyoming.svg.png",
-    recreationAreas: 272,
-    population: 577737,
-    parks: ["yellowstone"],
-  },
-  "arizona1" : {
-    name: "arizona",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arizona.svg/800px-Flag_of_Arizona.svg.png",
-    recreationAreas: 653,
-    population: 7172000,
-    parks: ["grand-canyon"],
-  },
-  "california1" : {
-    name: "california",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/900px-Flag_of_California.svg.png",
-    recreationAreas: 1094,
-    population: 39560000,
-    parks: ["yosemity"],
-  },
-  "wyoming1" : {
-    name: "wyoming",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/1000px-Flag_of_Wyoming.svg.png",
-    recreationAreas: 272,
-    population: 577737,
-    parks: ["yellowstone"],
-  },
-  "arizona2" : {
-    name: "arizona",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arizona.svg/800px-Flag_of_Arizona.svg.png",
-    recreationAreas: 653,
-    population: 7172000,
-    parks: ["grand-canyon"],
-  },
-  "california2" : {
-    name: "california",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/900px-Flag_of_California.svg.png",
-    recreationAreas: 1094,
-    population: 39560000,
-    parks: ["yosemity"],
-  },
-  "wyoming2" : {
-    name: "wyoming",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/1000px-Flag_of_Wyoming.svg.png",
-    recreationAreas: 272,
-    population: 577737,
-    parks: ["yellowstone"],
-  },
-}
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/locations";
 
 class States extends React.Component {
   handlePageClick = data => {
     let selected = data.selected
     this.props.history.push('/states/' + selected);
+
+    // Ensure that we don't load the data twice
+    if (selected !== this.state.pageNumber) {
+      this.setState({
+        pageNumber: selected,
+        states: []
+      }, () => {
+        this.makeApiCall(selected);
+      });
+    }
   };
+
+  constructor(props) {
+    super(props);
+    const { match } = this.props;
+    const pageNum = match.params.page
+
+    this.state = {
+      states: [],
+      pageNumber: pageNum || 1,
+      loaded: false
+    };
+  }
+
+  makeApiCall(pageNumber) {
+    fetch(API_ENDPOINT + "/page=" + pageNumber)
+
+      // Transform the data into json
+      .then((resp) => resp.json())
+      .then((data) => {
+        // Process data
+        data.forEach((park) => {
+          this.state.states.push(park);
+        });
+      }).then(() => {
+        this.setState({loaded: true});
+      });
+  }
+
+  componentDidMount() {
+    this.makeApiCall(this.state.pageNumber);
+  }
 
   render() {
     const { match } = this.props;
     const pageNum = match.params.page
 
-    const row = Object.keys(states).map((x,i) => {
-      return i % 4 === 0 ? Object.keys(states).slice(i, i+4) : null;
+    const row = this.state.states.map((x,i) => {
+      return i % 4 === 0 ? this.state.states.slice(i, i+4) : null;
     }).filter(x => x != null);
 
     return (
@@ -97,10 +74,11 @@ class States extends React.Component {
                   return (
                     <div className="col-md-3 instance-container" key={innerIndex}>
                       <StateCard
-                        name={states[item].name}
-                        imageUrl={states[item].imageUrl}
-                        recreationAreas={states[item].recreationAreas}
-                        population={states[item].population}
+                        name={item.name}
+                        imageUrl={item.imglink}
+                        num_parks={item.num_parks}
+                        recreationAreas={item.numrec}
+                        population={item.pop}
                       />
                     </div>
                   );
@@ -111,12 +89,12 @@ class States extends React.Component {
 
          <div className="text-center">
            <ReactPaginate
-             previousLabel={'previous'}
+             previousLabel={'Previous'}
              nextLabel={'Next'}
              breakLabel={'...'}
              breakClassName={'break-me'}
              pageCount={5}
-             initialPage={pageNum}
+             forcePage={pageNum - 1}
              marginPagesDisplayed={2}
              pageRangeDisplayed={5}
              onPageChange={this.handlePageClick}

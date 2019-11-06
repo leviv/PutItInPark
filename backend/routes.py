@@ -44,7 +44,7 @@ def locations():
 @all_query_wrapper
 def locations_paginated(page_number):
     try:
-        locations = Location.query.paginate(page=page_number, per_page=15, error_out=False).items
+        locations = Location.query.paginate(page=page_number, per_page=12, error_out=False).items
         location_schema = LocationSchema(many=True)
         return locations, location_schema#jsonify(location_schema.dump(locations)), 200
     except Exception as e:
@@ -125,7 +125,7 @@ def recreations():
 @all_query_wrapper
 def recreations_paginated(page_number):
     try:
-        recreations = Recreation.query.paginate(page=page_number, per_page=15, error_out=False).items
+        recreations = Recreation.query.paginate(page=page_number, per_page=12, error_out=False).items
         recreation_schema = RecreationSchema(many=True)
         return recreations, recreation_schema#jsonify(location_schema.dump(locations)), 200
     except Exception as e:

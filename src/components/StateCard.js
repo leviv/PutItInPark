@@ -12,7 +12,8 @@ class StateCard extends React.Component {
              >
           <div className="instance-overlay">
             <div class="hidden-details">
-              <p>Recreation Areas: {this.props.recreationAreas}</p>
+              <p>No. Parks: {this.props.num_parks}</p>
+              <p>No. Rec Areas: {this.props.recreationAreas}</p>
               <p>Population: {this.props.population}</p>
             </div>
             <div className="details">
