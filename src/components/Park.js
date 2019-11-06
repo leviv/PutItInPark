@@ -8,7 +8,6 @@ const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com
 
 class Park extends React.Component {
   constructor(props) {
-    console.log("constructor")
     super(props);
     const { match } = this.props;
     const parkName = match.params.parkName
@@ -21,8 +20,6 @@ class Park extends React.Component {
   }
 
   makeApiCall(parkName) {
-    console.log("makeApiCall")
-
     fetch(API_ENDPOINT + "/" + parkName)
       // Transform the data into json
       .then((resp) => resp.json())
@@ -36,16 +33,13 @@ class Park extends React.Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount")
     this.makeApiCall(this.state.parkName);
   }
 
   render() {
-    console.log("render  " + this.state.loaded);
-    // Valid park
+    // The API call has finished
     if (this.state.loaded){
-      console.log ("LOGGG ")
-      console.log (this.state.park)
+      const displayName = this.state.park.park_name.replace(/\-+/g, ' ');
 
       const row = this.state.park.rec_ids.map((x,i) => {
         return i % 4 === 0 ? this.state.park.rec_ids.slice(i, i+4) : null;
@@ -55,7 +49,7 @@ class Park extends React.Component {
         <React.Fragment>
           <div className="instance-intro"
                style={{ backgroundImage: `url(${this.state.park.imglink})`}}>
-            <h1><span>{this.state.park.park_name}</span></h1>
+            <h1><span>{displayName}</span></h1>
           </div>
 
           <div className="container instance">

@@ -27,7 +27,8 @@ class Parks extends React.Component {
 
     this.state = {
       parks: [],
-      pageNumber: pageNum || 1
+      pageNumber: pageNum || 1,
+      loaded: false
     };
   }
 
