@@ -16,7 +16,6 @@ class Park extends React.Component {
       park: [],
       recreations: [],
       parkName: parkName,
-      parkLoaded: false,
       loaded: false
     };
   }
@@ -28,7 +27,7 @@ class Park extends React.Component {
       .then((data) => {
         // Process data
         data.rec_ids = data.rec_ids.split(",");
-        this.state.park = data;
+        this.setState({park: data});
       }).then(() => {
         let numRecsLoaded = 0;
 
@@ -62,7 +61,7 @@ class Park extends React.Component {
   render() {
     // The API call has finished
     if (this.state.loaded){
-      const displayName = this.state.park.park_name.replace(/\-+/g, ' ');
+      const displayName = this.state.park.park_name.replace(/-+/g, ' ');
 
       const row = this.state.recreations.map((x,i) => {
         return i % 4 === 0 ? this.state.recreations.slice(i, i+4) : null;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class ActivityCard extends React.Component {
   render() {
     const slug = '/activity/' + this.props.name.replace(/\s+/g, '-').toLowerCase();
-    const displayName = this.props.name.replace(/\-+/g, ' ');
+    const displayName = this.props.name.replace(/-+/g, ' ');
 
     return (
       <Link to={slug}>

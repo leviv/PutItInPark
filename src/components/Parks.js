@@ -75,11 +75,11 @@ class Parks extends React.Component {
                   return (
                     <div className="col-md-3 instance-container" key={innerIndex}>
                       <ParkCard
-                        name={item.park_name}
-                        imageUrl={item.imglink}
-                        state={item.location}
-                        numActivities={item.rec_ids.length}
-                        fees={item.fee}
+                        park_name={item.park_name}
+                        imglink={item.imglink}
+                        location={item.location}
+                        num_rec={item.num_rec}
+                        fee={item.fee}
                       />
                     </div>
                   );
