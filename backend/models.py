@@ -83,7 +83,7 @@ class Recreation(db.Model):
 #     park_code = db.Column(db.Unicode, primary_key=True)
 #
 #
-# db.create_all()
+#db.create_all()
 #
 # manager = flask_restless.APIManager(app, flask_sqlalchemy_db=db)
 # manager.create_api(Location, methods=["GET"])

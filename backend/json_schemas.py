@@ -1,16 +1,16 @@
-from flask_marshmallow import Marshmallow, fields
-from models import *
+# from flask_marshmallow import Marshmallow, fields
+# from models import *
 
-ma = Marshmallow()
+# ma = Marshmallow()
 
-class LocationSchema(ma.ModelSchema):
-	class Meta:
-		model = Location
+# class LocationSchema(ma.ModelSchema):
+# 	class Meta:
+# 		model = Location
 
-class NationalparksSchema(ma.ModelSchema):
-	class Meta:
-		model = Nationalparks
+# class NationalparksSchema(ma.ModelSchema):
+# 	class Meta:
+# 		model = Nationalparks
 
-class RecreationSchema(ma.ModelSchema):
-	class Meta:
-		model = Recreation
+# class RecreationSchema(ma.ModelSchema):
+# 	class Meta:
+# 		model = Recreation
