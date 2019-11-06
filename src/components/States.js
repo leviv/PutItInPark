@@ -6,7 +6,7 @@ const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com
 
 class States extends React.Component {
   handlePageClick = data => {
-    let selected = data.selected
+    let selected = data.selected + 1;
     this.props.history.push('/states/' + selected);
 
     // Ensure that we don't load the data twice
