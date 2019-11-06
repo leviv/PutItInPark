@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-import ActivityCard from './ActivityCard';
+import RecreationCard from './RecreationCard';
 import NotFound from './NotFound';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com";
@@ -101,9 +101,9 @@ class Park extends React.Component {
                   {result.map((item, innerIndex) => {
                     return (
                       <div className="col-md-3 instance-container" key={innerIndex}>
-                        <ActivityCard
-                          name={item.rec_name}
-                          imageUrl={item.imglink}
+                        <RecreationCard
+                          rec_name={item.rec_name}
+                          imglink={item.imglink}
                           num_activities={item.num_activities}
                           reservable={item.reservable}
                           stay_limit={item.stay_limit}

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class ActivityCard extends React.Component {
+class RecreationCard extends React.Component {
   render() {
-    const slug = '/activity/' + this.props.name.replace(/\s+/g, '-').toLowerCase();
-    const displayName = this.props.name.replace(/-+/g, ' ');
+    const slug = '/recreation/' + this.props.rec_name.replace(/\s+/g, '-').toLowerCase();
+    const displayName = this.props.rec_name.replace(/-+/g, ' ');
 
     return (
       <Link to={slug}>
         <div className="instance-card"
-             style={{ backgroundImage: `url(${this.props.imageUrl})`}}
+             style={{ backgroundImage: `url(${this.props.imglink})`}}
              >
           <div className="instance-overlay">
             <div className="hidden-details">
@@ -27,4 +27,4 @@ class ActivityCard extends React.Component {
   }
 }
 
-export default ActivityCard;
+export default RecreationCard;

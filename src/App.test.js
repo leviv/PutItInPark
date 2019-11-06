@@ -10,13 +10,13 @@ configure({ adapter: new Adapter() });
 
 // Custom components
 import About from './components/About';
-import Activity from './components/Activity';
+import Recreation from './components/Recreation';
 import Header from './components/Header';
 import Home from './components/Home';
 import Park from './components/Park';
 import ParkCard from './components/ParkCard';
 import Parks from './components/Parks';
-import Activities from './components/Activities';
+import Recreations from './components/Recreations';
 import State from './components/State';
 import StateCard from './components/StateCard';
 import States from './components/States';
@@ -116,8 +116,8 @@ describe('Functionality Tests', () => {
   });
 
   describe('Recreation page', function() {
-    const match = {params: {stateName: "1"}};
-    const rec = shallow(<Activities match={match}/>);
+    const match = {params: {pageNum: "1"}};
+    const rec = shallow(<Recreations match={match}/>);
 
     it('renders successfully', () => {
       expect(rec).toMatchSnapshot();
@@ -132,7 +132,7 @@ describe('Functionality Tests', () => {
     const match = {params: {activityName: "Climbing"}};
 
     it('renders successfully', () => {
-      const activity = shallow(<Activity match={match}/>);
+      const activity = shallow(<Recreation match={match}/>);
       expect(activity).toMatchSnapshot();
     });
   });

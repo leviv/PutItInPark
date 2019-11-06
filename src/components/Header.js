@@ -19,13 +19,13 @@ class Header extends React.Component {
                 <Link className="nav-link about-link" to="/about/"><h5>About</h5></Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link parks-link" to="/parks/"><h5>National Parks</h5></Link>
+                <Link className="nav-link parks-link" to="/parks/1"><h5>National Parks</h5></Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link recs-link" to="/recreation/"><h5>Recreation</h5></Link>
+                <Link className="nav-link recs-link" to="/recreations/1"><h5>Recreation</h5></Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link states-link" to="/states/"><h5>States</h5></Link>
+                <Link className="nav-link states-link" to="/states/1"><h5>States</h5></Link>
               </li>
             </ul>
 

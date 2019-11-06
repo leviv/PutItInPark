@@ -43,7 +43,7 @@ const activities = {
   },
 }
 
-class Activity extends React.Component {
+class Recreation extends React.Component {
   render() {
     const { match } = this.props;
     const activity = activities[match.params.activityName]
@@ -138,4 +138,4 @@ function getSlug(pre, str) {
 
 export default GoogleApiWrapper({
  apiKey: ('AIzaSyD4KTXfspSV4uzzkjwDEzzWBfQguQ9tyqA')
-})(Activity);
+})(Recreation);

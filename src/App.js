@@ -8,11 +8,11 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
 import Parks from './components/Parks';
-import Activities from './components/Activities';
+import Recreations from './components/Recreations';
 import States from './components/States';
 import NotFound from './components/NotFound';
 import Park from './components/Park';
-import Activity from './components/Activity';
+import Recreation from './components/Recreation';
 import State from './components/State';
 
 function App() {
@@ -25,13 +25,13 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/about/" component={About} />
         <Route path="/parks/:page" component={Parks} />
-        <Route path="/recreation/:page" component={Activities} />
+        <Route path="/recreations/:page" component={Recreations} />
         <Route path="/states/:page" component={States} />
         <Redirect from='/parks/' to='/parks/1' />
-        <Redirect from='/recreation/' to='/recreation/1' />
+        <Redirect from='/recreations/' to='/recreations/1' />
         <Redirect from='/states/' to='/states/1' />
         <Route path="/park/:parkName" component={Park} />
-        <Route path="/activity/:activityName" component={Activity} />
+        <Route path="/recreation/:recreationName" component={Recreation} />
         <Route path="/state/:stateName" component={State} />
 
         <Route path="*" component={NotFound} />
