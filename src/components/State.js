@@ -30,26 +30,26 @@ class State extends React.Component {
       }).then(() => {
         let numParksLoaded = 0;
 
-        // Check if we need to load any recreations
-        if (this.state.state.park_names.length === 0) {
+        // Check if we need to load any parks
+        if (this.state.state.park_names.length === 0 || this.state.state.park_names[0] === "N/A") {
           this.setState({loaded: true});
+        } else {
+          // Get the park information
+          this.state.state.park_names.forEach((id) => {
+            fetch(API_ENDPOINT + "/nationalparks/" + id)
+              // Transform the data into json
+              .then((resp) => resp.json())
+              .then((data) => {
+                // Process data
+                this.state.parks.push(data);
+              }).then(() => {
+                numParksLoaded++;
+                if (numParksLoaded === this.state.state.park_names.length) {
+                  this.setState({loaded: true});
+                }
+              });
+          });
         }
-
-        // Get the park information
-        this.state.state.park_names.forEach((id) => {
-          fetch(API_ENDPOINT + "/nationalparks/" + id)
-            // Transform the data into json
-            .then((resp) => resp.json())
-            .then((data) => {
-              // Process data
-              this.state.parks.push(data);
-            }).then(() => {
-              numParksLoaded++;
-              if (numParksLoaded === this.state.state.park_names.length) {
-                this.setState({loaded: true});
-              }
-            });
-        });
       });
   }
 
@@ -88,6 +88,10 @@ class State extends React.Component {
             </div>
 
             <h3>National Parks</h3>
+            {this.state.state.park_names[0] === "N/A" &&
+              <h4>No Parks</h4>
+            }
+
             {row.map((result, index) => {
               return (
                 <div className="row" key={index}>
