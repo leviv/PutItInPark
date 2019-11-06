@@ -84,7 +84,7 @@ def nationalparks():
 @all_query_wrapper
 def nationalparks_paginated(page_number):
     try:
-        nationalparks = Nationalparks.query.paginate(page=page_number, per_page=15, error_out=False).items
+        nationalparks = Nationalparks.query.paginate(page=page_number, per_page=12, error_out=False).items
         nationalparks_schema = NationalparksSchema(many=True)
         return nationalparks, nationalparks_schema#jsonify(location_schema.dump(locations)), 200
     except Exception as e:

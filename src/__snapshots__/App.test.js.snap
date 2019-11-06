@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`About page renders successfully 1`] = `ShallowWrapper {}`;
+exports[`Functionality Tests About page renders successfully 1`] = `ShallowWrapper {}`;
 
-exports[`Activity instance page renders successfully 1`] = `ShallowWrapper {}`;
+exports[`Functionality Tests Activity instance page renders successfully 1`] = `ShallowWrapper {}`;
 
-exports[`Park instance page renders successfully 1`] = `undefined`;
+exports[`Functionality Tests Park instance page renders successfully 1`] = `undefined`;
 
-exports[`Parks page renders successfully 1`] = `ShallowWrapper {}`;
+exports[`Functionality Tests Parks page renders successfully 1`] = `ShallowWrapper {}`;
 
-exports[`Recreation page renders successfully 1`] = `ShallowWrapper {}`;
+exports[`Functionality Tests Recreation page renders successfully 1`] = `ShallowWrapper {}`;
 
-exports[`Splash page renders successfully 1`] = `ShallowWrapper {}`;
+exports[`Functionality Tests Splash page renders successfully 1`] = `ShallowWrapper {}`;
 
-exports[`State instance page renders successfully 1`] = `ShallowWrapper {}`;
+exports[`Functionality Tests State instance page renders successfully 1`] = `ShallowWrapper {}`;
 
-exports[`States page renders successfully 1`] = `ShallowWrapper {}`;
+exports[`Functionality Tests States page renders successfully 1`] = `ShallowWrapper {}`;
