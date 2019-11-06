@@ -19,7 +19,7 @@ class Home extends React.Component {
                 <h1><span>Put It In Park</span></h1>
                 <p>Explore different national parks around the country, and everything that they have to offer!</p>
                 <Link to="/about/"><button className="button button-primary">About</button></Link>
-                <Link to="/parks/"><button className="button button-primary">Parks</button></Link>
+                <Link to="/parks/1"><button className="button button-primary">Parks</button></Link>
               </div>
             </div>
           </div>
@@ -37,9 +37,9 @@ class Home extends React.Component {
               </div>
               <div className="col-md-4 model-splash">
                 <img src={Climbing} alt="A man climbing outdoors"/>
-                <h3>Recreational Activities</h3>
-                <p>From climbing to whitewater rafting, there are a host of recreational activities that one can experience at national parks. Find your favorite activity, and view where in the world you can go to experience it for yourself.</p>
-                <Link to="/recreations/1"><button className="button button-secondary">Explore Activities</button></Link>
+                <h3>Recreational Areas</h3>
+                <p>From climbing to whitewater rafting, there are a host of recreational activities that one can experience at the nations recreational areas. Find your favorite activity, and view where in the world you can go to experience it for yourself.</p>
+                <Link to="/recreations/1"><button className="button button-secondary">Explore Recreational Areas</button></Link>
               </div>
               <div className="col-md-4 model-splash">
                 <img src={Texas} alt="Texas state flag"/>
