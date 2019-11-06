@@ -15,7 +15,7 @@ entity "Location" as l {
   __
   *park_names : text, names of NationalParks (if any)
   __
-  *num_rec : number, # of Recreation (areas) (if any)
+  *numrec : number, # of Recreation (areas) (if any)
   __
   *rec_ids : text, associated recreational area rec_ids
   __
@@ -43,7 +43,7 @@ entity "NationalParks" as n {
   __
   *lon : text, longitude of location
   __
-  *fees  : number, fee to enter park
+  *fee  : number, fee to enter park
   __
   *visitors : number, annual visitors
   __
@@ -82,8 +82,8 @@ entity "Recreation" as r {
   *stay_limit : text, True or False if area has stay limit or not
 }
 
-l }o--|| r
-r ||--|{ n
-l }o--|{ n
+l ||--|{ r
+r }|--o| n
+l }|--o{ n
 
 @enduml

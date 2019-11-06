@@ -26,7 +26,7 @@ for line in file:
     staylimit = v[9]
     num_activities = v[10]
     activities = str(v[11])
-    imglink = str(v[12]).strip()
+    imglink = alter_text(str(v[12]).strip())
 
     command = 'INSERT INTO recreation (rec_id, rec_name, location, natpark, reservable, lat, lon, activities, imglink, num_activities, description, par_org_id, stay_limit) values ('
     values = "\'" + str(rec_id) + "\',\'" + str(rec_name) + "\',\'" + str(loc) + "\',\'" + str(park) + '\',' + str(res) + ", " + str(lat) + ', ' + str(lon) + ', \'' + str(activities) + '\',\'' + str(imglink) + '\', ' + str(num_activities) + ', \'' + str(description) + '\',\'' + str(parent_org) + '\',' + str(staylimit) + ');'
