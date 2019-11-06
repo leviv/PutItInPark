@@ -136,7 +136,17 @@ def recreations_paginated(page_number):
 def recreation(rec_name):
     try:
         recreation = Recreation.query.filter_by(rec_name=rec_name).first()
-        recreation_schema = NationalparksSchema()
+        recreation_schema = RecreationSchema()
+        return recreation, recreation_schema#jsonify(location_schema.dump(locations)), 200
+    except Exception as e:
+        return "An Error Occured:" + str(e), 500
+
+@routes.route("/recreations/id=<int:rec_id>", methods=["GET"])
+@all_query_wrapper
+def recreation_id(rec_id):
+    try:
+        recreation = Recreation.query.filter_by(rec_id=rec_id).first()
+        recreation_schema = RecreationSchema()
         return recreation, recreation_schema#jsonify(location_schema.dump(locations)), 200
     except Exception as e:
         return "An Error Occured:" + str(e), 500

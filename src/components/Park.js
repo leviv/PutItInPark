@@ -4,7 +4,7 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import ActivityCard from './ActivityCard';
 import NotFound from './NotFound';
 
-const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/nationalparks";
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com";
 
 class Park extends React.Component {
   constructor(props) {
@@ -14,13 +14,15 @@ class Park extends React.Component {
 
     this.state = {
       park: [],
+      recreations: [],
       parkName: parkName,
+      parkLoaded: false,
       loaded: false
     };
   }
 
   makeApiCall(parkName) {
-    fetch(API_ENDPOINT + "/" + parkName)
+    fetch(API_ENDPOINT + "/nationalparks/" + parkName)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -28,7 +30,28 @@ class Park extends React.Component {
         data.rec_ids = data.rec_ids.split(",");
         this.state.park = data;
       }).then(() => {
-        this.setState({loaded: true});
+        let numRecsLoaded = 0;
+
+        // Check if we need to load any recreations
+        if (this.state.park.rec_ids.length === 0) {
+          this.setState({loaded: true});
+        }
+
+        // Get the recreational information
+        this.state.park.rec_ids.forEach((id) => {
+          fetch(API_ENDPOINT + "/recreations/id=" + id)
+            // Transform the data into json
+            .then((resp) => resp.json())
+            .then((data) => {
+              // Process data
+              this.state.recreations.push(data);
+            }).then(() => {
+              numRecsLoaded++;
+              if (numRecsLoaded === this.state.park.rec_ids.length) {
+                this.setState({loaded: true});
+              }
+            });
+        });
       });
   }
 
@@ -41,8 +64,8 @@ class Park extends React.Component {
     if (this.state.loaded){
       const displayName = this.state.park.park_name.replace(/\-+/g, ' ');
 
-      const row = this.state.park.rec_ids.map((x,i) => {
-        return i % 4 === 0 ? this.state.park.rec_ids.slice(i, i+4) : null;
+      const row = this.state.recreations.map((x,i) => {
+        return i % 4 === 0 ? this.state.recreations.slice(i, i+4) : null;
       }).filter(x => x != null);
 
       return (
@@ -80,11 +103,11 @@ class Park extends React.Component {
                     return (
                       <div className="col-md-3 instance-container" key={innerIndex}>
                         <ActivityCard
-                          name={item}
-                          imageUrl=""
-                          fees=""
-                          datesOpen=""
-                          locations=""
+                          name={item.rec_name}
+                          imageUrl={item.imglink}
+                          num_activities={item.num_activities}
+                          reservable={item.reservable}
+                          stay_limit={item.stay_limit}
                         />
                       </div>
                     );
