@@ -75,10 +75,10 @@ class States extends React.Component {
                     <div className="col-md-3 instance-container" key={innerIndex}>
                       <StateCard
                         name={item.name}
-                        imageUrl={item.imglink}
+                        imglink={item.imglink}
                         num_parks={item.num_parks}
-                        recreationAreas={item.numrec}
-                        population={item.pop}
+                        numrec={item.numrec}
+                        pop={item.pop}
                       />
                     </div>
                   );

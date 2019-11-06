@@ -31,7 +31,7 @@ function App() {
         <Redirect from='/recreations/' to='/recreations/1' />
         <Redirect from='/states/' to='/states/1' />
         <Route path="/park/:parkName" component={Park} />
-        <Route path="/recreation/:recreationName" component={Recreation} />
+        <Route path="/recreation/:recName" component={Recreation} />
         <Route path="/state/:stateName" component={State} />
 
         <Route path="*" component={NotFound} />

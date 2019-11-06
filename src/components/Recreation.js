@@ -3,108 +3,117 @@ import { Link, Route } from 'react-router-dom';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import NotFound from './NotFound';
 import StateCard from './StateCard';
+import ParkCard from './ParkCard';
 
-const activities = {
-  "recreation-area" : {
-    name: "recreation-area",
-    reservable: "true",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
-    latitude: "-122.4737",
-    longitude: "37.8083",
-    activities: ["BIKING","WILDERNESS"],
-    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
-    stayLimit: "true",
-    park: "Big Basin",
-    locations: ["texas", "california"],
-  },
-  "recreation-area2" : {
-    name: "recreation-area2",
-    reservable: "false",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
-    latitude: "-122.473747",
-    longitude: "37.80837439",
-    activities: ["BIKING","WILDERNESS"],
-    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
-    stayLimit: "true",
-    park: "Big Bend",
-    locations: ["wyoming", "louisiana"],
-  },
-  "black-ridge-canyons-wilderness" : {
-    name: "black-ridge-canyons-wilderness",
-    reservable: "true",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Knowles_Canyon%2C_MCNCA.jpg",
-    latitude: "-122.473747",
-    longitude: "37.80837439",
-    activities: ["BIKING","WILDERNESS"],
-    description: "Majestic figures of George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincolon, surrounded by the beauty…. etc.",
-    stayLimit: "true",
-    park: "N/A",
-    locations: ["hawaii", "alaska"],
-  },
-}
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com";
 
 class Recreation extends React.Component {
-  render() {
+
+  constructor(props) {
+    super(props);
     const { match } = this.props;
-    const activity = activities[match.params.activityName]
+    const recName = match.params.recName
 
-    // Valid park
-    if (activity !== undefined){
-      const row = activity.locations.map((x,i) => {
-        return i % 4 === 0 ? activity.locations.slice(i, i+4) : null;
-      }).filter(x => x != null);
+    this.state = {
+      rec: [],
+      state: [],
+      park: [],
+      recName: recName,
+      loaded: false
+    };
+  }
 
+  makeApiCall(recName) {
+    fetch(API_ENDPOINT + "/recreations/" + recName)
+      // Transform the data into json
+      .then((resp) => resp.json())
+      .then((data) => {
+        // Process data
+        data.activities = data.activities.split(",");
+        this.setState({rec: data});
+      }).then(() => {
+
+        // Get the state information
+        fetch(API_ENDPOINT + "/locations/" + this.state.rec.location)
+          // Transform the data into json
+          .then((resp) => resp.json())
+          .then((data) => {
+            console.log(data);
+            // Process data
+            this.setState({state: data});
+          }).then(() => {
+            // Load the park
+            fetch(API_ENDPOINT + "/nationalparks/" + this.state.rec.natpark)
+              // Transform the data into json
+              .then((resp) => resp.json())
+              .then((data) => {
+                console.log(data);
+                // Process data
+                this.setState({park: data});
+              }).then(() => {
+                this.setState({loaded: true});
+              });
+          });
+      });
+  }
+
+  componentDidMount() {
+    this.makeApiCall(this.state.recName);
+  }
+
+  render() {
+    // Component loaded
+    if (this.state.loaded){
       return (
         <React.Fragment>
           <div className="instance-intro"
-               style={{ backgroundImage: `url(${activity.imageUrl})`}}>
-            <h1><span>{activity.name}</span></h1>
+               style={{ backgroundImage: `url(${this.state.rec.imglink})`}}>
+            <h1><span>{this.state.rec.rec_name}</span></h1>
           </div>
 
           <div className="container instance">
             <h3>Description</h3>
-            <p>{activity.description}</p>
+            <p>{this.state.rec.description}</p>
 
             <div className="row">
-              <div className="col-md-4 state">
-                <h3>Related National park</h3>
-                <p><Link to={getSlug('park', activity.park)}>{activity.park}</Link></p>
-              </div>
-              <div className="col-md-4 reservable">
+              <div className="col-sm-6 reservable">
                 <h3>Reservable</h3>
-                <p>{activity.reservable}</p>
+                <p>{"" + this.state.rec.reservable}</p>
               </div>
-              <div className="col-md-4 stay-limit">
+              <div className="col-sm-6 stay-limit">
                 <h3>Stay Limit</h3>
-                <p>{activity.stayLimit}</p>
+                <p>{"" + this.state.rec.stay_limit}</p>
               </div>
             </div>
 
-            <h3>Related States</h3>
-            {row.map((result, index) => {
-              return (
-                <div className="row" key={index}>
-                  {result.map((item, innerIndex) => {
-                    return (
-                      <div className="col-md-3 instance-container" key={innerIndex}>
-                        <StateCard
-                          name={item}
-                          imageUrl=""
-                          recreationAreas=""
-                          population=""
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-           })}
+            <div className="row">
+              <div className="col-sm-6 instance-container">
+                <h3>State</h3>
+                <StateCard
+                  name={this.state.state.name}
+                  imglink={this.state.state.imglink}
+                  num_parks={this.state.state.num_parks}
+                  numrec={this.state.state.numrec}
+                  pop={this.state.state.pop}
+                />
+              </div>
+              <div className="col-sm-6 instance-container">
+                <h3>Related National Park</h3>
+                <ParkCard
+                  park_name={this.state.park.park_name}
+                  imglink={this.state.park.imglink}
+                  location={this.state.park.location}
+                  num_rec={this.state.park.num_rec}
+                  fee={this.state.park.fee}
+                />
+              </div>
+            </div>
 
            <h3>Activities</h3>
            <ul className="activities-list">
-             {activity.activities.map((item, innerIndex) => {
+             {this.state.rec.activities.map((item, innerIndex) => {
                 return (
-                  <li><p>{item}</p></li>
+                  <li><p>{item.toLowerCase()}</p></li>
                 );
              })}
            </ul>
@@ -115,9 +124,9 @@ class Recreation extends React.Component {
                google={this.props.google}
                zoom={8}
                style={{width: '100%', height: '100%', position: 'relative'}}
-               initialCenter={{ lat: activity.latitude, lng: activity.longitude}}
+               initialCenter={{ lat: this.state.rec.lat, lng: this.state.rec.lon}}
              >
-               <Marker position={{ lat: activity.latitude, lng: activity.longitude}} />
+               <Marker position={{ lat: this.state.rec.lat, lng: this.state.rec.lon}} />
              </Map>
            </div>
           </div>
