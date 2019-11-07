@@ -340,8 +340,9 @@ ul.pagination a {
   height: 98px;
   margin: 30px 0;
   overflow: hidden;
-  padding: 15px;
+  padding: 15px 35px;
   transition: all .2s;
+  background-color: $third-color;
 
   .search-row {
     align-items: center;
@@ -351,6 +352,7 @@ ul.pagination a {
     #carat {
       border-radius: 50%;
       -webkit-border-radius: 50%;
+      color: $secondary-color;
       cursor: pointer;
       font-size: 30px;
       height: 50px;
@@ -361,14 +363,14 @@ ul.pagination a {
       transition: all .2s;
 
       &:hover {
-        background: $secondary-color;
+        background: $primary-color;
       }
     }
   }
 
   .model-search {
     align-items: center;
-    background: $third-color;
+    background: $primary-color;
     border-radius: 25px;
     color: $secondary-color;
     display: flex;
@@ -382,7 +384,7 @@ ul.pagination a {
     }
 
     input {
-      background: $third-color;
+      background: $primary-color;
       color: #fff;
       max-width: 300px;
     }
@@ -397,9 +399,21 @@ ul.pagination a {
     }
   }
 
+  h4 {
+    color: $secondary-color;
+  }
+
+  button {
+    background-color: $third-color;
+    color: $secondary-color
+  }
+
   select {
+    background: $third-color;
+    color: $secondary-color;
     display: inline;
     margin: 8px 10px 8px 0;
-    max-width: 150px;
+    max-width: 120px;
+    padding: 50px;
   }
 }

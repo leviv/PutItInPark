@@ -65,6 +65,7 @@ class Parks extends React.Component {
     const feeFilterIndex = document.getElementById("feeFilter").selectedIndex;
     const visitorFilterIndex = document.getElementById("visitorFilter").selectedIndex;
     const sortIndex = document.getElementById("sort").selectedIndex -1 ;
+    const sortDirIndex = document.getElementById("sort-direction").selectedIndex-1 ;
 
     let filters = [];
 
@@ -100,7 +101,8 @@ class Parks extends React.Component {
     let sortQuery = {};
     // Check if a sort option was selected
     if (sortIndex > -1) {
-      sortQuery = [{"field":sort[sortIndex],"direction":"desc"}];
+      const dir = sortDirIndex === 0 ? "asc" : "desc";
+      sortQuery = [{"field":sort[sortIndex],"direction":dir}];
     }
     const newQuery = {
       "filters": filters,
@@ -172,6 +174,10 @@ class Parks extends React.Component {
                   <option>Num of Recreation Areas</option>
                   <option>Fee</option>
                   <option>Number of Visitors</option>
+                </select>
+                <select className="form-control" id="sort-direction">
+                  <option selected>Descending</option>
+                  <option>Ascending</option>
                 </select>
               </div>
             </div>
