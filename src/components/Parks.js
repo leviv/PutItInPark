@@ -3,6 +3,7 @@ import ParkCard from './ParkCard';
 import ReactPaginate from 'react-paginate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { expandFilters } from './helpers/Helpers.js'
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/nationalparks";
 
@@ -151,7 +152,7 @@ class Parks extends React.Component {
                   <option selected disabled>Num of Recreation Areas</option>
                   <option>0-10</option>
                   <option>10-20</option>
-                  <option>20+</option>
+                  <option>21+</option>
                 </select>
                 <select className="form-control" id="feeFilter">
                   <option selected disabled>Price</option>
@@ -162,7 +163,7 @@ class Parks extends React.Component {
                   <option selected disabled>Number of Visitors</option>
                   <option>0-50,000</option>
                   <option>50,000-100,000</option>
-                  <option>100,000+</option>
+                  <option>100,001+</option>
                 </select>
               </div>
               <div className="col-md-4 model-filter">
@@ -226,22 +227,6 @@ class Parks extends React.Component {
         </div>
       </React.Fragment>
     );
-  }
-}
-
-function expandFilters () {
-  const filters= document.getElementById("augment-container");
-  if (filters.classList.contains("collapsed")) {
-    const sectionHeight = filters.scrollHeight;
-
-    filters.style.height = sectionHeight + "px";
-
-    filters.classList.remove("collapsed");
-    document.getElementById("carat").style.transform = "rotate(180deg)";
-  } else {
-    filters.style.height = "98px";
-    filters.classList.add("collapsed");
-    document.getElementById("carat").style.transform = "rotate(0deg)";
   }
 }
 

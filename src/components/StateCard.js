@@ -12,10 +12,11 @@ class StateCard extends React.Component {
              style={{ backgroundImage: `url(${this.props.imglink})`}}
              >
           <div className="instance-overlay">
-            <div class="hidden-details">
+            <div className="hidden-details">
               <p>No. Parks: {this.props.num_parks}</p>
               <p>No. Rec Areas: {this.props.numrec}</p>
               <p>Population: {this.props.pop}</p>
+              <p>Mail Code: {this.props.mail_code}</p>
             </div>
             <div className="details">
               <h4>{displayName}</h4>

@@ -95,6 +95,7 @@ class Recreation extends React.Component {
                   num_parks={this.state.state.num_parks}
                   numrec={this.state.state.numrec}
                   pop={this.state.state.pop}
+                  mail_code={this.state.state.mail_code}
                 />
               </div>
               <div className="col-sm-6 instance-container">
