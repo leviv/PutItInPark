@@ -315,10 +315,91 @@ ul.pagination li {
 
 ul.pagination a {
   border: 1px solid $third-color;
-  color: $primary-color;
+  color: $third-color;
   cursor: pointer;
   display: inline-block;
   font-size: 18px;
   margin: 0 5px;
   padding: 3px;
+  transition: all .1s;
+
+  &:hover {
+    background-color: $third-color;
+    color: $secondary-color;
+  }
+}
+
+/* =================
+  Sorting, searching and filtering bar
+  ================= */
+
+#augment-container {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  height: 98px;
+  margin: 30px 0;
+  overflow: hidden;
+  padding: 15px;
+  transition: all .2s;
+
+  .search-row {
+    align-items: center;
+    display: flex;
+    position: relative;
+
+    #carat {
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      cursor: pointer;
+      font-size: 30px;
+      height: 50px;
+      padding: 10px;
+      position: absolute;
+      right: 30px;
+      width: 50px;
+      transition: all .2s;
+
+      &:hover {
+        background: $secondary-color;
+      }
+    }
+  }
+
+  .model-search {
+    align-items: center;
+    background: $third-color;
+    border-radius: 25px;
+    color: $secondary-color;
+    display: flex;
+    padding: 5px 15px;
+    margin: 15px 0 15px 15px;
+    width: fit-content;
+
+    .model-search-component {
+      border: none;
+      display: inline;
+    }
+
+    input {
+      background: $third-color;
+      color: #fff;
+      max-width: 300px;
+    }
+
+    h4 {
+      color: $secondary-color;
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $secondary-color;
+    }
+  }
+
+  select {
+    display: inline;
+    margin: 8px 10px 8px 0;
+    max-width: 150px;
+  }
 }

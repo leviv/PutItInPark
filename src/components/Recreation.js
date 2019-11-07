@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import NotFound from './NotFound';
 import StateCard from './StateCard';
@@ -139,10 +139,6 @@ class Recreation extends React.Component {
       <Route component={NotFound} />
     );
   }
-}
-
-function getSlug(pre, str) {
-  return "/" + pre + "/" + str.replace(/\s+/g, '-').toLowerCase();
 }
 
 export default GoogleApiWrapper({
