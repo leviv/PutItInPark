@@ -1,6 +1,9 @@
 import React from 'react';
 import RecreationCard from './RecreationCard';
 import ReactPaginate from 'react-paginate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { expandFilters } from './helpers/Helpers.js'
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/recreations";
 
@@ -28,17 +31,22 @@ class Recreations extends React.Component {
     this.state = {
       recs: [],
       pageNumber: pageNum || 1,
-      loaded: false
+      numPages: 1,
+      loaded: false,
+      query: {},
     };
+
+    this.applyFilters = this.applyFilters.bind(this);
   }
 
   makeApiCall(pageNumber) {
-    console.log(API_ENDPOINT + "?page=" + pageNumber)
-    fetch(API_ENDPOINT + "?page=" + pageNumber)
+    console.log(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber);
+    fetch(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber)
 
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
+        this.setState({numPages: data.total_pages});
         // Process data
         data.objects.forEach((rec) => {
           this.state.recs.push(rec);
@@ -52,6 +60,63 @@ class Recreations extends React.Component {
     this.makeApiCall(this.state.pageNumber);
   }
 
+  applyFilters () {
+    const reserveFilterIndex = document.getElementById("reserveFilter").selectedIndex;
+    const stayFilterIndex = document.getElementById("stayFilter").selectedIndex;
+    const activityFilterIndex = document.getElementById("activityFilter").selectedIndex;
+    const sortIndex = document.getElementById("sort").selectedIndex -1 ;
+    const sortDirIndex = document.getElementById("sort-direction").selectedIndex-1 ;
+
+    let filters = [];
+
+    // Get the rec filter
+    if (reserveFilterIndex === 1) {
+      filters.push({"name":"reservable","op":"eq","val":true});
+    } else if (reserveFilterIndex === 2) {
+      filters.push({"name":"reservable","op":"eq","val":false});
+    }
+
+    // Get the fee filter
+    if (stayFilterIndex === 1) {
+      filters.push({"name":"stay_limit","op":"eq","val":true});
+    } else if (stayFilterIndex === 2) {
+      filters.push({"name":"stay_limit","op":"eq","val":false});
+    }
+
+    // Get the visitor filter
+    if (activityFilterIndex === 1) {
+      filters.push({"name":"num_activities","op":"le","val":5});
+    } else if (activityFilterIndex === 2) {
+      filters.push({"name":"num_activities","op":"ge","val":6});
+      filters.push({"name":"num_activities","op":"le","val":10});
+    } else if (activityFilterIndex === 3) {
+      filters.push({"name":"num_activities","op":"ge","val":11});
+    }
+
+    // List of options to sort by
+    const sort = ["rec_name", "rec_id", "location", "natpark", "num_activities"];
+    let sortQuery = {};
+    // Check if a sort option was selected
+    if (sortIndex > -1) {
+      const dir = sortDirIndex === 0 ? "asc" : "desc";
+      sortQuery = [{"field":sort[sortIndex],"direction":dir}];
+    }
+    const newQuery = {
+      "filters": filters,
+      "order_by": sortQuery
+    };
+
+    this.props.history.push('/recreations/1');
+
+    this.setState({
+      pageNumber: 1,
+      recs: [],
+      query: newQuery
+    }, () => {
+      this.makeApiCall(1);
+    });
+  }
+
   render() {
     const { match } = this.props;
     const pageNum = match.params.page
@@ -63,10 +128,59 @@ class Recreations extends React.Component {
     return (
       <React.Fragment>
         <div className="model-intro">
-          <h2>Activities</h2>
+          <h2>Recreational Areas</h2>
         </div>
 
         <div className="container">
+          <div className="collapsed" id="augment-container">
+            <div className="row search-row">
+              <div className="model-search">
+                <h4 className="model-search-component">Find</h4>
+                <input className="form-control model-search-component" type="search" placeholder="Rec Area" aria-label="Park Search"/>
+                <FontAwesomeIcon icon={faSearch} className="model-search-component"/>
+              </div>
+              <FontAwesomeIcon icon={faAngleDown} id="carat" onClick={expandFilters}/>
+            </div>
+            <div className="row">
+              <div className="col-md-8 model-filter">
+                <h4>Filter by</h4>
+                <select className="form-control" id="reserveFilter">
+                  <option selected disabled>Reservable</option>
+                  <option>True</option>
+                  <option>False</option>
+                </select>
+                <select className="form-control" id="stayFilter">
+                  <option selected disabled>Stay Limit</option>
+                  <option>True</option>
+                  <option>False</option>
+                </select>
+                <select className="form-control" id="activityFilter">
+                  <option selected disabled>Num Activities</option>
+                  <option>0-5</option>
+                  <option>6-10</option>
+                  <option>11+</option>
+                </select>
+              </div>
+              <div className="col-md-4 model-filter">
+                <h4>Sort by</h4>
+                <select className="form-control" id="sort">
+                  <option selected disabled>Pick One</option>
+                  <option>Rec Name</option>
+                  <option>Rec Id</option>
+                  <option>State</option>
+                  <option>National Park</option>
+                  <option>Num Activities</option>
+                </select>
+                <select className="form-control" id="sort-direction">
+                  <option selected>Descending</option>
+                  <option>Ascending</option>
+                </select>
+              </div>
+            </div>
+            <div className="text-center">
+              <button className="button button-secondary" onClick={this.applyFilters}>Apply Filters</button>
+            </div>
+          </div>
 
           {row.map((result, index) => {
             return (
@@ -94,10 +208,10 @@ class Recreations extends React.Component {
              nextLabel={'Next'}
              breakLabel={'...'}
              breakClassName={'break-me'}
-             pageCount={51}
+             pageCount={this.state.numPages}
              forcePage={pageNum - 1}
              marginPagesDisplayed={2}
-             pageRangeDisplayed={5}
+             pageRangeDisplayed={3}
              onPageChange={this.handlePageClick}
              containerClassName={'pagination'}
              subContainerClassName={'pages pagination'}
