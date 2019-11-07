@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import ParkCard from './ParkCard';
 import NotFound from './NotFound';
 
-const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com";
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
 class State extends React.Component {
   constructor(props) {

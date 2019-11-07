@@ -102,7 +102,6 @@ class Parks extends React.Component {
     if (sortIndex > -1) {
       sortQuery = [{"field":sort[sortIndex],"direction":"desc"}];
     }
-
     const newQuery = {
       "filters": filters,
       "order_by": sortQuery

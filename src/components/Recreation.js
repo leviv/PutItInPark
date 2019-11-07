@@ -5,7 +5,7 @@ import NotFound from './NotFound';
 import StateCard from './StateCard';
 import ParkCard from './ParkCard';
 
-const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com";
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
 class Recreation extends React.Component {
 
@@ -118,7 +118,7 @@ class Recreation extends React.Component {
              })}
            </ul>
 
-           <h3>Addresss</h3>
+           <h3>Address</h3>
            <div className="map-container">
              <Map
                google={this.props.google}

@@ -2,7 +2,7 @@ import React from 'react';
 import StateCard from './StateCard';
 import ReactPaginate from 'react-paginate';
 
-const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/locations";
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/locations";
 
 class States extends React.Component {
   handlePageClick = data => {
@@ -33,13 +33,13 @@ class States extends React.Component {
   }
 
   makeApiCall(pageNumber) {
-    fetch(API_ENDPOINT + "/page=" + pageNumber)
+    fetch(API_ENDPOINT + "?page=" + pageNumber)
 
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
         // Process data
-        data.forEach((park) => {
+        data.objects.forEach((park) => {
           this.state.states.push(park);
         });
       }).then(() => {

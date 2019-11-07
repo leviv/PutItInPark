@@ -2,7 +2,7 @@ import React from 'react';
 import RecreationCard from './RecreationCard';
 import ReactPaginate from 'react-paginate';
 
-const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/recreations";
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/recreations";
 
 class Recreations extends React.Component {
   handlePageClick = data => {
@@ -33,13 +33,14 @@ class Recreations extends React.Component {
   }
 
   makeApiCall(pageNumber) {
-    fetch(API_ENDPOINT + "/page=" + pageNumber)
+    console.log(API_ENDPOINT + "?page=" + pageNumber)
+    fetch(API_ENDPOINT + "?page=" + pageNumber)
 
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
         // Process data
-        data.forEach((rec) => {
+        data.objects.forEach((rec) => {
           this.state.recs.push(rec);
         });
       }).then(() => {

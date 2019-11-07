@@ -4,7 +4,7 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import RecreationCard from './RecreationCard';
 import NotFound from './NotFound';
 
-const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com";
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
 class Park extends React.Component {
   constructor(props) {
@@ -27,6 +27,7 @@ class Park extends React.Component {
       .then((data) => {
         // Process data
         data.rec_ids = data.rec_ids.split(",");
+        data.location = data.location.split(",");
         this.setState({park: data});
       }).then(() => {
         let numRecsLoaded = 0;
@@ -38,7 +39,8 @@ class Park extends React.Component {
 
         // Get the recreational information
         this.state.park.rec_ids.forEach((id) => {
-          fetch(API_ENDPOINT + "/recreations/id=" + id)
+          const query = {"filters":[{"name":"rec_id","op":"eq","val":id}], "single":true};
+          fetch(API_ENDPOINT + "/recreations?q=" + JSON.stringify(query))
             // Transform the data into json
             .then((resp) => resp.json())
             .then((data) => {
@@ -81,8 +83,12 @@ class Park extends React.Component {
 
             <div className="row">
               <div className="col-md-4 state">
-                <h3>State</h3>
-                <p><Link to={getSlug('state', this.state.park.location)}>{this.state.park.location}</Link></p>
+                <h3>State(s)</h3>
+                {this.state.park.location.map((item, index) => {
+                  return (
+                    <p><Link to={getSlug('state', item)}>{item}</Link><br/></p>
+                  );
+                })}
               </div>
               <div className="col-md-4 fees">
                 <h3>Park Fees</h3>
@@ -115,7 +121,7 @@ class Park extends React.Component {
               );
            })}
 
-           <h3>Addresss</h3>
+           <h3>Address</h3>
            <div className="map-container">
              <Map
                google={this.props.google}
