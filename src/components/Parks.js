@@ -30,12 +30,16 @@ class Parks extends React.Component {
     this.state = {
       parks: [],
       pageNumber: pageNum || 1,
-      loaded: false
+      loaded: false,
+      query: {},
     };
+
+    this.applyFilters = this.applyFilters.bind(this);
   }
 
   makeApiCall(pageNumber) {
-    fetch(API_ENDPOINT + "?page=" + pageNumber)
+    console.log(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber);
+    fetch(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber)
 
       // Transform the data into json
       .then((resp) => resp.json())
@@ -52,6 +56,36 @@ class Parks extends React.Component {
 
   componentDidMount() {
     this.makeApiCall(this.state.pageNumber);
+  }
+
+  applyFilters () {
+    const recFilterIndex = document.getElementById("recFilter").selectedIndex;
+    const feeFilterIndex = document.getElementById("feeFilter").selectedIndex;
+    const visitorFilterIndex = document.getElementById("visitorFilter").selectedIndex;
+    const sortIndex = document.getElementById("sort").selectedIndex -1;
+
+    const sort = ["park_name", "location", "num_rec", "fee", "visitors"];
+
+    console.log("sort: " + sort[sortIndex]);
+
+    const newQuery = {
+      "order_by": [{
+        "field":sort[sortIndex],
+        "direction":"desc"
+      }]
+    };
+
+    console.log("Set state for sort")
+
+    this.props.history.push('/parks/1');
+
+    this.setState({
+      pageNumber: 1,
+      parks: [],
+      query: newQuery
+    }, () => {
+      this.makeApiCall(1);
+    });
   }
 
   render() {
@@ -81,18 +115,18 @@ class Parks extends React.Component {
             <div className="row">
               <div className="col-md-8 model-filter">
                 <h4>Filter by</h4>
-                <select class="form-control" id="filter1">
+                <select className="form-control" id="recFilter">
                   <option selected disabled>Num of Recreation Areas</option>
                   <option>0-10</option>
                   <option>10-20</option>
                   <option>20+</option>
                 </select>
-                <select class="form-control" id="filter2">
-                  <option selected disabled>Park Fee</option>
+                <select className="form-control" id="feeFilter">
+                  <option selected disabled>Price</option>
                   <option>Free</option>
-                  <option>Not Free</option>
+                  <option>No Fee</option>
                 </select>
-                <select class="form-control" id="filter3">
+                <select className="form-control" id="visitorFilter">
                   <option selected disabled>Number of Visitors</option>
                   <option>0-50,000</option>
                   <option>50,000-100,000</option>
@@ -101,7 +135,7 @@ class Parks extends React.Component {
               </div>
               <div className="col-md-4 model-filter">
                 <h4>Sort by</h4>
-                <select class="form-control" id="sort1">
+                <select className="form-control" id="sort">
                   <option selected disabled>Pick One</option>
                   <option>Park Name</option>
                   <option>Location</option>
@@ -112,7 +146,7 @@ class Parks extends React.Component {
               </div>
             </div>
             <div className="text-center">
-              <button className="button button-secondary">Apply Filters</button>
+              <button className="button button-secondary" onClick={this.applyFilters}>Apply Filters</button>
             </div>
           </div>
 
@@ -127,6 +161,7 @@ class Parks extends React.Component {
                         imglink={item.imglink}
                         location={item.location}
                         num_rec={item.num_rec}
+                        visitors={item.visitors}
                         fee={item.fee}
                       />
                     </div>

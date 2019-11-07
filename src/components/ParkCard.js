@@ -15,6 +15,7 @@ class ParkCard extends React.Component {
             <div className="hidden-details">
               <p>State: {this.props.location}</p>
               <p>No. Rec. Areas: {this.props.num_rec}</p>
+              <p>No. Visitors: {this.props.visitors}</p>
               <p>Fees: ${this.props.fee}</p>
             </div>
             <div className="details">
