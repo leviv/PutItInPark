@@ -64,15 +64,48 @@ class Parks extends React.Component {
     const recFilterIndex = document.getElementById("recFilter").selectedIndex;
     const feeFilterIndex = document.getElementById("feeFilter").selectedIndex;
     const visitorFilterIndex = document.getElementById("visitorFilter").selectedIndex;
-    const sortIndex = document.getElementById("sort").selectedIndex -1;
+    const sortIndex = document.getElementById("sort").selectedIndex -1 ;
 
+    let filters = [];
+
+    // Get the rec filter
+    if (recFilterIndex === 1) {
+      filters.push({"name":"num_rec","op":"le","val":10});
+    } else if (recFilterIndex === 2) {
+      filters.push({"name":"num_rec","op":"ge","val":11});
+      filters.push({"name":"num_rec","op":"le","val":20});
+    } else if (recFilterIndex === 3) {
+      filters.push({"name":"num_rec","op":"ge","val":21});
+    }
+
+    // Get the fee filter
+    if (feeFilterIndex === 1) {
+      filters.push({"name":"fee","op":"eq","val":0.0});
+    } else if (feeFilterIndex === 2) {
+      filters.push({"name":"fee","op":"neq","val":0.0});
+    }
+
+    // Get the visitor filter
+    if (visitorFilterIndex === 1) {
+      filters.push({"name":"visitors","op":"le","val":50000});
+    } else if (visitorFilterIndex === 2) {
+      filters.push({"name":"visitors","op":"ge","val":50001});
+      filters.push({"name":"visitors","op":"le","val":100000});
+    } else if (visitorFilterIndex === 3) {
+      filters.push({"name":"visitors","op":"ge","val":100001});
+    }
+
+    // List of options to sort by
     const sort = ["park_name", "location", "num_rec", "fee", "visitors"];
+    let sortQuery = {};
+    // Check if a sort option was selected
+    if (sortIndex > -1) {
+      sortQuery = [{"field":sort[sortIndex],"direction":"desc"}];
+    }
 
     const newQuery = {
-      "order_by": [{
-        "field":sort[sortIndex],
-        "direction":"desc"
-      }]
+      "filters": filters,
+      "order_by": sortQuery
     };
 
     this.props.history.push('/parks/1');
@@ -122,7 +155,7 @@ class Parks extends React.Component {
                 <select className="form-control" id="feeFilter">
                   <option selected disabled>Price</option>
                   <option>Free</option>
-                  <option>No Fee</option>
+                  <option>Not Free</option>
                 </select>
                 <select className="form-control" id="visitorFilter">
                   <option selected disabled>Number of Visitors</option>
