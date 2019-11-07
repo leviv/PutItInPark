@@ -387,6 +387,10 @@ ul.pagination a {
       background: $primary-color;
       color: #fff;
       max-width: 300px;
+
+      &::placeholder {
+        color: #ddd;
+      }
     }
 
     h4 {
