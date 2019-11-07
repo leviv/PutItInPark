@@ -9,7 +9,7 @@ park_json = requests.get(url + "/nationalparks").json()
 
 class BackendTests(TestCase):
     def test1(self):
-        self.assertEqual(len(loc_json['objects']), 10)
+        self.assertEqual(len(loc_json['objects']), 12)
 
 if __name__ == "__main__":
     main()
