@@ -30,6 +30,7 @@ class Parks extends React.Component {
     this.state = {
       parks: [],
       pageNumber: pageNum || 1,
+      numPages: 1,
       loaded: false,
       query: {},
     };
@@ -44,6 +45,7 @@ class Parks extends React.Component {
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
+        this.setState({numPages: data.total_pages});
         // Process data
         data.objects.forEach((park) => {
           park.rec_ids = park.rec_ids.split(",");
@@ -66,16 +68,12 @@ class Parks extends React.Component {
 
     const sort = ["park_name", "location", "num_rec", "fee", "visitors"];
 
-    console.log("sort: " + sort[sortIndex]);
-
     const newQuery = {
       "order_by": [{
         "field":sort[sortIndex],
         "direction":"desc"
       }]
     };
-
-    console.log("Set state for sort")
 
     this.props.history.push('/parks/1');
 
@@ -177,10 +175,10 @@ class Parks extends React.Component {
              nextLabel={'Next'}
              breakLabel={'...'}
              breakClassName={'break-me'}
-             pageCount={5}
+             pageCount={this.state.numPages}
              forcePage={pageNum - 1}
              marginPagesDisplayed={2}
-             pageRangeDisplayed={5}
+             pageRangeDisplayed={3}
              onPageChange={this.handlePageClick}
              containerClassName={'pagination'}
              subContainerClassName={'pages pagination'}
