@@ -151,19 +151,19 @@ class States extends React.Component {
               <div className="col-md-8 model-filter">
                 <h4>Filter by</h4>
                 <select className="form-control" id="recFilter">
-                  <option selected disabled>Num of Recreation Areas</option>
+                  <option selected>Num of Recreation Areas</option>
                   <option>0-10</option>
                   <option>10-20</option>
                   <option>21+</option>
                 </select>
                 <select className="form-control" id="parkFilter">
-                  <option selected disabled>Num of Parks</option>
+                  <option selected>Num of Parks</option>
                   <option>0</option>
                   <option>1-3</option>
                   <option>4+</option>
                 </select>
                 <select className="form-control" id="popFilter">
-                  <option selected disabled>Population</option>
+                  <option selected>Population</option>
                   <option>0-1,000,000</option>
                   <option>1,000,001-2,000,000</option>
                   <option>2,000,001+</option>
@@ -172,7 +172,7 @@ class States extends React.Component {
               <div className="col-md-4 model-filter">
                 <h4>Sort by</h4>
                 <select className="form-control" id="sort">
-                  <option selected disabled>Pick One</option>
+                  <option selected>Pick One</option>
                   <option>Location Name</option>
                   <option>Number of Parks</option>
                   <option>Number of Recreation Areas</option>

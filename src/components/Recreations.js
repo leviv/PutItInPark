@@ -145,17 +145,17 @@ class Recreations extends React.Component {
               <div className="col-md-8 model-filter">
                 <h4>Filter by</h4>
                 <select className="form-control" id="reserveFilter">
-                  <option selected disabled>Reservable</option>
+                  <option selected>Reservable</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
                 <select className="form-control" id="stayFilter">
-                  <option selected disabled>Stay Limit</option>
+                  <option selected>Stay Limit</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
                 <select className="form-control" id="activityFilter">
-                  <option selected disabled>Num Activities</option>
+                  <option selected>Num Activities</option>
                   <option>0-5</option>
                   <option>6-10</option>
                   <option>11+</option>
@@ -164,7 +164,7 @@ class Recreations extends React.Component {
               <div className="col-md-4 model-filter">
                 <h4>Sort by</h4>
                 <select className="form-control" id="sort">
-                  <option selected disabled>Pick One</option>
+                  <option selected>Pick One</option>
                   <option>Rec Name</option>
                   <option>Rec Id</option>
                   <option>State</option>

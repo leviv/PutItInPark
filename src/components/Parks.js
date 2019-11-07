@@ -149,18 +149,18 @@ class Parks extends React.Component {
               <div className="col-md-8 model-filter">
                 <h4>Filter by</h4>
                 <select className="form-control" id="recFilter">
-                  <option selected disabled>Num of Recreation Areas</option>
+                  <option selected>Num of Recreation Areas</option>
                   <option>0-10</option>
                   <option>10-20</option>
                   <option>21+</option>
                 </select>
                 <select className="form-control" id="feeFilter">
-                  <option selected disabled>Price</option>
+                  <option selected>Price</option>
                   <option>Free</option>
                   <option>Not Free</option>
                 </select>
                 <select className="form-control" id="visitorFilter">
-                  <option selected disabled>Number of Visitors</option>
+                  <option selected>Number of Visitors</option>
                   <option>0-50,000</option>
                   <option>50,000-100,000</option>
                   <option>100,001+</option>
@@ -169,7 +169,7 @@ class Parks extends React.Component {
               <div className="col-md-4 model-filter">
                 <h4>Sort by</h4>
                 <select className="form-control" id="sort">
-                  <option selected disabled>Pick One</option>
+                  <option selected>Pick One</option>
                   <option>Park Name</option>
                   <option>Location</option>
                   <option>Num of Recreation Areas</option>
