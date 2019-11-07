@@ -23,9 +23,9 @@ db.init_app(app)
 # Create API endpoints
 manager = flask_restless.APIManager(app, flask_sqlalchemy_db=db)
 
-manager.create_api(Location, collection_name="locations", methods=["GET"])
-manager.create_api(Nationalparks, collection_name="nationalparks", methods=["GET"])
-manager.create_api(Recreation, collection_name="recreations", methods=["GET"])
+manager.create_api(Location, collection_name="locations", methods=["GET"], results_per_page=12)
+manager.create_api(Nationalparks, collection_name="nationalparks", methods=["GET"], results_per_page=12)
+manager.create_api(Recreation, collection_name="recreations", methods=["GET"], results_per_page=12)
 
 port = int(os.environ.get("PORT", 8080))
 if __name__ == "__main__":
