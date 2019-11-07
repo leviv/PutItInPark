@@ -1,6 +1,6 @@
 file = open("allparkdata.txt", "r")
 #create table
-print ('CREATE TABLE nationalparks (park_code VARCHAR(5), park_name VARCHAR(50), location VARCHAR(30), num_rec TINYINT(50), rec_ids VARCHAR(1000), description VARCHAR(5000), weather VARCHAR(5000), lat VARCHAR(20), lon VARCHAR(20), fee VARCHAR(10), visitors INT(32), imglink VARCHAR(1000), park_id VARCHAR(256));') 
+print ('CREATE TABLE nationalparks (park_code VARCHAR(5), park_name VARCHAR(50), location VARCHAR(30), num_rec TINYINT(50), rec_ids VARCHAR(1000), description VARCHAR(5000), weather VARCHAR(5000), lat VARCHAR(20), lon VARCHAR(20), fee DECIMAL(5,2), visitors INT(32), imglink VARCHAR(1000), park_id VARCHAR(256));') 
 
 def alter_text(text):
     res = ''
@@ -21,7 +21,7 @@ for line in file:
     location = values[3]
     lat = values[4]
     lon = values[5]
-    fees = values[6]
+    fees = float(values[6])
     visitors = values[7]
     imglink = values[8]
     desc = alter_text(values[9]).strip()
