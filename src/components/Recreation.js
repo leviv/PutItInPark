@@ -30,6 +30,8 @@ class Recreation extends React.Component {
       .then((data) => {
         // Process data
         data.activities = data.activities.split(",");
+        data.reservable = data.reservable === "1" ? "Yes" : "No";
+        data.stay_limit = data.stay_limit === "1" ? "Yes" : "No";
         this.setState({rec: data});
       }).then(() => {
 
@@ -42,17 +44,23 @@ class Recreation extends React.Component {
             // Process data
             this.setState({state: data});
           }).then(() => {
-            // Load the park
-            fetch(API_ENDPOINT + "/nationalparks/" + this.state.rec.natpark)
-              // Transform the data into json
-              .then((resp) => resp.json())
-              .then((data) => {
-                console.log(data);
-                // Process data
-                this.setState({park: data});
-              }).then(() => {
-                this.setState({loaded: true});
-              });
+
+            if (this.state.rec.natpark !== "N/A") {
+              // Load the park
+              fetch(API_ENDPOINT + "/nationalparks/" + this.state.rec.natpark)
+                // Transform the data into json
+                .then((resp) => resp.json())
+                .then((data) => {
+                  console.log(data);
+                  // Process data
+                  this.setState({park: data});
+                }).then(() => {
+                  this.setState({loaded: true});
+                });
+            } else {
+              this.setState({park: "N/A"});
+              this.setState({loaded: true});
+            }
           });
       });
   }
@@ -99,14 +107,20 @@ class Recreation extends React.Component {
                 />
               </div>
               <div className="col-sm-6 instance-container">
-                <h3>Related National Park</h3>
-                <ParkCard
-                  park_name={this.state.park.park_name}
-                  imglink={this.state.park.imglink}
-                  location={this.state.park.location}
-                  num_rec={this.state.park.num_rec}
-                  fee={this.state.park.fee}
-                />
+              <h3>Related National Park</h3>
+                {this.state.state.park_names === "N/A" ? (
+                  <h4>No Related Parks</h4>
+                ) : (
+                  <ParkCard
+                    park_name={this.state.park.park_name}
+                    imglink={this.state.park.imglink}
+                    location={this.state.park.location}
+                    num_rec={this.state.park.num_rec}
+                    fee={this.state.park.fee}
+                  />
+                )}
+
+
               </div>
             </div>
 

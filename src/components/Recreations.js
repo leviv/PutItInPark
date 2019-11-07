@@ -71,16 +71,16 @@ class Recreations extends React.Component {
 
     // Get the rec filter
     if (reserveFilterIndex === 1) {
-      filters.push({"name":"reservable","op":"eq","val":true});
+      filters.push({"name":"reservable","op":"eq","val":"1"});
     } else if (reserveFilterIndex === 2) {
-      filters.push({"name":"reservable","op":"eq","val":false});
+      filters.push({"name":"reservable","op":"eq","val":"0"});
     }
 
     // Get the fee filter
     if (stayFilterIndex === 1) {
-      filters.push({"name":"stay_limit","op":"eq","val":true});
+      filters.push({"name":"stay_limit","op":"eq","val":"1"});
     } else if (stayFilterIndex === 2) {
-      filters.push({"name":"stay_limit","op":"eq","val":false});
+      filters.push({"name":"stay_limit","op":"eq","val":"0"});
     }
 
     // Get the visitor filter
@@ -146,13 +146,13 @@ class Recreations extends React.Component {
                 <h4>Filter by</h4>
                 <select className="form-control" id="reserveFilter">
                   <option selected disabled>Reservable</option>
-                  <option>True</option>
-                  <option>False</option>
+                  <option>Yes</option>
+                  <option>No</option>
                 </select>
                 <select className="form-control" id="stayFilter">
                   <option selected disabled>Stay Limit</option>
-                  <option>True</option>
-                  <option>False</option>
+                  <option>Yes</option>
+                  <option>No</option>
                 </select>
                 <select className="form-control" id="activityFilter">
                   <option selected disabled>Num Activities</option>

@@ -40,7 +40,7 @@ class Recreation(db.Model):
     rec_name = db.Column(db.String(240))
     location = db.Column(db.String(240))
     natpark = db.Column(db.String(24))
-    reservable = db.Column(db.Boolean)
+    reservable = db.Column(db.String(5))
     lat = db.Column(db.Float)
     lon = db.Column(db.Float)
     activities = db.Column(db.String(480))
@@ -48,7 +48,7 @@ class Recreation(db.Model):
     num_activities = db.Column(db.Integer)
     description = db.Column(db.String(480))
     par_org_id = db.Column(db.Integer)
-    stay_limit = db.Column(db.Boolean)
+    stay_limit = db.Column(db.String(5))
 
     def __repr__(self):
         return "<Recreation %r>" % self.rec_name

@@ -183,6 +183,7 @@ class About extends React.Component {
             />
             <div className="col-sm-2"></div>
           </div>
+          
           <p className="about-lead">About this site: This site is supported by Google Cloud serving a Flask backend and React frontend.</p>
         </div>
       </React.Fragment>

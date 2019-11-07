@@ -5,6 +5,8 @@ class RecreationCard extends React.Component {
   render() {
     const slug = '/recreation/' + this.props.rec_name.replace(/\s+/g, '-').toLowerCase();
     const displayName = this.props.rec_name.replace(/-+/g, ' ');
+    const reservable = this.props.reservable === "0" ? "No" : "Yes";
+    const stay_limit = this.props.stay_limit === "0" ? "No" : "Yes";
 
     return (
       <Link to={slug}>
@@ -14,8 +16,8 @@ class RecreationCard extends React.Component {
           <div className="instance-overlay">
             <div className="hidden-details">
               <p>Number of Activities: {this.props.num_activities}</p>
-              <p>Reservable: {"" + this.props.reservable}</p>
-              <p>Stay Limit: {"" + this.props.stay_limit}</p>
+              <p>Reservable: {reservable}</p>
+              <p>Stay Limit: {stay_limit}</p>
             </div>
             <div className="details">
               <h4>{displayName}</h4>
