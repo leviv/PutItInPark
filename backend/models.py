@@ -1,5 +1,6 @@
 from db_client import db
 
+
 class Location(db.Model):
     fips = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(24), unique=True, nullable=False)
@@ -13,6 +14,7 @@ class Location(db.Model):
 
     def __repr__(self):
         return "<Location %r>" % self.name
+
 
 class Nationalparks(db.Model):
     park_code = db.Column(db.String(24), primary_key=True, unique=True)
@@ -31,6 +33,7 @@ class Nationalparks(db.Model):
 
     def __repr__(self):
         return "<Nationalparks %r>" % self.park_name
+
 
 class Recreation(db.Model):
     rec_id = db.Column(db.Integer, primary_key=True, unique=True)
