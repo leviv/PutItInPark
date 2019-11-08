@@ -5,7 +5,7 @@ from unittest import main, TestCase
 import time
 
 # URL to test on
-url = "https://putitinpark.xyz/"
+url = "http://localhost:3000/"
 
 # Test Class
 class guitests(TestCase):
@@ -13,8 +13,7 @@ class guitests(TestCase):
   @classmethod
   def setUp(self):
     webdriver.ChromeOptions().add_argument('--no-sandbox')
-    webdriver.ChromeOptions().add_argument('--no-sandbox')
-    self.browser = webdriver.Chrome(options=webdriver.ChromeOptions())
+    self.browser = webdriver.Chrome('/Users/leviv/Downloads/chromedriver')
     self.url = url
 
   @classmethod
