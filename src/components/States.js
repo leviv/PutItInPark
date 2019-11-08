@@ -38,6 +38,7 @@ class States extends React.Component {
     };
 
     this.applyFilters = this.applyFilters.bind(this);
+    this.search = this.search.bind(this);
   }
 
   makeApiCall(pageNumber) {
@@ -68,19 +69,18 @@ class States extends React.Component {
         const options = {
           keys: ['name'],
         };
-        const fuse = new Fuse(data['objects'], options)
-        console.log(fuse.search(searchString))
-      })
+        const fuse = new Fuse(data['objects'], options);
+        const searchRes = fuse.search(searchString);
+        console.log(searchRes);
+        this.props.history.push('/states/1');
 
-      // .then((data) => {
-      //   this.setState({numPages: data.total_pages});
-      //   // Process data
-      //   data.objects.forEach((park) => {
-      //     this.state.states.push(park);
-      //   });
-      // }).then(() => {
-      //   this.setState({loaded: true});
-      // });
+        this.setState({
+          pageNumber: 1,
+          numPages: searchRes.length / 12,
+          states: searchRes,
+          query: {}
+        });
+      })
   }
 
   componentDidMount() {
