@@ -383,6 +383,10 @@ ul.pagination a {
       display: inline;
     }
 
+    svg {
+      cursor: pointer;
+    }
+
     input {
       background: $primary-color;
       color: #fff;

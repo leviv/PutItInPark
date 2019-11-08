@@ -42,7 +42,7 @@ class Parks extends React.Component {
 
   makeApiCall(pageNumber) {
     console.log(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber);
-    fetch(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber)
+    fetch(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&results_per_page=12&page=" + pageNumber)
 
       // Transform the data into json
       .then((resp) => resp.json())
