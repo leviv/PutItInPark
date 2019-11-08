@@ -58,7 +58,7 @@ class States extends React.Component {
   }
 
   search() {
-    let searchString = document.getElementById("searchField").value
+    let searchString = document.getElementById("modelSearchField").value
     fetch(API_ENDPOINT) //+ "?q="+ JSON.stringify(this.state.query))
 
       // Transform the data into json
@@ -169,7 +169,7 @@ class States extends React.Component {
             <div className="row search-row">
               <div className="model-search">
                 <h4 className="model-search-component">Find</h4>
-                <input className="form-control model-search-component" id="searchField" type="search" placeholder="State" aria-label="Park Search"/>
+                <input className="form-control model-search-component" id="modelSearchField" type="search" placeholder="State" aria-label="Park Search"/>
                 <FontAwesomeIcon icon={faSearch} className="model-search-component" onClick={this.search}/>
               </div>
               <FontAwesomeIcon icon={faAngleDown} id="carat" onClick={expandFilters}/>
