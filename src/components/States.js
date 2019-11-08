@@ -1,6 +1,7 @@
 import React from 'react';
 import StateCard from './StateCard';
 import ReactPaginate from 'react-paginate';
+import Fuse from 'fuse.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { expandFilters } from './helpers/Helpers.js'
@@ -37,11 +38,12 @@ class States extends React.Component {
     };
 
     this.applyFilters = this.applyFilters.bind(this);
+    this.search = this.search.bind(this);
   }
 
   makeApiCall(pageNumber) {
     console.log(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber);
-    fetch(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber)
+    fetch(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&results_per_page=12&page=" + pageNumber)
 
       // Transform the data into json
       .then((resp) => resp.json())
@@ -54,6 +56,31 @@ class States extends React.Component {
       }).then(() => {
         this.setState({loaded: true});
       });
+  }
+
+  search() {
+    let searchString = document.getElementById("modelSearchField").value
+    fetch(API_ENDPOINT) //+ "?q="+ JSON.stringify(this.state.query))
+
+      // Transform the data into json
+      .then((resp) => resp.json())
+      // Search
+      .then((data) => {
+        const options = {
+          keys: ['name'],
+        };
+        const fuse = new Fuse(data['objects'], options);
+        const searchRes = fuse.search(searchString);
+        console.log(searchRes);
+        this.props.history.push('/states/1');
+
+        this.setState({
+          pageNumber: 1,
+          numPages: searchRes.length / 12,
+          states: searchRes,
+          query: {}
+        });
+      })
   }
 
   componentDidMount() {
@@ -142,8 +169,8 @@ class States extends React.Component {
             <div className="row search-row">
               <div className="model-search">
                 <h4 className="model-search-component">Find</h4>
-                <input className="form-control model-search-component" type="search" placeholder="State" aria-label="Park Search"/>
-                <FontAwesomeIcon icon={faSearch} className="model-search-component"/>
+                <input className="form-control model-search-component" id="modelSearchField" type="search" placeholder="State" aria-label="Park Search"/>
+                <FontAwesomeIcon icon={faSearch} className="model-search-component" onClick={this.search}/>
               </div>
               <FontAwesomeIcon icon={faAngleDown} id="carat" onClick={expandFilters}/>
             </div>
