@@ -2,11 +2,15 @@
 
 exports[`Basic functionality Tests About page renders successfully 1`] = `ShallowWrapper {}`;
 
+exports[`Basic functionality Tests App renders the navbar 1`] = `ShallowWrapper {}`;
+
 exports[`Basic functionality Tests Splash page renders successfully 1`] = `ShallowWrapper {}`;
 
 exports[`Instance Page Tests Park instance page renders successfully 1`] = `undefined`;
 
 exports[`Instance Page Tests Recreation instance page renders successfully 1`] = `ShallowWrapper {}`;
+
+exports[`Instance Page Tests Search page renders successfully 1`] = `ShallowWrapper {}`;
 
 exports[`Instance Page Tests State instance page renders successfully 1`] = `ShallowWrapper {}`;
 
