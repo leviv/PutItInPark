@@ -72,11 +72,13 @@ class Recreation extends React.Component {
   render() {
     // Component loaded
     if (this.state.loaded){
+      const displayName = this.state.rec.rec_name.replace(/-+/g, ' ');
+
       return (
         <React.Fragment>
           <div className="instance-intro"
                style={{ backgroundImage: `url(${this.state.rec.imglink})`}}>
-            <h1><span>{this.state.rec.rec_name}</span></h1>
+            <h1><span>{displayName}</span></h1>
           </div>
 
           <div className="container instance">

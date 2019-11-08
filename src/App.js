@@ -14,6 +14,7 @@ import NotFound from './components/NotFound';
 import Park from './components/Park';
 import Recreation from './components/Recreation';
 import State from './components/State';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/park/:parkName" component={Park} />
         <Route path="/recreation/:recName" component={Recreation} />
         <Route path="/state/:stateName" component={State} />
+        <Route path="/search/:searchString" component={Search} />
 
         <Route path="*" component={NotFound} />
       </Switch>
