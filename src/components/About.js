@@ -203,117 +203,117 @@ class About extends React.Component {
             />
             <div className="col-sm-2"></div>
           </div>
-
+          
           <br/>
 
           <h1 className="text-center"><span>Tools Used</span></h1>
 
           <div className="row">
             <div className="col-md-4 instance-container">
-              <ToolCard
+              <ToolCard 
                 imageUrl={ReactPhoto}
                 tool_name= {"React JS"}
                 description= {"JavaScript library, namely using react routing"}
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={NodePhoto}
                 tool_name= {"Node"}
                 description= {"JavaScript run-time environment that executes JavaScript code outside of a browser"}
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={ExpressPhoto}
                 tool_name="Express"
                 description="Web application framework for Node.js, designed for building web applications and APIs"
               />
             </div>
             <div className="col-md-4 instance-container">
-              <ToolCard
+              <ToolCard 
                 imageUrl={GCPPhoto}
                 tool_name="GCP"
                 description="Used to deploy and host the web application"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={BootstrapPhoto}
                 tool_name="Bootstrap"
                 description="Free and open-source CSS framework directed at responsive, mobile-first front-end web development"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={PostmanPhoto}
                 tool_name="Postman"
                 description="Used to document our API and output in HTML format"
               />
             </div>
             <div className="col-md-4 instance-container">
-              <ToolCard
+              <ToolCard 
                 imageUrl={GitlabPhoto}
                 tool_name="GitLab"
                 description="Used to host our code and provide CI/CD environments"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={PixabayPhoto}
                 tool_name="Pixabay"
                 description="Used to find royalty-free images for the static site"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={NamecheapPhoto}
                 tool_name="NameCheap"
                 description="Used to provide website URLs"
               />
             </div>
             <div className="col-md-4 instance-container">
-              <ToolCard
+              <ToolCard 
                 imageUrl={MochaPhoto}
                 tool_name="Mocha"
                 description="Used as our JavaScript test framework"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={EnzymePhoto}
                 tool_name="Enzyme"
                 description="Used to more easily test our React components"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={SeleniumPhoto}
                 tool_name="Selenium"
                 description="Used to automate acceptance tests"
               />
             </div>
             <div className="col-md-4 instance-container">
-              <ToolCard
+              <ToolCard 
                 imageUrl={ChromePhoto}
                 tool_name="Chrome Webdriver"
                 description="A controllable webdriver for Selenium"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={SCSSPhoto}
                 tool_name="SCSS"
                 description="Used to make styles more flexible and readable"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={DockerPhoto}
                 tool_name="Docker"
                 description="Used to provide images for frontend and backend development"
               />
             </div>
             <div className="col-md-4 instance-container">
-              <ToolCard
+              <ToolCard 
                 imageUrl={MySQLPhoto}
                 tool_name="MySQL"
                 description="Relational database management system used to store our data"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={CloudPhoto}
                 tool_name="Cloud SQL Proxy"
                 description="Allowed to connect to the database locally using GCP"
               />
-              <ToolCard
+              <ToolCard 
                 imageUrl={FlaskPhoto}
                 tool_name="Flask"
                 description="Lightweight python web framework, used for our backend API"
               />
             </div>
           </div>
-          <p className="about-lead">About this site: This site is supported by Google Cloud serving a Flask backend and React frontend.</p>
         </div>
+        <p className="about-lead">About this site: This site is supported by Google Cloud serving a Flask backend and React frontend.</p>
       </React.Fragment>
     );
   }

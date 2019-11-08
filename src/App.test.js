@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { configure, shallow } from 'enzyme';
+import nock from 'nock';
 import waitUntil from 'async-wait-until';
 import App from './App';
 
@@ -9,21 +10,33 @@ configure({ adapter: new Adapter() });
 
 // Custom components
 import About from './components/About';
+import Recreation from './components/Recreation';
 import Header from './components/Header';
 import Home from './components/Home';
 import Park from './components/Park';
 import ParkCard from './components/ParkCard';
 import Parks from './components/Parks';
 import Recreations from './components/Recreations';
-import RecreationCard from './components/RecreationCard';
-import Recreation from './components/Recreation';
 import State from './components/State';
 import StateCard from './components/StateCard';
 import States from './components/States';
 import TeamMember from './components/TeamMember';
-import ToolCard from './components/ToolCard';
 
-describe('Basic functionality Tests', () => {
+const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com";
+
+describe('Functionality Tests', () => {
+  beforeAll(() => {
+  // Prepare nock to respond to a request
+  nock(API_ENDPOINT)
+    .get('/nationalparks/page=1')
+    .reply(200, [
+      {rec_ids: "1234"}
+    ], {
+        'Access-Control-Allow-Origin': '*',
+        'Content-type': 'application/json'
+      });
+  });
+
   describe('App', function() {
     it('renders without crashing', () => {
       const div = document.createElement('div');
@@ -47,10 +60,6 @@ describe('Basic functionality Tests', () => {
     it('renders 5 team cards', () => {
       expect(about.find('TeamMember').length).toEqual(5);
     });
-
-    it('renders 18 tool cards', () => {
-      expect(about.find('ToolCard').length).toEqual(18);
-    });
   });
 
   describe('Splash page', function() {
@@ -59,68 +68,22 @@ describe('Basic functionality Tests', () => {
       expect(splash).toMatchSnapshot();
     });
   });
-});
 
-describe('Model Page Tests', () => {
   describe('Parks page', function() {
-    it('renders page successfully', () => {
-      const match = {params: {pageNum: "1"}};
-      const parks = shallow(<Parks match={match}/>);
+    const match = {params: {pageNum: "1"}};
+    const parks = shallow(<Parks match={match}/>);
+
+    it('renders successfully', () => {
       expect(parks).toMatchSnapshot();
     });
 
-    const parks = shallow(<ParkCard park_name="Test-Park" num_rec="123" visitors="321" fee="0"/>);
-
-    it('renders ParkCard successfully', () => {
-      expect(parks).toMatchSnapshot();
-    });
-
-    it('displays card title', () => {
-      const title = parks.find('h4');
-      expect(title.text()).toEqual('Test Park');
-    });
+    // it('cointains correct number of ParkCards', async (done) => {
+    //   await waitUntil(() => parks.state.loaded !== false)
+    //
+    //   expect(parks.find('ParkCard').length).toEqual(1);
+    // });
   });
 
-  describe('States page', function() {
-    it('renders successfully', () => {
-      const match = {params: {stateName: "1"}};
-      const states = shallow(<States match={match}/>);
-      expect(states).toMatchSnapshot();
-    });
-
-    const states = shallow(<StateCard name="Test-State" num_parks="123" pop="321" mail_code="0"/>);
-
-    it('renders StateCard successfully', () => {
-      expect(states).toMatchSnapshot();
-    });
-
-    it('displays card title', () => {
-      const title = states.find('h4');
-      expect(title.text()).toEqual('Test State');
-    });
-  });
-
-  describe('Recreation page', function() {
-    it('renders successfully', () => {
-      const match = {params: {pageNum: "1"}};
-      const rec = shallow(<Recreations match={match}/>);
-      expect(rec).toMatchSnapshot();
-    });
-
-    const rec = shallow(<RecreationCard rec_name="Test-Rec" num_activities="123" reservable="1" stay_limit="1"/>);
-
-    it('renders RecreationCard successfully', () => {
-      expect(rec).toMatchSnapshot();
-    });
-
-    it('displays card title', () => {
-      const title = rec.find('h4');
-      expect(title.text()).toEqual('Test Rec');
-    });
-  });
-});
-
-describe('Instance Page Tests', () => {
   describe('Park instance page', function() {
     const match = {params: {parkName: "Yosemite"}};
 
@@ -128,6 +91,19 @@ describe('Instance Page Tests', () => {
       const park = shallow(<Park match={match}/>);
       expect(park.props().parkName).toMatchSnapshot();
     });
+  });
+
+  describe('States page', function() {
+    const match = {params: {stateName: "1"}};
+    const states = shallow(<States match={match}/>);
+
+    it('renders successfully', () => {
+      expect(states).toMatchSnapshot();
+    });
+
+    // it('cointains correct number of StateCards', () => {
+    //   expect(states.find('StateCard').length).toEqual(9);
+    // });
   });
 
   describe('State instance page', function() {
@@ -139,8 +115,21 @@ describe('Instance Page Tests', () => {
     });
   });
 
-  describe('Recreation instance page', function() {
-    const match = {params: {activityName: "Copan Lake"}};
+  describe('Recreation page', function() {
+    const match = {params: {pageNum: "1"}};
+    const rec = shallow(<Recreations match={match}/>);
+
+    it('renders successfully', () => {
+      expect(rec).toMatchSnapshot();
+    });
+
+    // it('cointains correct number of ActivityCards', () => {
+    //   expect(rec.find('ActivityCard').length).toEqual(9);
+    // });
+  });
+
+  describe('Activity instance page', function() {
+    const match = {params: {activityName: "Climbing"}};
 
     it('renders successfully', () => {
       const activity = shallow(<Recreation match={match}/>);
