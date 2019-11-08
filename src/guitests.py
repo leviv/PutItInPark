@@ -5,7 +5,7 @@ from unittest import main, TestCase
 import time
 
 # URL to test on
-url = "http://localhost:3000/"
+url = "https://putitinpark.xyz/"
 
 # Test Class
 class guitests(TestCase):
@@ -13,7 +13,8 @@ class guitests(TestCase):
   @classmethod
   def setUp(self):
     webdriver.ChromeOptions().add_argument('--no-sandbox')
-    self.browser = webdriver.Chrome('/Users/levivillarreal/Downloads/chromedriver')
+    webdriver.ChromeOptions().add_argument('--no-sandbox')
+    self.browser = webdriver.Chrome(options=webdriver.ChromeOptions())
     self.url = url
 
   @classmethod
@@ -48,7 +49,7 @@ class guitests(TestCase):
       parks_link = self.browser.find_element_by_css_selector(".parks-link h5")
       self.assertEqual(parks_link.text, "NATIONAL PARKS")
       parks_link.click()
-      self.assertEqual(self.browser.current_url, self.url+"parks/")
+      self.assertEqual(self.browser.current_url, self.url+"parks/1")
     except NoSuchElementException as err:
       self.fail(err.msg)
 
@@ -58,7 +59,7 @@ class guitests(TestCase):
       rec_link = self.browser.find_element_by_css_selector(".recs-link h5")
       self.assertEqual(rec_link.text, "RECREATION")
       rec_link.click()
-      self.assertEqual(self.browser.current_url, self.url+"recreation/")
+      self.assertEqual(self.browser.current_url, self.url+"recreations/1")
     except NoSuchElementException as err:
       self.fail(err.msg)
 
@@ -68,7 +69,7 @@ class guitests(TestCase):
       states_link = self.browser.find_element_by_css_selector(".states-link h5")
       self.assertEqual(states_link.text, "STATES")
       states_link.click()
-      self.assertEqual(self.browser.current_url, self.url+"states/")
+      self.assertEqual(self.browser.current_url, self.url+"states/1")
     except NoSuchElementException as err:
       self.fail(err.msg)
 
@@ -82,7 +83,7 @@ class guitests(TestCase):
 
   def test_parks_page(self):
     try:
-      self.browser.get(self.url + "parks")
+      self.browser.get(self.url + "parks/1")
       parks_title = self.browser.find_element_by_css_selector(".model-intro h2")
       self.assertEqual(parks_title.text, "NATIONAL PARKS")
     except NoSuchElementException as err:
@@ -90,15 +91,15 @@ class guitests(TestCase):
 
   def test_recreation_page(self):
     try:
-      self.browser.get(self.url + "recreation")
+      self.browser.get(self.url + "recreations/1")
       activities_title = self.browser.find_element_by_css_selector(".model-intro h2")
-      self.assertEqual(activities_title.text, "ACTIVITIES")
+      self.assertEqual(activities_title.text, "RECREATIONAL AREAS")
     except NoSuchElementException as err:
       self.fail(err.msg)
 
   def test_states_page(self):
     try:
-      self.browser.get(self.url + "states")
+      self.browser.get(self.url + "states/1")
       states_title = self.browser.find_element_by_css_selector(".model-intro h2")
       self.assertEqual(states_title.text, "STATES")
     except NoSuchElementException as err:
