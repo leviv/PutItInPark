@@ -1,6 +1,7 @@
 import React from 'react';
 import RecreationCard from './RecreationCard';
 import ReactPaginate from 'react-paginate';
+import Fuse from 'fuse.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { expandFilters } from './helpers/Helpers.js'
@@ -54,6 +55,32 @@ class Recreations extends React.Component {
       }).then(() => {
         this.setState({loaded: true});
       });
+  }
+
+  search() {
+    let searchString = document.getElementById("searchField").value
+    fetch(API_ENDPOINT) //+ "?q="+ JSON.stringify(this.state.query))
+
+      // Transform the data into json
+      .then((resp) => resp.json())
+      // Search
+      .then((data) => {
+        const options = {
+          keys: ['rec_name'],
+        };
+        const fuse = new Fuse(data['objects'], options)
+        console.log(fuse.search(searchString))
+      })
+
+      // .then((data) => {
+      //   this.setState({numPages: data.total_pages});
+      //   // Process data
+      //   data.objects.forEach((park) => {
+      //     this.state.states.push(park);
+      //   });
+      // }).then(() => {
+      //   this.setState({loaded: true});
+      // });
   }
 
   componentDidMount() {
@@ -136,8 +163,8 @@ class Recreations extends React.Component {
             <div className="row search-row">
               <div className="model-search">
                 <h4 className="model-search-component">Find</h4>
-                <input className="form-control model-search-component" type="search" placeholder="Rec Area" aria-label="Park Search"/>
-                <FontAwesomeIcon icon={faSearch} className="model-search-component"/>
+                <input className="form-control model-search-component" id="searchField" type="search" placeholder="Rec Area" aria-label="Park Search"/>
+                <FontAwesomeIcon icon={faSearch} className="model-search-component" onClick={this.search}/>
               </div>
               <FontAwesomeIcon icon={faAngleDown} id="carat" onClick={expandFilters}/>
             </div>
