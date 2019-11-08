@@ -42,7 +42,6 @@ class Parks extends React.Component {
   }
 
   makeApiCall(pageNumber) {
-    console.log(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&page=" + pageNumber);
     fetch(API_ENDPOINT + "?q="+ JSON.stringify(this.state.query) + "&results_per_page=12&page=" + pageNumber)
 
       // Transform the data into json
@@ -62,7 +61,7 @@ class Parks extends React.Component {
   search() {
     let searchString = document.getElementById("modelSearchField").value
 
-    if (searchString === '') {
+    if (searchString.length == 0) {
       this.setState({
         pageNumber: 1,
         parks: []
@@ -83,7 +82,6 @@ class Parks extends React.Component {
         };
         const fuse = new Fuse(data['objects'], options);
         const searchRes = fuse.search(searchString);
-        console.log(searchRes);
         this.props.history.push('/parks/1');
 
         this.setState({
@@ -178,7 +176,7 @@ class Parks extends React.Component {
             <div className="row search-row">
               <div className="model-search">
                 <h4 className="model-search-component">Find</h4>
-                <input className="form-control model-search-component" id="modelSearchField" type="search" placeholder="Park" aria-label="Park Search" onKeyDown={this.search}/>
+                <input className="form-control model-search-component" id="modelSearchField" type="search" placeholder="Park" aria-label="Park Search" onKeyUp={this.search}/>
                 <FontAwesomeIcon icon={faSearch} className="model-search-component" onClick={this.search}/>
               </div>
               <FontAwesomeIcon icon={faAngleDown} id="carat" onClick={expandFilters}/>

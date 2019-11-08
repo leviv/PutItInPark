@@ -61,7 +61,7 @@ class States extends React.Component {
   search() {
     let searchString = document.getElementById("modelSearchField").value
 
-    if (searchString === '') {
+    if (searchString.length == 0) {
       this.setState({
         pageNumber: 1,
         states: []
@@ -180,7 +180,7 @@ class States extends React.Component {
             <div className="row search-row">
               <div className="model-search">
                 <h4 className="model-search-component">Find</h4>
-                <input className="form-control model-search-component" id="modelSearchField" type="search" placeholder="State" aria-label="Park Search" onKeyDown={this.search}/>
+                <input className="form-control model-search-component" id="modelSearchField" type="search" placeholder="State" aria-label="Park Search" onKeyUp={this.search}/>
                 <FontAwesomeIcon icon={faSearch} className="model-search-component" onClick={this.search}/>
               </div>
               <FontAwesomeIcon icon={faAngleDown} id="carat" onClick={expandFilters}/>
