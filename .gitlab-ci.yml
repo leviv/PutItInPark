@@ -26,7 +26,7 @@ stages:
 #   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
 
 acceptance-test:
-  image: khozzy/selenium-python-chrome
+  image: jengelhart/selenium-python-chrome-fix
   stage: test
   script: cd src/; python guitests.py
 
