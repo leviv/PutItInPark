@@ -15,25 +15,15 @@ react-build:
     paths:
     - node_modules/
 
-react-test:
-  image: node:latest
-  stage: test
-  script: npm test
+# react-test:
+#   image: node:latest
+#   stage: test
+#   script: npm test
 
-# python-build:
+# python-test:
 #   image: gpdowning/python
-#   stage: build
-#   script: pip install -r backend/requirements.txt
-
-python-test:
-  image: gpdowning/python
-  stage: test
-  script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
-
-# acceptance-build:
-#   image: khozzy/selenium-python-chrome
-#   stage: build
-#   script: cd src/; python guitests.py
+#   stage: test
+#   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
 
 acceptance-test:
   image: khozzy/selenium-python-chrome
