@@ -20,10 +20,10 @@ react-test:
   stage: test
   script: npm test
 
-python-build:
-  image: gpdowning/python
-  stage: build
-  script: pip install -r backend/requirements.txt
+# python-build:
+#   image: gpdowning/python
+#   stage: build
+#   script: pip install -r backend/requirements.txt
 
 python-test:
   image: gpdowning/python
