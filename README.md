@@ -19,7 +19,7 @@ The project website is putitinpark.xyz (or putitinpark.me)
 | ------------- | ------------- |
 | Phase I | 78d4ab8333b4fde557779021f0f55ce1bfc782b1 |
 | Phase II | 0b18ebfb3349a89296881762f59674e02156f243 |
-| Phase III | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| Phase III | 8bbaebb7f94b7a9b803ab4284765129e7fac82de |
 | Phase IV | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
 
 ## GitLab Pipelines
@@ -31,7 +31,7 @@ The GitLab pipelies of the project can be found [here](https://gitlab.com/leviv1
 | ------------- | ------------- | ------------- |
 | I | 15 hours | 18 hours |
 | II | 22 hours | 52 hours |
-| III | 40 hours | x hours |
+| III | 40 hours | 42 hours |
 | IV | x hours | x hours |
 
 ## Notes
