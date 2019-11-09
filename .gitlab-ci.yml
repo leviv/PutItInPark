@@ -31,14 +31,13 @@ python-test:
   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
 
 acceptance-build:
-  image: selenium/standalone-chrome
+  image: khozzy/selenium-python-chrome
   stage: build
-  script: pip install selenium
 
 acceptance-test:
-  image: selenium/standalone-chrome
+  image: khozzy/selenium-python-chrome
   stage: test
-  script: pip install selenium; cd src/; python guitests.py
+  script: cd src/; python guitests.py
 
 postman-test:
   image: node:latest
