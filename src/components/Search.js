@@ -1,10 +1,11 @@
 import React from 'react';
 import Fuse from 'fuse.js';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import ParkCard from './ParkCard';
 import StateCard from './StateCard';
 import RecreationCard from './RecreationCard';
 import NotFound from './NotFound';
+import Highlight from 'react-highlighter';
 
 const LOC_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/locations";
 const REC_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/recreations";
@@ -14,7 +15,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     const { match } = this.props;
-    const searchString = match.params.searchString
+    const searchString = match.params.searchString;
 
     this.state = {
       states: [],
@@ -32,8 +33,8 @@ class Search extends React.Component {
       // Search
       .then((data) => {
         const options = {
-          keys: ['name'],
-          threshold: 0.3
+          keys: ['name', 'park_names', 'mail_code'],
+          threshold: 0.2
         };
         const fuse = new Fuse(data['objects'], options);
         this.setState({states: fuse.search(searchString)});
@@ -44,8 +45,8 @@ class Search extends React.Component {
           // Search
           .then((data) => {
             const options = {
-              keys: ['rec_name'],
-              threshold: 0.3
+              keys: ['rec_name', 'natpark', 'description'],
+              threshold: 0.2
             };
             const fuse = new Fuse(data['objects'], options);
             this.setState({recs: fuse.search(searchString)});
@@ -56,8 +57,8 @@ class Search extends React.Component {
               // Search
               .then((data) => {
                 const options = {
-                  keys: ['park_name'],
-                  threshold: 0.3
+                  keys: ['park_name', 'description', 'location'],
+                  threshold: 0.2
                 };
                 const fuse = new Fuse(data['objects'], options);
                 this.setState({parks: fuse.search(searchString)});
@@ -90,67 +91,48 @@ class Search extends React.Component {
       return (
         <React.Fragment>
           <div className="container">
-            <h2>Parks</h2>
-            {parkRow.map((result, index) => {
+          <br/><br/>
+            <h1 className="text-center"><span>Parks</span></h1>
+            {this.state.parks.map((result, index) => {
               return (
                 <div className="row" key={index}>
-                  {result.map((item, innerIndex) => {
-                    return (
-                      <div className="col-md-3 instance-container" key={innerIndex}>
-                        <ParkCard
-                          park_name={item.park_name}
-                          imglink={item.imglink}
-                          location={item.location}
-                          num_rec={item.num_rec}
-                          visitors={item.visitors}
-                          fee={item.fee}
-                        />
-                      </div>
-                    );
-                  })}
+                  <div className="col-md-12 instance-container" key={index}>
+                  <Link to={'/park/' + result.park_name.replace(/\s+/g, '-').toLowerCase()}>
+                    <h4><Highlight search={this.state.searchString}>{result.park_name}</Highlight></h4>
+                  </Link>
+                  <p><Highlight search={this.state.searchString}>{result.location}</Highlight></p>
+                  <p><Highlight search={this.state.searchString}>{result.description}</Highlight></p>
+                  </div>
                 </div>
               );
             })}
 
-            <h2>States</h2>
-            {stateRow.map((result, index) => {
+            <h1 className="text-center"><span>States</span></h1>
+            {this.state.states.map((result, index) => {
               return (
                 <div className="row" key={index}>
-                  {result.map((item, innerIndex) => {
-                    return (
-                      <div className="col-md-3 instance-container" key={innerIndex}>
-                        <StateCard
-                          name={item.name}
-                          imglink={item.imglink}
-                          num_parks={item.num_parks}
-                          numrec={item.numrec}
-                          pop={item.pop}
-                          mail_code={item.mail_code}
-                        />
-                      </div>
-                    );
-                  })}
+                  <div className="col-md-12 instance-container" key={index}>
+                  <Link to={'/state/' + result.name.replace(/\s+/g, '-').toLowerCase()}>
+                    <h4><Highlight search={this.state.searchString}>{result.name}</Highlight></h4>
+                  </Link>
+                  <p><Highlight search={this.state.searchString}>{result.mail_code}</Highlight></p>
+                  <p><Highlight search={this.state.searchString}>{result.park_names}</Highlight></p>
+                  </div>
                 </div>
               );
             })}
 
-            <h2>Recreational Areas</h2>
-            {recRow.map((result, index) => {
+            <h1 className="text-center"><span>Recreational Areas</span></h1>
+            {this.state.recs.map((result, index) => {
               return (
                 <div className="row" key={index}>
-                  {result.map((item, innerIndex) => {
-                    return (
-                      <div className="col-md-3 instance-container" key={innerIndex}>
-                        <RecreationCard
-                          rec_name={item.rec_name}
-                          imglink={item.imglink}
-                          num_activities={item.num_activities}
-                          reservable={item.reservable}
-                          stay_limit={item.stay_limit}
-                        />
-                      </div>
-                    );
-                  })}
+                  <div className="col-md-12 instance-container" key={index}>
+                  <Link to={'/recreation/' + result.rec_name.replace(/\s+/g, '-').toLowerCase()}>
+                    <h4><Highlight search={this.state.searchString}>{result.rec_name}</Highlight></h4>
+                  </Link>
+                  <p><Highlight search={this.state.searchString}>{result.natpark}</Highlight></p>
+                  <p><Highlight search={this.state.searchString}>{result.description}</Highlight></p>
+                  </div>
                 </div>
               );
             })}
