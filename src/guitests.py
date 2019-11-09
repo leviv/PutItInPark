@@ -8,7 +8,7 @@ from unittest import main, TestCase
 import time
 
 # URL to test on
-url = "http://putitinpark.xyz/"
+url = "localhost:3000/" #"http://putitinpark.xyz/"
 delay = 3
 
 # Test Class
