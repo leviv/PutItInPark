@@ -1,11 +1,15 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from unittest import main, TestCase
 import time
 
 # URL to test on
 url = "http://localhost:3000/"
+delay = 3
 
 # Test Class
 class guitests(TestCase):
@@ -80,6 +84,7 @@ class guitests(TestCase):
     except NoSuchElementException as err:
       self.fail(err.msg)
 
+  # Models pages
   def test_parks_page(self):
     try:
       self.browser.get(self.url + "parks/1")
@@ -101,6 +106,31 @@ class guitests(TestCase):
       self.browser.get(self.url + "states/1")
       states_title = self.browser.find_element_by_css_selector(".model-intro h2")
       self.assertEqual(states_title.text, "STATES")
+    except NoSuchElementException as err:
+      self.fail(err.msg)
+
+  # Instance tests
+  def test_park_instance(self):
+    try:
+      self.browser.get(self.url + "park/yosemite")
+      park_title = WebDriverWait(self.browser, delay).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'h1 span')))
+      self.assertEqual(park_title.text, "YOSEMITE")
+    except NoSuchElementException as err:
+      self.fail(err.msg)
+
+  def test_state_instance(self):
+    try:
+      self.browser.get(self.url + "state/texas")
+      state_title = WebDriverWait(self.browser, delay).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'h1 span')))
+      self.assertEqual(state_title.text, "TEXAS")
+    except NoSuchElementException as err:
+      self.fail(err.msg)
+
+  def test_rec_instance(self):
+    try:
+      self.browser.get(self.url + "recreation/copan-lake")
+      rec_title = WebDriverWait(self.browser, delay).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'h1 span')))
+      self.assertEqual(rec_title.text, "COPAN LAKE")
     except NoSuchElementException as err:
       self.fail(err.msg)
 
