@@ -18,7 +18,7 @@ class guitests(TestCase):
     def setUp(self):
         webdriver.ChromeOptions().add_argument("--no-sandbox")
         options = Options()
-        options.binary_location = "/usr/bin/chrome"
+        options.binary_location = "/usr/bin/google-chrome"
         self.browser = webdriver.Chrome("/usr/bin/chromedriver", chrome_options=options)
         self.url = url
 
