@@ -26,9 +26,9 @@ stages:
 #   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
 
 acceptance-test:
-  image: khozzy/selenium-python-chrome
+  image: joyzoursky/python-chromedriver
   stage: test
-  script: sudo apt install -y chromium-browser; cd src/; python guitests.py
+  script: cd src/; python guitests.py
 
 # postman-test:
 #   image: node:latest
