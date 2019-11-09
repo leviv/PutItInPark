@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 from unittest import main, TestCase
 import time
 
@@ -16,7 +17,9 @@ class guitests(TestCase):
     @classmethod
     def setUp(self):
         webdriver.ChromeOptions().add_argument("--no-sandbox")
-        self.browser = webdriver.Chrome("/usr/bin/chromedriver")
+        options = Options()
+        options.binary_location = "/usr/bin/google-chrome"
+        self.browser = webdriver.Chrome("/usr/bin/chromedriver", chrome_options=options)
         self.url = url
 
     @classmethod

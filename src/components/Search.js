@@ -98,7 +98,7 @@ class Search extends React.Component {
                 <div className="row" key={index}>
                   <div className="col-md-12 instance-container" key={index}>
                   <Link to={'/park/' + result.park_name.replace(/\s+/g, '-').toLowerCase()}>
-                    <h4><Highlight search={this.state.searchString}>{result.park_name}</Highlight></h4>
+                    <h4><Highlight search={this.state.searchString}>{result.park_name.replace(/-+/g, ' ')}</Highlight></h4>
                   </Link>
                   <p><strong>State: </strong><Highlight search={this.state.searchString}>{result.location}</Highlight></p>
                   <p><strong>Description: </strong><Highlight search={this.state.searchString}>{result.description}</Highlight></p>
@@ -113,7 +113,7 @@ class Search extends React.Component {
                 <div className="row" key={index}>
                   <div className="col-md-12 instance-container" key={index}>
                   <Link to={'/state/' + result.name.replace(/\s+/g, '-').toLowerCase()}>
-                    <h4><Highlight search={this.state.searchString}>{result.name}</Highlight></h4>
+                    <h4><Highlight search={this.state.searchString}>{result.name.replace(/-+/g, ' ')}</Highlight></h4>
                   </Link>
                   <p><strong>Mail code: </strong><Highlight search={this.state.searchString}>{result.mail_code}</Highlight></p>
                   <p><strong>Park names: </strong><Highlight search={this.state.searchString}>{result.park_names}</Highlight></p>
@@ -128,7 +128,7 @@ class Search extends React.Component {
                 <div className="row" key={index}>
                   <div className="col-md-12 instance-container" key={index}>
                   <Link to={'/recreation/' + result.rec_name.replace(/\s+/g, '-').toLowerCase()}>
-                    <h4><Highlight search={this.state.searchString}>{result.rec_name}</Highlight></h4>
+                    <h4><Highlight search={this.state.searchString}>{result.rec_name.replace(/-+/g, ' ')}</Highlight></h4>
                   </Link>
                   <p><strong>Related national park: </strong><Highlight search={this.state.searchString}>{result.natpark}</Highlight></p>
                   <p><strong>Description: </strong><Highlight search={this.state.searchString}>{result.description}</Highlight></p>
