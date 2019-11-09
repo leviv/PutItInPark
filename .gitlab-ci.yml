@@ -1,37 +1,37 @@
 
 stages:
-  # - build
+  - build
   - test
 
-# react-build:
-#   image: node:latest
-#   stage: build
-#   script:
-#     - npm install
-#   artifacts:
-#     paths:
-#       - node_modules/
-#   cache:
-#     paths:
-#     - node_modules/
+react-build:
+  image: node:latest
+  stage: build
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+  cache:
+    paths:
+    - node_modules/
 
-# react-test:
-#   image: node:latest
-#   stage: test
-#   script: npm test
-
-# python-test:
-#   image: gpdowning/python
-#   stage: test
-#   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
-
-acceptance-test:
-  image: jengelhart/selenium-python-chrome-fix:firsttry
+react-test:
+  image: node:latest
   stage: test
-  script: cd src/; python guitests.py
+  script: npm test
 
-# postman-test:
-#   image: node:latest
+python-test:
+  image: gpdowning/python
+  stage: test
+  script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
+
+# acceptance-test:
+#   image: jengelhart/selenium-python-chrome-fix:firsttry
 #   stage: test
-#   script: npm i newman -g; newman run https://api.getpostman.com/collections/9011044-807f31d4-357a-4aa3-86e9-48617cd058c2?apikey=PMAK-5dc20ff283bc7d003c55ef0f-f2654aab762fba14f4acd41cd93de523c8 --environment https://api.getpostman.com/environments/9011044-e03f3512-5956-4932-8c80-6bcd5a3bce9a?apikey=PMAK-5dc20ff283bc7d003c55ef0f-f2654aab762fba14f4acd41cd93de523c8
+#   script: cd src/; python guitests.py
+
+postman-test:
+  image: node:latest
+  stage: test
+  script: npm i newman -g; newman run https://api.getpostman.com/collections/9011044-807f31d4-357a-4aa3-86e9-48617cd058c2?apikey=PMAK-5dc20ff283bc7d003c55ef0f-f2654aab762fba14f4acd41cd93de523c8 --environment https://api.getpostman.com/environments/9011044-e03f3512-5956-4932-8c80-6bcd5a3bce9a?apikey=PMAK-5dc20ff283bc7d003c55ef0f-f2654aab762fba14f4acd41cd93de523c8
 
