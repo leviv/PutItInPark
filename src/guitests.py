@@ -16,7 +16,7 @@ class guitests(TestCase):
     @classmethod
     def setUp(self):
         webdriver.ChromeOptions().add_argument("--no-sandbox")
-        self.browser = webdriver.Chrome("/Users/leviv/Downloads/chromedriver")
+        self.browser = webdriver.Chrome()
         self.url = url
 
     @classmethod

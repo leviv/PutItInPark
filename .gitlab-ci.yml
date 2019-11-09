@@ -31,12 +31,12 @@ python-test:
   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
 
 acceptance-build:
-  image: gpdowning/python
+  image: selenium/standalone-chrome
   stage: build
   script: pip install selenium
 
 acceptance-test:
-  image: gpdowning/python
+  image: selenium/standalone-chrome
   stage: test
   script: pip install selenium; cd src/; python guitests.py
 
