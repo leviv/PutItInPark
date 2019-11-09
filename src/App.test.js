@@ -22,6 +22,7 @@ import StateCard from './components/StateCard';
 import States from './components/States';
 import TeamMember from './components/TeamMember';
 import ToolCard from './components/ToolCard';
+import Search from './components/Search';
 
 describe('Basic functionality Tests', () => {
   describe('App', function() {
@@ -31,9 +32,9 @@ describe('Basic functionality Tests', () => {
       ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('renders 1 navbar', () => {
-      const app = shallow(<App />);
-      expect(app.find('Header').length).toEqual(1);
+    it('renders the navbar', () => {
+      const header = shallow(<Header />);
+      expect(header).toMatchSnapshot();
     });
   });
 
@@ -145,6 +146,15 @@ describe('Instance Page Tests', () => {
     it('renders successfully', () => {
       const activity = shallow(<Recreation match={match}/>);
       expect(activity).toMatchSnapshot();
+    });
+  });
+
+  describe('Search page', function() {
+    const match = {params: {searchString: "Copan Lake"}};
+
+    it('renders successfully', () => {
+      const search = shallow(<Search match={match}/>);
+      expect(search).toMatchSnapshot();
     });
   });
 });
