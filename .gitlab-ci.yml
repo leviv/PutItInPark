@@ -30,9 +30,10 @@ python-test:
   stage: test
   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
 
-acceptance-build:
-  image: khozzy/selenium-python-chrome
-  stage: build
+# acceptance-build:
+#   image: khozzy/selenium-python-chrome
+#   stage: build
+#   script: cd src/; python guitests.py
 
 acceptance-test:
   image: khozzy/selenium-python-chrome
