@@ -30,6 +30,16 @@ python-test:
   stage: test
   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
 
+acceptance-build:
+  image: gpdowning/python
+  stage: build
+  script: pip install selenium
+
+acceptance-test:
+  image: gpdowning/python
+  stage: test
+  script: pip install selenium; cd src/; python guitests.py
+
 postman-test:
   image: node:latest
   stage: test
