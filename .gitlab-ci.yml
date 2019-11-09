@@ -28,7 +28,7 @@ stages:
 acceptance-test:
   image: khozzy/selenium-python-chrome
   stage: test
-  script: apt install -y chromium-browser; cd src/; python guitests.py
+  script: sudo apt install -y chromium-browser; cd src/; python guitests.py
 
 # postman-test:
 #   image: node:latest
