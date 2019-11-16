@@ -37,7 +37,7 @@ def alter_text(text):
             res += c 
     return res
 
-file = open("allwithimages.txt", "r")
+file = open("recinfo.txt", "r")
 
 for line in file:
     v = line.split("|")
