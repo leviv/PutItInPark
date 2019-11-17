@@ -8,20 +8,20 @@ import Adapter from 'enzyme-adapter-react-16'
 configure({ adapter: new Adapter() });
 
 // Custom components
-import About from './components/About';
+import About from './components/about/About';
 import Header from './components/Header';
 import Home from './components/Home';
-import Park from './components/Park';
-import ParkCard from './components/ParkCard';
-import Parks from './components/Parks';
-import Recreations from './components/Recreations';
-import RecreationCard from './components/RecreationCard';
-import Recreation from './components/Recreation';
-import State from './components/State';
-import StateCard from './components/StateCard';
-import States from './components/States';
-import TeamMember from './components/TeamMember';
-import ToolCard from './components/ToolCard';
+import Park from './components/park/Park';
+import ParkCard from './components/park/ParkCard';
+import Parks from './components/park/Parks';
+import Recreations from './components/recreation/Recreations';
+import RecreationCard from './components/recreation/RecreationCard';
+import Recreation from './components/recreation/Recreation';
+import State from './components/state/State';
+import StateCard from './components/state/StateCard';
+import States from './components/state/States';
+import TeamMember from './components/about/TeamMember';
+import ToolCard from './components/about/ToolCard';
 import Search from './components/Search';
 
 describe('Basic functionality Tests', () => {

@@ -1,3 +1,6 @@
+/**
+ * A function to open the filter dropdown when the arrow icon is clicked
+ */
 export function expandFilters () {
   const filters= document.getElementById("augment-container");
   if (filters.classList.contains("collapsed")) {
