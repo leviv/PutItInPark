@@ -61,7 +61,7 @@ class States extends React.Component {
   search() {
     let searchString = document.getElementById("modelSearchField").value
 
-    if (searchString.length == 0) {
+    if (searchString.length === 0) {
       this.setState({
         pageNumber: 1,
         states: []

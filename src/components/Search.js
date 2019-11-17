@@ -1,9 +1,6 @@
 import React from 'react';
 import Fuse from 'fuse.js';
-import { Route, Link } from 'react-router-dom';
-import ParkCard from './ParkCard';
-import StateCard from './StateCard';
-import RecreationCard from './RecreationCard';
+import { Link } from 'react-router-dom';
 import NotFound from './NotFound';
 import Highlight from 'react-highlighter';
 
@@ -76,18 +73,6 @@ class Search extends React.Component {
   render() {
     // Page loaded
     if (this.state.loaded){
-      const parkRow = this.state.parks.map((x,i) => {
-        return i % 4 === 0 ? this.state.parks.slice(i, i+4) : null;
-      }).filter(x => x != null);
-
-      const stateRow = this.state.states.map((x,i) => {
-        return i % 4 === 0 ? this.state.states.slice(i, i+4) : null;
-      }).filter(x => x != null);
-
-      const recRow = this.state.recs.map((x,i) => {
-        return i % 4 === 0 ? this.state.recs.slice(i, i+4) : null;
-      }).filter(x => x != null);
-
       return (
         <React.Fragment>
           <div className="container">

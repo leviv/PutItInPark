@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route , withRouter} from 'react-router-dom';
-import Fuse from 'fuse.js';
+import {  withRouter} from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'

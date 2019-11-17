@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function expandFilters () {
   const filters= document.getElementById("augment-container");
   if (filters.classList.contains("collapsed")) {
