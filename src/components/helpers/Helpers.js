@@ -16,3 +16,14 @@ export function expandFilters () {
     document.getElementById("carat").style.transform = "rotate(0deg)";
   }
 }
+
+/**
+ * A function to convert a list of objects to a list of 3 object lists
+ */
+export function convertToRows (data) {
+  const rows = data.map((x,i) => {
+    return i % 4 === 0 ? data.slice(i, i+4) : null;
+  }).filter(x => x != null);
+
+  return rows;
+}

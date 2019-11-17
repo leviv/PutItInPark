@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import RecreationCard from '../recreation/RecreationCard';
 import NotFound from '../NotFound';
+import { convertToRows } from '../helpers/Helpers.js'
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
@@ -64,10 +65,7 @@ class Park extends React.Component {
     // The API call has finished
     if (this.state.loaded){
       const displayName = this.state.park.park_name.replace(/-+/g, ' ');
-
-      const row = this.state.recreations.map((x,i) => {
-        return i % 4 === 0 ? this.state.recreations.slice(i, i+4) : null;
-      }).filter(x => x != null);
+      const parkRows = convertToRows(this.state.recreations);
 
       return (
         <React.Fragment>
@@ -101,10 +99,10 @@ class Park extends React.Component {
             </div>
 
             <h3>Recreational Areas</h3>
-            {row.map((result, index) => {
+            {parkRows.map((row, index) => {
               return (
                 <div className="row" key={index}>
-                  {result.map((item, innerIndex) => {
+                  {row.map((item, innerIndex) => {
                     return (
                       <div className="col-md-3 instance-container" key={innerIndex}>
                         <RecreationCard

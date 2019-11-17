@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import Fuse from 'fuse.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { expandFilters } from '../helpers/Helpers.js'
+import { convertToRows, expandFilters } from '../helpers/Helpers.js'
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/nationalparks";
 
@@ -159,11 +159,9 @@ class Parks extends React.Component {
 
   render() {
     const { match } = this.props;
-    const pageNum = match.params.page
+    const pageNum = match.params.page;
 
-    const row = this.state.parks.map((x,i) => {
-      return i % 4 === 0 ? this.state.parks.slice(i, i+4) : null;
-    }).filter(x => x != null);
+    const parkRows = convertToRows(this.state.parks);
 
     return (
       <React.Fragment>
@@ -223,10 +221,10 @@ class Parks extends React.Component {
             </div>
           </div>
 
-          {row.map((result, index) => {
+          {parkRows.map((row, index) => {
             return (
               <div className="row" key={index}>
-                {result.map((item, innerIndex) => {
+                {row.map((item, innerIndex) => {
                   return (
                     <div className="col-md-3 instance-container" key={innerIndex}>
                       <ParkCard

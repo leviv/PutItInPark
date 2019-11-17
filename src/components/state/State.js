@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import ParkCard from '../park/ParkCard';
 import RecreationCard from '../recreation/RecreationCard';
 import NotFound from '../NotFound';
+import { convertToRows } from '../helpers/Helpers.js'
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
@@ -76,15 +77,9 @@ class State extends React.Component {
   }
 
   render() {
-    // Valid park
     if (this.state.loaded){
-      const parksRow = this.state.parks.map((x,i) => {
-        return i % 4 === 0 ? this.state.parks.slice(i, i+4) : null;
-      }).filter(x => x != null);
-
-      const recRow = this.state.recs.map((x,i) => {
-        return i % 4 === 0 ? this.state.recs.slice(i, i+4) : null;
-      }).filter(x => x != null);
+      const parkRows = convertToRows(this.state.parks);
+      const recRows = convertToRows(this.state.recs);
 
       return (
         <React.Fragment>
@@ -114,10 +109,10 @@ class State extends React.Component {
               <h4>No Parks<br/><br/></h4>
             }
 
-            {parksRow.map((result, index) => {
+            {parkRows.map((row, index) => {
               return (
                 <div className="row" key={index}>
-                  {result.map((item, innerIndex) => {
+                  {row.map((item, innerIndex) => {
                     return (
                       <div className="col-md-3 instance-container" key={innerIndex}>
                         <ParkCard
@@ -136,10 +131,10 @@ class State extends React.Component {
            })}
 
            <h3>Recreational Areas</h3>
-           {recRow.map((result, index) => {
+           {recRows.map((row, index) => {
              return (
                <div className="row" key={index}>
-                 {result.map((item, innerIndex) => {
+                 {row.map((item, innerIndex) => {
                    return (
                      <div className="col-md-3 instance-container" key={innerIndex}>
                        <RecreationCard

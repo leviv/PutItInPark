@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import Fuse from 'fuse.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { expandFilters } from '../helpers/Helpers.js'
+import { convertToRows, expandFilters } from '../helpers/Helpers.js'
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/recreations";
 
@@ -155,11 +155,9 @@ class Recreations extends React.Component {
 
   render() {
     const { match } = this.props;
-    const pageNum = match.params.page
+    const pageNum = match.params.page;
 
-    const row = this.state.recs.map((x,i) => {
-      return i % 4 === 0 ? this.state.recs.slice(i, i+4) : null;
-    }).filter(x => x != null);
+    const cardRows = convertToRows(this.state.recs);
 
     return (
       <React.Fragment>
@@ -218,10 +216,10 @@ class Recreations extends React.Component {
             </div>
           </div>
 
-          {row.map((result, index) => {
+          {cardRows.map((row, index) => {
             return (
               <div className="row" key={index}>
-                {result.map((item, innerIndex) => {
+                {row.map((item, innerIndex) => {
                   return (
                     <div className="col-md-3 instance-container" key={innerIndex}>
                       <RecreationCard
