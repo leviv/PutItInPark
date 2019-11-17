@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-import RecreationCard from './RecreationCard';
-import NotFound from './NotFound';
+import RecreationCard from '../recreation/RecreationCard';
+import NotFound from '../NotFound';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 

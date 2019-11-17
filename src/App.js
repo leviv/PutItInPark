@@ -4,17 +4,21 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-do
 
 // Import components
 import Home from './components/Home';
+import About from './components/about/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import About from './components/About';
-import Parks from './components/Parks';
-import Recreations from './components/Recreations';
-import States from './components/States';
 import NotFound from './components/NotFound';
-import Park from './components/Park';
-import Recreation from './components/Recreation';
-import State from './components/State';
 import Search from './components/Search';
+
+// Models
+import Parks from './components/park/Parks';
+import Recreations from './components/recreation/Recreations';
+import States from './components/state/States';
+
+// Instances
+import Park from './components/park/Park';
+import Recreation from './components/recreation/Recreation';
+import State from './components/state/State';
 
 function App() {
   return (

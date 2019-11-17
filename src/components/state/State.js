@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import ParkCard from './ParkCard';
-import RecreationCard from './RecreationCard';
-import NotFound from './NotFound';
+import ParkCard from '../park/ParkCard';
+import RecreationCard from '../recreation/RecreationCard';
+import NotFound from '../NotFound';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
