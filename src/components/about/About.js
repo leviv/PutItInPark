@@ -215,11 +215,15 @@ class About extends React.Component {
                 tool_name= {"React JS"}
                 description= {"JavaScript library, namely using react routing"}
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={NodePhoto}
                 tool_name= {"Node"}
                 description= {"JavaScript run-time environment that executes JavaScript code outside of a browser"}
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={ExpressPhoto}
                 tool_name="Express"
@@ -232,11 +236,15 @@ class About extends React.Component {
                 tool_name="GCP"
                 description="Used to deploy and host the web application"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={BootstrapPhoto}
                 tool_name="Bootstrap"
                 description="Free and open-source CSS framework directed at responsive, mobile-first front-end web development"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={PostmanPhoto}
                 tool_name="Postman"
@@ -249,11 +257,15 @@ class About extends React.Component {
                 tool_name="GitLab"
                 description="Used to host our code and provide CI/CD environments"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={PixabayPhoto}
                 tool_name="Pixabay"
                 description="Used to find royalty-free images for the static site"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={NamecheapPhoto}
                 tool_name="NameCheap"
@@ -266,11 +278,15 @@ class About extends React.Component {
                 tool_name="Mocha"
                 description="Used as our JavaScript test framework"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={EnzymePhoto}
                 tool_name="Enzyme"
                 description="Used to more easily test our React components"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={SeleniumPhoto}
                 tool_name="Selenium"
@@ -283,11 +299,15 @@ class About extends React.Component {
                 tool_name="Chrome Webdriver"
                 description="A controllable webdriver for Selenium"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={SCSSPhoto}
                 tool_name="SCSS"
                 description="Used to make styles more flexible and readable"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={DockerPhoto}
                 tool_name="Docker"
@@ -300,11 +320,15 @@ class About extends React.Component {
                 tool_name="MySQL"
                 description="Relational database management system used to store our data"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={CloudPhoto}
                 tool_name="Cloud SQL Proxy"
                 description="Allowed to connect to the database locally using GCP"
               />
+            </div>
+            <div className="col-md-4 instance-container">
               <ToolCard
                 imageUrl={FlaskPhoto}
                 tool_name="Flask"

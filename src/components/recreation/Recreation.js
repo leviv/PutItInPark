@@ -89,11 +89,11 @@ class Recreation extends React.Component {
             <div className="row">
               <div className="col-sm-6 reservable">
                 <h3>Reservable</h3>
-                <p>{"" + this.state.rec.reservable}</p>
+                <p>{this.state.rec.reservable}</p>
               </div>
               <div className="col-sm-6 stay-limit">
                 <h3>Stay Limit</h3>
-                <p>{"" + this.state.rec.stay_limit}</p>
+                <p>{this.state.rec.stay_limit}</p>
               </div>
             </div>
 
