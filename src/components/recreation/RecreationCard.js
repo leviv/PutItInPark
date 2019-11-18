@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { displayName, slugName } from '../helpers/Helpers.js';
 
 class RecreationCard extends React.Component {
   render() {
-    const slug = '/recreation/' + this.props.rec_name.replace(/\s+/g, '-').toLowerCase();
-    const displayName = this.props.rec_name.replace(/-+/g, ' ');
+    const slug = slugName('/recreation/', this.props.rec_name);
+    const title = displayName(this.props.rec_name);
     const reservable = this.props.reservable === "0" ? "No" : "Yes";
     const stay_limit = this.props.stay_limit === "0" ? "No" : "Yes";
 
@@ -20,7 +21,7 @@ class RecreationCard extends React.Component {
               <p>Stay Limit: {stay_limit}</p>
             </div>
             <div className="details">
-              <h4>{displayName}</h4>
+              <h4>{title}</h4>
             </div>
           </div>
         </div>

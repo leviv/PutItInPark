@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { displayName, slugName } from '../helpers/Helpers.js';
 
 class StateCard extends React.Component {
   render() {
-    const slug = '/state/' + this.props.name.replace(/\s+/g, '-').toLowerCase();
-    const displayName = this.props.name.replace(/-+/g, ' ');
+    const slug = slugName('/state/', this.props.name);
+    const title = displayName(this.props.name);
 
     return (
       <Link to={slug}>
@@ -19,7 +20,7 @@ class StateCard extends React.Component {
               <p>Mail Code: {this.props.mail_code}</p>
             </div>
             <div className="details">
-              <h4>{displayName}</h4>
+              <h4>{title}</h4>
             </div>
           </div>
         </div>

@@ -2,9 +2,9 @@ import React from 'react';
 import ParkCard from './ParkCard';
 import ReactPaginate from 'react-paginate';
 import Fuse from 'fuse.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { convertToRows, expandFilters } from '../helpers/Helpers.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { convertToRows, expandFilters } from '../helpers/Helpers.js';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/nationalparks";
 

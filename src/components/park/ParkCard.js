@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { displayName, slugName } from '../helpers/Helpers.js';
 
 class ParkCard extends React.Component {
   render() {
-    const slug = '/park/' + this.props.park_name.replace(/\s+/g, '-').toLowerCase();
-    const displayName = this.props.park_name.replace(/-+/g, ' ')
+    const slug = slugName('/park/', this.props.park_name);
+    const title = displayName(this.props.park_name);
 
     return (
       <Link to={slug}>
@@ -19,7 +20,7 @@ class ParkCard extends React.Component {
               <p>Fees: ${this.props.fee}</p>
             </div>
             <div className="details">
-              <h4>{displayName}</h4>
+              <h4>{title}</h4>
             </div>
           </div>
         </div>

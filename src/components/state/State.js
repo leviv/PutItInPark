@@ -3,7 +3,8 @@ import { Route } from 'react-router-dom';
 import ParkCard from '../park/ParkCard';
 import RecreationCard from '../recreation/RecreationCard';
 import NotFound from '../NotFound';
-import { convertToRows } from '../helpers/Helpers.js'
+import { convertToRows } from '../helpers/Helpers.js';
+import { displayName } from '../helpers/Helpers.js';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
@@ -78,6 +79,7 @@ class State extends React.Component {
 
   render() {
     if (this.state.loaded){
+      const title = displayName(this.state.state.name);
       const parkRows = convertToRows(this.state.parks);
       const recRows = convertToRows(this.state.recs);
 
@@ -85,7 +87,7 @@ class State extends React.Component {
         <React.Fragment>
           <div className="instance-intro"
                style={{ backgroundImage: `url(${this.state.state.imglink})`}}>
-            <h1><span>{this.state.state.name}</span></h1>
+            <h1><span>{title}</span></h1>
           </div>
 
           <div className="container instance">

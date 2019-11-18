@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import RecreationCard from '../recreation/RecreationCard';
 import NotFound from '../NotFound';
-import { convertToRows } from '../helpers/Helpers.js'
+import { displayName, convertToRows, slugName } from '../helpers/Helpers.js';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
@@ -64,14 +64,14 @@ class Park extends React.Component {
   render() {
     // The API call has finished
     if (this.state.loaded){
-      const displayName = this.state.park.park_name.replace(/-+/g, ' ');
+      const title = displayName(this.state.park.park_name);
       const parkRows = convertToRows(this.state.recreations);
 
       return (
         <React.Fragment>
           <div className="instance-intro"
                style={{ backgroundImage: `url(${this.state.park.imglink})`}}>
-            <h1><span>{displayName}</span></h1>
+            <h1><span>{title}</span></h1>
           </div>
 
           <div className="container instance">
@@ -84,7 +84,7 @@ class Park extends React.Component {
                 <h3>State(s)</h3>
                 {this.state.park.location.map((item, index) => {
                   return (
-                    <p><Link to={getSlug('state', item)}>{item}</Link><br/></p>
+                    <p><Link to={slugName('/state/', item)}>{item}</Link><br/></p>
                   );
                 })}
               </div>
@@ -140,10 +140,6 @@ class Park extends React.Component {
       <Route component={NotFound} />
     );
   }
-}
-
-function getSlug(pre, str) {
-  return "/" + pre + "/" + str.replace(/\s+/g, '-').toLowerCase();
 }
 
 export default GoogleApiWrapper({

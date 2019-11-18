@@ -4,6 +4,7 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import NotFound from '../NotFound';
 import StateCard from '../state/StateCard';
 import ParkCard from '../park/ParkCard';
+import { displayName } from '../helpers/Helpers.js';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
@@ -72,13 +73,13 @@ class Recreation extends React.Component {
   render() {
     // Component loaded
     if (this.state.loaded){
-      const displayName = this.state.rec.rec_name.replace(/-+/g, ' ');
+      const title = displayName(this.state.rec.rec_name);
 
       return (
         <React.Fragment>
           <div className="instance-intro"
                style={{ backgroundImage: `url(${this.state.rec.imglink})`}}>
-            <h1><span>{displayName}</span></h1>
+            <h1><span>{title}</span></h1>
           </div>
 
           <div className="container instance">

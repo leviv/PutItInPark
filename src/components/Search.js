@@ -3,6 +3,7 @@ import Fuse from 'fuse.js';
 import { Link } from 'react-router-dom';
 import NotFound from './NotFound';
 import Highlight from 'react-highlighter';
+import { displayName, slugName } from './helpers/Helpers.js';
 
 const LOC_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/locations";
 const REC_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api/recreations";
@@ -78,45 +79,51 @@ class Search extends React.Component {
           <div className="container">
           <br/><br/>
             <h1 className="text-center"><span>Parks</span></h1>
-            {this.state.parks.map((result, index) => {
+            {this.state.parks.map((park, index) => {
               return (
                 <div className="row" key={index}>
                   <div className="col-md-12 instance-container" key={index}>
-                  <Link to={'/park/' + result.park_name.replace(/\s+/g, '-').toLowerCase()}>
-                    <h4><Highlight search={this.state.searchString}>{result.park_name.replace(/-+/g, ' ')}</Highlight></h4>
+                  <Link to={slugName('/park/', park.park_name)}>
+                    <h4><Highlight search={this.state.searchString}>
+                      {displayName(park.park_name)}
+                    </Highlight></h4>
                   </Link>
-                  <p><strong>State: </strong><Highlight search={this.state.searchString}>{result.location}</Highlight></p>
-                  <p><strong>Description: </strong><Highlight search={this.state.searchString}>{result.description}</Highlight></p>
+                  <p><strong>State: </strong><Highlight search={this.state.searchString}>{park.location}</Highlight></p>
+                  <p><strong>Description: </strong><Highlight search={this.state.searchString}>{park.description}</Highlight></p>
                   </div>
                 </div>
               );
             })}
 
             <h1 className="text-center"><span>States</span></h1>
-            {this.state.states.map((result, index) => {
+            {this.state.states.map((state, index) => {
               return (
                 <div className="row" key={index}>
                   <div className="col-md-12 instance-container" key={index}>
-                  <Link to={'/state/' + result.name.replace(/\s+/g, '-').toLowerCase()}>
-                    <h4><Highlight search={this.state.searchString}>{result.name.replace(/-+/g, ' ')}</Highlight></h4>
+                  <Link to={slugName('/state/', state.name)}>
+                    <h4><Highlight search={this.state.searchString}>
+                      {displayName(state.name)}
+                    </Highlight></h4>
                   </Link>
-                  <p><strong>Mail code: </strong><Highlight search={this.state.searchString}>{result.mail_code}</Highlight></p>
-                  <p><strong>Park names: </strong><Highlight search={this.state.searchString}>{result.park_names}</Highlight></p>
+                  <p><strong>Mail code: </strong><Highlight search={this.state.searchString}>{state.mail_code}</Highlight></p>
+                  <p><strong>Park names: </strong><Highlight search={this.state.searchString}>{state.park_names}</Highlight></p>
                   </div>
                 </div>
               );
             })}
 
             <h1 className="text-center"><span>Recreational Areas</span></h1>
-            {this.state.recs.map((result, index) => {
+            {this.state.recs.map((recreation, index) => {
               return (
                 <div className="row" key={index}>
                   <div className="col-md-12 instance-container" key={index}>
-                  <Link to={'/recreation/' + result.rec_name.replace(/\s+/g, '-').toLowerCase()}>
-                    <h4><Highlight search={this.state.searchString}>{result.rec_name.replace(/-+/g, ' ')}</Highlight></h4>
+                  <Link to={slugName('/recreation/', recreation.rec_name)}>
+                    <h4><Highlight search={this.state.searchString}>
+                      {displayName(recreation.rec_name)}
+                    </Highlight></h4>
                   </Link>
-                  <p><strong>Related national park: </strong><Highlight search={this.state.searchString}>{result.natpark}</Highlight></p>
-                  <p><strong>Description: </strong><Highlight search={this.state.searchString}>{result.description}</Highlight></p>
+                  <p><strong>Related national park: </strong><Highlight search={this.state.searchString}>{recreation.natpark}</Highlight></p>
+                  <p><strong>Description: </strong><Highlight search={this.state.searchString}>{recreation.description}</Highlight></p>
                   </div>
                 </div>
               );
