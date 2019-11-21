@@ -43,7 +43,7 @@ class Search extends React.Component {
           // Search
           .then((data) => {
             const options = {
-              keys: ['rec_name', 'natpark', 'description', 'activities'],
+              keys: ['rec_name', 'natpark', 'location', 'description', 'activities'],
               threshold: 0.2
             };
             const fuse = new Fuse(data['objects'], options);
@@ -141,6 +141,7 @@ class Search extends React.Component {
                           {displayName(recreation.rec_name)}
                         </Highlight></h4>
                       </Link>
+                      <p><strong>State: </strong><Highlight search={this.state.searchString}>{displayName(recreation.location)}</Highlight></p>
                       <p><strong>Related national park: </strong><Highlight search={this.state.searchString}>{displayName(recreation.natpark)}</Highlight></p>
                       <p><strong>Description: </strong><Highlight search={this.state.searchString}>{recreation.description}</Highlight></p>
                       <p><strong>Activities: </strong><Highlight search={this.state.searchString}>{displayName(recreation.activities)}</Highlight></p>
