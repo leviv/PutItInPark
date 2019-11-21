@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { displayName, slugName } from '../helpers/Helpers.js';
+import { displayName, slugName, formatNumber } from '../helpers/Helpers.js';
 
 class StateCard extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class StateCard extends React.Component {
             <div className="hidden-details">
               <p>No. Parks: {this.props.num_parks}</p>
               <p>No. Rec Areas: {this.props.numrec}</p>
-              <p>Population: {this.props.pop}</p>
+              <p>Population: {formatNumber(this.props.pop)}</p>
               <p>Mail Code: {this.props.mail_code}</p>
             </div>
             <div className="details">

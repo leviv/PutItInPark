@@ -32,7 +32,11 @@ export function convertToRows (data) {
  * A function to convert a string seperated by dashes to one space seperated
  */
 export function displayName (name) {
-  return name.replace(/-+/g, ' ').toUpperCase();
+  return name.replace(/-+/g, ' ').toLowerCase()
+    .replace(/,/g, ', ')
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');;
 }
 
 /**
@@ -40,4 +44,11 @@ export function displayName (name) {
  */
 export function slugName (prefix, name) {
   return prefix + name.replace(/\s+/g, '-').toLowerCase();
+}
+
+/**
+ * A function to convert a number to one seperated by commas
+ */
+export function formatNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

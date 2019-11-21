@@ -4,7 +4,7 @@ import ParkCard from '../park/ParkCard';
 import RecreationCard from '../recreation/RecreationCard';
 import NotFound from '../NotFound';
 import { convertToRows } from '../helpers/Helpers.js';
-import { displayName } from '../helpers/Helpers.js';
+import { displayName, formatNumber } from '../helpers/Helpers.js';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
@@ -98,7 +98,7 @@ class State extends React.Component {
               </div>
               <div className="col-md-4 fees">
                 <h3>Population</h3>
-                <p>{this.state.state.pop}</p>
+                <p>{formatNumber(this.state.state.pop)}</p>
               </div>
               <div className="col-md-4 dates-open">
                 <h3>Number of Recreational Areas</h3>

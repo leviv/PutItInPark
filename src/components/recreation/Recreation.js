@@ -120,10 +120,9 @@ class Recreation extends React.Component {
                     location={this.state.park.location}
                     num_rec={this.state.park.num_rec}
                     fee={this.state.park.fee}
+                    visitors={this.state.park.visitors}
                   />
                 )}
-
-
               </div>
             </div>
 

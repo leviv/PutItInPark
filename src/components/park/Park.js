@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import RecreationCard from '../recreation/RecreationCard';
 import NotFound from '../NotFound';
-import { displayName, convertToRows, slugName } from '../helpers/Helpers.js';
+import { displayName, convertToRows, slugName, formatNumber } from '../helpers/Helpers.js';
 
 const API_ENDPOINT = "https://flask-backend-dot-potent-retina-254722.appspot.com/api";
 
@@ -94,7 +94,7 @@ class Park extends React.Component {
               </div>
               <div className="col-md-4 visitors">
                 <h3>Annual Visitors</h3>
-                <p>{this.state.park.visitors}</p>
+                <p>{formatNumber(this.state.park.visitors)}</p>
               </div>
             </div>
 
