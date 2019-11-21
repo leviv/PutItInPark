@@ -78,7 +78,7 @@ describe('Model Page Tests', () => {
 
     it('displays card title', () => {
       const title = parks.find('h4');
-      expect(title.text()).toEqual('TEST PARK');
+      expect(title.text()).toEqual('Test Park');
     });
   });
 
@@ -97,7 +97,7 @@ describe('Model Page Tests', () => {
 
     it('displays card title', () => {
       const title = states.find('h4');
-      expect(title.text()).toEqual('TEST STATE');
+      expect(title.text()).toEqual('Test State');
     });
   });
 
@@ -116,7 +116,7 @@ describe('Model Page Tests', () => {
 
     it('displays card title', () => {
       const title = rec.find('h4');
-      expect(title.text()).toEqual('TEST REC');
+      expect(title.text()).toEqual('Test Rec');
     });
   });
 });
