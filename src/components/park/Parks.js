@@ -70,7 +70,7 @@ class Parks extends React.Component {
       return;
     }
 
-    fetch(API_ENDPOINT) //+ "?q="+ JSON.stringify(this.state.query))
+    fetch(API_ENDPOINT)
 
       // Transform the data into json
       .then((resp) => resp.json())
