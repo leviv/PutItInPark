@@ -37,7 +37,7 @@ def alter_text(text):
             res += c 
     return res
 
-file = open("recinfo.txt", "r")
+file = open("newrecinfoupdate.txt", "r")
 
 for line in file:
     v = line.split("|")

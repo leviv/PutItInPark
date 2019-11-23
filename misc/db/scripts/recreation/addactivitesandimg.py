@@ -23,7 +23,7 @@ for line in file:
     
     #next step - use image searching api to find images for all rec areas
     print(prev_info.strip(), end = "")
-    print('|' + str(num_activities) + '|' + activities.strip(',') + "|" + 'https://static.vecteezy.com/system/resources/previews/000/052/492/original/under-construction-vector.jpg')
+    print('|' + str(num_activities) + '|' + activities.strip(',') + "|" + 'imglink')
 
 
 
