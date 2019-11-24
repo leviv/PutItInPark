@@ -1,4 +1,4 @@
-file = open("alllocationdata.txt", "r")
+file = open("locationinfo.txt", "r")
 #create table
 print ('CREATE TABLE location (fips VARCHAR(2), name VARCHAR(50), num_parks TINYINT(10), park_names VARCHAR(80), numrec TINYINT(250), rec_ids VARCHAR(1000), pop INT, mail_code VARCHAR(2), imglink VARCHAR(100));') 
 
