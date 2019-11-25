@@ -41,7 +41,9 @@ class State extends React.Component {
             .then((resp) => resp.json())
             .then((data) => {
               // Process data
-              this.state.recs.push(data);
+              if (data.message !== "No result found") {
+                this.state.recs.push(data);
+              }
             }).then(() => {
               numRecsLoaded++;
               if (numRecsLoaded === this.state.state.rec_ids.length) {
