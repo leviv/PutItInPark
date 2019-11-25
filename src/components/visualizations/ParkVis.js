@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import {geoAlbersUsa, path} from 'd3-geo';
 import {feature} from 'topojson-client';
 import us from '../../assets/us.json';
+import {formatNumber} from '../helpers/Helpers.js'
 import NotFound from '../NotFound';
 import ParkCard from '../park/ParkCard';
 
@@ -51,7 +52,15 @@ class ParkVis extends React.Component {
     .datum(feature(us, us.objects.states))
     .attr("d", d3.geoPath().projection(projection));
 
-    // Plot all of the national parks 11421,200 14,937
+    // Append the tooltip
+    let div = d3.select("body").append("div")
+     .attr("class", "tooltip")
+     .style("opacity", 0);
+
+    // Avoid confusing 'this'
+    let self = this;
+
+    // Plot all of the national parks
     chart.selectAll('circle')
     .data(this.state.parks).enter().append('circle')
     .attr('r', function(d) {return (d.visitors - 14937) / 11406263 * 20 + 7})
@@ -61,23 +70,39 @@ class ParkVis extends React.Component {
     .attr("cy", function(d) { return projection([d.lon, d.lat])[1] })
     .style('cursor', 'pointer')
     .on('mouseover', function(d, i) {
+      // Slightly expand the circle
       d3.select(this)
         .transition(.2)
         .duration(100)
         .attr('r', (d.visitors - 14937) / 11406263 * 20 + 9);
+
+      // Fade in the tooltip
+      div.transition()
+        .duration(.2)
+        .style("opacity", 1);
+
+      // Set the position of the tooltip
+      div.html(formatNumber(d.visitors))
+        .style("left", (d3.event.pageX + 20) + "px")
+        .style("top", (d3.event.pageY - 15) + "px");
     })
     .on('mouseout', function(d, i) {
+      // Shrink the circle back
       d3.select(this)
         .transition(.2)
         .duration(100)
         .attr('r', (d.visitors - 14937) / 11406263 * 20 + 7);
+
+      // Fade out the tooltip
+      div.transition()
+        .duration(.2)
+        .style("opacity", 0);
     })
     .on('click', function(d, i) {
-      this.setState({park: d});
+      self.setState({park: d});
       d3.selectAll('circle').transition(.2).duration(100).attr('fill', '#FED892');
-      //d3.select(this).transition(.2).duration(100).attr('fill', '#2A9D8F');
-
-    }.bind(this))
+      d3.select(this).transition(.2).duration(100).attr('fill', '#2A9D8F');
+    })
   }
 
   componentDidMount() {

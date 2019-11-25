@@ -476,3 +476,17 @@ ul.pagination a {
     padding: 50px;
   }
 }
+
+/* =================
+  Visualizations
+  ================= */
+
+.tooltip {
+  background-color: $secondary-color;
+  border: 1px solid #000;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-family: 'Unica One', serif;
+  padding: 2px 7px;
+  pointer-events: none;
+}
