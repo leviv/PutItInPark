@@ -1,6 +1,6 @@
 import React from 'react'
 import * as d3 from 'd3';
-import {geoAlbersUsa, path} from 'd3-geo';
+import {geoAlbersUsa} from 'd3-geo';
 import {feature} from 'topojson-client';
 import us from '../../assets/us.json';
 import {formatNumber} from '../helpers/Helpers.js'
@@ -48,14 +48,17 @@ class ParkVis extends React.Component {
 
     // Plot all of the states
     const projection = geoAlbersUsa();
-    chart.append("path")
-    .datum(feature(us, us.objects.states))
-    .attr("d", d3.geoPath().projection(projection));
+    chart.selectAll('g')
+      .data(feature(us, us.objects.states).features)
+      .enter()
+      .append('path')
+      .attr('class', 'states')
+      .attr('d', d3.geoPath().projection(projection));
 
     // Append the tooltip
     let div = d3.select("body").append("div")
-     .attr("class", "tooltip")
-     .style("opacity", 0);
+      .attr("class", "tooltip")
+      .style("opacity", 0);
 
     // Avoid confusing 'this'
     let self = this;
