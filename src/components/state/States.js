@@ -1,5 +1,6 @@
 import React from 'react';
 import StateCard from './StateCard';
+import StateVis from '../visualizations/StateVis';
 import ReactPaginate from 'react-paginate';
 import Fuse from 'fuse.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -173,6 +174,7 @@ class States extends React.Component {
         </div>
 
         <div className="container">
+          <StateVis/>
           <div className="collapsed" id="augment-container">
             <div className="row search-row">
               <div className="model-search">

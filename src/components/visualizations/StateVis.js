@@ -53,6 +53,14 @@ class StateVis extends React.Component {
       .attr('fill', '#264653')
       .classed('svg-content', true)
 
+    // Append the tooltip
+    let div = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+    // Avoid confusing 'this'
+    let self = this;
+
     // Plot all of the states
     const projection = geoAlbersUsa();
     chart.selectAll('g')
@@ -60,31 +68,82 @@ class StateVis extends React.Component {
       .enter()
       .append('path')
       .attr('class', 'states')
+      .style('cursor', 'pointer')
       .style('fill', function(d) {
-        return this.getStateColor(this.state.names[d.id])
+        return this.getStateColor(d.id)
       }.bind(this))
-      .attr('d', d3.geoPath().projection(projection));
+      .attr('d', d3.geoPath().projection(projection))
+      .on('mouseover', function(d, i) {
+        // Slightly expand the circle
+        d3.select(this)
+          .transition()
+          .duration(200)
+          .style('fill-opacity', '.7');
+
+        // Fade in the tooltip
+        div.transition()
+          .duration(200)
+          .style("opacity", '1');
+
+        const state = self.getState(d.id);
+
+        // Set the position of the tooltip
+        div.html(formatNumber(state.num_parks + state.numrec))
+          .style("left", (d3.event.pageX + 5) + "px")
+          .style("top", (d3.event.pageY - 5) + "px");
+      })
+      .on('mouseout', function(d, i) {
+        // Shrink the circle back
+        d3.select(this)
+          .transition()
+          .duration(200)
+          .style('fill-opacity', '1');
+
+        // Fade out the tooltip
+        div.transition()
+          .duration(200)
+          .style("opacity", 0);
+      })
+      .on('click', function(d, i) {
+        self.setState({state: self.getState(d.id)});
+      });
   }
 
-  getStateColor(stateName) {
-    console.log(stateName);
-    if (stateName !== undefined) {
-      // Build color scale
-      const myColor = d3.scaleLinear()
-        .range(["#eeeeee", "#264653"])
-        .domain([2,40]);
+  /**
+   * Function to get the state information based on a state id
+   */
+  getState(id) {
+    // Convert the id to a name
+    const stateName = this.state.names[id];
 
-      let num = 111;
+    for (let i = 0; i < this.state.states.length; i++) {
+      const state = this.state.states[i];
 
-      for (let i = 0; i < this.state.states.length; i++) {
-        const state = this.state.states[i];
-
-        if (slugName('', state.name) === slugName('', stateName)) {
-          num = state.num_parks + state.numrec;
-        }
+      // The state names match
+      if (slugName('', state.name) === slugName('', stateName)) {
+        return state;
       }
+    }
 
-      return myColor(num);
+    return undefined;
+  }
+
+  /**
+   * Function to get the color of an individual state based on the number of
+   * national parks and recreational areas in the state
+   */
+  getStateColor(id) {
+    // Build color scale
+    const myColor = d3.scaleLinear()
+      .range(["#eeeeee", "#264653"])
+      .domain([2,40]);
+
+    // Check if we had data for the state id
+    const state = this.getState(id);
+    if (state) {
+      return myColor(state.num_parks + state.numrec);
+    } else {
+      return 2;
     }
   }
 
