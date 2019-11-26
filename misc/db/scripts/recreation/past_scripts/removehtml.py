@@ -9,4 +9,8 @@ file = open("recinfo.txt", "r")
 
 for line in file:
     x = line.strip()
-    print(remove_tags(x))
+    p = x.replace("â€™", "'")
+    y = p.replace("â", "")
+    z = y.replace("€", "")
+    v = z.replace("™", "")
+    print(remove_tags(v))
