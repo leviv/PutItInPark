@@ -13,7 +13,7 @@ class BackendTests(TestCase):
         self.assertEqual(len(loc_json["objects"]), 12)
 
     def test2(self):
-        self.assertEqual(len(rec_json["objects"]), 11)
+        self.assertEqual(len(rec_json["objects"]), 12)
 
     def test3(self):
         self.assertEqual(len(park_json["objects"]), 12)
@@ -92,7 +92,7 @@ class BackendTests(TestCase):
     def test12(self):
         url = 'https://flask-backend-dot-potent-retina-254722.appspot.com/api/recreations?results_per_page=12&q={"filters":[],"order_by":[{"field":"rec_name","direction":"asc"}]}&page=1'
         sorted_recs = requests.get(url).json()
-        self.assertEqual(len(sorted_recs["objects"]), 12)
+        self.assertEqual(len(sorted_recs["objects"]), 11)
         parks = sorted_recs["objects"]
         self.assertEqual(parks[0]["rec_name"], "Acadia-National-Park")
 
