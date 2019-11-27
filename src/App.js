@@ -20,7 +20,7 @@ import Park from './components/park/Park';
 import Recreation from './components/recreation/Recreation';
 import State from './components/state/State';
 
-import StateVis from './components/visualizations/StateVis';
+import RecVis from './components/visualizations/RecVis';
 
 function App() {
   return (
@@ -41,7 +41,7 @@ function App() {
         <Route path="/recreation/:recName" component={Recreation} />
         <Route path="/state/:stateName" component={State} />
         <Route path="/search/:searchString" component={Search} />
-        <Route path="/vis/" component={StateVis} />
+        <Route path="/vis/" component={RecVis} />
 
         <Route path="*" component={NotFound} />
       </Switch>
