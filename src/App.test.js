@@ -50,7 +50,7 @@ describe('Basic functionality Tests', () => {
     });
 
     it('renders 18 tool cards', () => {
-      expect(about.find('ToolCard').length).toEqual(18);
+      expect(about.find('ToolCard').length).toEqual(19);
     });
   });
 
