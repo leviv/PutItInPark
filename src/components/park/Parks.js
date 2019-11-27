@@ -1,5 +1,6 @@
 import React from 'react';
 import ParkCard from './ParkCard';
+import ParkVis from '../visualizations/ParkVis.js'
 import ReactPaginate from 'react-paginate';
 import Fuse from 'fuse.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,6 +35,7 @@ class Parks extends React.Component {
       pageNumber: pageNum || 1,
       numPages: 1,
       loaded: false,
+      visual: false,
       query: {},
     };
 
@@ -170,6 +172,8 @@ class Parks extends React.Component {
         </div>
 
         <div className="container">
+          <ParkVis />
+
           <div className="collapsed" id="augment-container">
             <div className="row search-row">
               <div className="model-search">

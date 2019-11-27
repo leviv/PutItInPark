@@ -24,7 +24,7 @@ import DockerPhoto from '../../assets/img/tools/docker.jpeg'
 import CloudPhoto from '../../assets/img/tools/cloudsqlproxy.jpeg'
 import FlaskPhoto from '../../assets/img/tools/flask.jpeg'
 import MySQLPhoto from '../../assets/img/tools/mysql.png'
-
+import D3Photo from '../../assets/img/tools/d3.png'
 
 // Gitlab issues/commit retrieval inspired by shub95/foodmeonce
 class About extends React.Component {
@@ -333,6 +333,13 @@ class About extends React.Component {
                 imageUrl={FlaskPhoto}
                 tool_name="Flask"
                 description="Lightweight python web framework, used for our backend API"
+              />
+            </div>
+            <div className="col-md-4 instance-container">
+              <ToolCard
+                imageUrl={D3Photo}
+                tool_name="D3.js"
+                description="JavaScript Library to support data visualizations"
               />
             </div>
           </div>

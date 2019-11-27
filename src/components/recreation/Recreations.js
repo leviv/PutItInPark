@@ -1,5 +1,6 @@
 import React from 'react';
 import RecreationCard from './RecreationCard';
+import RecVis from '../visualizations/RecVis';
 import ReactPaginate from 'react-paginate';
 import Fuse from 'fuse.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -166,6 +167,8 @@ class Recreations extends React.Component {
         </div>
 
         <div className="container">
+          <RecVis />
+
           <div className="collapsed" id="augment-container">
             <div className="row search-row">
               <div className="model-search">

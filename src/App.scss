@@ -20,12 +20,13 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   margin: 20px 0;
-  span {
-    background-color: $third-color;
-    color: $secondary-color;
-    font-family: 'Unica One', serif;
-    padding: 3px 8px;
-  }
+}
+
+h1 span, h3 span {
+  background-color: $third-color;
+  color: $secondary-color;
+  font-family: 'Unica One', serif;
+  padding: 3px 8px;
 }
 
 button.button {
@@ -474,4 +475,19 @@ ul.pagination a {
     max-width: 120px;
     padding: 50px;
   }
+}
+
+/* =================
+  Visualizations
+  ================= */
+
+.tooltip {
+  background-color: $secondary-color;
+  border: 1px solid #000;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-family: 'Unica One', serif;
+  padding: 2px 7px;
+  pointer-events: none;
+  text-align: center;
 }
