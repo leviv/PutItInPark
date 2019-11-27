@@ -25,14 +25,11 @@ python-test:
   stage: test
   script: pip install -r backend/requirements.txt ;cd backend ;  python test.py
 
-<<<<<<< HEAD
 # acceptance-test:
 #   image: jengelhart/selenium-python-chrome-fix:firsttry
 #   stage: test
 #   script: cd src/; python guitests.py
 
-=======
->>>>>>> 9b27be86e94e0a60db2ab9253c72fa7dfd60eefd
 postman-test:
   image: node:latest
   stage: test
