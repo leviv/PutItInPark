@@ -20,7 +20,6 @@ import Park from './components/park/Park';
 import Recreation from './components/recreation/Recreation';
 import State from './components/state/State';
 
-import RecVis from './components/visualizations/RecVis';
 import RestaurantVis from './components/visualizations/RestaurantVis';
 import RecipeVis from './components/visualizations/RecipeVis';
 import NutritionVis from './components/visualizations/NutritionVis';
@@ -45,12 +44,11 @@ function App() {
         <Route path="/recreation/:recName" component={Recreation} />
         <Route path="/state/:stateName" component={State} />
         <Route path="/search/:searchString" component={Search} />
-        <Route path="/vis/" component={RecVis} />
-        <Route path="/vis0/" component={Visualizations} />
+        <Route path="/vis/" component={Visualizations} />
         <Route path="/vis1/" component={RestaurantVis} />
         <Route path="/vis2/" component={RecipeVis} />
         <Route path="/vis3/" component={NutritionVis} />
-        
+
 
         <Route path="*" component={NotFound} />
       </Switch>

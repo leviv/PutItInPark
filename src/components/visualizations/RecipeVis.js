@@ -29,7 +29,7 @@ class RecipeVis extends React.Component {
         this.setState({loaded: true});
         this.plotRecipes();
       });
-    console.log(this.state.recipes); 
+    console.log(this.state.recipes);
   }
 
   plotRecipes() {
@@ -97,12 +97,14 @@ class RecipeVis extends React.Component {
           .style("opacity", 0);
       })
 
+    const truncate = (input) => input.length > 15 ? `${input.substring(0, 15)}...` : input;
+
     leaf.append("text")
-      .text(function(d){return displayName(d.data.name)})
+      .text(function(d){return displayName(truncate(d.data.name))})
       .style('fill', '#204653')
       .style('pointer-events', 'none')
       .style('font-size', function(d){
-          return d.r/3;
+          return d.r/2.5;
       })
       .attr("text-anchor", "middle")
       .attr('stroke', 'none')

@@ -2,13 +2,12 @@ import React from 'react'
 import * as d3 from 'd3';
 import NotFound from '../NotFound';
 
-
 const API_ENDPOINT = 'https://api.foodcravings.net/api/nutrition_label'
 
 class NutritionVis extends React.Component {
     constructor(props) {
       super(props);
-  
+
       this.state = {
         data: [],
         numLabels: 0.0,
@@ -25,7 +24,6 @@ class NutritionVis extends React.Component {
         loaded: false
       };
     }
-
 
   makeApiCall() {
     fetch(API_ENDPOINT)
@@ -45,7 +43,7 @@ class NutritionVis extends React.Component {
           this.state.saturatedFat += Math.max(label.attributes.saturatedFat, 0); //SF
           this.state.sodium += Math.max(label.attributes.sodium / 1000, 0); //SO
           this.state.sugars += Math.max(label.attributes.sugars, 0); //S
-        
+
         });
         this.state.data.push({
           name: 'CA',
@@ -92,29 +90,24 @@ class NutritionVis extends React.Component {
         this.setState({loaded: true});
         this.plotNutrition();
       });
-    
+
   }
 
   plotNutrition() {
 
-    
-    
-    let width = 600;
-        let height = 600;
-        let margin = 40;
+    let width = 700;
+    let height = 700;
+    let margin = 40;
 
-
-
-   
     let radius = Math.min(width, height) / 2 - margin;
 
-    
-    const svg = d3.select("#body3")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    const svg = d3.select(this.refs.canvas)
+      .append("svg")
+      .attr('preserveAspectRatio', 'xMinYMin meet')
+      .attr('viewBox', '0 0 700 700')
+      .classed('svg-content', true)
+      .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     let data = {};
     this.state.data.forEach((stat) => {
@@ -126,7 +119,6 @@ class NutritionVis extends React.Component {
       data[stat.name] = stat.value;
     });
 
-
     let color = d3.scaleOrdinal()
       .domain(data)
       .range(d3.schemeSet2);
@@ -136,13 +128,13 @@ class NutritionVis extends React.Component {
           return d.value;
       });
 
-  let data_ready = pie(d3.entries(data));
- 
-  let arcGenerator = d3.arc()
+    let data_ready = pie(d3.entries(data));
+
+    let arcGenerator = d3.arc()
       .innerRadius(0)
       .outerRadius(radius);
 
-  svg
+    svg
       .selectAll('mySlices')
       .data(data_ready)
       .enter()
@@ -155,7 +147,7 @@ class NutritionVis extends React.Component {
       .style("stroke-width", "2px")
       .style("opacity", 0.7);
 
-  svg
+    svg
       .selectAll('mySlices')
       .data(data_ready)
       .enter()
@@ -168,10 +160,6 @@ class NutritionVis extends React.Component {
       })
       .style("text-anchor", "middle")
       .style("font-size", 17)
-
-
-
-
   }
 
 componentDidMount() {
@@ -186,25 +174,29 @@ render() {
       <React.Fragment>
         <br/><br/>
         <h3 className="text-center"><span>Nutrition Visualization</span></h3>
-        <div>
-          <p><strong>Average nutrition stats</strong></p>
-          <p>CA: Calcium: {(this.state.calcium / this.state.numLabels).toFixed(2)}g</p>
-          <p>C: Carbohydrates: {(this.state.carbohydrates / this.state.numLabels).toFixed(2)}g</p>
-          <p>CH: Cholesterol: {(this.state.cholesterol / this.state.numLabels).toFixed(2)}g</p>
-          <p>F: Fat: {(this.state.fat / this.state.numLabels).toFixed(2)}g</p>
-          <p>FI: Fiber: {(this.state.fiber / this.state.numLabels).toFixed(2)}g</p>
-          <p>I: Fiber: {(this.state.fiber / this.state.numLabels).toFixed(2)}g</p>
-          <p>P: Protein: {(this.state.protein / this.state.numLabels).toFixed(2)}g</p>
-          <p>SF: Saturated fat: {(this.state.saturatedFat / this.state.numLabels).toFixed(2)}g</p>
-          <p>S: Sugars: {(this.state.sugars / this.state.numLabels).toFixed(2)}g</p>
-          <p>SO: Sodium: {(this.state.sodium / this.state.numLabels).toFixed(2)}g</p>
-        </div>
-        
-        <svg id='body3' className='pie' width={650} height={650}>
-        </svg>
 
         <div className="row">
-          <div ref="canvas" className="col-md-12"></div>
+          <div className="col-md-3">
+            <div>
+              <p><strong>Average nutrition stats</strong></p>
+              <p>CA: Calcium: {(this.state.calcium / this.state.numLabels).toFixed(2)}g</p>
+              <p>C: Carbohydrates: {(this.state.carbohydrates / this.state.numLabels).toFixed(2)}g</p>
+              <p>CH: Cholesterol: {(this.state.cholesterol / this.state.numLabels).toFixed(2)}g</p>
+              <p>F: Fat: {(this.state.fat / this.state.numLabels).toFixed(2)}g</p>
+              <p>FI: Fiber: {(this.state.fiber / this.state.numLabels).toFixed(2)}g</p>
+              <p>I: Fiber: {(this.state.fiber / this.state.numLabels).toFixed(2)}g</p>
+              <p>P: Protein: {(this.state.protein / this.state.numLabels).toFixed(2)}g</p>
+              <p>SF: Saturated fat: {(this.state.saturatedFat / this.state.numLabels).toFixed(2)}g</p>
+              <p>S: Sugars: {(this.state.sugars / this.state.numLabels).toFixed(2)}g</p>
+              <p>SO: Sodium: {(this.state.sodium / this.state.numLabels).toFixed(2)}g</p>
+            </div>
+          </div>
+
+          <div className="col-md-9">
+            <div className="row">
+              <div ref="canvas" className="col-md-12"></div>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     );
