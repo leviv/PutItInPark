@@ -343,7 +343,6 @@ class About extends React.Component {
               />
             </div>
           </div>
-          <p className="about-lead">About this site: This site is supported by Google Cloud serving a Flask backend and React frontend.</p>
         </div>
       </React.Fragment>
     );
