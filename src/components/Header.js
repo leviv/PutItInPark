@@ -44,6 +44,9 @@ class Header extends React.Component {
               <li className="nav-item">
                 <Link className="nav-link states-link" to="/states/1"><h5>States</h5></Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link vis-link" to="/vis0/"><h5>Visualizations</h5></Link>
+              </li>
             </ul>
 
             <form className="form-inline my-2 my-lg-0">
