@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'; // you used 'react-dom' as 'ReactDOM'
 import * as d3 from 'd3';
 import {formatNumber, displayName, slugName} from '../helpers/Helpers.js'
 import NotFound from '../NotFound';
@@ -75,7 +74,6 @@ class RecVis extends React.Component {
       .sum(d => d.count))
 
     const root = pack(this.state.activities);
-    const format = d3.format(",d");
 
     const leaf = chart.selectAll("g")
       .data(root.leaves())

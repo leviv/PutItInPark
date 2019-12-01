@@ -142,6 +142,15 @@ footer {
 }
 
 /* =================
+  Header
+   ================= */
+
+nav form .form-control {
+  max-width: calc(100% - 50px);
+  margin-right: 15px;
+}
+
+/* =================
   Splash Page styles
    ================= */
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import NotFound from '../NotFound';
 import RestaurantVis from './RestaurantVis';
 import RecipeVis from './RecipeVis';
 import NutritionVis from './NutritionVis';

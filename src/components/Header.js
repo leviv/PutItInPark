@@ -50,7 +50,7 @@ class Header extends React.Component {
             </ul>
 
             <form className="form-inline my-2 my-lg-0">
-              <input className="form-control mr-sm-2" id="searchField" type="search" placeholder="Search" aria-label="Search" onKeyDown={this.search}/>
+              <input className="form-control" id="searchField" type="search" placeholder="Search" aria-label="Search" onKeyDown={this.search}/>
               <FontAwesomeIcon icon={faSearch} className="model-search-component" id="nav-search-icon" onClick={this.search}/>
             </form>
           </div>

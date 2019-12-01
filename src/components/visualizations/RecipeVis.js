@@ -1,7 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'; // you used 'react-dom' as 'ReactDOM'
 import * as d3 from 'd3';
-import {formatNumber, displayName, slugName} from '../helpers/Helpers.js'
+import {formatNumber, displayName} from '../helpers/Helpers.js'
 import NotFound from '../NotFound';
 
 const API_ENDPOINT = "https://api.foodcravings.net/api/recipes";
@@ -48,7 +47,6 @@ class RecipeVis extends React.Component {
       .sum(d => d.calories))
 
     const root = pack(this.state.recipes);
-    const format = d3.format(",d");
 
     const leaf = chart.selectAll("g")
       .data(root.leaves())
