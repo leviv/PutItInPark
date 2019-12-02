@@ -187,19 +187,19 @@ class States extends React.Component {
             <div className="row">
               <div className="col-md-8 model-filter">
                 <h4>Filter by</h4>
-                <select className="form-control" id="recFilter">
+                <select className="form-control" id="recFilter" onChange={this.applyFilters}>
                   <option selected>Num of Recreation Areas</option>
                   <option>0-10</option>
                   <option>10-20</option>
                   <option>21+</option>
                 </select>
-                <select className="form-control" id="parkFilter">
+                <select className="form-control" id="parkFilter" onChange={this.applyFilters}>
                   <option selected>Num of Parks</option>
                   <option>0</option>
                   <option>1-3</option>
                   <option>4+</option>
                 </select>
-                <select className="form-control" id="popFilter">
+                <select className="form-control" id="popFilter" onChange={this.applyFilters}>
                   <option selected>Population</option>
                   <option>0-1,000,000</option>
                   <option>1,000,001-2,000,000</option>
@@ -208,7 +208,7 @@ class States extends React.Component {
               </div>
               <div className="col-md-4 model-filter">
                 <h4>Sort by</h4>
-                <select className="form-control" id="sort">
+                <select className="form-control" id="sort" onChange={this.applyFilters}>
                   <option selected>Pick One</option>
                   <option>Location Name</option>
                   <option>Number of Parks</option>
@@ -216,14 +216,11 @@ class States extends React.Component {
                   <option>Population</option>
                   <option>Mail Code</option>
                 </select>
-                <select className="form-control" id="sort-direction">
+                <select className="form-control" id="sort-direction" onChange={this.applyFilters}>
                   <option selected>Descending</option>
                   <option>Ascending</option>
                 </select>
               </div>
-            </div>
-            <div className="text-center">
-              <button className="button button-secondary" onClick={this.applyFilters}>Apply Filters</button>
             </div>
           </div>
 

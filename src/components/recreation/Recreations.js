@@ -181,17 +181,17 @@ class Recreations extends React.Component {
             <div className="row">
               <div className="col-md-8 model-filter">
                 <h4>Filter by</h4>
-                <select className="form-control" id="reserveFilter">
+                <select className="form-control" id="reserveFilter" onChange={this.applyFilters}>
                   <option selected>Reservable</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
-                <select className="form-control" id="stayFilter">
+                <select className="form-control" id="stayFilter" onChange={this.applyFilters}>
                   <option selected>Stay Limit</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
-                <select className="form-control" id="activityFilter">
+                <select className="form-control" id="activityFilter" onChange={this.applyFilters}>
                   <option selected>Num Activities</option>
                   <option>0-5</option>
                   <option>6-10</option>
@@ -200,7 +200,7 @@ class Recreations extends React.Component {
               </div>
               <div className="col-md-4 model-filter">
                 <h4>Sort by</h4>
-                <select className="form-control" id="sort">
+                <select className="form-control" id="sort" onChange={this.applyFilters}>
                   <option selected>Pick One</option>
                   <option>Rec Name</option>
                   <option>Rec Id</option>
@@ -208,14 +208,11 @@ class Recreations extends React.Component {
                   <option>National Park</option>
                   <option>Num Activities</option>
                 </select>
-                <select className="form-control" id="sort-direction">
+                <select className="form-control" id="sort-direction" onChange={this.applyFilters}>
                   <option selected>Descending</option>
                   <option>Ascending</option>
                 </select>
               </div>
-            </div>
-            <div className="text-center">
-              <button className="button button-secondary" onClick={this.applyFilters}>Apply Filters</button>
             </div>
           </div>
 

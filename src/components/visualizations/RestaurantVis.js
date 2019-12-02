@@ -73,7 +73,7 @@ class RestaurantVis extends React.Component {
           .append("svg")
           .attr('preserveAspectRatio', 'xMinYMin meet')
           .attr('viewBox', '0 0 960 600')
-          .classed('svg-content', true)
+          .classed('svg-content', true);
 
         svg.append("g")
           .attr("fill", "#2A9D8F")
@@ -84,10 +84,12 @@ class RestaurantVis extends React.Component {
           .attr("width", x.bandwidth());
 
         svg.append("g")
-          .call(xAxis);
+          .call(xAxis)
+          .style('font-size', '25px');
 
         svg.append("g")
-          .call(yAxis);
+          .call(yAxis)
+          .style('font-size', '25px');
     }
 
     componentDidMount() {
