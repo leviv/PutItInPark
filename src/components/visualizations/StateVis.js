@@ -14,15 +14,10 @@ class StateVis extends React.Component {
   constructor(props) {
     super(props);
 
-    let names = {};
-    d3.tsv(stateNames, function(d){
-      names[d.id] = d.name;
-    });
-
     this.state = {
       states: [],
       state: null,
-      names: names,
+      names: null,
       park: null,
       loaded: false,
     };
@@ -38,8 +33,16 @@ class StateVis extends React.Component {
           this.state.states.push(state);
         });
       }).then(() => {
-        this.setState({loaded: true});
-        this.plotStates();
+
+        // Add the mapping from ids to state names
+        let names = {};
+        d3.tsv(stateNames, function(d){
+          names[d.id] = d.name;
+        }).then(() => {
+          this.setState({names});
+          this.setState({loaded: true});
+          this.plotStates();
+        });
       });
   }
 
