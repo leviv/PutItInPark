@@ -1,0 +1,58 @@
+{
+  "name": "webapp-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "async-wait-until": "^1.2.4",
+    "bootstrap": "^4.3.1",
+    "chai": "^4.2.0",
+    "d3": "^5.14.2",
+    "d3-array": "^2.4.0",
+    "d3-geo": "^1.11.9",
+    "d3-scale": "^3.2.0",
+    "d3-selection": "^1.4.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "firebase": "^6.3.1",
+    "fuse.js": "^3.4.5",
+    "google-maps-react": "^2.0.2",
+    "mocha": "^6.2.2",
+    "nock": "^11.7.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.10.1",
+    "react-dom": "^16.8.6",
+    "react-highlighter": "^0.4.3",
+    "react-paginate": "^6.3.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "selenium": "^2.20.0",
+    "topojson-client": "^3.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "babel-plugin-react-html-attrs": "^2.1.0"
+  }
+}
