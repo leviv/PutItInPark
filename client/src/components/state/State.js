@@ -1,23 +1,23 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import ParkCard from '../park/ParkCard';
-import RecreationCard from '../recreation/RecreationCard';
-import NotFound from '../NotFound';
-import { convertToRows } from '../helpers/Helpers.js';
-import { API_ENDPOINT, displayName, formatNumber } from '../helpers/Helpers.js';
+import React from "react";
+import { Route } from "react-router-dom";
+import ParkCard from "../park/ParkCard";
+import RecreationCard from "../recreation/RecreationCard";
+import NotFound from "../NotFound";
+import { convertToRows } from "../helpers/Helpers.js";
+import { API_ENDPOINT, displayName, formatNumber } from "../helpers/Helpers.js";
 
 class State extends React.Component {
   constructor(props) {
     super(props);
     const { match } = this.props;
-    const stateName = match.params.stateName
+    const stateName = match.params.stateName;
 
     this.state = {
       state: [],
       recs: [],
       parks: [],
       stateName: stateName,
-      loaded: false
+      loaded: false,
     };
   }
 
@@ -29,11 +29,15 @@ class State extends React.Component {
         // Process data
         data.park_names = data.park_names.split(",");
         data.rec_ids = data.rec_ids.split(",");
-        this.setState({state: data});
-      }).then(() => {
+        this.setState({ state: data });
+      })
+      .then(() => {
         let numRecsLoaded = 0;
         this.state.state.rec_ids.forEach((id) => {
-          const query = {"filters":[{"name":"rec_id","op":"eq","val":id}], "single":true};
+          const query = {
+            filters: [{ name: "rec_id", op: "eq", val: id }],
+            single: true,
+          };
           fetch(API_ENDPOINT + "/recreations?q=" + JSON.stringify(query))
             // Transform the data into json
             .then((resp) => resp.json())
@@ -42,14 +46,18 @@ class State extends React.Component {
               if (data.message !== "No result found") {
                 this.state.recs.push(data);
               }
-            }).then(() => {
+            })
+            .then(() => {
               numRecsLoaded++;
               if (numRecsLoaded === this.state.state.rec_ids.length) {
                 let numParksLoaded = 0;
 
                 // Check if we need to load any parks
-                if (this.state.state.park_names.length === 0 || this.state.state.park_names[0] === "N/A") {
-                  this.setState({loaded: true});
+                if (
+                  this.state.state.park_names.length === 0 ||
+                  this.state.state.park_names[0] === "N/A"
+                ) {
+                  this.setState({ loaded: true });
                 } else {
                   // Get the park information
                   this.state.state.park_names.forEach((id) => {
@@ -59,10 +67,13 @@ class State extends React.Component {
                       .then((data) => {
                         // Process data
                         this.state.parks.push(data);
-                      }).then(() => {
+                      })
+                      .then(() => {
                         numParksLoaded++;
-                        if (numParksLoaded === this.state.state.park_names.length) {
-                          this.setState({loaded: true});
+                        if (
+                          numParksLoaded === this.state.state.park_names.length
+                        ) {
+                          this.setState({ loaded: true });
                         }
                       });
                   });
@@ -78,16 +89,20 @@ class State extends React.Component {
   }
 
   render() {
-    if (this.state.loaded){
+    if (this.state.loaded) {
       const title = displayName(this.state.state.name);
       const parkRows = convertToRows(this.state.parks);
       const recRows = convertToRows(this.state.recs);
 
       return (
         <React.Fragment>
-          <div className="instance-intro"
-               style={{ backgroundImage: `url(${this.state.state.imglink})`}}>
-            <h1><span>{title}</span></h1>
+          <div
+            className="instance-intro"
+            style={{ backgroundImage: `url(${this.state.state.imglink})` }}
+          >
+            <h1>
+              <span>{title}</span>
+            </h1>
           </div>
 
           <div className="container instance">
@@ -107,22 +122,29 @@ class State extends React.Component {
             </div>
 
             <h3>National Parks</h3>
-            {this.state.state.park_names[0] === "N/A" &&
-              <h4>No Parks<br/><br/></h4>
-            }
+            {this.state.state.park_names[0] === "N/A" && (
+              <h4>
+                No Parks
+                <br />
+                <br />
+              </h4>
+            )}
 
             {parkRows.map((row, index) => {
               return (
                 <div className="row" key={index}>
                   {row.map((item, innerIndex) => {
                     return (
-                      <div className="col-md-3 instance-container" key={innerIndex}>
+                      <div
+                        className="col-md-3 instance-container"
+                        key={innerIndex}
+                      >
                         <ParkCard
                           park_name={item.park_name}
                           imglink={item.imglink}
                           location={item.location}
-                          num_rec = {item.num_rec}
-                          visitors = {item.visitors}
+                          num_rec={item.num_rec}
+                          visitors={item.visitors}
                           fee={item.fee}
                         />
                       </div>
@@ -130,37 +152,38 @@ class State extends React.Component {
                   })}
                 </div>
               );
-           })}
+            })}
 
-           <h3>Recreational Areas</h3>
-           {recRows.map((row, index) => {
-             return (
-               <div className="row" key={index}>
-                 {row.map((item, innerIndex) => {
-                   return (
-                     <div className="col-md-3 instance-container" key={innerIndex}>
-                       <RecreationCard
-                         rec_name={item.rec_name}
-                         imglink={item.imglink}
-                         num_activities={item.num_activities}
-                         reservable={item.reservable}
-                         stay_limit={item.stay_limit}
-                       />
-                     </div>
-                   );
-                 })}
-               </div>
-             );
-          })}
+            <h3>Recreational Areas</h3>
+            {recRows.map((row, index) => {
+              return (
+                <div className="row" key={index}>
+                  {row.map((item, innerIndex) => {
+                    return (
+                      <div
+                        className="col-md-3 instance-container"
+                        key={innerIndex}
+                      >
+                        <RecreationCard
+                          rec_name={item.rec_name}
+                          imglink={item.imglink}
+                          num_activities={item.num_activities}
+                          reservable={item.reservable}
+                          stay_limit={item.stay_limit}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
           </div>
         </React.Fragment>
       );
     }
 
     // invalid park name
-    return (
-      <Route component={NotFound} />
-    );
+    return <Route component={NotFound} />;
   }
 }
 
