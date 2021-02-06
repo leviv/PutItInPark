@@ -84,7 +84,7 @@ def serve():
 def hello():
     return "Welcome to the PutItInPark API! Please explore /api/nationalparks, /api/locations and /api/recreations !!"
 
-app.errorhandler(404)
+@app.errorhandler(404)
 def not_found(e):
     return send_from_directory(app.static_folder, 'index.html')
 
