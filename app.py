@@ -84,9 +84,10 @@ def serve():
 def hello():
     return "Welcome to the PutItInPark API! Please explore /api/nationalparks, /api/locations and /api/recreations !!"
 
-@app.errorhandler(404)
-def not_found(e):
-    return render_template("index.html")
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return 'You want path: %s' % path
 
 manager.create_api(
     Nationalparks,
