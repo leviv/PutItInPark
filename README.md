@@ -1,37 +1,55 @@
 # Put It In Park
 
-Provides information about national parks in the United States.
-
-### Website
-The project website is putitinpark.xyz (or putitinpark.me)
-
-## Group Members
-| Name  | EID | GitLab Username |
-| ------------- | ------------- | ------------- |
-| Miles Chandler | mac9325 | mchandle |
-| Joseph Engelhart | jae3362 | jengelhart |
-| Ella Robertson | ear3294 | ella.robertson |
-| Billy Vo | bv5433 | billyvo |
-| Levi Villarreal | lrv432  | leviv1 |
-
-## Git SHA
-| Phase | Git SHA |
-| ------------- | ------------- |
-| Phase I | 78d4ab8333b4fde557779021f0f55ce1bfc782b1 |
-| Phase II | 0b18ebfb3349a89296881762f59674e02156f243 |
-| Phase III | 8bbaebb7f94b7a9b803ab4284765129e7fac82de |
-| Phase IV | f6b4b2a21cfd68d9c5415c1dbb4e9721b1c69a3d |
+Provides information about national parks and recreational areas in the United States.
+The project website is https://putitinpark.herokuapp.com
 
 ## GitLab Pipelines
 
 The GitLab pipelies of the project can be found [here](https://gitlab.com/leviv1/putitinpark/pipelines).
+View our technical report in the file `Technical_Report.pdf` and our final presentation in the file `Presentation_PutItInPark.pdf` (both in this directory).
 
-## Completion Times (per member)
-| Phase | Estimated Completion Time | Actual Completion Time |
-| ------------- | ------------- | ------------- |
-| I | 15 hours | 18 hours |
-| II | 22 hours | 52 hours |
-| III | 40 hours | 42 hours |
-| IV | 30 hours | 30 hours |
+## Development
 
-## Notes
+### Backend
+To get started with backend development, first install the python dependencies used to run flask.
+
+```bash
+git clone git@github.com:leviv/PutItInPark.git
+cd PutItInPark
+pip install -r requirements.txt 
+```
+
+Then run the backend
+```bash
+flask run
+```
+
+### Database
+To get the backend working locally, you must set up a database. I currently use a [free heroku Postgres database](https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres) that was easy to set up, although it is possible to use local or other options.
+
+No matter the option, ensure you copy the database URL into the appropriate environment variable. For me this looked like: 
+```
+heroku config:get DATABASE_URL -a <PROJECT_NAME> | pbcopy
+export DATABASE_URL='<COPIED_URL>'
+```
+
+Run the scripts in `database/` for each of the three models to populate the database. For me, using the [heroku cli](https://devcenter.heroku.com/articles/heroku-postgresql#using-the-cli) this looked like:
+
+```bash
+cd DB\ Scripts/
+brew install postgresql
+heroku pg:psql location.sql park.sql rec.sql
+
+Connecting to HEROKU_POSTGRESQL_RED... done
+psql (12.5, server 12.5)
+SSL connection (cipher: DHE-RSA-AES256-SHA, bits: 256)
+Type "help" for help.
+
+=>
+
+```
+
+If the scripts fail to run, you may have to manually run the `CREATE TABLE` command with each of the 3 table schemas before populating with data.
+
+### Frontend
+The information for running the frontend locally exists in `Setup.md` in this same directory.
