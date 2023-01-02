@@ -27,7 +27,7 @@
     "react-highlighter": "^0.4.3",
     "react-paginate": "^6.3.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "selenium": "^2.20.0",
     "topojson-client": "^3.1.0"
   },
