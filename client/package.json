@@ -19,7 +19,7 @@
     "firebase": "^6.3.1",
     "fuse.js": "^3.4.5",
     "google-maps-react": "^2.0.2",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "nock": "^11.7.0",
     "node-sass": "^7.0.0",
     "react": "^16.10.1",
