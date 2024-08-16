@@ -1,9 +1,10 @@
-import React from 'react'
-import * as d3 from 'd3';
-import {formatNumber, displayName, slugName} from '../helpers/Helpers.js'
-import NotFound from '../NotFound';
+import React from "react";
+import * as d3 from "d3";
+import { formatNumber, displayName, slugName } from "../helpers/Helpers.js";
+import NotFound from "../NotFound";
 
-import { API_ENDPOINT } from '../helpers/Helpers.js';
+import { API_ENDPOINT } from "../helpers/Helpers.js";
+import { fakeFetch } from "../fake_api/fakeApi.js";
 const endpoint = API_ENDPOINT + "/recreations";
 
 class RecVis extends React.Component {
@@ -19,7 +20,8 @@ class RecVis extends React.Component {
   }
 
   makeApiCall() {
-    fetch(endpoint)
+    // fetch(endpoint)
+    fakeFetch(API_ENDPOINT, "/recreations/", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -28,7 +30,7 @@ class RecVis extends React.Component {
           rec.activities = rec.activities.split(",");
 
           rec.activities.forEach((activity) => {
-            if (activity !== '') {
+            if (activity !== "") {
               // See if the activity already exists in the state
               let index = -1;
               for (let i = 0; i < this.state.activities.length; i++) {
@@ -40,8 +42,8 @@ class RecVis extends React.Component {
 
               // Add a new activity
               if (index === -1) {
-                this.state.activities.push({name: activity, count: 0});
-                index = this.state.activities.length-1;
+                this.state.activities.push({ name: activity, count: 0 });
+                index = this.state.activities.length - 1;
               }
 
               // Update the activity count
@@ -51,8 +53,9 @@ class RecVis extends React.Component {
 
           this.state.recs.push(rec);
         });
-      }).then(() => {
-        this.setState({loaded: true});
+      })
+      .then(() => {
+        this.setState({ loaded: true });
         this.plotRecs();
       });
   }
@@ -61,76 +64,79 @@ class RecVis extends React.Component {
     console.log(this.state.activities);
 
     // Set up the svg container
-    const chart = d3.select(this.refs.canvas)
-      .append('svg')
-      .attr('preserveAspectRatio', 'xMinYMin meet')
-      .attr('viewBox', '0 0 960 550')
-      .attr('stroke', '#fff')
-      .attr('fill', '#264653')
-      .classed('svg-content', true)
+    const chart = d3
+      .select(this.refs.canvas)
+      .append("svg")
+      .attr("preserveAspectRatio", "xMinYMin meet")
+      .attr("viewBox", "0 0 960 550")
+      .attr("stroke", "#fff")
+      .attr("fill", "#264653")
+      .classed("svg-content", true);
 
-    const pack = data => d3.pack()
-      .size([960 - 2, 600 - 2])
-      .padding(3)(d3.hierarchy({children: data})
-      .sum(d => d.count))
+    const pack = (data) =>
+      d3
+        .pack()
+        .size([960 - 2, 600 - 2])
+        .padding(3)(d3.hierarchy({ children: data }).sum((d) => d.count));
 
     const root = pack(this.state.activities);
 
-    const leaf = chart.selectAll("g")
+    const leaf = chart
+      .selectAll("g")
       .data(root.leaves())
       .join("g")
-      .attr("transform", d => `translate(${d.x + 1},${d.y + 1})`);
+      .attr("transform", (d) => `translate(${d.x + 1},${d.y + 1})`);
 
     // Append the tooltip
-    let div = d3.select("body").append("div")
+    let div = d3
+      .select("body")
+      .append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
 
-    leaf.append("circle")
-      .attr("r", d => d.r)
+    leaf
+      .append("circle")
+      .attr("r", (d) => d.r)
       .attr("fill-opacity", 0.7)
-      .attr('stroke-width', '0px')
-      .style('cursor', 'pointer')
-      .on('mouseover', function(d, i) {
+      .attr("stroke-width", "0px")
+      .style("cursor", "pointer")
+      .on("mouseover", function (d, i) {
         // Slightly expand the circle
         d3.select(this)
           .transition()
           .duration(200)
-          .attr('stroke', '#FED892')
-          .attr('stroke-width', '3px')
+          .attr("stroke", "#FED892")
+          .attr("stroke-width", "3px");
 
         // Fade in the tooltip
-        div.transition()
-          .duration(200)
-          .style("opacity", '1');
+        div.transition().duration(200).style("opacity", "1");
 
         // Set the position of the tooltip
-        div.html(displayName(d.data.name) + '<br/>' + formatNumber(d.data.count))
-        .style("left", (d3.event.pageX + 5) + "px")
-        .style("top", (d3.event.pageY - 5) + "px");;
+        div
+          .html(displayName(d.data.name) + "<br/>" + formatNumber(d.data.count))
+          .style("left", d3.event.pageX + 5 + "px")
+          .style("top", d3.event.pageY - 5 + "px");
       })
-      .on('mouseout', function(d, i) {
+      .on("mouseout", function (d, i) {
         // Shrink the circle back
-        d3.select(this)
-          .transition()
-          .duration(200)
-          .attr('stroke-width', '0px');
+        d3.select(this).transition().duration(200).attr("stroke-width", "0px");
 
         // Fade out the tooltip
-        div.transition()
-          .duration(200)
-          .style("opacity", 0);
-      })
+        div.transition().duration(200).style("opacity", 0);
+      });
 
-    leaf.append("text")
-      .text(function(d){return displayName(d.data.name)})
-      .style('fill', '#204653')
-      .style('pointer-events', 'none')
-      .style('font-size', function(d){
-          return d.r/3;
+    leaf
+      .append("text")
+      .text(function (d) {
+        return displayName(d.data.name);
+      })
+      .style("fill", "#204653")
+      .style("pointer-events", "none")
+      .style("font-size", function (d) {
+        return d.r / 3;
       })
       .attr("text-anchor", "middle")
-      .attr('stroke', 'none')
+      .attr("stroke", "none");
   }
 
   /**
@@ -144,7 +150,7 @@ class RecVis extends React.Component {
       const state = this.state.states[i];
 
       // The state names match
-      if (slugName('', state.name) === slugName('', stateName)) {
+      if (slugName("", state.name) === slugName("", stateName)) {
         return state;
       }
     }
@@ -158,9 +164,10 @@ class RecVis extends React.Component {
    */
   getStateColor(id) {
     // Build color scale
-    const myColor = d3.scaleLinear()
+    const myColor = d3
+      .scaleLinear()
       .range(["#eeeeee", "#264653"])
-      .domain([2,40]);
+      .domain([2, 40]);
 
     // Check if we had data for the state id
     const state = this.getState(id);
@@ -177,12 +184,15 @@ class RecVis extends React.Component {
 
   render() {
     if (!this.state.loaded) {
-        return <NotFound />
+      return <NotFound />;
     } else {
       return (
         <React.Fragment>
-          <br/><br/>
-          <h3 className="text-center"><span>Recreational area activities</span></h3>
+          <br />
+          <br />
+          <h3 className="text-center">
+            <span>Recreational area activities</span>
+          </h3>
           <div className="row">
             <div ref="canvas" className="col-md-12"></div>
           </div>
@@ -192,4 +202,4 @@ class RecVis extends React.Component {
   }
 }
 
-export default RecVis
+export default RecVis;

@@ -5,6 +5,7 @@ import RecreationCard from "../recreation/RecreationCard";
 import NotFound from "../NotFound";
 import { convertToRows } from "../helpers/Helpers.js";
 import { API_ENDPOINT, displayName, formatNumber } from "../helpers/Helpers.js";
+import { fakeFetch } from "../fake_api/fakeApi.js";
 
 class State extends React.Component {
   constructor(props) {
@@ -22,9 +23,12 @@ class State extends React.Component {
   }
 
   makeApiCall(stateName) {
-    fetch(API_ENDPOINT + "/locations/" + stateName)
+    // fetch(API_ENDPOINT + "/locations/" + stateName)
+    fakeFetch(API_ENDPOINT, "/locations/", stateName, null, null)
       // Transform the data into json
-      .then((resp) => resp.json())
+      .then((resp) => {
+        return resp.json();
+      })
       .then((data) => {
         // Process data
         data.park_names = data.park_names.split(",");
@@ -38,12 +42,13 @@ class State extends React.Component {
             filters: [{ name: "rec_id", op: "eq", val: id }],
             single: true,
           };
-          fetch(API_ENDPOINT + "/recreations?q=" + JSON.stringify(query))
+          // fetch(API_ENDPOINT + "/recreations?q=" + JSON.stringify(query))
+          fakeFetch(API_ENDPOINT, "/recreations/", null, query, null)
             // Transform the data into json
             .then((resp) => resp.json())
             .then((data) => {
               // Process data
-              if (data.message !== "No result found") {
+              if (data && data.message !== "No result found") {
                 this.state.recs.push(data);
               }
             })
@@ -61,7 +66,8 @@ class State extends React.Component {
                 } else {
                   // Get the park information
                   this.state.state.park_names.forEach((id) => {
-                    fetch(API_ENDPOINT + "/nationalparks/" + id)
+                    // fetch(API_ENDPOINT + "/nationalparks/" + id)
+                    fakeFetch(API_ENDPOINT, "/nationalparks/", id, null, null)
                       // Transform the data into json
                       .then((resp) => resp.json())
                       .then((data) => {

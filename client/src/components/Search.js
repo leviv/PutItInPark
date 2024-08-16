@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import Highlight from "react-highlighter";
 import { API_ENDPOINT, displayName, slugName } from "./helpers/Helpers.js";
+import { fakeFetch } from "./fake_api/fakeApi.js";
 
 const LOC_ENDPOINT = API_ENDPOINT + "/locations";
 const REC_ENDPOINT = API_ENDPOINT + "/recreations";
@@ -25,7 +26,8 @@ class Search extends React.Component {
   }
 
   search(searchString) {
-    fetch(LOC_ENDPOINT)
+    // fetch(LOC_ENDPOINT)
+    fakeFetch(API_ENDPOINT, "/locations/", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search
@@ -38,7 +40,8 @@ class Search extends React.Component {
         this.setState({ states: fuse.search(searchString) });
       })
       .then(() => {
-        fetch(REC_ENDPOINT)
+        // fetch(REC_ENDPOINT)
+        fakeFetch(API_ENDPOINT, "/recreations/", null, null, null)
           // Transform the data into json
           .then((resp) => resp.json())
           // Search
@@ -57,7 +60,8 @@ class Search extends React.Component {
             this.setState({ recs: fuse.search(searchString) });
           })
           .then(() => {
-            fetch(PARK_ENDPOINT)
+            // fetch(PARK_ENDPOINT)
+            fakeFetch(API_ENDPOINT, "/nationalparks/", null, null, null)
               // Transform the data into json
               .then((resp) => resp.json())
               // Search

@@ -10,6 +10,7 @@ import {
   convertToRows,
   expandFilters,
 } from "../helpers/Helpers.js";
+import { fakeFetch } from "../fake_api/fakeApi.js";
 
 const endpoint = API_ENDPOINT + "/locations";
 
@@ -50,13 +51,17 @@ class States extends React.Component {
   }
 
   makeApiCall(pageNumber) {
-    fetch(
-      endpoint +
-        "?q=" +
-        JSON.stringify(this.state.query) +
-        "&results_per_page=12&page=" +
-        pageNumber
-    )
+    // fetch(
+    //   endpoint +
+    //     "?q=" +
+    //     JSON.stringify(this.state.query) +
+    //     "&results_per_page=12&page=" +
+    //     pageNumber
+    // )
+    fakeFetch(API_ENDPOINT, "/locations/", null, null, {
+      resultsPerPage: 12,
+      pageNumber,
+    })
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -83,7 +88,8 @@ class States extends React.Component {
       return;
     }
 
-    fetch(endpoint) //+ "?q="+ JSON.stringify(this.state.query))
+    // fetch(endpoint)
+    fakeFetch(API_ENDPOINT, "/locations/", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search

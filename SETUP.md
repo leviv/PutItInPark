@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 To run this project, you must have Node/npm installed
 
 Installation via NVM
+
 ```bash
 env VERSION=`python tools/getnodeversion.py` make install DESTDIR=`nvm_version_path v$VERSION` PREFIX=""
 nvm use 8
@@ -13,15 +14,19 @@ nvm use 8
 ## Getting Started
 
 To clone the repository to your local machine
+
 ```bash
 git@github.com:leviv/PutItInPark.git
 ```
+
 Navigate to the correct directory
+
 ```bash
-cd putitinpark
+cd putitinpark/client
 ```
 
 To build project dependencies
+
 ```bash
 npm install
 ```

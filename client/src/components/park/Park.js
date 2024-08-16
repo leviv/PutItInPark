@@ -10,6 +10,7 @@ import {
   slugName,
   formatNumber,
 } from "../helpers/Helpers.js";
+import { fakeFetch } from "../fake_api/fakeApi.js";
 
 class Park extends React.Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class Park extends React.Component {
   }
 
   makeApiCall(parkName) {
-    fetch(API_ENDPOINT + "/nationalparks/" + parkName)
+    // fetch(API_ENDPOINT + "/nationalparks/" + parkName)
+    fakeFetch(API_ENDPOINT, "/nationalparks/", parkName, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -49,10 +51,12 @@ class Park extends React.Component {
             filters: [{ name: "rec_id", op: "eq", val: id }],
             single: true,
           };
-          fetch(API_ENDPOINT + "/recreations?q=" + JSON.stringify(query))
+          // fetch(API_ENDPOINT + "/recreations?q=" + JSON.stringify(query))
+          fakeFetch(API_ENDPOINT, "/recreations/", null, query, null)
             // Transform the data into json
             .then((resp) => resp.json())
             .then((data) => {
+              console.log("levi data, ", data);
               // Process data
               this.state.recreations.push(data);
             })
@@ -97,7 +101,7 @@ class Park extends React.Component {
                 <h3>State(s)</h3>
                 {this.state.park.location.map((item, index) => {
                   return (
-                    <p>
+                    <p key={index}>
                       <Link to={slugName("/state/", item)}>{item}</Link>
                       <br />
                     </p>

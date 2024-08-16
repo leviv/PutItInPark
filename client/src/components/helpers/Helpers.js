@@ -36,20 +36,28 @@ export function convertToRows(data) {
  * A function to convert a string seperated by dashes to one space seperated
  */
 export function displayName(name) {
-  return name
-    .replace(/-+/g, " ")
-    .toLowerCase()
-    .replace(/,/g, ", ")
-    .split(" ")
-    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-    .join(" ");
+  if (name) {
+    return name
+      .replace(/-+/g, " ")
+      .toLowerCase()
+      .replace(/,/g, ", ")
+      .split(" ")
+      .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+      .join(" ");
+  } else {
+    return "";
+  }
 }
 
 /**
  * A function to convert a string seperated by spaces to one space dashes
  */
 export function slugName(prefix, name) {
-  return prefix + name.replace(/\s+/g, "-");
+  if (name) {
+    return prefix + name.replace(/\s+/g, "-");
+  } else {
+    return "";
+  }
 }
 
 /**

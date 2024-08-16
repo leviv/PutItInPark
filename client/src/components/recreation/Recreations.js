@@ -10,6 +10,7 @@ import {
   convertToRows,
   expandFilters,
 } from "../helpers/Helpers.js";
+import { fakeFetch } from "../fake_api/fakeApi.js";
 
 const endpoint = API_ENDPOINT + "/recreations";
 
@@ -50,13 +51,17 @@ class Recreations extends React.Component {
   }
 
   makeApiCall(pageNumber) {
-    fetch(
-      endpoint +
-        "?q=" +
-        JSON.stringify(this.state.query) +
-        "&results_per_page=12&page=" +
-        pageNumber
-    )
+    // fetch(
+    //   endpoint +
+    //     "?q=" +
+    //     JSON.stringify(this.state.query) +
+    //     "&results_per_page=12&page=" +
+    //     pageNumber
+    // )
+    fakeFetch(API_ENDPOINT, "/recreations/", null, null, {
+      resultsPerPage: 12,
+      pageNumber,
+    })
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -83,7 +88,8 @@ class Recreations extends React.Component {
       return;
     }
 
-    fetch(endpoint) //+ "?q="+ JSON.stringify(this.state.query))
+    // fetch(endpoint)
+    fakeFetch(API_ENDPOINT, "/recreations", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search
@@ -110,11 +116,11 @@ class Recreations extends React.Component {
   }
 
   applyFilters() {
-    const reserveFilterIndex = document.getElementById("reserveFilter")
-      .selectedIndex;
+    const reserveFilterIndex =
+      document.getElementById("reserveFilter").selectedIndex;
     const stayFilterIndex = document.getElementById("stayFilter").selectedIndex;
-    const activityFilterIndex = document.getElementById("activityFilter")
-      .selectedIndex;
+    const activityFilterIndex =
+      document.getElementById("activityFilter").selectedIndex;
     const sortIndex = document.getElementById("sort").selectedIndex - 1;
     const sortDirIndex =
       document.getElementById("sort-direction").selectedIndex - 1;

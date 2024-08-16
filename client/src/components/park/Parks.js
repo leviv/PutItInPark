@@ -10,6 +10,7 @@ import {
   convertToRows,
   expandFilters,
 } from "../helpers/Helpers.js";
+import { fakeFetch } from "../fake_api/fakeApi.js";
 
 const endpoint = API_ENDPOINT + "/nationalparks";
 
@@ -51,20 +52,25 @@ class Parks extends React.Component {
   }
 
   makeApiCall(pageNumber) {
-    fetch(
-      endpoint +
-        "?q=" +
-        JSON.stringify(this.state.query) +
-        "&results_per_page=12&page=" +
-        pageNumber
-    )
+    // fetch(
+    //   endpoint +
+    //     "?q=" +
+    //     JSON.stringify(this.state.query) +
+    //     "&results_per_page=12&page=" +
+    //     pageNumber
+    // )
+    fakeFetch(API_ENDPOINT, "/nationalparks/", null, null, {
+      resultsPerPage: 12,
+      pageNumber,
+    })
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
         this.setState({ numPages: data.total_pages });
         // Process data
         data.objects.forEach((park) => {
-          park.rec_ids = park.rec_ids.split(",");
+          console.log("levi:", park);
+          park.rec_ids = park.rec_ids[0].split(",");
           this.state.parks.push(park);
         });
       })
@@ -85,7 +91,8 @@ class Parks extends React.Component {
       return;
     }
 
-    fetch(endpoint)
+    // fetch(endpoint)
+    fakeFetch(API_ENDPOINT, "/nationalparks/")
       // Transform the data into json
       .then((resp) => resp.json())
       // Search
@@ -114,8 +121,8 @@ class Parks extends React.Component {
   applyFilters() {
     const recFilterIndex = document.getElementById("recFilter").selectedIndex;
     const feeFilterIndex = document.getElementById("feeFilter").selectedIndex;
-    const visitorFilterIndex = document.getElementById("visitorFilter")
-      .selectedIndex;
+    const visitorFilterIndex =
+      document.getElementById("visitorFilter").selectedIndex;
     const sortIndex = document.getElementById("sort").selectedIndex - 1;
     const sortDirIndex =
       document.getElementById("sort-direction").selectedIndex - 1;
