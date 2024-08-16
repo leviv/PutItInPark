@@ -134,15 +134,8 @@ class About extends React.Component {
   }
 
   render() {
-    const {
-      Billy,
-      Ella,
-      Joseph,
-      Levi,
-      Miles,
-      totalCommits,
-      closedIssues,
-    } = this.state;
+    const { Billy, Ella, Joseph, Levi, Miles, totalCommits, closedIssues } =
+      this.state;
 
     return (
       <React.Fragment>

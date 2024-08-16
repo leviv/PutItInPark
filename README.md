@@ -11,23 +11,27 @@ View our technical report in the file `Technical_Report.pdf` and our final prese
 ## Development
 
 ### Backend
+
 To get started with backend development, first install the python dependencies used to run flask.
 
 ```bash
 git clone git@github.com:leviv/PutItInPark.git
 cd PutItInPark
-pip install -r requirements.txt 
+pip install -r requirements.txt
 ```
 
 Then run the backend
+
 ```bash
 flask run
 ```
 
 ### Database
+
 To get the backend working locally, you must set up a database. I currently use a [free heroku Postgres database](https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres) that was easy to set up, although it is possible to use local or other options.
 
-No matter the option, ensure you copy the database URL into the appropriate environment variable. For me this looked like: 
+No matter the option, ensure you copy the database URL into the appropriate environment variable. For me this looked like:
+
 ```
 heroku config:get DATABASE_URL -a <PROJECT_NAME> | pbcopy
 export DATABASE_URL='<COPIED_URL>'
@@ -52,4 +56,5 @@ Type "help" for help.
 If the scripts fail to run, you may have to manually run the `CREATE TABLE` command with each of the 3 table schemas before populating with data.
 
 ### Frontend
-The information for running the frontend locally exists in `Setup.md` in this same directory.
+
+The information for running the frontend locally exists at `client/README.md`.

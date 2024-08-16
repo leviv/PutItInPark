@@ -20,21 +20,6 @@
 
 export const recs = [
   {
-    rec_id: "TABLE recreation (rec_id VARCHAR(10)",
-    rec_name: "rec_name VARCHAR(100)",
-    location: "location VARCHAR(30)",
-    natpark: "natpark VARCHAR(30)",
-    reservable: "reservable VARCHAR(5)",
-    lat: "lat Decimal(8",
-    lon: "6)",
-    activities: "lon Decimal(9",
-    imglink: "6)",
-    num_activities: "activities VARCHAR(300)",
-    description: "imglink VARCHAR(1000)",
-    par_org_id: "num_activities INT",
-    stay_limit: "description VARCHAR(4000)",
-  },
-  {
     rec_id: "2554",
     rec_name: "Acadia-National-Park",
     location: "Maine",

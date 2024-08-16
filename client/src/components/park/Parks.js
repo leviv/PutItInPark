@@ -59,7 +59,7 @@ class Parks extends React.Component {
     //     "&results_per_page=12&page=" +
     //     pageNumber
     // )
-    fakeFetch(API_ENDPOINT, "/nationalparks/", null, null, {
+    fakeFetch(API_ENDPOINT, "/nationalparks/", null, this.state.query, {
       resultsPerPage: 12,
       pageNumber,
     })
@@ -69,7 +69,6 @@ class Parks extends React.Component {
         this.setState({ numPages: data.total_pages });
         // Process data
         data.objects.forEach((park) => {
-          console.log("levi:", park);
           park.rec_ids = park.rec_ids[0].split(",");
           this.state.parks.push(park);
         });
@@ -222,7 +221,7 @@ class Parks extends React.Component {
                 onClick={expandFilters}
               />
             </div>
-            <div className="row">
+            <div className="row filters-sort">
               <div className="col-md-8 model-filter">
                 <h4>Filter by</h4>
                 <select
@@ -230,7 +229,7 @@ class Parks extends React.Component {
                   id="recFilter"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Num of Recreation Areas</option>
+                  <option>Num of Recreation Areas</option>
                   <option>0-10</option>
                   <option>10-20</option>
                   <option>21+</option>
@@ -240,7 +239,7 @@ class Parks extends React.Component {
                   id="feeFilter"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Price</option>
+                  <option>Price</option>
                   <option>Free</option>
                   <option>Not Free</option>
                 </select>
@@ -249,7 +248,7 @@ class Parks extends React.Component {
                   id="visitorFilter"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Number of Visitors</option>
+                  <option>Number of Visitors</option>
                   <option>0-50,000</option>
                   <option>50,000-100,000</option>
                   <option>100,001+</option>
@@ -262,7 +261,7 @@ class Parks extends React.Component {
                   id="sort"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Pick One</option>
+                  <option>Pick One</option>
                   <option>Park Name</option>
                   <option>Location</option>
                   <option>Num of Recreation Areas</option>
@@ -274,7 +273,7 @@ class Parks extends React.Component {
                   id="sort-direction"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Descending</option>
+                  <option>Descending</option>
                   <option>Ascending</option>
                 </select>
               </div>

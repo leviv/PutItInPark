@@ -61,8 +61,6 @@ class RecVis extends React.Component {
   }
 
   plotRecs() {
-    console.log(this.state.activities);
-
     // Set up the svg container
     const chart = d3
       .select(this.refs.canvas)

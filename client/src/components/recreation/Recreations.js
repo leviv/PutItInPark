@@ -58,7 +58,7 @@ class Recreations extends React.Component {
     //     "&results_per_page=12&page=" +
     //     pageNumber
     // )
-    fakeFetch(API_ENDPOINT, "/recreations/", null, null, {
+    fakeFetch(API_ENDPOINT, "/recreations/", null, this.state.query, {
       resultsPerPage: 12,
       pageNumber,
     })
@@ -223,7 +223,7 @@ class Recreations extends React.Component {
                 onClick={expandFilters}
               />
             </div>
-            <div className="row">
+            <div className="row filters-sort">
               <div className="col-md-8 model-filter">
                 <h4>Filter by</h4>
                 <select
@@ -231,7 +231,7 @@ class Recreations extends React.Component {
                   id="reserveFilter"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Reservable</option>
+                  <option>Reservable</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
@@ -240,7 +240,7 @@ class Recreations extends React.Component {
                   id="stayFilter"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Stay Limit</option>
+                  <option>Stay Limit</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
@@ -249,7 +249,7 @@ class Recreations extends React.Component {
                   id="activityFilter"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Num Activities</option>
+                  <option>Num Activities</option>
                   <option>0-5</option>
                   <option>6-10</option>
                   <option>11+</option>
@@ -262,7 +262,7 @@ class Recreations extends React.Component {
                   id="sort"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Pick One</option>
+                  <option>Pick One</option>
                   <option>Rec Name</option>
                   <option>Rec Id</option>
                   <option>State</option>
@@ -274,7 +274,7 @@ class Recreations extends React.Component {
                   id="sort-direction"
                   onChange={this.applyFilters}
                 >
-                  <option selected>Descending</option>
+                  <option>Descending</option>
                   <option>Ascending</option>
                 </select>
               </div>

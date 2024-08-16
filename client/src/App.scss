@@ -1,20 +1,25 @@
 /* =================
   Variables
   ================= */
-$primary-color: #2A9D8F;
-$secondary-color: #FED892;
+$primary-color: #2a9d8f;
+$secondary-color: #fed892;
 $third-color: #264653;
 
 /* =================
   General Styles
   ================= */
 * {
-  font-family: 'Vollkorn', serif;
+  font-family: "Vollkorn", serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: $third-color;
-  font-family: 'Unica One', serif;
+  font-family: "Unica One", serif;
   text-transform: uppercase;
 }
 
@@ -22,25 +27,26 @@ h1 {
   margin: 20px 0;
 }
 
-h1 span, h3 span {
+h1 span,
+h3 span {
   background-color: $third-color;
   color: $secondary-color;
-  font-family: 'Unica One', serif;
+  font-family: "Unica One", serif;
   padding: 3px 8px;
 }
 
 button.button {
   border-radius: 20px;
   bottom: 0px;
-  font-family: 'Unica One', serif;
+  font-family: "Unica One", serif;
   font-size: 20px;
   height: 40px;
   margin: 3px 10px;
   padding: 2px 20px;
   position: relative;
   text-transform: uppercase;
-  transition: all .2s;
-  -webkit-transition: all .2s;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
   background: #fff;
 
   &.button-primary {
@@ -63,12 +69,14 @@ button.button {
   }
 
   &:hover {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     bottom: 2px;
   }
 }
 
-body, html, #root {
+body,
+html,
+#root {
   height: 100%;
 }
 
@@ -76,7 +84,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
   font-family: "Dosis", sans-serif;
-  padding-top: 56px
+  padding-top: 56px;
 }
 
 h2 {
@@ -99,45 +107,39 @@ footer {
   $bg: #fff;
   $fill: $primary-color;
 
-  .hourglass{
-      display:block;
-      background:$bg;
-      margin:3em auto;
-      width:2em;
-      height:4em;
-      animation:hourglass 1s linear infinite;
+  .hourglass {
+    display: block;
+    background: $bg;
+    margin: 3em auto;
+    width: 2em;
+    height: 4em;
+    animation: hourglass 1s linear infinite;
   }
 
-  .outer{
-      fill:$fill;
+  .outer {
+    fill: $fill;
   }
 
-  .middle{
-      fill:$bg;
+  .middle {
+    fill: $bg;
   }
 
-  @keyframes hourglass{
-      0%{
-          transform:rotate(0deg);
-          box-shadow:
-              inset $fill 0 -0em 0 0,
-              inset $bg 0 -2em 0 0,
-              inset $fill 0 -4em 0 0;
-      }
-      80%{
-          transform:rotate(0deg);
-          box-shadow:
-              inset $fill 0 -2em 0 0,
-              inset $bg 0 -2em 0 0,
-              inset $fill 0 -2em 0 0;
-      }
-      100%{
-          transform:rotate(180deg);
-          box-shadow:
-              inset $fill 0 -2em 0 0,
-              inset $bg 0 -2em 0 0,
-              inset $fill 0 -2em 0 0;
-      }
+  @keyframes hourglass {
+    0% {
+      transform: rotate(0deg);
+      box-shadow: inset $fill 0 -0em 0 0, inset $bg 0 -2em 0 0,
+        inset $fill 0 -4em 0 0;
+    }
+    80% {
+      transform: rotate(0deg);
+      box-shadow: inset $fill 0 -2em 0 0, inset $bg 0 -2em 0 0,
+        inset $fill 0 -2em 0 0;
+    }
+    100% {
+      transform: rotate(180deg);
+      box-shadow: inset $fill 0 -2em 0 0, inset $bg 0 -2em 0 0,
+        inset $fill 0 -2em 0 0;
+    }
   }
 }
 
@@ -148,6 +150,10 @@ footer {
 nav form .form-control {
   max-width: calc(100% - 50px);
   margin-right: 15px;
+}
+
+.nav-item h5 {
+  margin-bottom: 0;
 }
 
 /* =================
@@ -220,8 +226,8 @@ nav form .form-control {
   color: #fff;
   margin: 10px;
   position: relative;
-  transition: all .2s;
-  -webkit-transition: all .2s;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
 
   h3 {
     color: $secondary-color;
@@ -238,7 +244,7 @@ nav form .form-control {
   }
 
   &:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     bottom: 3px;
   }
 }
@@ -264,7 +270,11 @@ nav form .form-control {
 }
 
 .instance {
-  .state p, .dates-open p, .reservable p, .stay-limit p, .activities-list p {
+  .state p,
+  .dates-open p,
+  .reservable p,
+  .stay-limit p,
+  .activities-list p {
     text-transform: capitalize;
   }
 
@@ -295,14 +305,20 @@ nav form .form-control {
   width: 100%;
 
   .instance-overlay {
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 30%, rgba($third-color,.9) 50%, rgba($third-color, .9) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 30%,
+      rgba($third-color, 0.9) 50%,
+      rgba($third-color, 0.9) 100%
+    );
     background-size: 200% 200%;
     border-radius: 5px;
     height: 100%;
     width: 100%;
-    transition: all .2s;
-    -webkit-transition: all .2s;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
 
     .hidden-details {
       color: #fff;
@@ -330,8 +346,8 @@ nav form .form-control {
     height: 250px;
     margin: 20px 0;
     position: relative;
-    transition: all .2s;
-    -webkit-transition: all .2s;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
     width: 100%;
 
     &.small-card {
@@ -352,7 +368,7 @@ nav form .form-control {
     }
 
     &:hover {
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
       bottom: 3px;
     }
   }
@@ -373,6 +389,11 @@ ul.pagination li {
   display: inline-block;
 }
 
+ul.pagination li.active {
+  background-color: $third-color;
+  color: $secondary-color !important;
+}
+
 ul.pagination a {
   border: 1px solid $third-color;
   color: $third-color;
@@ -381,11 +402,11 @@ ul.pagination a {
   font-size: 18px;
   margin: 0 5px;
   padding: 3px;
-  transition: all .1s;
+  transition: all 0.1s;
 
   &:hover {
     background-color: $third-color;
-    color: $secondary-color;
+    color: $secondary-color !important;
   }
 }
 
@@ -394,15 +415,19 @@ ul.pagination a {
   ================= */
 
 #augment-container {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 5px;
   -webkit-border-radius: 5px;
-  height: 98px;
+  height: 108px;
   margin: 30px 0;
   overflow: hidden;
   padding: 15px 35px;
-  transition: all .2s;
+  transition: all 0.2s;
   background-color: $third-color;
+
+  .filters-sort {
+    margin-top: 10px;
+  }
 
   .search-row {
     align-items: center;
@@ -420,7 +445,7 @@ ul.pagination a {
       position: absolute;
       right: 30px;
       width: 50px;
-      transition: all .2s;
+      transition: all 0.2s;
 
       &:hover {
         background: $primary-color;
@@ -472,7 +497,7 @@ ul.pagination a {
 
   button {
     background-color: $third-color;
-    color: $secondary-color
+    color: $secondary-color;
   }
 
   select {
@@ -493,7 +518,7 @@ ul.pagination a {
   border: 1px solid #000;
   border-radius: 3px;
   -webkit-border-radius: 3px;
-  font-family: 'Unica One', serif;
+  font-family: "Unica One", serif;
   font-size: 20px;
   padding: 2px 7px;
   pointer-events: none;

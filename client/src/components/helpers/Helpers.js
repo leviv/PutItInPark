@@ -13,7 +13,7 @@ export function expandFilters() {
     filters.classList.remove("collapsed");
     document.getElementById("carat").style.transform = "rotate(180deg)";
   } else {
-    filters.style.height = "98px";
+    filters.style.height = "108px";
     filters.classList.add("collapsed");
     document.getElementById("carat").style.transform = "rotate(0deg)";
   }
