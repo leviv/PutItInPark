@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found</title>
     <script type="text/javascript">
-      // Redirect to the index.html page but preserve the path
-      var path = window.location.pathname;
-      var newPath = "/PutItInPark" + path;
-      window.location.replace(newPath);
+      // Extract the pathname
+      var pathname = window.location.pathname;
+      // Redirect to index.html with pathname as a query parameter
+      window.location.replace(
+        "/PutItInPark/index.html?redirect=" + encodeURIComponent(pathname)
+      );
     </script>
   </head>
   <body>
