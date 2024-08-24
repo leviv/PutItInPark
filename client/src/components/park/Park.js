@@ -56,7 +56,6 @@ class Park extends React.Component {
             // Transform the data into json
             .then((resp) => resp.json())
             .then((data) => {
-              console.log("levi data, ", data);
               // Process data
               this.state.recreations.push(data);
             })

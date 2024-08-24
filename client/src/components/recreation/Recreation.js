@@ -146,7 +146,7 @@ class Recreation extends React.Component {
             <ul className="activities-list">
               {this.state.rec.activities.map((item, innerIndex) => {
                 return (
-                  <li>
+                  <li key={innerIndex}>
                     <p>{item.toLowerCase()}</p>
                   </li>
                 );

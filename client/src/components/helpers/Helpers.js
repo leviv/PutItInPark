@@ -61,7 +61,7 @@ export function slugName(prefix, name) {
 }
 
 /**
- * A function to convert a number to one seperated by commas
+ * Format number to be comma seperated
  */
 export function formatNumber(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

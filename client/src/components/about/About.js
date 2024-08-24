@@ -26,17 +26,40 @@ import FlaskPhoto from "../../assets/img/tools/flask.jpeg";
 import MySQLPhoto from "../../assets/img/tools/mysql.png";
 import D3Photo from "../../assets/img/tools/d3.png";
 
+const GITLAB_COMMIT_ENDPOINT =
+  "https://gitlab.com/api/v4/projects/14563233/repository/commits?per_page=1000&page=1";
+const GITLAB_ISSUES_ENDPOINT =
+  "https://gitlab.com/api/v4/projects/14563233/issues?per_page=1000&page=1";
+
 // Gitlab issues/commit retrieval inspired by shub95/foodmeonce
 class About extends React.Component {
   constructor(props) {
     super(props);
-    var Billy = [0, 0, 0];
-    var Ella = [0, 0, 0];
-    var Joseph = [0, 0, 0];
-    var Levi = [0, 0, 24];
-    var Miles = [0, 0, 0];
-    var totalCommits = 0;
-    var closedIssues = 0;
+    var Billy = {
+      commits: 0,
+      issuesClosed: 0,
+      tests: 0,
+    };
+    var Ella = {
+      commits: 0,
+      issuesClosed: 0,
+      tests: 0,
+    };
+    var Joseph = {
+      commits: 0,
+      issuesClosed: 0,
+      tests: 0,
+    };
+    var Levi = {
+      commits: 0,
+      issuesClosed: 0,
+      tests: 24, // Hardcoding this because we don't track it in GitLab
+    };
+    var Miles = {
+      commits: 0,
+      issuesClosed: 0,
+      tests: 0,
+    };
 
     this.state = {
       Billy: Billy,
@@ -44,8 +67,9 @@ class About extends React.Component {
       Joseph: Joseph,
       Levi: Levi,
       Miles: Miles,
-      totalCommits: totalCommits,
-      closedIssues: closedIssues,
+      totalCommits: 0,
+      totalIssues: 0,
+      issuesClosed: 0,
     };
   }
 
@@ -54,35 +78,83 @@ class About extends React.Component {
     this.grabIssues();
   }
 
-  async grabIssues() {
-    fetch(
-      "https://gitlab.com/api/v4/projects/14563233/issues?per_page=1000&page=1"
-    )
+  async grabCommits() {
+    fetch(GITLAB_COMMIT_ENDPOINT)
       .then((res) => res.json())
       .then((res) => {
+        // Clone the state so we can set it only once
+        var intermediateState = JSON.parse(JSON.stringify(this.state));
+
+        res.forEach((commit) => {
+          intermediateState.totalCommits++;
+          switch (commit.committer_name) {
+            case "Ella Robertson":
+            case "ellarobertson":
+              intermediateState.Ella.commits++;
+              break;
+            case "Levi Villarreal":
+              intermediateState.Levi.commits++;
+              break;
+            case "Joseph Engelhart":
+            case "jengelhart":
+              intermediateState.Joseph.commits++;
+              break;
+            case "Miles Chandler":
+              intermediateState.Miles.commits++;
+              break;
+            case "Billy Vo":
+            case "billyvo":
+              intermediateState.Billy.commits++;
+              break;
+            default:
+          }
+        });
+
+        this.setState({
+          Billy: intermediateState.Billy,
+          Ella: intermediateState.Ella,
+          Joseph: intermediateState.Joseph,
+          Levi: intermediateState.Levi,
+          Miles: intermediateState.Miles,
+          totalCommits: intermediateState.totalCommits,
+        });
+      })
+      .catch((err) => {
+        console.error("Problem fetching Gitlab commits");
+        console.error(err);
+      });
+  }
+
+  async grabIssues() {
+    fetch(GITLAB_ISSUES_ENDPOINT)
+      .then((res) => res.json())
+      .then((res) => {
+        // Clone the state so we can set it only once
+        var intermediateState = JSON.parse(JSON.stringify(this.state));
+
         res.forEach((issue) => {
-          this.state.totalIssues += 1;
+          intermediateState.totalIssues++;
           if (issue.closed_by != null) {
-            this.state.closedIssues += 1;
+            intermediateState.issuesClosed++;
             issue.assignees.forEach((assignee) => {
               switch (assignee.name) {
                 case "Ella Robertson":
                 case "ellarobertson":
-                  this.state.Ella[1] += 1;
+                  intermediateState.Ella.issuesClosed++;
                   break;
                 case "Levi Villarreal":
-                  this.state.Levi[1] += 1;
+                  intermediateState.Levi.issuesClosed++;
                   break;
                 case "Joseph Engelhart":
                 case "jengelhart":
-                  this.state.Joseph[1] += 1;
+                  intermediateState.Joseph.issuesClosed++;
                   break;
                 case "Miles Chandler":
-                  this.state.Miles[1] += 1;
+                  intermediateState.Miles.issuesClosed++;
                   break;
                 case "Billy Vo":
                 case "billyvo":
-                  this.state.Billy[1] += 1;
+                  intermediateState.Billy.issuesClosed++;
                   break;
                 default:
                   console.log(issue);
@@ -90,51 +162,24 @@ class About extends React.Component {
             });
           }
         });
-        this.setState(this.state);
+        this.setState({
+          Billy: intermediateState.Billy,
+          Ella: intermediateState.Ella,
+          Joseph: intermediateState.Joseph,
+          Levi: intermediateState.Levi,
+          Miles: intermediateState.Miles,
+          totalIssues: intermediateState.totalIssues,
+          issuesClosed: intermediateState.issuesClosed,
+        });
+      })
+      .catch((err) => {
+        console.error("Problem fetching Gitlab issues");
+        console.error(err);
       });
   }
 
-  async grabCommits() {
-    var page = 0;
-    while (page < 4) {
-      page += 1;
-      fetch(
-        "https://gitlab.com/api/v4/projects/14563233/repository/commits?per_page=100&page=" +
-          page
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          res.forEach((commit) => {
-            this.state.totalCommits += 1;
-            switch (commit.committer_name) {
-              case "Ella Robertson":
-              case "ellarobertson":
-                this.state.Ella[0] += 1;
-                break;
-              case "Levi Villarreal":
-                this.state.Levi[0] += 1;
-                break;
-              case "Joseph Engelhart":
-              case "jengelhart":
-                this.state.Joseph[0] += 1;
-                break;
-              case "Miles Chandler":
-                this.state.Miles[0] += 1;
-                break;
-              case "Billy Vo":
-              case "billyvo":
-                this.state.Billy[0] += 1;
-                break;
-              default:
-            }
-          });
-        });
-    }
-    this.setState(this.state);
-  }
-
   render() {
-    const { Billy, Ella, Joseph, Levi, Miles, totalCommits, closedIssues } =
+    const { Billy, Ella, Joseph, Levi, Miles, totalCommits, issuesClosed } =
       this.state;
 
     return (
@@ -147,8 +192,7 @@ class About extends React.Component {
           <p className="about-lead">
             Purpose: This website is meant to encourage Americans/tourists to go
             outdoors by highlighting National Parks and recreational activities
-            in their area. Real beauty is found outside and we think more people
-            should spend their time enjoying it.
+            in their area.
           </p>
 
           <div className="about-buttons text-center">
@@ -175,29 +219,29 @@ class About extends React.Component {
           </h1>
 
           <h3 className="text-center">Total Commits: {totalCommits}</h3>
-          <h3 className="text-center">Closed issues: {closedIssues}</h3>
+          <h3 className="text-center">Closed issues: {issuesClosed}</h3>
 
           <div className="row">
             <TeamMember
               name="Miles Chandler"
               imageUrl={MilesPhoto}
-              commits={Miles[0]}
-              issuesClosed={Miles[1]}
-              tests={Miles[2]}
+              commits={Miles.commits}
+              issuesClosed={Miles.issuesClosed}
+              tests={Miles.tests}
             />
             <TeamMember
               name="Joseph Engelhart"
               imageUrl={JosephPhoto}
-              commits={Joseph[0]}
-              issuesClosed={Joseph[1]}
-              tests={Joseph[2]}
+              commits={Joseph.commits}
+              issuesClosed={Joseph.issuesClosed}
+              tests={Joseph.tests}
             />
             <TeamMember
               name="Ella Robertson"
               imageUrl={EllaPhoto}
-              commits={Ella[0]}
-              issuesClosed={Ella[1]}
-              tests={Ella[2]}
+              commits={Ella.commits}
+              issuesClosed={Ella.issuesClosed}
+              tests={Ella.tests}
             />
           </div>
           <div className="row">
@@ -205,16 +249,16 @@ class About extends React.Component {
             <TeamMember
               name="Levi Villarreal"
               imageUrl={LeviPhoto}
-              commits={Levi[0]}
-              issuesClosed={Levi[1]}
-              tests={Levi[2]}
+              commits={Levi.commits}
+              issuesClosed={Levi.issuesClosed}
+              tests={Levi.tests}
             />
             <TeamMember
               name="Billy Vo"
               imageUrl={BillyPhoto}
-              commits={Billy[0]}
-              issuesClosed={Billy[1]}
-              tests={Billy[2]}
+              commits={Billy.commits}
+              issuesClosed={Billy.issuesClosed}
+              tests={Billy.tests}
             />
             <div className="col-sm-2"></div>
           </div>
@@ -226,141 +270,103 @@ class About extends React.Component {
           </h1>
 
           <div className="row">
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={ReactPhoto}
-                tool_name={"React JS"}
-                description={"JavaScript library, namely using react routing"}
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={NodePhoto}
-                tool_name={"Node"}
-                description={
-                  "JavaScript run-time environment that executes JavaScript code outside of a browser"
-                }
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={ExpressPhoto}
-                tool_name="Express"
-                description="Web application framework for Node.js, designed for building web applications and APIs"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={GCPPhoto}
-                tool_name="GCP"
-                description="Used to deploy and host the web application"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={BootstrapPhoto}
-                tool_name="Bootstrap"
-                description="Free and open-source CSS framework directed at responsive, mobile-first front-end web development"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={PostmanPhoto}
-                tool_name="Postman"
-                description="Used to document our API and output in HTML format"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={GitlabPhoto}
-                tool_name="GitLab"
-                description="Used to host our code and provide CI/CD environments"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={PixabayPhoto}
-                tool_name="Pixabay"
-                description="Used to find royalty-free images for the static site"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={NamecheapPhoto}
-                tool_name="NameCheap"
-                description="Used to provide website URLs"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={MochaPhoto}
-                tool_name="Mocha"
-                description="Used as our JavaScript test framework"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={EnzymePhoto}
-                tool_name="Enzyme"
-                description="Used to more easily test our React components"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={SeleniumPhoto}
-                tool_name="Selenium"
-                description="Used to automate acceptance tests"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={ChromePhoto}
-                tool_name="Chrome Webdriver"
-                description="A controllable webdriver for Selenium"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={SCSSPhoto}
-                tool_name="SCSS"
-                description="Used to make styles more flexible and readable"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={DockerPhoto}
-                tool_name="Docker"
-                description="Used to provide images for frontend and backend development"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={MySQLPhoto}
-                tool_name="MySQL"
-                description="Relational database management system used to store our data"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={CloudPhoto}
-                tool_name="Cloud SQL Proxy"
-                description="Allowed to connect to the database locally using GCP"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={FlaskPhoto}
-                tool_name="Flask"
-                description="Lightweight python web framework, used for our backend API"
-              />
-            </div>
-            <div className="col-md-4 instance-container">
-              <ToolCard
-                imageUrl={D3Photo}
-                tool_name="D3.js"
-                description="JavaScript Library to support data visualizations"
-              />
-            </div>
+            <ToolCard
+              imageUrl={ReactPhoto}
+              tool_name={"React JS"}
+              description={"JavaScript library, namely using react routing"}
+            />
+            <ToolCard
+              imageUrl={NodePhoto}
+              tool_name={"Node"}
+              description={
+                "JavaScript run-time environment that executes JavaScript code outside of a browser"
+              }
+            />
+            <ToolCard
+              imageUrl={ExpressPhoto}
+              tool_name="Express"
+              description="Web application framework for Node.js, designed for building web applications and APIs"
+            />
+            <ToolCard
+              imageUrl={GCPPhoto}
+              tool_name="GCP"
+              description="Used to deploy and host the web application"
+            />
+            <ToolCard
+              imageUrl={BootstrapPhoto}
+              tool_name="Bootstrap"
+              description="Free and open-source CSS framework directed at responsive, mobile-first front-end web development"
+            />
+            <ToolCard
+              imageUrl={PostmanPhoto}
+              tool_name="Postman"
+              description="Used to document our API and output in HTML format"
+            />
+            <ToolCard
+              imageUrl={GitlabPhoto}
+              tool_name="GitLab"
+              description="Used to host our code and provide CI/CD environments"
+            />
+            <ToolCard
+              imageUrl={PixabayPhoto}
+              tool_name="Pixabay"
+              description="Used to find royalty-free images for the static site"
+            />
+            <ToolCard
+              imageUrl={NamecheapPhoto}
+              tool_name="NameCheap"
+              description="Used to provide website URLs"
+            />
+            <ToolCard
+              imageUrl={MochaPhoto}
+              tool_name="Mocha"
+              description="Used as our JavaScript test framework"
+            />
+            <ToolCard
+              imageUrl={EnzymePhoto}
+              tool_name="Enzyme"
+              description="Used to more easily test our React components"
+            />
+            <ToolCard
+              imageUrl={SeleniumPhoto}
+              tool_name="Selenium"
+              description="Used to automate acceptance tests"
+            />
+            <ToolCard
+              imageUrl={ChromePhoto}
+              tool_name="Chrome Webdriver"
+              description="A controllable webdriver for Selenium"
+            />
+            <ToolCard
+              imageUrl={SCSSPhoto}
+              tool_name="SCSS"
+              description="Used to make styles more flexible and readable"
+            />
+            <ToolCard
+              imageUrl={DockerPhoto}
+              tool_name="Docker"
+              description="Used to provide images for frontend and backend development"
+            />
+            <ToolCard
+              imageUrl={MySQLPhoto}
+              tool_name="MySQL"
+              description="Relational database management system used to store our data"
+            />
+            <ToolCard
+              imageUrl={CloudPhoto}
+              tool_name="Cloud SQL Proxy"
+              description="Allowed to connect to the database locally using GCP"
+            />
+            <ToolCard
+              imageUrl={FlaskPhoto}
+              tool_name="Flask"
+              description="Lightweight python web framework, used for our backend API"
+            />
+            <ToolCard
+              imageUrl={D3Photo}
+              tool_name="D3.js"
+              description="JavaScript Library to support data visualizations"
+            />
           </div>
         </div>
       </React.Fragment>

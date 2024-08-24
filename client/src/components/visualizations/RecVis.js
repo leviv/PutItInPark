@@ -46,7 +46,8 @@ class RecVis extends React.Component {
                 index = this.state.activities.length - 1;
               }
 
-              // Update the activity count
+              // Update the activity count - we setState at the end of the for loop so we can mutate state directly here
+              // eslint-disable-next-line react/no-direct-mutation-state
               this.state.activities[index].count++;
             }
           });
@@ -68,13 +69,13 @@ class RecVis extends React.Component {
       .attr("preserveAspectRatio", "xMinYMin meet")
       .attr("viewBox", "0 0 960 550")
       .attr("stroke", "#fff")
-      .attr("fill", "#264653")
+      .attr("fill", "#fed892")
       .classed("svg-content", true);
 
     const pack = (data) =>
       d3
         .pack()
-        .size([960 - 2, 600 - 2])
+        .size([960 - 2, 550 - 2])
         .padding(3)(d3.hierarchy({ children: data }).sum((d) => d.count));
 
     const root = pack(this.state.activities);
@@ -103,7 +104,7 @@ class RecVis extends React.Component {
         d3.select(this)
           .transition()
           .duration(200)
-          .attr("stroke", "#FED892")
+          .attr("stroke", "#264653")
           .attr("stroke-width", "3px");
 
         // Fade in the tooltip
@@ -128,7 +129,7 @@ class RecVis extends React.Component {
       .text(function (d) {
         return displayName(d.data.name);
       })
-      .style("fill", "#204653")
+      .style("fill", "#000")
       .style("pointer-events", "none")
       .style("font-size", function (d) {
         return d.r / 3;

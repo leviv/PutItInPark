@@ -1,3 +1,4 @@
+/* eslint-disable react/no-direct-mutation-state */
 import React from "react";
 import * as d3 from "d3";
 import NotFound from "../NotFound";

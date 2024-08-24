@@ -58,7 +58,7 @@ class Recreations extends React.Component {
     //     "&results_per_page=12&page=" +
     //     pageNumber
     // )
-    fakeFetch(API_ENDPOINT, "/recreations/", null, this.state.query, {
+    fakeFetch(endpoint, "/recreations/", null, this.state.query, {
       resultsPerPage: 12,
       pageNumber,
     })
@@ -89,7 +89,7 @@ class Recreations extends React.Component {
     }
 
     // fetch(endpoint)
-    fakeFetch(API_ENDPOINT, "/recreations", null, null, null)
+    fakeFetch(endpoint, "/recreations", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search

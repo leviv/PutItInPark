@@ -69,9 +69,13 @@ export const fakeFetch = async (
 
           switch (queryOp) {
             case "eq":
+              // We don't want strict type checking here
+              // eslint-disable-next-line eqeqeq
               doesPassFilters = doesPassFilters && value == queryValue;
               break;
             case "neq":
+              // We don't want strict type checking here
+              // eslint-disable-next-line eqeqeq
               doesPassFilters = doesPassFilters && value != queryValue;
               break;
             case "le":
@@ -79,6 +83,8 @@ export const fakeFetch = async (
               break;
             case "ge":
               doesPassFilters = doesPassFilters && value >= queryValue;
+              break;
+            default:
               break;
           }
 
@@ -105,7 +111,8 @@ export const fakeFetch = async (
 
   // Query Sort
   if (query && query.order_by?.length > 0) {
-    // Assume we have only one orderBy because why wouldnt we
+    // Assume we have only one orderBy
+    // It doesn't make sense to have more than 1
     const field = query.order_by[0].field;
     const direction = query.order_by[0].direction;
 

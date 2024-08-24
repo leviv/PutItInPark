@@ -1,12 +1,6 @@
 import React from "react";
 import "./App.scss";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-  HashRouter,
-} from "react-router-dom";
+import { Switch, Route, Redirect, HashRouter } from "react-router-dom";
 
 // Import components
 import Home from "./components/Home";
@@ -32,6 +26,8 @@ import NutritionVis from "./components/visualizations/NutritionVis";
 import Visualizations from "./components/visualizations/Visualizations";
 
 function App() {
+  window.pageYOffset = 0;
+
   return (
     <HashRouter>
       <Header></Header>
