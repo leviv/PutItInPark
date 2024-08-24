@@ -58,7 +58,7 @@ class States extends React.Component {
     //     "&results_per_page=12&page=" +
     //     pageNumber
     // )
-    fakeFetch(API_ENDPOINT, "/locations/", null, this.state.query, {
+    fakeFetch(endpoint, "/locations/", null, this.state.query, {
       resultsPerPage: 12,
       pageNumber,
     })
@@ -89,7 +89,7 @@ class States extends React.Component {
     }
 
     // fetch(endpoint)
-    fakeFetch(API_ENDPOINT, "/locations/", null, null, null)
+    fakeFetch(endpoint, "/locations/", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search

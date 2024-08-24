@@ -24,7 +24,7 @@ class ParkVis extends React.Component {
 
   makeApiCall() {
     // fetch(endpoint)
-    fakeFetch(API_ENDPOINT, "/nationalparks/", null, null, null)
+    fakeFetch(endpoint, "/nationalparks/", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {

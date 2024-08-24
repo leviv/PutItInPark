@@ -59,7 +59,7 @@ class Parks extends React.Component {
     //     "&results_per_page=12&page=" +
     //     pageNumber
     // )
-    fakeFetch(API_ENDPOINT, "/nationalparks/", null, this.state.query, {
+    fakeFetch(endpoint, "/nationalparks/", null, this.state.query, {
       resultsPerPage: 12,
       pageNumber,
     })
@@ -91,7 +91,7 @@ class Parks extends React.Component {
     }
 
     // fetch(endpoint)
-    fakeFetch(API_ENDPOINT, "/nationalparks/")
+    fakeFetch(endpoint, "/nationalparks/")
       // Transform the data into json
       .then((resp) => resp.json())
       // Search

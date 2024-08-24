@@ -27,7 +27,7 @@ class StateVis extends React.Component {
 
   makeApiCall() {
     // fetch(endpoint)
-    fakeFetch(API_ENDPOINT, "/locations/", null, null, null)
+    fakeFetch(endpoint, "/locations/", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
