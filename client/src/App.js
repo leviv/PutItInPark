@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
   Redirect,
+  HashRouter,
 } from "react-router-dom";
 
 // Import components
@@ -32,7 +33,7 @@ import Visualizations from "./components/visualizations/Visualizations";
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <Header></Header>
 
       <Switch>
@@ -57,7 +58,7 @@ function App() {
       </Switch>
 
       <Footer></Footer>
-    </Router>
+    </HashRouter>
   );
 }
 

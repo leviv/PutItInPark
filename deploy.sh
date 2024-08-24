@@ -1,5 +1,4 @@
-## Deploy 'client/build' subdirectoy to branch 'gh-pages'
+## Create build and deploy 'client/build'
 
-cd client && npm run build
+cd client && npm run deploy
 cd ..
-git subtree push --prefix client/build origin gh-pages
