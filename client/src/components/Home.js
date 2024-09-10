@@ -52,7 +52,7 @@ class Home extends React.Component {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-7 splash-image">
+              <div className="col-lg-7 splash-image">
                 <HomeVis handleDataVisData={this.handleDataVisData} />
               </div>
             </div>
