@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PutItInPark/static/css/main.fb171790.css",
-    "main.js": "/PutItInPark/static/js/main.e64b8f9e.js",
+    "main.css": "/PutItInPark/static/css/main.d5c5f60f.css",
+    "main.js": "/PutItInPark/static/js/main.587cd447.js",
     "static/media/yosemite.jpg": "/PutItInPark/static/media/yosemite.d63024fdead3e19dbca1.jpg",
     "static/media/d3.png": "/PutItInPark/static/media/d3.fc389c2d7256bb16243c.png",
     "static/media/climbing.jpg": "/PutItInPark/static/media/climbing.6ce1964703282a034397.jpg",
@@ -13,7 +13,6 @@
     "static/media/Joseph.png": "/PutItInPark/static/media/Joseph.88323b731d474059fb84.png",
     "static/media/Billy.png": "/PutItInPark/static/media/Billy.9b7e18f9125fdeeccb29.png",
     "static/media/namecheap.png": "/PutItInPark/static/media/namecheap.8c496cccb37cc301e609.png",
-    "static/media/splash.png": "/PutItInPark/static/media/splash.09ee1eb0be5d45b98583.png",
     "static/media/bootstrap.png": "/PutItInPark/static/media/bootstrap.d5210cdeab1bc94309c4.png",
     "static/media/express.jpeg": "/PutItInPark/static/media/express.5158e8ac8795142e6146.jpeg",
     "static/media/gcp.png": "/PutItInPark/static/media/gcp.b9a4342e7ae02d87909e.png",
@@ -24,17 +23,17 @@
     "static/media/flask.jpeg": "/PutItInPark/static/media/flask.79fc58d9ea5df9e1d99c.jpeg",
     "static/media/cloudsqlproxy.jpeg": "/PutItInPark/static/media/cloudsqlproxy.acd6083902ce2ff3b544.jpeg",
     "static/media/chrome.jpeg": "/PutItInPark/static/media/chrome.56e2953c853faee81d34.jpeg",
+    "static/media/logo.png": "/PutItInPark/static/media/logo.58c175b121d8b21371eb.png",
     "static/media/react.png": "/PutItInPark/static/media/react.70eb8c8051d976a5b615.png",
     "static/media/texas.jpg": "/PutItInPark/static/media/texas.2fe95514c325d681e5cc.jpg",
-    "static/media/logo.png": "/PutItInPark/static/media/logo.3fa1787b7d01c9ba4b74.png",
     "static/media/postman.png": "/PutItInPark/static/media/postman.e946b36ddbb390709af9.png",
     "index.html": "/PutItInPark/index.html",
     "static/media/us-state-names.tsv": "/PutItInPark/static/media/us-state-names.1154ed03ca9b2b721460.tsv",
-    "main.fb171790.css.map": "/PutItInPark/static/css/main.fb171790.css.map",
-    "main.e64b8f9e.js.map": "/PutItInPark/static/js/main.e64b8f9e.js.map"
+    "main.d5c5f60f.css.map": "/PutItInPark/static/css/main.d5c5f60f.css.map",
+    "main.587cd447.js.map": "/PutItInPark/static/js/main.587cd447.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb171790.css",
-    "static/js/main.e64b8f9e.js"
+    "static/css/main.d5c5f60f.css",
+    "static/js/main.587cd447.js"
   ]
 }

@@ -24,13 +24,13 @@ class Header extends React.Component {
     return (
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img
               src={Logo}
               alt="Icon with mountains and the sun"
               width="40px"
             />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
