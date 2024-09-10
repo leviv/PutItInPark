@@ -91,7 +91,7 @@ class Parks extends React.Component {
     }
 
     // fetch(endpoint)
-    fakeFetch(endpoint, "/nationalparks/")
+    fakeFetch(endpoint, "/nationalparks/", null, null, null)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search
