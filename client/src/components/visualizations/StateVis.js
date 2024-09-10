@@ -162,26 +162,26 @@ class StateVis extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <br />
-          <br />
-          <h3 className="text-center">
-            <span>States by number of parks and recreation areas</span>
-          </h3>
-          <div className="row">
-            <div ref="canvas" className="col-md-9"></div>
-            <div className="col-md-3 instance-container align-self-center">
-              {this.state.state === null ? (
-                <h4>Click a state to explore!</h4>
-              ) : (
-                <StateCard
-                  name={this.state.state.name}
-                  imglink={this.state.state.imglink}
-                  num_parks={this.state.state.num_parks}
-                  numrec={this.state.state.numrec}
-                  pop={this.state.state.pop}
-                  mail_code={this.state.state.mail_code}
-                />
-              )}
+          <div className="vis-container">
+            <h3 className="text-center">
+              <span>States by number of parks and recreation areas</span>
+            </h3>
+            <div className="row">
+              <div ref="canvas" className="col-md-9"></div>
+              <div className="col-md-3 instance-container align-self-center">
+                {this.state.state === null ? (
+                  <h4>Click a state to explore!</h4>
+                ) : (
+                  <StateCard
+                    name={this.state.state.name}
+                    imglink={this.state.state.imglink}
+                    num_parks={this.state.state.num_parks}
+                    numrec={this.state.state.numrec}
+                    pop={this.state.state.pop}
+                    mail_code={this.state.state.mail_code}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </React.Fragment>

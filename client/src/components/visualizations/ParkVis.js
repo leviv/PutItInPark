@@ -135,26 +135,26 @@ class ParkVis extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <br />
-          <br />
-          <h3 className="text-center">
-            <span>National parks by annual visitors</span>
-          </h3>
-          <div className="row">
-            <div ref="canvas" className="col-md-9"></div>
-            <div className="col-md-3 instance-container align-self-center">
-              {this.state.park === null ? (
-                <h4>Click a park to explore!</h4>
-              ) : (
-                <ParkCard
-                  park_name={this.state.park.park_name}
-                  imglink={this.state.park.imglink}
-                  location={this.state.park.location}
-                  num_rec={this.state.park.num_rec}
-                  fee={this.state.park.fee}
-                  visitors={this.state.park.visitors}
-                />
-              )}
+          <div className="vis-container">
+            <h3 className="text-center">
+              <span>National parks by annual visitors</span>
+            </h3>
+            <div className="row">
+              <div ref="canvas" className="col-md-9"></div>
+              <div className="col-md-3 instance-container align-self-center">
+                {this.state.park === null ? (
+                  <h4>Click a park to explore!</h4>
+                ) : (
+                  <ParkCard
+                    park_name={this.state.park.park_name}
+                    imglink={this.state.park.imglink}
+                    location={this.state.park.location}
+                    num_rec={this.state.park.num_rec}
+                    fee={this.state.park.fee}
+                    visitors={this.state.park.visitors}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </React.Fragment>

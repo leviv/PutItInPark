@@ -66,3 +66,23 @@ export function slugName(prefix, name) {
 export function formatNumber(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+// Encode a string to a base-26 string
+export function encodeToBase26(input) {
+  const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+  const BASE = ALPHABET.length;
+
+  let binaryStr = "";
+  for (let i = 0; i < input.length; i++) {
+    binaryStr += input.charCodeAt(i).toString(2).padStart(8, "0");
+  }
+
+  let num = parseInt(binaryStr, 2);
+  let result = "";
+  while (num > 0) {
+    result = ALPHABET[num % BASE] + result;
+    num = Math.floor(num / BASE);
+  }
+
+  return result || "a"; // 'a' represents the value 0
+}

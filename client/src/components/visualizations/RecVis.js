@@ -187,13 +187,13 @@ class RecVis extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <br />
-          <br />
-          <h3 className="text-center">
-            <span>Recreational area activities</span>
-          </h3>
-          <div className="row">
-            <div ref="canvas" className="col-md-12"></div>
+          <div className="vis-container">
+            <h3 className="text-center">
+              <span>Recreational area activities</span>
+            </h3>
+            <div className="row">
+              <div ref="canvas" className="col-md-12"></div>
+            </div>
           </div>
         </React.Fragment>
       );

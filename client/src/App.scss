@@ -160,24 +160,43 @@ nav form .form-control {
   Splash Page styles
    ================= */
 
-#splash .row {
+#splash {
   align-items: center;
-  background: linear-gradient(60deg, $third-color 50%, #fff 50%);
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  height: 100%;
   justify-content: center;
+  height: 100%;
   width: 100%;
+  background: $primary-color;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  transition: background-image 0.5s ease-in-out;
 
-  .splash-image {
-    height: 100%;
-
-    img {
-      width: 100%;
+  .label {
+    position: relative;
+    margin-left: 100px;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 0;
+    top: 30px;
+    span {
+      background-color: $secondary-color;
+      font-family: "Unica One", serif;
+      padding: 3px 8px;
     }
+  }
+
+  .splash-container {
+    margin: 100px;
+    background: #fff;
+    height: calc(100% - (2 * 100px));
+    width: calc(100% - (2 * 100px));
+    top: 100px;
+  }
+
+  .splash-row {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
 
   .splash-title {
@@ -512,6 +531,10 @@ ul.pagination a {
 /* =================
   Visualizations
   ================= */
+
+.vis-container {
+  margin-top: 30px;
+}
 
 .tooltip {
   background-color: $secondary-color;

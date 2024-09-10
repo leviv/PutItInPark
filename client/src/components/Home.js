@@ -1,34 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Splash from "../assets/img/splash.png";
 import Yosemite from "../assets/img/yosemite.jpg";
 import Climbing from "../assets/img/climbing.jpg";
 import Texas from "../assets/img/texas.jpg";
+import HomeVis from "./visualizations/HomeVis";
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      locationName: "Put it in Park",
+      imgURL: null,
+    };
+    this.handleDataVisData = this.handleDataVisData.bind(this);
+  }
+
+  handleDataVisData(data) {
+    this.setState({
+      locationName: data.locationName,
+      imgURL: data.imgURL,
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
-        <section id="splash">
-          <div className="row">
-            <div className="col-md-7 splash-image">
-              <img src={Splash} alt="Illustration of a man with binoculars" />
-            </div>
-            <div className="col-md-5">
-              <div className="splash-title">
-                <h1>
-                  <span>Put It In Park</span>
-                </h1>
-                <p>
-                  Explore different national parks around the country, and
-                  everything that they have to offer!
-                </p>
-                <Link to="/about/">
-                  <button className="button button-primary">About</button>
-                </Link>
-                <Link to="/parks/1">
-                  <button className="button button-primary">Parks</button>
-                </Link>
+        <section
+          id="splash"
+          style={{ backgroundImage: `url(${this.state.imgURL})` }}
+        >
+          <h2 className="label">
+            <span>{this.state.locationName}</span>
+          </h2>
+          <div className="splash-container">
+            <div className="row splash-row">
+              <div className="col-lg-5">
+                <div className="splash-title">
+                  <h1>
+                    <span>Put It In Park</span>
+                  </h1>
+                  <p>
+                    Explore different national parks around the country, and
+                    everything that they have to offer!
+                  </p>
+                  <Link to="/about/">
+                    <button className="button button-primary">About</button>
+                  </Link>
+                  <Link to="/parks/1">
+                    <button className="button button-primary">Parks</button>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-7 splash-image">
+                <HomeVis handleDataVisData={this.handleDataVisData} />
               </div>
             </div>
           </div>
@@ -91,7 +116,7 @@ class Home extends React.Component {
 
         <section id="splash-call-to">
           <div className="splash-call-to-content">
-            <h2>Find your favorite national park today!</h2>
+            <h2>Find your new favorite national park today!</h2>
           </div>
         </section>
       </React.Fragment>
