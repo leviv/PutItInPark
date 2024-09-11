@@ -113,7 +113,9 @@ for p in nat_park_codes:
         nat_park = json.loads(url.read().decode()).get('data')[0]
         name = format_string(nat_park.get('name'))
         park_id = nat_park.get('id')
-        location = us_states[nat_park.get('states').split(",")[0]] # Just get the first state if there are multiple
+        # Convert the state abbreviations to full names
+        location_array = map(lambda x: us_states[x], nat_park.get('states').split(","))
+        location = ",".join(location_array) 
         latLong = format_lat_long(nat_park.get('latLong'))
         lat = float(latLong[0]) # Ensure the type is float
         lon = float(latLong[1]) # Ensure the type is float

@@ -257,7 +257,7 @@ export const parks = [
   {
     park_code: "deva",
     park_name: "Death-Valley",
-    location: "California",
+    location: "California,Nevada",
     description:
       "In this below-sea-level basin, steady drought and record summer heat make Death Valley a land of extremes. Yet, each extreme has a striking contrast. Towering peaks are frosted with winter snow. Rare rainstorms bring vast fields of wildflowers. Lush oases harbor tiny fish and refuge for wildlife and humans. Despite its morbid name, a great diversity of life thrives in Death Valley.",
     weather:
@@ -401,7 +401,7 @@ export const parks = [
   {
     park_code: "grsm",
     park_name: "Great-Smoky-Mountains",
-    location: "North Carolina",
+    location: "North Carolina,Tennessee",
     description:
       "Ridge upon ridge of forest straddles the border between North Carolina and Tennessee in Great Smoky Mountains National Park. World renowned for its diversity of plant and animal life, the beauty of its ancient mountains, and the quality of its remnants of Southern Appalachian mountain culture, this is America's most visited national park. Plan your visit today!",
     weather:
@@ -832,7 +832,7 @@ export const parks = [
   {
     park_code: "yell",
     park_name: "Yellowstone",
-    location: "Idaho",
+    location: "Idaho,Montana,Wyoming",
     description:
       "On March 1, 1872, Yellowstone became the first national park for all to enjoy the unique hydrothermal wonders. Today, millions of people come here each year to camp, hike, and enjoy the majesty of the park.",
     weather:

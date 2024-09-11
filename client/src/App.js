@@ -25,13 +25,9 @@ import RecipeVis from "./components/visualizations/RecipeVis";
 import NutritionVis from "./components/visualizations/NutritionVis";
 import Visualizations from "./components/visualizations/Visualizations";
 
-// Scroll to top component
-import ScrollToTop from "./components/helpers/ScrollToTop";
-
 function App() {
   return (
     <HashRouter>
-      <ScrollToTop />
       <Header />
 
       <Switch>
