@@ -98,7 +98,6 @@ class RecVis extends React.Component {
       .attr("r", (d) => d.r)
       .attr("fill-opacity", 0.7)
       .attr("stroke-width", "0px")
-      .style("cursor", "pointer")
       .on("mouseover", function (d, i) {
         // Slightly expand the circle
         d3.select(this)
