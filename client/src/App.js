@@ -25,12 +25,14 @@ import RecipeVis from "./components/visualizations/RecipeVis";
 import NutritionVis from "./components/visualizations/NutritionVis";
 import Visualizations from "./components/visualizations/Visualizations";
 
-function App() {
-  window.pageYOffset = 0;
+// Scroll to top component
+import ScrollToTop from "./components/helpers/ScrollToTop";
 
+function App() {
   return (
     <HashRouter>
-      <Header></Header>
+      <ScrollToTop />
+      <Header />
 
       <Switch>
         <Route path="/" exact component={Home} />
@@ -53,7 +55,7 @@ function App() {
         <Route path="*" component={NotFound} />
       </Switch>
 
-      <Footer></Footer>
+      <Footer />
     </HashRouter>
   );
 }

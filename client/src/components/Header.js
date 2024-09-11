@@ -44,7 +44,7 @@ class Header extends React.Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mr-auto d-flex align-items-center">
+            <ul className="navbar-nav mr-auto d-flex">
               <li className="nav-item">
                 <Link className="nav-link about-link" to="/about/">
                   <h5>About</h5>

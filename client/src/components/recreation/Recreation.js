@@ -128,7 +128,7 @@ class Recreation extends React.Component {
               <div className="col-sm-6 instance-container">
                 <h3>Related National Park</h3>
                 {this.state.park === "N/A" ? (
-                  <h4>No Related Parks</h4>
+                  <h4 style={{ marginTop: "20px" }}>No Related Parks</h4>
                 ) : (
                   <ParkCard
                     park_name={this.state.park.park_name}
