@@ -5,10 +5,13 @@ import { feature } from "topojson-client";
 import us from "../../assets/us.json";
 import NotFound from "../NotFound";
 import { withRouter } from "react-router-dom";
-import { displayName } from "../helpers/Helpers.js";
-
-import { API_ENDPOINT, encodeToBase26, slugName } from "../helpers/Helpers.js";
-import { fakeFetch } from "../fake_api/fakeApi.js";
+import {
+  API_ENDPOINT,
+  encodeToBase26,
+  slugName,
+  displayName,
+} from "../../helpers/Helpers.js";
+import { fakeFetch } from "../../fake_api/fakeApi.js";
 
 const endpoint = API_ENDPOINT + "/nationalparks";
 const HOVER_SCALE = 1.2;

@@ -1,6 +1,6 @@
 import React from "react";
 import * as d3 from "d3";
-import { formatNumber, displayName } from "../helpers/Helpers.js";
+import { formatNumber, displayName } from "../../helpers/Helpers.js";
 import NotFound from "../NotFound";
 
 const API_ENDPOINT = "https://api.foodcravings.net/api/recipes";

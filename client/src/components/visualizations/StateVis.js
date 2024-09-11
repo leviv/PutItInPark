@@ -4,12 +4,10 @@ import { geoAlbersUsa } from "d3-geo";
 import { feature } from "topojson-client";
 import us from "../../assets/us.json";
 import stateNames from "../../assets/us-state-names.tsv";
-import { formatNumber, slugName } from "../helpers/Helpers.js";
 import NotFound from "../NotFound";
 import StateCard from "../state/StateCard";
-
-import { API_ENDPOINT } from "../helpers/Helpers.js";
-import { fakeFetch } from "../fake_api/fakeApi.js";
+import { formatNumber, slugName, API_ENDPOINT } from "../../helpers/Helpers.js";
+import { fakeFetch } from "../../fake_api/fakeApi.js";
 const endpoint = API_ENDPOINT + "/locations";
 
 class StateVis extends React.Component {

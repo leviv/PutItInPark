@@ -9,8 +9,8 @@ import {
   API_ENDPOINT,
   convertToRows,
   expandFilters,
-} from "../helpers/Helpers.js";
-import { fakeFetch } from "../fake_api/fakeApi.js";
+} from "../../helpers/Helpers.js";
+import { fakeFetch } from "../../fake_api/fakeApi.js";
 
 const endpoint = API_ENDPOINT + "/recreations";
 

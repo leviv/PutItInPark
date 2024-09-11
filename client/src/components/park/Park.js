@@ -9,8 +9,8 @@ import {
   convertToRows,
   slugName,
   formatNumber,
-} from "../helpers/Helpers.js";
-import { fakeFetch } from "../fake_api/fakeApi.js";
+} from "../../helpers/Helpers.js";
+import { fakeFetch } from "../../fake_api/fakeApi.js";
 
 class Park extends React.Component {
   constructor(props) {

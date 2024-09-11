@@ -1,10 +1,14 @@
 import React from "react";
 import * as d3 from "d3";
-import { formatNumber, displayName, slugName } from "../helpers/Helpers.js";
 import NotFound from "../NotFound";
+import {
+  formatNumber,
+  displayName,
+  slugName,
+  API_ENDPOINT,
+} from "../../helpers/Helpers.js";
+import { fakeFetch } from "../../fake_api/fakeApi.js";
 
-import { API_ENDPOINT } from "../helpers/Helpers.js";
-import { fakeFetch } from "../fake_api/fakeApi.js";
 const endpoint = API_ENDPOINT + "/recreations";
 
 class RecVis extends React.Component {

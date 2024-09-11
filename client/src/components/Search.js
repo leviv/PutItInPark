@@ -3,8 +3,8 @@ import Fuse from "fuse.js";
 import { Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import Highlight from "react-highlighter";
-import { API_ENDPOINT, displayName, slugName } from "./helpers/Helpers.js";
-import { fakeFetch } from "./fake_api/fakeApi.js";
+import { API_ENDPOINT, displayName, slugName } from "../helpers/Helpers.js";
+import { fakeFetch } from "../fake_api/fakeApi.js";
 
 const LOC_ENDPOINT = API_ENDPOINT + "/locations";
 const REC_ENDPOINT = API_ENDPOINT + "/recreations";

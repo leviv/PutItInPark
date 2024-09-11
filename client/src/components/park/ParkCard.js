@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { displayName, slugName, formatNumber } from "../helpers/Helpers.js";
+import { displayName, slugName, formatNumber } from "../../helpers/Helpers.js";
 
 class ParkCard extends React.Component {
   render() {

@@ -4,8 +4,8 @@ import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import NotFound from "../NotFound";
 import StateCard from "../state/StateCard";
 import ParkCard from "../park/ParkCard";
-import { API_ENDPOINT, displayName } from "../helpers/Helpers.js";
-import { fakeFetch } from "../fake_api/fakeApi.js";
+import { API_ENDPOINT, displayName } from "../../helpers/Helpers.js";
+import { fakeFetch } from "../../fake_api/fakeApi.js";
 
 class Recreation extends React.Component {
   constructor(props) {

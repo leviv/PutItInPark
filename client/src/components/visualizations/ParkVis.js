@@ -3,12 +3,11 @@ import * as d3 from "d3";
 import { geoAlbersUsa } from "d3-geo";
 import { feature } from "topojson-client";
 import us from "../../assets/us.json";
-import { formatNumber } from "../helpers/Helpers.js";
 import NotFound from "../NotFound";
 import ParkCard from "../park/ParkCard";
+import { API_ENDPOINT, formatNumber } from "../../helpers/Helpers.js";
+import { fakeFetch } from "../../fake_api/fakeApi.js";
 
-import { API_ENDPOINT } from "../helpers/Helpers.js";
-import { fakeFetch } from "../fake_api/fakeApi.js";
 const endpoint = API_ENDPOINT + "/nationalparks";
 
 class ParkVis extends React.Component {

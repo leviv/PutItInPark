@@ -3,9 +3,13 @@ import { Route } from "react-router-dom";
 import ParkCard from "../park/ParkCard";
 import RecreationCard from "../recreation/RecreationCard";
 import NotFound from "../NotFound";
-import { convertToRows } from "../helpers/Helpers.js";
-import { API_ENDPOINT, displayName, formatNumber } from "../helpers/Helpers.js";
-import { fakeFetch } from "../fake_api/fakeApi.js";
+import {
+  API_ENDPOINT,
+  displayName,
+  formatNumber,
+  convertToRows,
+} from "../../helpers/Helpers.js";
+import { fakeFetch } from "../../fake_api/fakeApi.js";
 
 class State extends React.Component {
   constructor(props) {

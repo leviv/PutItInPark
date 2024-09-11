@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { displayName, slugName } from "../helpers/Helpers.js";
+import { displayName, slugName } from "../../helpers/Helpers.js";
 
 class RecreationCard extends React.Component {
   render() {
