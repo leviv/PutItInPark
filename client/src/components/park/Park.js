@@ -56,14 +56,19 @@ class Park extends React.Component {
             // Transform the data into json
             .then((resp) => resp.json())
             .then((data) => {
-              // Process data
-              this.state.recreations.push(data);
+              if (data) {
+                // Process data
+                this.state.recreations.push(data);
+              }
             })
             .then(() => {
               numRecsLoaded++;
               if (numRecsLoaded === this.state.park.rec_ids.length) {
                 this.setState({ loaded: true });
               }
+            })
+            .catch((error) => {
+              console.error("Error fetching recreation id:", error);
             });
         });
       });

@@ -81,7 +81,7 @@ class HomeVis extends React.Component {
       "circle#" + encodeToBase26(id)
     );
     if (locationNode) {
-      locationNode.attr("r", 35);
+      locationNode.transition().duration(200).attr("r", 35);
       // Bring the selected circle to the front
       locationNode.each(function () {
         this.parentNode.appendChild(this);
@@ -97,6 +97,8 @@ class HomeVis extends React.Component {
     window.setTimeout(() => {
       this.state.chart
         .selectAll("circle#" + encodeToBase26(id))
+        .transition()
+        .duration(200)
         .attr("r", radius);
       this.recursion();
     }, 5000);
