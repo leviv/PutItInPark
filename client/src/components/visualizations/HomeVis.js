@@ -202,12 +202,15 @@ class HomeVis extends React.Component {
         // Fade out the tooltip
         div.transition().duration(200).style("opacity", 0);
       })
-      .on("click", function (d, _i) {
+      .on("click", (d, _i) => {
         if (d.park_code) {
           this.props.history.push(slugName("/park/", d.park_name));
         } else {
           this.props.history.push(slugName("/recreation/", d.rec_name));
         }
+
+        // Fade out the tooltip
+        div.transition().duration(200).style("opacity", 0);
       });
 
     this.recursion();
