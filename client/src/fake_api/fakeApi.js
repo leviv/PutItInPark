@@ -20,7 +20,7 @@ export const fakeFetch = async (urlString) => {
   // Get the data immediately following the API URL. Note that we start with /api/
   let segments = url.pathname.split("/").filter((segment) => segment !== "");
   let table = segments.length > 1 ? segments[1] : null;
-  let searchString = segments.length > 2 ? segments[2] : null;
+  let searchString = segments.length > 2 ? decodeURI(segments[2]) : null;
 
   // Parse query and pagination
   let query = params.get("q") ? JSON.parse(params.get("q")) : null;

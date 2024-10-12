@@ -31,6 +31,7 @@ class Park extends React.Component {
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
+        console.log(data);
         // Process data
         data.rec_ids = data.rec_ids.split(",");
         data.location = data.location.split(",");
