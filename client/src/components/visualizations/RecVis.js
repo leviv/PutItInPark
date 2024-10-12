@@ -24,8 +24,7 @@ class RecVis extends React.Component {
   }
 
   makeApiCall() {
-    // fetch(endpoint)
-    fakeFetch(endpoint, "/recreations/", null, null, null)
+    fakeFetch(endpoint)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {

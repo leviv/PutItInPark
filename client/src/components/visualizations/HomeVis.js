@@ -13,7 +13,8 @@ import {
 } from "../../helpers/Helpers.js";
 import { fakeFetch } from "../../fake_api/fakeApi.js";
 
-const endpoint = API_ENDPOINT + "/nationalparks";
+const parkEndpoint = API_ENDPOINT + "/nationalparks";
+const recEndpoint = API_ENDPOINT + "/recreations";
 const HOVER_SCALE = 1.2;
 const REC_RADIUS = 5;
 const PARK_RADIUS = 10;
@@ -33,8 +34,7 @@ class HomeVis extends React.Component {
   }
 
   makeApiCall() {
-    // fetch(endpoint)
-    fakeFetch(endpoint, "/nationalparks/", null, null, null)
+    fakeFetch(parkEndpoint)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -45,8 +45,7 @@ class HomeVis extends React.Component {
         });
       })
       .then(() => {
-        // fetch(endpoint)
-        fakeFetch(endpoint, "/recreations/", null, null, null)
+        fakeFetch(recEndpoint)
           // Transform the data into json
           .then((resp) => resp.json())
           .then((data) => {

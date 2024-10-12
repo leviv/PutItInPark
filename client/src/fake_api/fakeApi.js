@@ -6,21 +6,32 @@ import { parks } from "./park";
  * Approximate the backend API that this website used to use
  * We no longer get free heroku credits and I want this website up in a static form for posterity
  */
+// query shape per flaskAlchemy
+// query = {
+//   filters: [{ name: "rec_id", op: "eq", val: id }],
+//   order_by: [{ field: "name", direction: dir }];
+//   single: true,
+// };
+export const fakeFetch = async (urlString) => {
+  // Decode the query params
+  let url = new URL(urlString);
+  let params = new URLSearchParams(url.search);
 
-// This could definitely be more robust but I just want it to work
-export const fakeFetch = async (
-  _endpoint,
-  table,
-  searchString,
-  query,
-  paginated
-  // query shape per flaskAlchemy
-  // query = {
-  //   filters: [{ name: "rec_id", op: "eq", val: id }],
-  //   order_by: [{ field: "name", direction: dir }];
-  //   single: true,
-  // };
-) => {
+  // Get the data immediately following the API URL. Note that we start with /api/
+  let segments = url.pathname.split("/").filter((segment) => segment !== "");
+  let table = segments.length > 1 ? segments[1] : null;
+  let searchString = segments.length > 2 ? segments[2] : null;
+
+  // Parse query and pagination
+  let query = params.get("q") ? JSON.parse(params.get("q")) : null;
+  let paginated = null;
+  if (params.has("results_per_page") && params.has("page")) {
+    paginated = {
+      resultsPerPage: parseInt(params.get("results_per_page")),
+      pageNumber: parseInt(params.get("page")),
+    };
+  }
+
   let jsonResults;
   let dataTable;
   let primaryColName;

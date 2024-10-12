@@ -23,8 +23,7 @@ class Recreation extends React.Component {
   }
 
   makeApiCall(recName) {
-    // fetch(API_ENDPOINT + "/recreations/" + recName)
-    fakeFetch(API_ENDPOINT, "/recreations/", recName, null, null)
+    fakeFetch(API_ENDPOINT + "/recreations/" + recName)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -36,14 +35,7 @@ class Recreation extends React.Component {
       })
       .then(() => {
         // Get the state information
-        // fetch(API_ENDPOINT + "/locations/" + this.state.rec.location)
-        fakeFetch(
-          API_ENDPOINT,
-          "/locations/",
-          this.state.rec.location,
-          null,
-          null
-        )
+        fakeFetch(API_ENDPOINT + "/locations/" + this.state.rec.location)
           // Transform the data into json
           .then((resp) => resp.json())
           .then((data) => {
@@ -53,13 +45,8 @@ class Recreation extends React.Component {
           .then(() => {
             if (this.state.rec.natpark !== "N/A") {
               // Load the park
-              // fetch(API_ENDPOINT + "/nationalparks/" + this.state.rec.natpark)
               fakeFetch(
-                API_ENDPOINT,
-                "/nationalparks/",
-                this.state.rec.natpark,
-                null,
-                null
+                API_ENDPOINT + "/nationalparks/" + this.state.rec.natpark
               )
                 // Transform the data into json
                 .then((resp) => resp.json())

@@ -51,17 +51,13 @@ class States extends React.Component {
   }
 
   makeApiCall(pageNumber) {
-    // fetch(
-    //   endpoint +
-    //     "?q=" +
-    //     JSON.stringify(this.state.query) +
-    //     "&results_per_page=12&page=" +
-    //     pageNumber
-    // )
-    fakeFetch(endpoint, "/locations/", null, this.state.query, {
-      resultsPerPage: 12,
-      pageNumber,
-    })
+    fakeFetch(
+      endpoint +
+        "?q=" +
+        JSON.stringify(this.state.query) +
+        "&results_per_page=12&page=" +
+        pageNumber
+    )
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -88,8 +84,7 @@ class States extends React.Component {
       return;
     }
 
-    // fetch(endpoint)
-    fakeFetch(endpoint, "/locations/", null, null, null)
+    fakeFetch(endpoint)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search

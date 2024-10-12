@@ -27,8 +27,7 @@ class Park extends React.Component {
   }
 
   makeApiCall(parkName) {
-    // fetch(API_ENDPOINT + "/nationalparks/" + parkName)
-    fakeFetch(API_ENDPOINT, "/nationalparks/", parkName, null, null)
+    fakeFetch(API_ENDPOINT + "/nationalparks/" + parkName)
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -51,8 +50,7 @@ class Park extends React.Component {
             filters: [{ name: "rec_id", op: "eq", val: id }],
             single: true,
           };
-          // fetch(API_ENDPOINT + "/recreations?q=" + JSON.stringify(query))
-          fakeFetch(API_ENDPOINT, "/recreations/", null, query, null)
+          fakeFetch(API_ENDPOINT + "/recreations?q=" + JSON.stringify(query))
             // Transform the data into json
             .then((resp) => resp.json())
             .then((data) => {

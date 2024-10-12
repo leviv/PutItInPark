@@ -52,17 +52,13 @@ class Parks extends React.Component {
   }
 
   makeApiCall(pageNumber) {
-    // fetch(
-    //   endpoint +
-    //     "?q=" +
-    //     JSON.stringify(this.state.query) +
-    //     "&results_per_page=12&page=" +
-    //     pageNumber
-    // )
-    fakeFetch(endpoint, "/nationalparks/", null, this.state.query, {
-      resultsPerPage: 12,
-      pageNumber,
-    })
+    fakeFetch(
+      endpoint +
+        "?q=" +
+        JSON.stringify(this.state.query) +
+        "&results_per_page=12&page=" +
+        pageNumber
+    )
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
@@ -90,8 +86,7 @@ class Parks extends React.Component {
       return;
     }
 
-    // fetch(endpoint)
-    fakeFetch(endpoint, "/nationalparks/", null, null, null)
+    fakeFetch(endpoint)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search

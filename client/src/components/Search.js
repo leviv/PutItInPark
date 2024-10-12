@@ -26,8 +26,7 @@ class Search extends React.Component {
   }
 
   search(searchString) {
-    // fetch(LOC_ENDPOINT)
-    fakeFetch(LOC_ENDPOINT, "/locations/", null, null, null)
+    fakeFetch(LOC_ENDPOINT)
       // Transform the data into json
       .then((resp) => resp.json())
       // Search
@@ -40,8 +39,7 @@ class Search extends React.Component {
         this.setState({ states: fuse.search(searchString) });
       })
       .then(() => {
-        // fetch(REC_ENDPOINT)
-        fakeFetch(REC_ENDPOINT, "/recreations/", null, null, null)
+        fakeFetch(REC_ENDPOINT)
           // Transform the data into json
           .then((resp) => resp.json())
           // Search
@@ -60,8 +58,7 @@ class Search extends React.Component {
             this.setState({ recs: fuse.search(searchString) });
           })
           .then(() => {
-            // fetch(PARK_ENDPOINT)
-            fakeFetch(PARK_ENDPOINT, "/nationalparks/", null, null, null)
+            fakeFetch(PARK_ENDPOINT)
               // Transform the data into json
               .then((resp) => resp.json())
               // Search
