@@ -31,6 +31,10 @@ export const fakeFetch = async (
   }
   if (table.indexOf("nationalparks") >= 0) {
     dataTable = parks;
+    dataTable = dataTable.map((park) => ({
+      ...park,
+      imglink: process.env.PUBLIC_URL + park.imglink,
+    }));
     primaryColName = "park_name";
   }
   if (table.indexOf("recreations") >= 0) {

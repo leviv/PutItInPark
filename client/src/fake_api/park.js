@@ -11,8 +11,7 @@ export const parks = [
     lon: -68.247501,
     fee: 6,
     visitors: 3537575,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7B45AE-1DD8-B71B-0B7EE131C7DFC2F5.jpg",
+    imglink: "/parks/Acadia.jpg",
     park_id: "6DA17C86-088E-4B4D-B862-7C1BD5CF236B",
     num_rec: 1,
     rec_ids: "2554",
@@ -29,8 +28,7 @@ export const parks = [
     lon: -109.5863666,
     fee: 2,
     visitors: 1663557,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/473F5463-F0D2-261D-CEF5FCB39363590B.jpg",
+    imglink: "/parks/Arches.jpg",
     park_id: "36240051-018E-4915-B6EA-3F1A7F24FBE4",
     num_rec: 20,
     rec_ids:
@@ -48,8 +46,7 @@ export const parks = [
     lon: -102.482942,
     fee: 30,
     visitors: 1008942,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C82EE63-1DD8-B71B-0BD6EE0FDCB5D402.jpg",
+    imglink: "/parks/Badlands.jpg",
     park_id: "B170CCF7-7AB9-48FF-950E-31815FD4DBB2",
     num_rec: 1,
     rec_ids: "2578",
@@ -66,8 +63,7 @@ export const parks = [
     lon: -103.2297897,
     fee: 30,
     visitors: 440091,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/8BF8356B-BB63-76A4-19F5296EF94C96B4.jpg",
+    imglink: "/parks/Big-Bend.jpg",
     park_id: "C9056F71-7162-4208-8AE9-2D0AEFA594FD",
     num_rec: 1,
     rec_ids: "2584",
@@ -84,8 +80,7 @@ export const parks = [
     lon: -80.21023851,
     fee: 0,
     visitors: 469253,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C8717A4-1DD8-B71B-0B2EED68CFA7E008.jpg",
+    imglink: "/parks/Biscayne.jpg",
     park_id: "FBF9F793-5114-4B61-A5BA-6F9ADDFDF459",
     num_rec: 2,
     rec_ids: "3944,2588",
@@ -102,12 +97,11 @@ export const parks = [
     lon: -107.7242756,
     fee: 30,
     visitors: 308962,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C81655F-1DD8-B71B-0B4BCFFDB74EE723.jpg",
+    imglink: "/parks/Black-Canyon-Of-The-Gunnison.jpg",
     park_id: "BDBD573F-97EF-44E7-A579-471679F2C42A",
     num_rec: 13,
     rec_ids:
-      "2651,13399,16747,16746,16604,50,16701,16725,16723,2592,1694,53,1052",
+      "13399,16747,16746,16604,50,16701,16725,16723,2592,2651,1694,53,1052",
   },
   {
     park_code: "brca",
@@ -121,8 +115,7 @@ export const parks = [
     lon: -112.1826689,
     fee: 35,
     visitors: 2679478,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/61F08520-E14F-18F2-BF5F3D89482631BD.jpg",
+    imglink: "/parks/Bryce-Canyon.jpg",
     park_id: "6B1D053D-714F-46D1-B410-04BE868F14C1",
     num_rec: 7,
     rec_ids: "16276,14758,2198,2599,16285,16287,16308",
@@ -139,8 +132,7 @@ export const parks = [
     lon: -109.8801624,
     fee: 30,
     visitors: 739449,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7A525D-1DD8-B71B-0B8E59D2EB39F6D0.jpg",
+    imglink: "/parks/Canyonlands.jpg",
     park_id: "319E07D8-E176-41F8-98A9-1E3F8099D0AB",
     num_rec: 10,
     rec_ids: "16204,16265,14499,16471,16546,16299,16264,2616,16419,14528",
@@ -157,8 +149,7 @@ export const parks = [
     lon: -111.247048378,
     fee: 20,
     visitors: 1227627,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C82E3C7-1DD8-B71B-0B4181834EE46AED.jpg",
+    imglink: "/parks/Capitol-Reef.jpg",
     park_id: "2F05E2B8-CDA3-434E-9C4C-C7DD828CAC3B",
     num_rec: 12,
     rec_ids:
@@ -176,8 +167,7 @@ export const parks = [
     lon: -104.5529688,
     fee: 12,
     visitors: 465912,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/29C3C977-AAE6-B7FD-3C107828D704A5CB.jpg",
+    imglink: "/parks/Carlsbad-Caverns.jpg",
     park_id: "6FDE39B1-AB4A-4C9A-A5CD-4AF67601CD78",
     num_rec: 6,
     rec_ids: "14603,2744,14606,14592,14608,2622",
@@ -194,8 +184,7 @@ export const parks = [
     lon: -119.9112735,
     fee: 0,
     visitors: 366250,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/8DE774D1-CB22-37F2-D826E3F0A73D303A.jpg",
+    imglink: "/parks/Channel-Islands.jpg",
     park_id: "5595FC7A-F218-4439-8D2E-F47449838820",
     num_rec: 2,
     rec_ids: "2996,2631",
@@ -212,8 +201,7 @@ export const parks = [
     lon: -80.74867805,
     fee: 0,
     visitors: 145929,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C862C60-1DD8-B71B-0BB65F7B652BA840.jpg",
+    imglink: "/parks/Congaree.jpg",
     park_id: "EEBA7225-7FF5-4B62-B60C-6BBC66351A4E",
     num_rec: 1,
     rec_ids: "2644",
@@ -230,8 +218,7 @@ export const parks = [
     lon: -122.1338414,
     fee: 30,
     visitors: 720659,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7B227E-1DD8-B71B-0BEECDD24771C381.jpg",
+    imglink: "/parks/Crater-Lake.jpg",
     park_id: "7DC1050A-0DDE-4EF9-B777-3C9349BCC4DE",
     num_rec: 1,
     rec_ids: "2647",
@@ -248,8 +235,7 @@ export const parks = [
     lon: -81.57116722,
     fee: 0,
     visitors: 2096053,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/F7425874-D97F-BFD6-36581A36C8A7FF0D.jpg",
+    imglink: "/parks/Cuyahoga-Valley.jpg",
     park_id: "F4D44F29-3F67-498F-B05B-0783473D2708",
     num_rec: 2,
     rec_ids: "13919,2652",
@@ -266,8 +252,7 @@ export const parks = [
     lon: -117.134395,
     fee: 30,
     visitors: 1678660,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/010A933C-95B1-CBCD-D6D64D47D5B81E76.jpg",
+    imglink: "/parks/Death-Valley.jpg",
     park_id: "FFC9F9C4-D79D-4CA7-AB0F-7A2AD30061CD",
     num_rec: 1,
     rec_ids: "2662",
@@ -284,8 +269,7 @@ export const parks = [
     lon: -82.87319,
     fee: 15,
     visitors: 56810,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C81050F-1DD8-B71B-0B45EDC68B621860.jpg",
+    imglink: "/parks/Dry-Tortugas.jpg",
     park_id: "167A05D1-5793-49E0-89FE-0A1DDFA9A7F4",
     num_rec: 1,
     rec_ids: "2665",
@@ -302,8 +286,7 @@ export const parks = [
     lon: -80.88200301,
     fee: 35,
     visitors: 597124,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/17EC840E-9926-2E09-F2DD47A282915BBB.jpg",
+    imglink: "/parks/Everglades.jpg",
     park_id: "5EA02193-276A-4037-B7DB-5765A56935FD",
     num_rec: 1,
     rec_ids: "2677",
@@ -320,8 +303,7 @@ export const parks = [
     lon: -90.1892508,
     fee: 19,
     visitors: 2016180,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/200BA7E6-D782-9A97-A8C36AC178DEB31C.jpg",
+    imglink: "/parks/Gateway-Arch.jpg",
     park_id: "BD588493-EC77-4B97-B73E-3BA444864DC5",
     num_rec: 2,
     rec_ids: "13951,2961",
@@ -338,8 +320,7 @@ export const parks = [
     lon: -113.8009306,
     fee: 35,
     visitors: 2965309,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/C20E6CD3-CDF7-B3AB-8448CDCD7FD590FF.jpg",
+    imglink: "/parks/Glacier.jpg",
     park_id: "2B5178C6-2446-488C-AC31-47E3CEBF7159",
     num_rec: 1,
     rec_ids: "2725",
@@ -356,8 +337,7 @@ export const parks = [
     lon: -112.121516363,
     fee: 35,
     visitors: 6380495,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7B12D1-1DD8-B71B-0BCE0712F9CEA155.jpg",
+    imglink: "/parks/Grand-Canyon.jpg",
     park_id: "B7FF43E5-3A95-4C8E-8DBE-72D8608D6588",
     num_rec: 1,
     rec_ids: "2733",
@@ -374,8 +354,7 @@ export const parks = [
     lon: -110.7054666,
     fee: 35,
     visitors: 3491151,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7FA4C5-1DD8-B71B-0B7FCC54E43FEE79.jpg",
+    imglink: "/parks/Grand-Teton.jpg",
     park_id: "FF73E2AA-E274-44E1-A8F5-9DD998B0F579",
     num_rec: 4,
     rec_ids: "13525,1532,1234,1036",
@@ -392,8 +371,7 @@ export const parks = [
     lon: -114.2579782,
     fee: 0,
     visitors: 153094,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/FD29737E-9549-8EF4-90C1076486DE559A.jpeg",
+    imglink: "/parks/Great-Basin.jpeg",
     park_id: "4C1A549B-080F-4522-9CA7-67BB5A0845CA",
     num_rec: 2,
     rec_ids: "2113,2732",
@@ -410,8 +388,7 @@ export const parks = [
     lon: -83.50818326,
     fee: 0,
     visitors: 11421200,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C80F02B-1DD8-B71B-0BBC2DFD4E9349E9.jpg",
+    imglink: "/parks/Great-Smoky-Mountains.jpg",
     park_id: "D9819727-18DF-4A84-BDDE-D4F2696DE340",
     num_rec: 1,
     rec_ids: "2739",
@@ -428,8 +405,7 @@ export const parks = [
     lon: -104.885527,
     fee: 10,
     visitors: 172347,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C825533-1DD8-B71B-0B6FDF436F604A3C.jpg",
+    imglink: "/parks/Guadalupe-Mountains.jpg",
     park_id: "6510001B-685D-4688-A963-4ECE7AB609DB",
     num_rec: 6,
     rec_ids: "14584,14603,2744,14606,14592,2622",
@@ -446,8 +422,7 @@ export const parks = [
     lon: -156.1591775,
     fee: 25,
     visitors: 1044084,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3D05E583-1DD8-B71B-0BBFF82F7F78AF6A.jpg",
+    imglink: "/parks/Haleakal\u0101.jpg",
     park_id: "4930BAEB-A3BF-4825-9796-DCD0FD1C3BD5",
     num_rec: 3,
     rec_ids: "2751,3104,1449",
@@ -464,8 +439,7 @@ export const parks = [
     lon: -155.4700257,
     fee: 30,
     visitors: 1116891,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/C4E8415A-08E5-5976-833F494FFCA3FFE6.jpg",
+    imglink: "/parks/Hawai\u02bbi-Volcanoes.jpg",
     park_id: "D9BF4288-9AC3-4526-9598-BE8920839ACC",
     num_rec: 1,
     rec_ids: "2753",
@@ -482,8 +456,7 @@ export const parks = [
     lon: -93.06332936,
     fee: 0,
     visitors: 1506887,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/C0D8DFDD-F151-C5B0-3004B0088C98BA5A.jpg",
+    imglink: "/parks/Hot-Springs.jpg",
     park_id: "ED9C0322-68FB-4DE1-A884-61C623281C9D",
     num_rec: 4,
     rec_ids: "2760,147,1037,149",
@@ -500,8 +473,7 @@ export const parks = [
     lon: -87.09647445,
     fee: 20,
     visitors: 1756079,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/9253EDFB-AAFD-E111-B985CD2747F5C48F.jpg",
+    imglink: "/parks/Indiana-Dunes.jpg",
     park_id: "473EFACE-EE15-4A4F-AA6C-666810A9E27D",
     num_rec: 1,
     rec_ids: "2767",
@@ -518,8 +490,7 @@ export const parks = [
     lon: -88.82780657,
     fee: 7,
     visitors: 25798,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/6059CAD8-02E8-2E00-2922DF84800167E0.jpg",
+    imglink: "/parks/Isle-Royale.jpg",
     park_id: "0F6893CF-FC15-4AC5-8C95-E70FC9C21B1A",
     num_rec: 1,
     rec_ids: "2769",
@@ -536,8 +507,7 @@ export const parks = [
     lon: -115.8398125,
     fee: 30,
     visitors: 2942382,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/306D0D93-9CCA-76E1-AD48268F8D7A7E3E.jpg",
+    imglink: "/parks/Joshua-Tree.jpg",
     park_id: "F5CD58FB-05DC-4074-99DA-F327A537F1BC",
     num_rec: 5,
     rec_ids: "13449,13369,13425,2782,13461",
@@ -554,8 +524,7 @@ export const parks = [
     lon: -150.106502,
     fee: 0,
     visitors: 321596,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C798EAB-1DD8-B71B-0BC4BEFB197F2C90.jpg",
+    imglink: "/parks/Kenai-Fjords.jpg",
     park_id: "11E73438-0CCC-4441-A76A-1995F67F2D89",
     num_rec: 1,
     rec_ids: "2787",
@@ -572,8 +541,7 @@ export const parks = [
     lon: -159.2002293,
     fee: 0,
     visitors: 14937,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7A1214-1DD8-B71B-0B00D823BD9BF4CF.jpg",
+    imglink: "/parks/Kobuk-Valley.jpg",
     park_id: "691831BF-F280-4E02-BF4A-FF476BC66B23",
     num_rec: 1,
     rec_ids: "2795",
@@ -590,8 +558,7 @@ export const parks = [
     lon: -121.4075993,
     fee: 30,
     visitors: 499435,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C873811-1DD8-B71B-0B9C62ED8E12E7B5.jpg",
+    imglink: "/parks/Lassen-Volcanic.jpg",
     park_id: "9AA4A53C-0331-43CC-99F5-379BC929FFB2",
     num_rec: 2,
     rec_ids: "2803,1066",
@@ -608,8 +575,7 @@ export const parks = [
     lon: -86.13090198,
     fee: 0,
     visitors: 553206,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/95EAA431-F26B-66EB-E9E6B108F47F70B0.jpg",
+    imglink: "/parks/Mammoth-Cave.jpg",
     park_id: "6A1737A1-6848-4087-AAF7-68A427247357",
     num_rec: 3,
     rec_ids: "371,352,2818",
@@ -626,8 +592,7 @@ export const parks = [
     lon: -108.4624032,
     fee: 30,
     visitors: 563420,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7C0089-1DD8-B71B-0BC397BA671C0616.jpg",
+    imglink: "/parks/Mesa-Verde.jpg",
     park_id: "BE3A981E-BB55-474D-8A0E-D711408682DC",
     num_rec: 4,
     rec_ids: "2993,16533,2824,54",
@@ -644,8 +609,7 @@ export const parks = [
     lon: -121.7043885,
     fee: 30,
     visitors: 1518491,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/49F34094-B893-7DD6-5AE0F0220724B0EF.jpg",
+    imglink: "/parks/Mount-Rainier.jpg",
     park_id: "07229CB8-8533-4669-B614-2B884779DD93",
     num_rec: 2,
     rec_ids: "2835,252",
@@ -662,8 +626,7 @@ export const parks = [
     lon: -121.2069423,
     fee: 0,
     visitors: 30085,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7A599D-1DD8-B71B-0BBDC12BEC5107B5.jpg",
+    imglink: "/parks/North-Cascades.jpg",
     park_id: "80EB184D-4B6D-4AD2-B6E2-CAAD6312B27D",
     num_rec: 1,
     rec_ids: "2845",
@@ -680,8 +643,7 @@ export const parks = [
     lon: -123.6663848,
     fee: 30,
     visitors: 3104455,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7B1DB4-1DD8-B71B-0B9DFEFDD398DB71.jpg",
+    imglink: "/parks/Olympic.jpg",
     park_id: "81CFE898-AD06-4C0D-8A9B-C8D356273F0D",
     num_rec: 3,
     rec_ids: "2881,1120,16748",
@@ -698,8 +660,7 @@ export const parks = [
     lon: -109.7877678,
     fee: 25,
     visitors: 644922,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7D8213-1DD8-B71B-0BE4A3B9394FD89A.jpg",
+    imglink: "/parks/Petrified-Forest.jpg",
     park_id: "1ABD0EFF-AC09-4EA1-8CC1-2351A3E160D0",
     num_rec: 1,
     rec_ids: "2856",
@@ -716,8 +677,7 @@ export const parks = [
     lon: -121.1813607,
     fee: 30,
     visitors: 222152,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C86A8CB-1DD8-B71B-0BAE8F7141CCBB1B.jpg",
+    imglink: "/parks/Pinnacles.jpg",
     park_id: "9B266961-3364-43D2-9A08-82BB5EF5643F",
     num_rec: 5,
     rec_ids: "2893,14829,14830,16685,10062172",
@@ -734,8 +694,7 @@ export const parks = [
     lon: -105.6972879,
     fee: 30,
     visitors: 4590493,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/79822237-EB61-94B3-6C008AC63717133C.jpg",
+    imglink: "/parks/Rocky-Mountain.jpg",
     park_id: "67A56B17-F533-4A56-B2DA-26091C6AD295",
     num_rec: 10,
     rec_ids: "68,94,52,89,9,2907,67,88,51,16741",
@@ -752,8 +711,7 @@ export const parks = [
     lon: -110.7574974,
     fee: 25,
     visitors: 957405,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/5CB8B2F6-01B7-9A50-73702A355E4136B8.jpg",
+    imglink: "/parks/Saguaro.jpg",
     park_id: "A6F169CF-B830-499C-A5EB-A35138C77589",
     num_rec: 3,
     rec_ids: "2917,1093,3149",
@@ -770,8 +728,7 @@ export const parks = [
     lon: -78.46907715,
     fee: 30,
     visitors: 1264880,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C80B539-1DD8-B71B-0BEAAA4AC31E7D5B.jpg",
+    imglink: "/parks/Shenandoah.jpg",
     park_id: "E991C8BC-C203-4A09-AFD5-87380CF5C387",
     num_rec: 1,
     rec_ids: "2933",
@@ -787,8 +744,7 @@ export const parks = [
     lon: -103.4300083,
     fee: 30,
     visitors: 749389,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C793AD5-1DD8-B71B-0B4A3C1BFA5B4C83.jpg",
+    imglink: "/parks/Theodore-Roosevelt.jpg",
     park_id: "B5FE5682-7981-47DD-AC96-13F4B33A466E",
     num_rec: 1,
     rec_ids: "2949",
@@ -805,8 +761,7 @@ export const parks = [
     lon: -92.8382913,
     fee: 0,
     visitors: 239656,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C8405EF-1DD8-B71B-0B42909E4E77E144.jpg",
+    imglink: "/parks/Voyageurs.jpg",
     park_id: "859727CB-2812-40DF-B8DB-D4AE9EA00089",
     num_rec: 1,
     rec_ids: "2970",
@@ -823,8 +778,7 @@ export const parks = [
     lon: -103.4394709,
     fee: 0,
     visitors: 656379,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7ACD12-1DD8-B71B-0BEF13804E4498FF.jpg",
+    imglink: "/parks/Wind-Cave.jpg",
     park_id: "37C48EE0-2881-4D22-8F91-A249AE3B0CD0",
     num_rec: 6,
     rec_ids: "286,2772,2980,1161,2837,287",
@@ -841,8 +795,7 @@ export const parks = [
     lon: -110.5471695,
     fee: 35,
     visitors: 4115000,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/3C7D5920-1DD8-B71B-0B83F012ED802CEA.jpg",
+    imglink: "/parks/Yellowstone.jpg",
     park_id: "F58C6D24-8D10-4573-9826-65D42B8B83AD",
     num_rec: 1,
     rec_ids: "2988",
@@ -859,8 +812,7 @@ export const parks = [
     lon: -119.5571873,
     fee: 35,
     visitors: 4009236,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/05383E91-AA28-2DDC-AB517507594F9FA6.jpg",
+    imglink: "/parks/Yosemite.jpg",
     park_id: "4324B2B4-D1A3-497F-8E6B-27171FAE4DB2",
     num_rec: 1,
     rec_ids: "2991",
@@ -870,15 +822,14 @@ export const parks = [
     park_name: "Zion",
     location: "Utah",
     description:
-      "Follow the paths where people have walked for thousands of years. Gaze up at massive sandstone cliffs of cream, pink, and red that soar into a brilliant blue sky. Experience wilderness in a narrow slot canyon. Zion\u2019s unique array of plants and animals will enchant you as you absorb the rich history of the past and enjoy the excitement of present-day adventures.",
+      "Follow the paths where people have walked for thousands of years. Gaze up at massive sandstone cliffs of cream, pink, and red that soar into a brilliant blue sky. Experience the tall, stretching walls of a narrow slot canyon. Zion\u2019s unique array of plants and animals will enchant you as you absorb the rich history of the past and enjoy the excitement of present-day adventures.",
     weather:
       "Zion is known for a wide range of weather conditions. Temperatures vary with changes in elevation and day/night temperatures may differ by over 30\u00b0F. In summer, temperatures in Zion National Park often exceed 100\u00b0F/38\u00b0C. Zion experiences monsoons from mid-July into September that result in an increased risk of flash floods. Always be aware of the threat of storms and lightning and be prepared for a wide range of weather conditions. Winters are generally mild.",
     lat: 37.29839254,
     lon: -113.0265138,
     fee: 35,
     visitors: 4320033,
-    imglink:
-      "https://www.nps.gov/common/uploads/structured_data/68BFC1AC-BF96-629F-89D261D78F181C64.jpg",
+    imglink: "/parks/Zion.jpg",
     park_id: "41BAB8ED-C95F-447D-9DA1-FCC4E4D808B2",
     num_rec: 50,
     rec_ids:

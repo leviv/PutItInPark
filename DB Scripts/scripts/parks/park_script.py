@@ -1,4 +1,7 @@
+#!/usr/bin/env python3
+
 import urllib.request, json
+from PIL import Image
 
 us_states = {
     "AL": "Alabama",
@@ -147,8 +150,29 @@ for park_code in parks:
             areas = areas[:-1]
         park.add_related_rec_areas(count, areas)
 
+for park_code in parks:
+    parent_folder = "/parks/"
+
+    # Fetch the image and save to local directory
+    park = parks[park_code]
+    image_extension = park.imglink.split('.')[-1]
+    image_name = park.park_name + '.' + image_extension
+    image_path = "../../../client/public" + parent_folder + image_name
+    image_file = urllib.request.urlretrieve(park.imglink, image_path)
+
+    # Resize the image
+    base_width = 1200
+    img = Image.open(image_path)
+    w_percent = (base_width / float(img.size[0]))
+    h_size = int((float(img.size[1]) * float(w_percent)))
+    img = img.resize((base_width, h_size), Image.Resampling.LANCZOS)
+    img.save(image_path)
+
+    # Update the image link
+    park.imglink = parent_folder + image_name
+
 ## Print the resulting file
-with open('../../../client/src/components/fake_api/park.js', 'w') as f:
+with open('../../../client/src/fake_api/park.js', 'w') as f:
     print('export const parks = [', file=f)
     for park_code in parks:
         park = parks[park_code]
