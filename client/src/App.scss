@@ -6,6 +6,16 @@ $secondary-color: #fed892;
 $third-color: #264653;
 
 /* =================
+  Fonts
+  ================= */
+
+@font-face {
+  font-family: "NationalPark";
+  src: url("./fonts/NationalPark-VariableVF.woff2") format("woff2");
+  font-weight: 100 900; /* Variable font range */
+}
+
+/* =================
   General Styles
   ================= */
 * {
@@ -19,7 +29,7 @@ h4,
 h5,
 h6 {
   color: $third-color;
-  font-family: "Unica One", serif;
+  font-family: "Unica One", sans-serif;
   text-transform: uppercase;
 }
 
@@ -31,14 +41,14 @@ h1 span,
 h3 span {
   background-color: $third-color;
   color: $secondary-color;
-  font-family: "Unica One", serif;
+  font-family: "Unica One", sans-serif;
   padding: 3px 8px;
 }
 
 button.button {
   border-radius: 20px;
   bottom: 0px;
-  font-family: "Unica One", serif;
+  font-family: "Unica One", sans-serif;
   font-size: 20px;
   height: 40px;
   margin: 3px 10px;
@@ -153,6 +163,8 @@ nav form .form-control {
 }
 
 .nav-item h5 {
+  font-family: "NationalPark", serif;
+  font-weight: 700;
   margin-bottom: 0;
 }
 
@@ -180,7 +192,7 @@ nav form .form-control {
     top: 30px;
     span {
       background-color: $secondary-color;
-      font-family: "Unica One", serif;
+      font-family: "Unica One", sans-serif;
       padding: 3px 8px;
     }
   }
@@ -548,7 +560,7 @@ ul.pagination a {
   border: 1px solid #000;
   border-radius: 3px;
   -webkit-border-radius: 3px;
-  font-family: "Unica One", serif;
+  font-family: "Unica One", sans-serif;
   font-size: 20px;
   padding: 2px 7px;
   pointer-events: none;

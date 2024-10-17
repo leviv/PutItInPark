@@ -70,6 +70,8 @@ class Recreation extends React.Component {
   }
 
   render() {
+    console.log(this.state.rec);
+
     // Component loaded
     if (this.state.loaded) {
       const title = displayName(this.state.rec.rec_name);
@@ -130,15 +132,19 @@ class Recreation extends React.Component {
             </div>
 
             <h3>Activities</h3>
-            <ul className="activities-list">
-              {this.state.rec.activities.map((item, innerIndex) => {
-                return (
-                  <li key={innerIndex}>
-                    <p>{item.toLowerCase()}</p>
-                  </li>
-                );
-              })}
-            </ul>
+            {this.state.rec.num_activities > 0 ? (
+              <ul className="activities-list">
+                {this.state.rec.activities.map((item, innerIndex) => {
+                  return (
+                    <li key={innerIndex}>
+                      <p>{item.toLowerCase()}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p>No activities available</p>
+            )}
 
             <h3>Address</h3>
             <Map
