@@ -133,7 +133,7 @@ export const locations = [
     fips: "15",
     name: "Hawaii",
     num_parks: 2,
-    park_names: "Haleakala,Hawaii-Volcanoes",
+    park_names: "Haleakalā,Hawaiʻi-Volcanoes", // Special case
     numrec: 8,
     rec_ids: "3104,3967,1449,2751,2753,12718,1414,1417",
     pop: 1420491,

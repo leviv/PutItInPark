@@ -1,6 +1,6 @@
 import urllib.request, json
 
-#retrieve basic location information
+# retrieve basic location information
 
 fips_to_name = {'01': 'Alabama', '02': 'Alaska', '04': 'Arizona',
 '05': 'Arkansas', '06': 'California', '08': 'Colorado', '09': 'Connecticut',
@@ -30,7 +30,7 @@ mail_code_to_fips = {'AL': '01', 'AK': '02', 'AZ': '04',
 'WI': '55', 'WY': '56'}
 
 class location:
-    #later add activities, num activities, imglink
+    # later add activities, num activities, imglink
     def __init__(self, fips, name, pop, mail_code, imglink):
         self.fips = fips
         self.name = name
@@ -42,7 +42,6 @@ class location:
         self.rec_ids = ""
         self.park_names = ""
 
-    
     def add_park(self, nat_park):
         self.park_names += str(nat_park) + ","
         self.num_parks = self.num_parks + 1
@@ -72,7 +71,6 @@ for mail_code in mail_code_to_fips.keys():
         pop = data[1][0]
     locations[name] = location(fips,name,pop,mail_code,imglink)
 
-
 for line in model_relations:
     values = line.split(' ')
     parks = values[0].strip()
@@ -83,6 +81,26 @@ for line in model_relations:
         state.add_park(parks)
         state.add_rec(recids)
 
-for value in locations.values():
-    print(str(value))
-    
+for location_name in locations:
+    parent_folder = "/flags/"
+
+    # Fetch the image and save to local directory
+    location = locations[location_name]
+    image_extension = location.imglink.split('.')[-1]
+    image_name = location_name + '.' + image_extension
+    image_path = "../../../client/public" + parent_folder + image_name
+    image_file = urllib.request.urlretrieve(location.imglink, image_path)
+
+    # Update the image link
+    location.imglink = parent_folder + image_name
+
+## Print the resulting file
+with open('../../../client/src/fake_api/location.js', 'w') as f:
+    print('export const locations = [', file=f)
+    for location_name in locations:
+        location = locations[location_name]
+        print(json.dumps(location.__dict__), file=f)
+        print(',', file=f)
+    print('];', file=f)
+
+print('Done :)')

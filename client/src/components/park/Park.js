@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import RecreationCard from "../recreation/RecreationCard";
 import NotFound from "../NotFound";
 import {
@@ -11,6 +10,7 @@ import {
   formatNumber,
 } from "../../helpers/Helpers.js";
 import { fakeFetch } from "../../fake_api/fakeApi.js";
+import Map from "../visualizations/Map";
 
 class Park extends React.Component {
   constructor(props) {
@@ -31,7 +31,6 @@ class Park extends React.Component {
       // Transform the data into json
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         // Process data
         data.rec_ids = data.rec_ids.split(",");
         data.location = data.location.split(",");
@@ -146,24 +145,11 @@ class Park extends React.Component {
             })}
 
             <h3>Address</h3>
-            <div className="map-container">
-              <Map
-                google={this.props.google}
-                zoom={8}
-                style={{ width: "100%", height: "100%", position: "relative" }}
-                initialCenter={{
-                  lat: this.state.park.lat,
-                  lng: this.state.park.lon,
-                }}
-              >
-                <Marker
-                  position={{
-                    lat: this.state.park.lat,
-                    lng: this.state.park.lon,
-                  }}
-                />
-              </Map>
-            </div>
+            <Map
+              lat={this.state.park.lat}
+              lon={this.state.park.lon}
+              title={title}
+            />
           </div>
         </React.Fragment>
       );
@@ -174,6 +160,4 @@ class Park extends React.Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyD4KTXfspSV4uzzkjwDEzzWBfQguQ9tyqA",
-})(Park);
+export default Park;

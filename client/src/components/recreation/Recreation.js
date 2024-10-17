@@ -1,11 +1,11 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import NotFound from "../NotFound";
 import StateCard from "../state/StateCard";
 import ParkCard from "../park/ParkCard";
 import { API_ENDPOINT, displayName } from "../../helpers/Helpers.js";
 import { fakeFetch } from "../../fake_api/fakeApi.js";
+import Map from "../visualizations/Map";
 
 class Recreation extends React.Component {
   constructor(props) {
@@ -141,24 +141,11 @@ class Recreation extends React.Component {
             </ul>
 
             <h3>Address</h3>
-            <div className="map-container">
-              <Map
-                google={this.props.google}
-                zoom={8}
-                style={{ width: "100%", height: "100%", position: "relative" }}
-                initialCenter={{
-                  lat: this.state.rec.lat,
-                  lng: this.state.rec.lon,
-                }}
-              >
-                <Marker
-                  position={{
-                    lat: this.state.rec.lat,
-                    lng: this.state.rec.lon,
-                  }}
-                />
-              </Map>
-            </div>
+            <Map
+              lat={this.state.rec.lat}
+              lon={this.state.rec.lon}
+              title={title}
+            />
           </div>
         </React.Fragment>
       );
@@ -169,6 +156,4 @@ class Recreation extends React.Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyD4KTXfspSV4uzzkjwDEzzWBfQguQ9tyqA",
-})(Recreation);
+export default Recreation;

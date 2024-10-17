@@ -302,6 +302,13 @@ nav form .form-control {
     margin-bottom: 50px;
     position: relative;
     width: 100%;
+
+    iframe {
+      border: 0;
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
   }
 }
 
