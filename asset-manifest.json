@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PutItInPark/static/css/main.ca54475c.css",
-    "main.js": "/PutItInPark/static/js/main.fe6ecf49.js",
+    "main.css": "/PutItInPark/static/css/main.080a80fa.css",
+    "main.js": "/PutItInPark/static/js/main.718258ad.js",
     "static/media/yosemite.jpg": "/PutItInPark/static/media/yosemite.d63024fdead3e19dbca1.jpg",
     "static/media/d3.png": "/PutItInPark/static/media/d3.fc389c2d7256bb16243c.png",
     "static/media/climbing.jpg": "/PutItInPark/static/media/climbing.6ce1964703282a034397.jpg",
@@ -10,6 +10,7 @@
     "static/media/mysql.png": "/PutItInPark/static/media/mysql.60fe462b4dec8bbc0292.png",
     "static/media/Levi.png": "/PutItInPark/static/media/Levi.939d8a63b505aa72df29.png",
     "static/media/Ella.png": "/PutItInPark/static/media/Ella.3d286ba5f92bb32f0ce4.png",
+    "static/media/NationalPark-VariableVF.woff2": "/PutItInPark/static/media/NationalPark-VariableVF.329055800a5f2473ab08.woff2",
     "static/media/Joseph.png": "/PutItInPark/static/media/Joseph.88323b731d474059fb84.png",
     "static/media/Billy.png": "/PutItInPark/static/media/Billy.9b7e18f9125fdeeccb29.png",
     "static/media/namecheap.png": "/PutItInPark/static/media/namecheap.8c496cccb37cc301e609.png",
@@ -29,11 +30,11 @@
     "static/media/postman.png": "/PutItInPark/static/media/postman.e946b36ddbb390709af9.png",
     "index.html": "/PutItInPark/index.html",
     "static/media/us-state-names.tsv": "/PutItInPark/static/media/us-state-names.1154ed03ca9b2b721460.tsv",
-    "main.ca54475c.css.map": "/PutItInPark/static/css/main.ca54475c.css.map",
-    "main.fe6ecf49.js.map": "/PutItInPark/static/js/main.fe6ecf49.js.map"
+    "main.080a80fa.css.map": "/PutItInPark/static/css/main.080a80fa.css.map",
+    "main.718258ad.js.map": "/PutItInPark/static/js/main.718258ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca54475c.css",
-    "static/js/main.fe6ecf49.js"
+    "static/css/main.080a80fa.css",
+    "static/js/main.718258ad.js"
   ]
 }
