@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/PutItInPark/static/css/main.080a80fa.css",
+    "main.css": "/PutItInPark/static/css/main.bfbe8375.css",
     "main.js": "/PutItInPark/static/js/main.718258ad.js",
     "static/media/yosemite.jpg": "/PutItInPark/static/media/yosemite.d63024fdead3e19dbca1.jpg",
     "static/media/d3.png": "/PutItInPark/static/media/d3.fc389c2d7256bb16243c.png",
@@ -30,11 +30,11 @@
     "static/media/postman.png": "/PutItInPark/static/media/postman.e946b36ddbb390709af9.png",
     "index.html": "/PutItInPark/index.html",
     "static/media/us-state-names.tsv": "/PutItInPark/static/media/us-state-names.1154ed03ca9b2b721460.tsv",
-    "main.080a80fa.css.map": "/PutItInPark/static/css/main.080a80fa.css.map",
+    "main.bfbe8375.css.map": "/PutItInPark/static/css/main.bfbe8375.css.map",
     "main.718258ad.js.map": "/PutItInPark/static/js/main.718258ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.080a80fa.css",
+    "static/css/main.bfbe8375.css",
     "static/js/main.718258ad.js"
   ]
 }
