@@ -10,7 +10,9 @@ View our technical report in the file `Technical_Report.pdf` and our final prese
 
 ## Development
 
-### Backend
+### Backend [Deprecated]
+
+This project no longer has a real backend. Instead we mock up the data with some JSON files and a frontend call to `fakeFetch` in `client/src/fake_api/fakeApi.js`. However we still keep around the `backend/` folder for historical purposes
 
 To get started with backend development, first install the python dependencies used to run flask.
 

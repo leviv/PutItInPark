@@ -32,6 +32,9 @@ import RecipeVis from "./components/visualizations/RecipeVis";
 import NutritionVis from "./components/visualizations/NutritionVis";
 import Visualizations from "./components/visualizations/Visualizations";
 
+// API
+import Api from "./components/Api";
+
 const ScrollToTopWrapper = ({ children }) => {
   const location = useLocation();
   const previousLocationRef = React.useRef(location);
@@ -59,37 +62,53 @@ const ScrollToTopWrapper = ({ children }) => {
   return children;
 };
 
-function App() {
+function LayoutRoutes() {
   return (
-    <HashRouter>
-      <ScrollToTopWrapper>
-        <Header />
+    <ScrollToTopWrapper>
+      <Header />
 
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about/" component={About} />
-          <Route path="/parks/:page" component={Parks} />
-          <Route path="/recreations/:page" component={Recreations} />
-          <Route path="/states/:page" component={States} />
-          <Redirect from="/parks/" to="/parks/1" />
-          <Redirect from="/recreations/" to="/recreations/1" />
-          <Redirect from="/states/" to="/states/1" />
-          <Route path="/park/:parkName" component={Park} />
-          <Route path="/recreation/:recName" component={Recreation} />
-          <Route path="/state/:stateName" component={State} />
-          <Route path="/search/:searchString" component={Search} />
-          <Route path="/vis/" component={Visualizations} />
-          <Route path="/vis1/" component={RestaurantVis} />
-          <Route path="/vis2/" component={RecipeVis} />
-          <Route path="/vis3/" component={NutritionVis} />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/about/" component={About} />
+        <Route path="/parks/:page" component={Parks} />
+        <Route path="/recreations/:page" component={Recreations} />
+        <Route path="/states/:page" component={States} />
+        <Redirect from="/parks/" to="/parks/1" />
+        <Redirect from="/recreations/" to="/recreations/1" />
+        <Redirect from="/states/" to="/states/1" />
+        <Route path="/park/:parkName" component={Park} />
+        <Route path="/recreation/:recName" component={Recreation} />
+        <Route path="/state/:stateName" component={State} />
+        <Route path="/search/:searchString" component={Search} />
+        <Route path="/vis/" component={Visualizations} />
+        <Route path="/vis1/" component={RestaurantVis} />
+        <Route path="/vis2/" component={RecipeVis} />
+        <Route path="/vis3/" component={NutritionVis} />
+        <Route path="*" component={NotFound} />
+      </Switch>
 
-          <Route path="*" component={NotFound} />
-        </Switch>
-
-        <Footer />
-      </ScrollToTopWrapper>
-    </HashRouter>
+      <Footer />
+    </ScrollToTopWrapper>
   );
 }
 
-export default App;
+function AppRouter() {
+  const location = useLocation();
+  const isApiRoute = location.pathname.startsWith("/api");
+
+  return (
+    <Switch>
+      {isApiRoute && <Route path="/api/" component={Api} />}
+      {isApiRoute && <Route path="/api/:query" component={Api} />}
+      {!isApiRoute && <Route path="/" component={LayoutRoutes} />}
+    </Switch>
+  );
+}
+
+export default function App() {
+  return (
+    <HashRouter>
+      <AppRouter />
+    </HashRouter>
+  );
+}

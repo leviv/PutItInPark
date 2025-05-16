@@ -53,6 +53,14 @@ export const fakeFetch = async (urlString) => {
     primaryColName = "rec_name";
   }
 
+  if (!dataTable) {
+    return Promise.resolve({
+      json: () => {
+        return { objects: [] };
+      },
+    });
+  }
+
   const singleResult = searchString !== null || (query && query.single);
   if (singleResult) {
     let queryName;
