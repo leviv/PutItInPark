@@ -19,7 +19,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "fuse.js": "^3.4.5",
-    "mocha": "^6.2.2",
+    "mocha": "^11.7.5",
     "nock": "^11.7.0",
     "react": "^16.10.1",
     "react-dom": "^16.8.6",
